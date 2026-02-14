@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Physiology Intelligence Platform Design System
+   Clinical, professional aesthetic — Nature journal meets ICU monitor
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Core backgrounds */
+    --background: 0 0% 99%;
+    --foreground: 220 20% 15%;
+
+    /* Cards and surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 15%;
+
+    /* Primary - Clinical blue */
+    --primary: 210 65% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Soft grey */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 15%;
+
+    /* Muted text and backgrounds */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Accent - Subtle blue tint */
+    --accent: 210 40% 95%;
+    --accent-foreground: 210 65% 40%;
+
+    /* States */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 210 65% 45%;
+
+    --radius: 0.5rem;
+
+    /* Clinical status colors */
+    --status-normal: 142 70% 45%;
+    --status-warning: 38 92% 50%;
+    --status-critical: 0 72% 51%;
+
+    /* Physiology-specific colors */
+    --cardio: 0 72% 55%;
+    --renal: 45 93% 47%;
+    --immune: 142 70% 45%;
+    --systems: 210 65% 50%;
+
+    /* Chart colors */
+    --chart-1: 210 65% 50%;
+    --chart-2: 0 72% 55%;
+    --chart-3: 142 70% 45%;
+    --chart-4: 45 93% 47%;
+    --chart-5: 280 65% 55%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 10% 30%;
+    --sidebar-primary: 210 65% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 95%;
+    --sidebar-accent-foreground: 210 65% 40%;
+    --sidebar-border: 220 14% 90%;
+    --sidebar-ring: 210 65% 45%;
+  }
+
+  .dark {
+    /* Core backgrounds */
+    --background: 220 20% 8%;
+    --foreground: 210 20% 95%;
+
+    /* Cards and surfaces */
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Primary - Clinical blue */
+    --primary: 210 65% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 220 20% 18%;
+    --secondary-foreground: 210 20% 95%;
+
+    /* Muted */
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+
+    /* Accent */
+    --accent: 210 40% 20%;
+    --accent-foreground: 210 65% 70%;
+
+    /* States */
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 210 65% 55%;
+
+    /* Clinical status colors */
+    --status-normal: 142 70% 50%;
+    --status-warning: 38 92% 55%;
+    --status-critical: 0 72% 55%;
+
+    /* Physiology-specific colors */
+    --cardio: 0 72% 60%;
+    --renal: 45 93% 55%;
+    --immune: 142 70% 50%;
+    --systems: 210 65% 60%;
+
+    /* Chart colors */
+    --chart-1: 210 65% 60%;
+    --chart-2: 0 72% 60%;
+    --chart-3: 142 70% 50%;
+    --chart-4: 45 93% 55%;
+    --chart-5: 280 65% 60%;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 210 65% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 20%;
+    --sidebar-accent-foreground: 210 65% 70%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 210 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Typography scale for clinical content */
+  h1 {
+    @apply text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-light tracking-tight sm:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-medium tracking-tight sm:text-2xl;
+  }
+
+  /* Prose styling for article content */
+  .prose-clinical {
+    @apply max-w-none text-foreground/90 leading-relaxed;
+  }
+
+  .prose-clinical p {
+    @apply mb-4;
+  }
+
+  .prose-clinical strong {
+    @apply font-semibold text-foreground;
+  }
+}
+
+/* Custom scrollbar for clinical aesthetic */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  /* Gradient utilities */
+  .gradient-clinical {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.05) 0%,
+      hsl(var(--accent) / 0.3) 100%
+    );
+  }
+
+  /* Status indicator utilities */
+  .status-normal {
+    color: hsl(var(--status-normal));
+  }
+
+  .status-warning {
+    color: hsl(var(--status-warning));
+  }
+
+  .status-critical {
+    color: hsl(var(--status-critical));
+  }
+
+  /* Module color utilities */
+  .module-cardio {
+    --module-color: var(--cardio);
+  }
+
+  .module-renal {
+    --module-color: var(--renal);
+  }
+
+  .module-immune {
+    --module-color: var(--immune);
+  }
+
+  .module-systems {
+    --module-color: var(--systems);
+  }
+}
