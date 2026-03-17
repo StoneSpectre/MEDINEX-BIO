@@ -120,7 +120,7 @@ Unlike platforms focused on healthcare delivery or booking systems, Medinex oper
 Data Science & Quantitative Economics Student  
 
 - GitHub: https://github.com/StoneSpectre  
-- LinkedIn: (Add your LinkedIn link)
+- LinkedIn: www.linkedin.com/in/prince-kumar-3283a9250
 
 **Suryansh Pratap Deo**  
 Data Science & Quantitative Economics Student
