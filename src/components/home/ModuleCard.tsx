@@ -25,7 +25,7 @@ export function ModuleCard({
       className="group animate-fade-in"
       style={{ animationDelay: `${delay}s` }}
     >
-      <article className="relative h-full overflow-hidden rounded-xl border border-border bg-card p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5">
+      <article className="relative h-full overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-7 transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
         {/* Icon */}
         <div
           className={cn(

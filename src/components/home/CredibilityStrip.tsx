@@ -3,7 +3,7 @@ import { BookOpen, Lock, Shield } from "lucide-react";
 const credibilityItems = [
   {
     icon: BookOpen,
-    text: "Built on clinical physiology principles",
+    text: "Based on Guyton & Hall Textbook of Medical Physiology",
   },
   {
     icon: Lock,

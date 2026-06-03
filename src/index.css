@@ -9,109 +9,109 @@
 
 @layer base {
   :root {
-    /* Core backgrounds */
-    --background: 0 0% 99%;
-    --foreground: 220 20% 15%;
+    /* Core backgrounds - Premium Light Mode */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
-    /* Cards and surfaces */
+    /* Cards and surfaces - Crisp White */
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Primary - Clinical blue */
-    --primary: 210 65% 45%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Vibrant Clinical Blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
 
     /* Secondary - Soft grey */
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 15%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
 
     /* Muted text and backgrounds */
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     /* Accent - Subtle blue tint */
-    --accent: 210 40% 95%;
-    --accent-foreground: 210 65% 40%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
 
     /* States */
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
     /* Borders and inputs */
-    --border: 220 14% 90%;
-    --input: 220 14% 90%;
-    --ring: 210 65% 45%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Clinical status colors */
-    --status-normal: 142 70% 45%;
+    --status-normal: 142 76% 36%;
     --status-warning: 38 92% 50%;
-    --status-critical: 0 72% 51%;
+    --status-critical: 0 84.2% 60.2%;
 
     /* Physiology-specific colors */
-    --cardio: 0 72% 55%;
+    --cardio: 0 84.2% 60.2%;
     --renal: 45 93% 47%;
-    --immune: 142 70% 45%;
-    --systems: 210 65% 50%;
+    --immune: 142 76% 36%;
+    --systems: 221 83% 53%;
 
     /* Chart colors */
-    --chart-1: 210 65% 50%;
-    --chart-2: 0 72% 55%;
-    --chart-3: 142 70% 45%;
+    --chart-1: 221 83% 53%;
+    --chart-2: 0 84.2% 60.2%;
+    --chart-3: 142 76% 36%;
     --chart-4: 45 93% 47%;
     --chart-5: 280 65% 55%;
 
     /* Sidebar */
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 220 10% 30%;
-    --sidebar-primary: 210 65% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 95%;
-    --sidebar-accent-foreground: 210 65% 40%;
-    --sidebar-border: 220 14% 90%;
-    --sidebar-ring: 210 65% 45%;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221 83% 53%;
   }
 
   .dark {
-    /* Core backgrounds */
-    --background: 220 20% 8%;
-    --foreground: 210 20% 95%;
+    /* Core backgrounds - Deep Premium Dark Mode */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    /* Cards and surfaces */
-    --card: 220 20% 12%;
-    --card-foreground: 210 20% 95%;
+    /* Cards and surfaces - Elevated Dark */
+    --card: 222.2 84% 6.5%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 222.2 84% 6.5%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary - Clinical blue */
-    --primary: 210 65% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Vibrant Clinical Blue */
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
     /* Secondary */
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 20% 95%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
     /* Muted */
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
     /* Accent */
-    --accent: 210 40% 20%;
-    --accent-foreground: 210 65% 70%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     /* States */
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
 
     /* Borders and inputs */
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 210 65% 55%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
 
     /* Clinical status colors */
     --status-normal: 142 70% 50%;
@@ -122,24 +122,24 @@
     --cardio: 0 72% 60%;
     --renal: 45 93% 55%;
     --immune: 142 70% 50%;
-    --systems: 210 65% 60%;
+    --systems: 217.2 91.2% 59.8%;
 
     /* Chart colors */
-    --chart-1: 210 65% 60%;
+    --chart-1: 217.2 91.2% 59.8%;
     --chart-2: 0 72% 60%;
     --chart-3: 142 70% 50%;
     --chart-4: 45 93% 55%;
     --chart-5: 280 65% 60%;
 
     /* Sidebar */
-    --sidebar-background: 220 20% 10%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 210 65% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 40% 20%;
-    --sidebar-accent-foreground: 210 65% 70%;
-    --sidebar-border: 220 20% 20%;
-    --sidebar-ring: 210 65% 55%;
+    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217.2 91.2% 59.8%;
+    --sidebar-primary-foreground: 222.2 47.4% 11.2%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 224.3 76.3% 48%;
   }
 }
 
@@ -201,13 +201,19 @@
     border-radius: 3px;
   }
 
+  /* Glassmorphism utilities */
+  .glass-panel {
+    @apply bg-background/70 backdrop-blur-xl border border-border/50 shadow-sm;
+  }
+  
+  .dark .glass-panel {
+    @apply bg-background/50 backdrop-blur-xl border border-white/10 shadow-xl;
+  }
+
   /* Gradient utilities */
   .gradient-clinical {
-    background: linear-gradient(
-      135deg,
-      hsl(var(--primary) / 0.05) 0%,
-      hsl(var(--accent) / 0.3) 100%
-    );
+    background: radial-gradient(circle at top left, hsl(var(--primary)/0.15), transparent 40%),
+                radial-gradient(circle at bottom right, hsl(var(--systems)/0.15), transparent 40%);
   }
 
   /* Status indicator utilities */

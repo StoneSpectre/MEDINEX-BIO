@@ -12,27 +12,25 @@ export function HeroSection() {
       <div className="container relative py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-3xl text-center">
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 text-sm text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-status-normal animate-pulse-gentle" />
-            Educational Platform
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-1.5 text-sm text-muted-foreground shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            Live Platform
           </div>
 
           {/* Headline */}
-          <h1 className="mb-6 animate-fade-in">
-            Understanding human physiology the way{" "}
-            <span className="text-primary">critical care decisions</span> demand.
+          <h1 className="mb-6 animate-fade-in text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+            The <span className="text-primary">Biomedical Intelligence</span> Operating System
           </h1>
 
           {/* Subheading */}
-          <p className="mb-10 text-lg text-muted-foreground sm:text-xl animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Cardiovascular, renal, and immune systems explained as dynamic, 
-            interacting systems — not isolated facts.
+          <p className="mb-10 text-lg text-muted-foreground sm:text-xl animate-fade-in max-w-2xl mx-auto" style={{ animationDelay: "0.1s" }}>
+            Connecting medical literature, clinical datasets, and dynamic physiological models into one continuously evolving intelligence network.
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in mt-4" style={{ animationDelay: "0.2s" }}>
             <Link to="/cardiovascular">
-              <Button size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5">
                 <BookOpen className="h-5 w-5" />
                 Explore Physiology
                 <ArrowRight className="h-4 w-4" />
@@ -40,7 +38,7 @@ export function HeroSection() {
             </Link>
             <EarlyAccessModal
               trigger={
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="bg-background/50 backdrop-blur-sm border-border/60 hover:bg-muted/50 transition-all hover:-translate-y-0.5">
                   Join Early Access (Free)
                 </Button>
               }

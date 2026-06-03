@@ -58,9 +58,9 @@ export function Footer() {
               <a href="#" className="hover:text-foreground transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-foreground transition-colors">
+              <Link to="/terms" className="hover:text-foreground transition-colors">
                 Terms of Service
-              </a>
+              </Link>
             </nav>
           </div>
         </div>
@@ -77,6 +77,8 @@ export function Footer() {
             <span>No patient data</span>
             <span>•</span>
             <span>Not for clinical use</span>
+            <span>•</span>
+            <span>Primary Reference: Guyton & Hall Textbook of Medical Physiology</span>
           </div>
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} MEDINEX. All rights reserved.
