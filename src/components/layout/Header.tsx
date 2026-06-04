@@ -57,6 +57,11 @@ export function Header() {
               </Button>
             </Link>
           )}
+          <Link to="/roadmap" className="hidden sm:block">
+            <Button variant="ghost" size="sm">
+              Architecture
+            </Button>
+          </Link>
           <Link to="/about" className="hidden sm:block">
             <Button variant="ghost" size="sm">
               About
@@ -114,6 +119,11 @@ export function Header() {
                   </Button>
                 </Link>
               )}
+              <Link to="/roadmap" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="ghost" className="w-full justify-start">
+                  Architecture
+                </Button>
+              </Link>
               <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start">
                   About
