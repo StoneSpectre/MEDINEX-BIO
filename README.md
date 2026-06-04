@@ -130,3 +130,10 @@ Data Science & Quantitative Economics Student
 ## Note
 
 This project is currently in the **development and research phase**, with ongoing work on architecture, data pipelines, and prototype systems.
+
+
+---
+
+## Phase 0: Backend Architecture & Data Layer
+
+The Python data pipeline and Clinical Infrastructure (MIMIC-IV) are located in the `backend/` directory. Please refer to [backend/README.md](./backend/README.md) for detailed instructions on running the literature extraction and clinical data pipelines.
