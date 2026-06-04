@@ -1,0 +1,15 @@
+{
+  "nodes": 92,
+  "edges": 134,
+  "density": 0.03201,
+  "avg_degree": 2.91,
+  "max_degree": 16,
+  "min_degree": 0,
+  "avg_clustering": 0.2223,
+  "avg_path_length": 3.57,
+  "n_components": 7,
+  "largest_component": 48,
+  "assortativity": -0.3748,
+  "is_scale_free_hint": true,
+  "is_small_world": false
+}

@@ -1,0 +1,9 @@
+subject,subject_type,relation,object,object_type,method,confidence,pmid
+brca1,GENE,ASSOCIATED_WITH,breast cancer,DISEASE,pattern,0.68,35078996
+brca2,GENE,ASSOCIATED_WITH,breast cancer,DISEASE,pattern,0.68,35078996
+brca1,GENE,CO_OCCURS,breast cancer,DISEASE,cooccurrence,0.5,35078996
+brca2,GENE,CO_OCCURS,breast cancer,DISEASE,cooccurrence,0.5,35078996
+breast cancer,DISEASE,CO_OCCURS,brca1,GENE,cooccurrence,0.5,35078996
+breast cancer,DISEASE,CO_OCCURS,brca2,GENE,cooccurrence,0.5,35078996
+metformin,DRUG,CO_OCCURS,type 2 diabetes,DISEASE,cooccurrence,0.5,36402859
+type 2 diabetes,DISEASE,CO_OCCURS,metformin,DRUG,cooccurrence,0.5,36402859

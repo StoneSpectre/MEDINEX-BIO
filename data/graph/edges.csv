@@ -1,0 +1,146 @@
+src,dst,relation,confidence,pmid,source,frequency
+33462182,alzheimer disease,HAS_MESH_TERM,1.0,,,
+33462182,amyloid beta-peptides,HAS_MESH_TERM,1.0,,,
+33462182,tau proteins,HAS_MESH_TERM,1.0,,,
+33462182,neuroinflammatory diseases,HAS_MESH_TERM,1.0,,,
+33462182,immunotherapy,HAS_MESH_TERM,1.0,,,
+33462182,disease progression,HAS_MESH_TERM,1.0,,,
+alzheimer's disease,33462182,MENTIONED_IN,1.0,,,
+dementia,33462182,MENTIONED_IN,1.0,,,
+neuroinflammation,33462182,MENTIONED_IN,1.0,,,
+amyloid-beta,33462182,MENTIONED_IN,1.0,,,
+amyloid-beta,alzheimer's disease,BIOMARKER_FOR,0.95,,curated,
+microglia,33462182,MENTIONED_IN,1.0,,,
+aducanumab,33462182,MENTIONED_IN,1.0,,,
+aducanumab,alzheimer's disease,TREATS,0.78,,curated,
+lecanemab,33462182,MENTIONED_IN,1.0,,,
+lecanemab,alzheimer's disease,TREATS,0.85,,curated,
+lecanemab,app,INHIBITS,0.85,,curated,
+donanemab,33462182,MENTIONED_IN,1.0,,,
+donanemab,alzheimer's disease,TREATS,0.82,,curated,
+34942836,post-acute covid-19 syndrome,HAS_MESH_TERM,1.0,,,
+34942836,sars-cov-2,HAS_MESH_TERM,1.0,,,
+34942836,fatigue,HAS_MESH_TERM,1.0,,,
+34942836,cognitive dysfunction,HAS_MESH_TERM,1.0,,,
+34942836,risk factors,HAS_MESH_TERM,1.0,,,
+long covid,34942836,MENTIONED_IN,1.0,,,
+sars-cov-2,34942836,MENTIONED_IN,1.0,,,
+35078996,brca1 protein,HAS_MESH_TERM,1.0,,,
+35078996,brca2 protein,HAS_MESH_TERM,1.0,,,
+35078996,breast neoplasms,HAS_MESH_TERM,1.0,,,
+35078996,genetic predisposition to disease,HAS_MESH_TERM,1.0,,,
+35078996,meta-analysis as topic,HAS_MESH_TERM,1.0,,,
+brca1,35078996,MENTIONED_IN,1.0,,,
+brca1,breast cancer,ASSOCIATED_WITH,0.68,35078996,,
+brca1,breast cancer,CO_OCCURS,0.5,35078996,,
+brca1,breast cancer,ASSOCIATED_WITH,0.99,,curated,
+brca2,35078996,MENTIONED_IN,1.0,,,
+brca2,breast cancer,ASSOCIATED_WITH,0.68,35078996,,
+brca2,breast cancer,CO_OCCURS,0.5,35078996,,
+brca2,breast cancer,ASSOCIATED_WITH,0.99,,curated,
+breast cancer,35078996,MENTIONED_IN,1.0,,,
+breast cancer,brca1,CO_OCCURS,0.5,35078996,,
+breast cancer,brca2,CO_OCCURS,0.5,35078996,,
+36402859,metformin,HAS_MESH_TERM,1.0,,,
+36402859,"diabetes mellitus, type 2",HAS_MESH_TERM,1.0,,,
+36402859,amp-activated protein kinases,HAS_MESH_TERM,1.0,,,
+36402859,gluconeogenesis,HAS_MESH_TERM,1.0,,,
+36402859,gastrointestinal microbiome,HAS_MESH_TERM,1.0,,,
+metformin,36402859,MENTIONED_IN,1.0,,,
+metformin,type 2 diabetes,CO_OCCURS,0.5,36402859,,
+metformin,type 2 diabetes,TREATS,0.98,,curated,
+type 2 diabetes,36402859,MENTIONED_IN,1.0,,,
+type 2 diabetes,metformin,CO_OCCURS,0.5,36402859,,
+type 2 diabetes,heart failure,CLINICAL_COMORBIDITY,0.7,,mimic_iv,10.0
+type 2 diabetes,copd,CLINICAL_COMORBIDITY,0.7,,mimic_iv,10.0
+type 2 diabetes,major depressive disorder,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+type 2 diabetes,multiple sclerosis,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+type 2 diabetes,myocardial infarction,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+ampk,36402859,MENTIONED_IN,1.0,,,
+glucose,36402859,MENTIONED_IN,1.0,,,
+37019876,"receptors, chimeric antigen",HAS_MESH_TERM,1.0,,,
+37019876,"immunotherapy, adoptive",HAS_MESH_TERM,1.0,,,
+37019876,hematologic neoplasms,HAS_MESH_TERM,1.0,,,
+37019876,cytokine release syndrome,HAS_MESH_TERM,1.0,,,
+37019876,"antigens, cd19",HAS_MESH_TERM,1.0,,,
+car-t,37019876,MENTIONED_IN,1.0,,,
+chimeric antigen receptor,37019876,MENTIONED_IN,1.0,,,
+diffuse large b-cell lymphoma,37019876,MENTIONED_IN,1.0,,,
+mantle cell lymphoma,37019876,MENTIONED_IN,1.0,,,
+multiple myeloma,37019876,MENTIONED_IN,1.0,,,
+multiple sclerosis,myocardial infarction,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+multiple sclerosis,heart failure,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+major depressive disorder,myocardial infarction,CLINICAL_COMORBIDITY,0.7,,mimic_iv,9.0
+major depressive disorder,heart failure,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+major depressive disorder,multiple sclerosis,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+major depressive disorder,pneumonia,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+myocardial infarction,heart failure,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+myocardial infarction,pneumonia,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+myocardial infarction,acute kidney injury,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+lung cancer,myocardial infarction,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+lung cancer,type 2 diabetes,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+lung cancer,copd,CLINICAL_COMORBIDITY,0.7,,mimic_iv,6.0
+heart failure,copd,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+sepsis,major depressive disorder,CLINICAL_COMORBIDITY,0.7,,mimic_iv,8.0
+sepsis,myocardial infarction,CLINICAL_COMORBIDITY,0.7,,mimic_iv,7.0
+aspirin,type 2 diabetes,TREATS,0.6,,clinical_mimic,11.0
+aspirin,multiple sclerosis,TREATS,0.6,,clinical_mimic,7.0
+aspirin,myocardial infarction,TREATS,0.6,,clinical_mimic,5.0
+aspirin,pneumonia,TREATS,0.6,,clinical_mimic,5.0
+aspirin,copd,TREATS,0.6,,clinical_mimic,5.0
+insulin regular,major depressive disorder,TREATS,0.6,,clinical_mimic,9.0
+insulin regular,type 2 diabetes,TREATS,0.6,,clinical_mimic,5.0
+insulin regular,myocardial infarction,TREATS,0.6,,clinical_mimic,5.0
+norepinephrine,type 2 diabetes,TREATS,0.6,,clinical_mimic,9.0
+norepinephrine,myocardial infarction,TREATS,0.6,,clinical_mimic,6.0
+norepinephrine,pneumonia,TREATS,0.6,,clinical_mimic,6.0
+norepinephrine,sepsis,TREATS,0.9,,curated,
+vancomycin,type 2 diabetes,TREATS,0.6,,clinical_mimic,9.0
+vancomycin,multiple sclerosis,TREATS,0.6,,clinical_mimic,6.0
+vancomycin,copd,TREATS,0.6,,clinical_mimic,5.0
+vancomycin,sepsis,TREATS,0.8,,curated,
+acetaminophen,type 2 diabetes,TREATS,0.6,,clinical_mimic,8.0
+acetaminophen,major depressive disorder,TREATS,0.6,,clinical_mimic,7.0
+acetaminophen,multiple sclerosis,TREATS,0.6,,clinical_mimic,6.0
+acetaminophen,sepsis,TREATS,0.6,,clinical_mimic,5.0
+acetaminophen,pneumonia,TREATS,0.6,,clinical_mimic,4.0
+acetaminophen,copd,TREATS,0.6,,clinical_mimic,4.0
+furosemide,type 2 diabetes,TREATS,0.6,,clinical_mimic,8.0
+heparin,type 2 diabetes,TREATS,0.6,,clinical_mimic,8.0
+heparin,multiple sclerosis,TREATS,0.6,,clinical_mimic,6.0
+heparin,copd,TREATS,0.6,,clinical_mimic,6.0
+heparin,major depressive disorder,TREATS,0.6,,clinical_mimic,5.0
+metoprolol,type 2 diabetes,TREATS,0.6,,clinical_mimic,8.0
+metoprolol,multiple sclerosis,TREATS,0.6,,clinical_mimic,6.0
+metoprolol,major depressive disorder,TREATS,0.6,,clinical_mimic,5.0
+metoprolol,heart failure,TREATS,0.6,,clinical_mimic,5.0
+metoprolol,acute kidney injury,TREATS,0.6,,clinical_mimic,5.0
+app,alzheimer's disease,CAUSES,0.95,,curated,
+psen1,alzheimer's disease,CAUSES,0.95,,curated,
+apoe,alzheimer's disease,ASSOCIATED_WITH,0.9,,curated,
+tp53,breast cancer,ASSOCIATED_WITH,0.88,,curated,
+tp53,lung cancer,ASSOCIATED_WITH,0.85,,curated,
+tp53,pembrolizumab,TARGETED_BY,0.7,,curated,
+egfr,lung cancer,ASSOCIATED_WITH,0.92,,curated,
+kras,lung cancer,ASSOCIATED_WITH,0.8,,curated,
+braf,lung cancer,ASSOCIATED_WITH,0.75,,curated,
+her2,breast cancer,ASSOCIATED_WITH,0.93,,curated,
+her2,breast cancer,BIOMARKER_FOR,0.94,,curated,
+trem2,alzheimer's disease,ASSOCIATED_WITH,0.85,,curated,
+cd19,diffuse large b-cell lymphoma,ASSOCIATED_WITH,0.9,,curated,
+bcma,multiple myeloma,ASSOCIATED_WITH,0.88,,curated,
+il6,sepsis,CAUSES,0.8,,curated,
+tnf,sepsis,CAUSES,0.82,,curated,
+olaparib,breast cancer,TREATS,0.93,,curated,
+olaparib,brca1,INHIBITS,0.95,,curated,
+olaparib,brca2,INHIBITS,0.95,,curated,
+pembrolizumab,lung cancer,TREATS,0.9,,curated,
+nivolumab,lung cancer,TREATS,0.88,,curated,
+trastuzumab,breast cancer,TREATS,0.95,,curated,
+trastuzumab,her2,INHIBITS,0.97,,curated,
+rituximab,diffuse large b-cell lymphoma,TREATS,0.95,,curated,
+rituximab,mantle cell lymphoma,TREATS,0.9,,curated,
+imatinib,lung cancer,TREATS,0.72,,curated,
+imatinib,kras,INHIBITS,0.8,,curated,
+tau protein,alzheimer's disease,BIOMARKER_FOR,0.93,,curated,
+c-reactive protein,sepsis,BIOMARKER_FOR,0.88,,curated,

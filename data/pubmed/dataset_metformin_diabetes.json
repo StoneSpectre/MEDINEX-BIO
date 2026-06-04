@@ -1,0 +1,20 @@
+[
+  {
+    "pmid":"36402859",
+    "title":"Metformin and type 2 diabetes: mechanisms and novel applications",
+    "abstract":"Metformin remains the first-line pharmacological treatment for type 2 diabetes, taken by >200 million patients worldwide. Its primary mechanism involves AMPK activation and suppression of hepatic gluconeogenesis via complex I inhibition. BACKGROUND: Emerging evidence suggests metformin has anti-aging, anti-cancer, and cardioprotective effects beyond glucose lowering. METHODS: Systematic review of mechanistic and clinical studies from 2015\u20132022. RESULTS: Metformin reduces HbA1c by 1.0\u20131.5%, reduces cardiovascular events, and extends healthspan in model organisms. Gut microbiome modulation is a key mechanism. CONCLUSIONS: Metformin is being investigated in clinical trials for cancer prevention (MPOWER) and anti-aging (TAME trial).",
+    "abstract_words":135,
+    "first_author":"Foretz M",
+    "author_count":3,
+    "journal":"Nature Reviews Endocrinology",
+    "pub_year":"2023",
+    "pub_month":"Feb",
+    "doi":"10.1038\/s41574-022-00786-6",
+    "mesh_count":5,
+    "mesh_terms_flat":"Metformin; Diabetes Mellitus, Type 2; AMP-Activated Protein Kinases; Gluconeogenesis; Gastrointestinal Microbiome",
+    "major_mesh":"Metformin; Diabetes Mellitus, Type 2",
+    "keywords":"metformin; AMPK; diabetes; aging; microbiome",
+    "pubmed_url":"https:\/\/pubmed.ncbi.nlm.nih.gov\/36402859\/",
+    "topic":"Metformin Diabetes"
+  }
+]

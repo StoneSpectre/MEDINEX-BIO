@@ -1,0 +1,44 @@
+d1,d2,weight,shared_targets,shared_diseases
+aducanumab,lecanemab,1,,alzheimer's disease
+aducanumab,donanemab,1,,alzheimer's disease
+lecanemab,donanemab,1,,alzheimer's disease
+metformin,aspirin,1,,type 2 diabetes
+metformin,insulin regular,1,,type 2 diabetes
+metformin,norepinephrine,1,,type 2 diabetes
+metformin,vancomycin,1,,type 2 diabetes
+metformin,acetaminophen,1,,type 2 diabetes
+metformin,furosemide,1,,type 2 diabetes
+metformin,heparin,1,,type 2 diabetes
+metformin,metoprolol,1,,type 2 diabetes
+aspirin,insulin regular,2,,"type 2 diabetes, myocardial infarction"
+aspirin,norepinephrine,3,,"type 2 diabetes, pneumonia, myocardial infarction"
+aspirin,vancomycin,3,,"copd, type 2 diabetes, multiple sclerosis"
+aspirin,acetaminophen,4,,"copd, type 2 diabetes, multiple sclerosis, pneumonia"
+aspirin,furosemide,1,,type 2 diabetes
+aspirin,heparin,3,,"copd, type 2 diabetes, multiple sclerosis"
+aspirin,metoprolol,2,,"type 2 diabetes, multiple sclerosis"
+insulin regular,norepinephrine,2,,"type 2 diabetes, myocardial infarction"
+insulin regular,vancomycin,1,,type 2 diabetes
+insulin regular,acetaminophen,2,,"major depressive disorder, type 2 diabetes"
+insulin regular,furosemide,1,,type 2 diabetes
+insulin regular,heparin,2,,"major depressive disorder, type 2 diabetes"
+insulin regular,metoprolol,2,,"major depressive disorder, type 2 diabetes"
+norepinephrine,vancomycin,2,,"type 2 diabetes, sepsis"
+norepinephrine,acetaminophen,3,,"type 2 diabetes, pneumonia, sepsis"
+norepinephrine,furosemide,1,,type 2 diabetes
+norepinephrine,heparin,1,,type 2 diabetes
+norepinephrine,metoprolol,1,,type 2 diabetes
+vancomycin,acetaminophen,4,,"copd, type 2 diabetes, multiple sclerosis, sepsis"
+vancomycin,furosemide,1,,type 2 diabetes
+vancomycin,heparin,3,,"copd, type 2 diabetes, multiple sclerosis"
+vancomycin,metoprolol,2,,"type 2 diabetes, multiple sclerosis"
+acetaminophen,furosemide,1,,type 2 diabetes
+acetaminophen,heparin,4,,"copd, major depressive disorder, type 2 diabetes, multiple sclerosis"
+acetaminophen,metoprolol,3,,"major depressive disorder, type 2 diabetes, multiple sclerosis"
+furosemide,heparin,1,,type 2 diabetes
+furosemide,metoprolol,1,,type 2 diabetes
+heparin,metoprolol,3,,"major depressive disorder, type 2 diabetes, multiple sclerosis"
+olaparib,trastuzumab,1,,breast cancer
+pembrolizumab,nivolumab,1,,lung cancer
+pembrolizumab,imatinib,1,,lung cancer
+nivolumab,imatinib,1,,lung cancer

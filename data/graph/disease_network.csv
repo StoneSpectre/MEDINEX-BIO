@@ -1,0 +1,31 @@
+d1,d2,weight,shared_genes,shared_drugs
+breast cancer,lung cancer,2,tp53,
+type 2 diabetes,multiple sclerosis,5,,"aspirin, vancomycin, metoprolol, acetaminophen, heparin"
+type 2 diabetes,major depressive disorder,4,,"insulin regular, heparin, acetaminophen, metoprolol"
+type 2 diabetes,myocardial infarction,3,,"norepinephrine, insulin regular, aspirin"
+type 2 diabetes,acute kidney injury,1,,metoprolol
+type 2 diabetes,pneumonia,3,,"norepinephrine, aspirin, acetaminophen"
+type 2 diabetes,copd,4,,"vancomycin, aspirin, acetaminophen, heparin"
+type 2 diabetes,heart failure,1,,metoprolol
+type 2 diabetes,sepsis,3,,"norepinephrine, acetaminophen, vancomycin"
+multiple sclerosis,major depressive disorder,3,,"heparin, acetaminophen, metoprolol"
+multiple sclerosis,myocardial infarction,1,,aspirin
+multiple sclerosis,acute kidney injury,1,,metoprolol
+multiple sclerosis,pneumonia,2,,"aspirin, acetaminophen"
+multiple sclerosis,copd,4,,"vancomycin, aspirin, acetaminophen, heparin"
+multiple sclerosis,heart failure,1,,metoprolol
+multiple sclerosis,sepsis,2,,"acetaminophen, vancomycin"
+major depressive disorder,myocardial infarction,1,,insulin regular
+major depressive disorder,acute kidney injury,1,,metoprolol
+major depressive disorder,pneumonia,1,,acetaminophen
+major depressive disorder,copd,2,,"acetaminophen, heparin"
+major depressive disorder,heart failure,1,,metoprolol
+major depressive disorder,sepsis,1,,acetaminophen
+myocardial infarction,pneumonia,2,,"norepinephrine, aspirin"
+myocardial infarction,copd,1,,aspirin
+myocardial infarction,sepsis,1,,norepinephrine
+acute kidney injury,heart failure,1,,metoprolol
+pneumonia,copd,2,,"aspirin, acetaminophen"
+pneumonia,sepsis,2,,"norepinephrine, acetaminophen"
+copd,sepsis,2,,"acetaminophen, vancomycin"
+diffuse large b-cell lymphoma,mantle cell lymphoma,1,,rituximab

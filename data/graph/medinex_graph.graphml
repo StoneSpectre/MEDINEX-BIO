@@ -1,0 +1,1405 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d16" for="edge" attr.name="frequency" attr.type="string"/>
+<key id="d15" for="edge" attr.name="source" attr.type="string"/>
+<key id="d14" for="edge" attr.name="pmid" attr.type="string"/>
+<key id="d13" for="edge" attr.name="confidence" attr.type="string"/>
+<key id="d12" for="edge" attr.name="relation" attr.type="string"/>
+<key id="d11" for="node" attr.name="clinical_frequency" attr.type="string"/>
+<key id="d10" for="node" attr.name="chromosome" attr.type="string"/>
+<key id="d9" for="node" attr.name="mechanism" attr.type="string"/>
+<key id="d8" for="node" attr.name="uniprot_id" attr.type="string"/>
+<key id="d7" for="node" attr.name="icd_code" attr.type="string"/>
+<key id="d6" for="node" attr.name="doi" attr.type="string"/>
+<key id="d5" for="node" attr.name="year" attr.type="string"/>
+<key id="d4" for="node" attr.name="journal" attr.type="string"/>
+<key id="d3" for="node" attr.name="title" attr.type="string"/>
+<key id="d2" for="node" attr.name="color" attr.type="string"/>
+<key id="d1" for="node" attr.name="name" attr.type="string"/>
+<key id="d0" for="node" attr.name="type" attr.type="string"/>
+<graph edgedefault="directed"><node id="33462182">
+  <data key="d0">Paper</data>
+  <data key="d1">33462182</data>
+  <data key="d2">#c84eff</data>
+  <data key="d3">Alzheimer's disease: pathogenesis and therapeutic interventions</data>
+  <data key="d4">Nature Reviews Neuroscience</data>
+  <data key="d5">2021</data>
+  <data key="d6">10.1038/s41583-020-00398-1</data>
+</node>
+<node id="alzheimer's disease">
+  <data key="d0">Disease</data>
+  <data key="d1">alzheimer's disease</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">G30.9</data>
+</node>
+<node id="dementia">
+  <data key="d0">Disease</data>
+  <data key="d1">dementia</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+</node>
+<node id="neuroinflammation">
+  <data key="d0">Disease</data>
+  <data key="d1">neuroinflammation</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+</node>
+<node id="amyloid-beta">
+  <data key="d0">Protein</data>
+  <data key="d1">amyloid-beta</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="microglia">
+  <data key="d0">ANATOMICAL_STRUCTURE</data>
+  <data key="d1">microglia</data>
+  <data key="d2">#aaaaaa</data>
+</node>
+<node id="aducanumab">
+  <data key="d0">Drug</data>
+  <data key="d1">aducanumab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">anti-amyloid monoclonal antibody</data>
+</node>
+<node id="lecanemab">
+  <data key="d0">Drug</data>
+  <data key="d1">lecanemab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">anti-amyloid monoclonal antibody</data>
+</node>
+<node id="donanemab">
+  <data key="d0">Drug</data>
+  <data key="d1">donanemab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">anti-amyloid monoclonal antibody</data>
+</node>
+<node id="alzheimer disease">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Alzheimer Disease</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="amyloid beta-peptides">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Amyloid beta-Peptides</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="tau proteins">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">tau Proteins</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="neuroinflammatory diseases">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Neuroinflammatory Diseases</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="immunotherapy">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Immunotherapy</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="disease progression">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Disease Progression</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="34942836">
+  <data key="d0">Paper</data>
+  <data key="d1">34942836</data>
+  <data key="d2">#c84eff</data>
+  <data key="d3">Long COVID: mechanisms, risk factors, and management</data>
+  <data key="d4">Nature Medicine</data>
+  <data key="d5">2022</data>
+  <data key="d6">10.1038/s41591-021-01283-z</data>
+</node>
+<node id="long covid">
+  <data key="d0">Disease</data>
+  <data key="d1">long covid</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+</node>
+<node id="sars-cov-2">
+  <data key="d0">Disease</data>
+  <data key="d1">sars-cov-2</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+</node>
+<node id="post-acute covid-19 syndrome">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Post-Acute COVID-19 Syndrome</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="fatigue">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Fatigue</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="cognitive dysfunction">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Cognitive Dysfunction</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="risk factors">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Risk Factors</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="35078996">
+  <data key="d0">Paper</data>
+  <data key="d1">35078996</data>
+  <data key="d2">#c84eff</data>
+  <data key="d3">BRCA1 and BRCA2 mutations and breast cancer risk: updated meta-analysis</data>
+  <data key="d4">JAMA Oncology</data>
+  <data key="d5">2022</data>
+  <data key="d6">10.1001/jamaoncol.2021.7000</data>
+</node>
+<node id="brca1">
+  <data key="d0">Gene</data>
+  <data key="d1">brca1</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">17q21</data>
+</node>
+<node id="brca2">
+  <data key="d0">Gene</data>
+  <data key="d1">brca2</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">13q12</data>
+</node>
+<node id="breast cancer">
+  <data key="d0">Disease</data>
+  <data key="d1">breast cancer</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">C50.9</data>
+</node>
+<node id="brca1 protein">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">BRCA1 Protein</data>
+  <data key="d2">#4effd0</data>
+  <data key="d8"></data>
+</node>
+<node id="brca2 protein">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">BRCA2 Protein</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="breast neoplasms">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Breast Neoplasms</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="genetic predisposition to disease">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Genetic Predisposition to Disease</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="meta-analysis as topic">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Meta-Analysis as Topic</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="36402859">
+  <data key="d0">Paper</data>
+  <data key="d1">36402859</data>
+  <data key="d2">#c84eff</data>
+  <data key="d3">Metformin and type 2 diabetes: mechanisms and novel applications</data>
+  <data key="d4">Nature Reviews Endocrinology</data>
+  <data key="d5">2023</data>
+  <data key="d6">10.1038/s41574-022-00786-6</data>
+</node>
+<node id="metformin">
+  <data key="d0">Drug</data>
+  <data key="d1">metformin</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">AMPK activator / biguanide</data>
+</node>
+<node id="type 2 diabetes">
+  <data key="d0">Disease</data>
+  <data key="d1">type 2 diabetes</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">E11.9</data>
+  <data key="d11">15</data>
+</node>
+<node id="ampk">
+  <data key="d0">Protein</data>
+  <data key="d1">ampk</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="glucose">
+  <data key="d0">Chemical</data>
+  <data key="d1">glucose</data>
+  <data key="d2">#ff8c4e</data>
+</node>
+<node id="diabetes mellitus, type 2">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Diabetes Mellitus, Type 2</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="amp-activated protein kinases">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">AMP-Activated Protein Kinases</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="gluconeogenesis">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Gluconeogenesis</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="gastrointestinal microbiome">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Gastrointestinal Microbiome</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="37019876">
+  <data key="d0">Paper</data>
+  <data key="d1">37019876</data>
+  <data key="d2">#c84eff</data>
+  <data key="d3">CAR-T cell therapy in hematologic malignancies: current status and future directions</data>
+  <data key="d4">New England Journal of Medicine</data>
+  <data key="d5">2023</data>
+  <data key="d6">10.1056/NEJMra2215844</data>
+</node>
+<node id="car-t">
+  <data key="d0">Protein</data>
+  <data key="d1">car-t</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="chimeric antigen receptor">
+  <data key="d0">Protein</data>
+  <data key="d1">chimeric antigen receptor</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="diffuse large b-cell lymphoma">
+  <data key="d0">Disease</data>
+  <data key="d1">diffuse large b-cell lymphoma</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">C83.3</data>
+</node>
+<node id="mantle cell lymphoma">
+  <data key="d0">Disease</data>
+  <data key="d1">mantle cell lymphoma</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">C83.1</data>
+</node>
+<node id="multiple myeloma">
+  <data key="d0">Disease</data>
+  <data key="d1">multiple myeloma</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">C90.0</data>
+</node>
+<node id="receptors, chimeric antigen">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Receptors, Chimeric Antigen</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="immunotherapy, adoptive">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Immunotherapy, Adoptive</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="hematologic neoplasms">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Hematologic Neoplasms</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="cytokine release syndrome">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Cytokine Release Syndrome</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="antigens, cd19">
+  <data key="d0">MeSHTerm</data>
+  <data key="d1">Antigens, CD19</data>
+  <data key="d2">#4effd0</data>
+</node>
+<node id="multiple sclerosis">
+  <data key="d0">Disease</data>
+  <data key="d1">multiple sclerosis</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">9</data>
+</node>
+<node id="major depressive disorder">
+  <data key="d0">Disease</data>
+  <data key="d1">major depressive disorder</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">9</data>
+</node>
+<node id="myocardial infarction">
+  <data key="d0">Disease</data>
+  <data key="d1">myocardial infarction</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">8</data>
+</node>
+<node id="acute kidney injury">
+  <data key="d0">Disease</data>
+  <data key="d1">acute kidney injury</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">7</data>
+</node>
+<node id="pneumonia">
+  <data key="d0">Disease</data>
+  <data key="d1">pneumonia</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">7</data>
+</node>
+<node id="lung cancer">
+  <data key="d0">Disease</data>
+  <data key="d1">lung cancer</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">C34.10</data>
+  <data key="d11">7</data>
+</node>
+<node id="copd">
+  <data key="d0">Disease</data>
+  <data key="d1">copd</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7"></data>
+  <data key="d11">6</data>
+</node>
+<node id="heart failure">
+  <data key="d0">Disease</data>
+  <data key="d1">heart failure</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">I50.9</data>
+  <data key="d11">5</data>
+</node>
+<node id="sepsis">
+  <data key="d0">Disease</data>
+  <data key="d1">sepsis</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">A41.9</data>
+  <data key="d11">5</data>
+</node>
+<node id="aspirin">
+  <data key="d0">Drug</data>
+  <data key="d1">aspirin</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="insulin regular">
+  <data key="d0">Drug</data>
+  <data key="d1">insulin regular</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="norepinephrine">
+  <data key="d0">Drug</data>
+  <data key="d1">norepinephrine</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">vasopressor / alpha-1 agonist</data>
+</node>
+<node id="vancomycin">
+  <data key="d0">Drug</data>
+  <data key="d1">vancomycin</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">glycopeptide antibiotic</data>
+</node>
+<node id="acetaminophen">
+  <data key="d0">Drug</data>
+  <data key="d1">acetaminophen</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="furosemide">
+  <data key="d0">Drug</data>
+  <data key="d1">furosemide</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="heparin">
+  <data key="d0">Drug</data>
+  <data key="d1">heparin</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="metoprolol">
+  <data key="d0">Drug</data>
+  <data key="d1">metoprolol</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9"></data>
+</node>
+<node id="parkinson's disease">
+  <data key="d0">Disease</data>
+  <data key="d1">parkinson's disease</data>
+  <data key="d2">#ff4e4e</data>
+  <data key="d7">G20</data>
+</node>
+<node id="app">
+  <data key="d0">Gene</data>
+  <data key="d1">app</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">21q21</data>
+</node>
+<node id="psen1">
+  <data key="d0">Gene</data>
+  <data key="d1">psen1</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">14q24</data>
+</node>
+<node id="apoe">
+  <data key="d0">Gene</data>
+  <data key="d1">apoe</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">19q13</data>
+</node>
+<node id="tp53">
+  <data key="d0">Gene</data>
+  <data key="d1">tp53</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">17p13</data>
+</node>
+<node id="egfr">
+  <data key="d0">Gene</data>
+  <data key="d1">egfr</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">7p12</data>
+</node>
+<node id="kras">
+  <data key="d0">Gene</data>
+  <data key="d1">kras</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">12p12</data>
+</node>
+<node id="braf">
+  <data key="d0">Gene</data>
+  <data key="d1">braf</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">7q34</data>
+</node>
+<node id="her2">
+  <data key="d0">Gene</data>
+  <data key="d1">her2</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">17q12</data>
+  <data key="d8"></data>
+</node>
+<node id="trem2">
+  <data key="d0">Gene</data>
+  <data key="d1">trem2</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">6p21</data>
+</node>
+<node id="cd19">
+  <data key="d0">Gene</data>
+  <data key="d1">cd19</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">16p11</data>
+</node>
+<node id="bcma">
+  <data key="d0">Gene</data>
+  <data key="d1">bcma</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">16p13</data>
+</node>
+<node id="il6">
+  <data key="d0">Gene</data>
+  <data key="d1">il6</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">7p21</data>
+</node>
+<node id="tnf">
+  <data key="d0">Gene</data>
+  <data key="d1">tnf</data>
+  <data key="d2">#4eff91</data>
+  <data key="d10">6p21</data>
+</node>
+<node id="olaparib">
+  <data key="d0">Drug</data>
+  <data key="d1">olaparib</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">PARP1/2 inhibitor</data>
+</node>
+<node id="pembrolizumab">
+  <data key="d0">Drug</data>
+  <data key="d1">pembrolizumab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">PD-1 checkpoint inhibitor</data>
+</node>
+<node id="nivolumab">
+  <data key="d0">Drug</data>
+  <data key="d1">nivolumab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">PD-1 checkpoint inhibitor</data>
+</node>
+<node id="trastuzumab">
+  <data key="d0">Drug</data>
+  <data key="d1">trastuzumab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">HER2-targeted monoclonal antibody</data>
+</node>
+<node id="rituximab">
+  <data key="d0">Drug</data>
+  <data key="d1">rituximab</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">anti-CD20 monoclonal antibody</data>
+</node>
+<node id="imatinib">
+  <data key="d0">Drug</data>
+  <data key="d1">imatinib</data>
+  <data key="d2">#4eaaff</data>
+  <data key="d9">BCR-ABL tyrosine kinase inhibitor</data>
+</node>
+<node id="tau protein">
+  <data key="d0">Protein</data>
+  <data key="d1">tau protein</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="pd-1">
+  <data key="d0">Protein</data>
+  <data key="d1">pd-1</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="pd-l1">
+  <data key="d0">Protein</data>
+  <data key="d1">pd-l1</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<node id="c-reactive protein">
+  <data key="d0">Protein</data>
+  <data key="d1">c-reactive protein</data>
+  <data key="d2">#ffd04e</data>
+  <data key="d8"></data>
+</node>
+<edge source="33462182" target="alzheimer disease">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="33462182" target="amyloid beta-peptides">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="33462182" target="tau proteins">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="33462182" target="neuroinflammatory diseases">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="33462182" target="immunotherapy">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="33462182" target="disease progression">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="alzheimer's disease" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="dementia" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="neuroinflammation" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="amyloid-beta" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="amyloid-beta" target="alzheimer's disease">
+  <data key="d12">BIOMARKER_FOR</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="microglia" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="aducanumab" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="aducanumab" target="alzheimer's disease">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.78</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="lecanemab" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="lecanemab" target="alzheimer's disease">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.85</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="lecanemab" target="app">
+  <data key="d12">INHIBITS</data>
+  <data key="d13">0.85</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="donanemab" target="33462182">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="donanemab" target="alzheimer's disease">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.82</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="34942836" target="post-acute covid-19 syndrome">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="34942836" target="sars-cov-2">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="34942836" target="fatigue">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="34942836" target="cognitive dysfunction">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="34942836" target="risk factors">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="long covid" target="34942836">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="sars-cov-2" target="34942836">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="35078996" target="brca1 protein">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="35078996" target="brca2 protein">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="35078996" target="breast neoplasms">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="35078996" target="genetic predisposition to disease">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="35078996" target="meta-analysis as topic">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="brca1" target="35078996">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="brca1" target="breast cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.99</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="brca2" target="35078996">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="brca2" target="breast cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.99</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="breast cancer" target="35078996">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="breast cancer" target="brca1">
+  <data key="d12">CO_OCCURS</data>
+  <data key="d13">0.5</data>
+  <data key="d14">35078996</data>
+</edge>
+<edge source="breast cancer" target="brca2">
+  <data key="d12">CO_OCCURS</data>
+  <data key="d13">0.5</data>
+  <data key="d14">35078996</data>
+</edge>
+<edge source="36402859" target="metformin">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="36402859" target="diabetes mellitus, type 2">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="36402859" target="amp-activated protein kinases">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="36402859" target="gluconeogenesis">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="36402859" target="gastrointestinal microbiome">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="metformin" target="36402859">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="metformin" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.98</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="type 2 diabetes" target="36402859">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="type 2 diabetes" target="metformin">
+  <data key="d12">CO_OCCURS</data>
+  <data key="d13">0.5</data>
+  <data key="d14">36402859</data>
+</edge>
+<edge source="type 2 diabetes" target="heart failure">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">10</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="type 2 diabetes" target="copd">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">10</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="type 2 diabetes" target="major depressive disorder">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="type 2 diabetes" target="multiple sclerosis">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="type 2 diabetes" target="myocardial infarction">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="ampk" target="36402859">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="glucose" target="36402859">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="37019876" target="receptors, chimeric antigen">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="37019876" target="immunotherapy, adoptive">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="37019876" target="hematologic neoplasms">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="37019876" target="cytokine release syndrome">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="37019876" target="antigens, cd19">
+  <data key="d12">HAS_MESH_TERM</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="car-t" target="37019876">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="chimeric antigen receptor" target="37019876">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="diffuse large b-cell lymphoma" target="37019876">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="mantle cell lymphoma" target="37019876">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="multiple myeloma" target="37019876">
+  <data key="d12">MENTIONED_IN</data>
+  <data key="d13">1.0</data>
+  <data key="d14"></data>
+</edge>
+<edge source="multiple sclerosis" target="myocardial infarction">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="multiple sclerosis" target="heart failure">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="major depressive disorder" target="myocardial infarction">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">9</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="major depressive disorder" target="heart failure">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="major depressive disorder" target="multiple sclerosis">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="major depressive disorder" target="pneumonia">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="myocardial infarction" target="heart failure">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="myocardial infarction" target="pneumonia">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="myocardial infarction" target="acute kidney injury">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="lung cancer" target="myocardial infarction">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="lung cancer" target="type 2 diabetes">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="lung cancer" target="copd">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">6</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="heart failure" target="copd">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="sepsis" target="major depressive disorder">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">8</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="sepsis" target="myocardial infarction">
+  <data key="d12">CLINICAL_COMORBIDITY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d16">7</data>
+  <data key="d15">mimic_iv</data>
+</edge>
+<edge source="aspirin" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">11</data>
+</edge>
+<edge source="aspirin" target="multiple sclerosis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">7</data>
+</edge>
+<edge source="aspirin" target="myocardial infarction">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="aspirin" target="pneumonia">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="aspirin" target="copd">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="insulin regular" target="major depressive disorder">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">9</data>
+</edge>
+<edge source="insulin regular" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="insulin regular" target="myocardial infarction">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="norepinephrine" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">9</data>
+</edge>
+<edge source="norepinephrine" target="myocardial infarction">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="norepinephrine" target="pneumonia">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="norepinephrine" target="sepsis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.9</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="vancomycin" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">9</data>
+</edge>
+<edge source="vancomycin" target="multiple sclerosis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="vancomycin" target="copd">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="vancomycin" target="sepsis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.8</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="acetaminophen" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">8</data>
+</edge>
+<edge source="acetaminophen" target="major depressive disorder">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">7</data>
+</edge>
+<edge source="acetaminophen" target="multiple sclerosis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="acetaminophen" target="sepsis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="acetaminophen" target="pneumonia">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">4</data>
+</edge>
+<edge source="acetaminophen" target="copd">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">4</data>
+</edge>
+<edge source="furosemide" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">8</data>
+</edge>
+<edge source="heparin" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">8</data>
+</edge>
+<edge source="heparin" target="multiple sclerosis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="heparin" target="copd">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="heparin" target="major depressive disorder">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="metoprolol" target="type 2 diabetes">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">8</data>
+</edge>
+<edge source="metoprolol" target="multiple sclerosis">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">6</data>
+</edge>
+<edge source="metoprolol" target="major depressive disorder">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="metoprolol" target="heart failure">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="metoprolol" target="acute kidney injury">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.6</data>
+  <data key="d14"></data>
+  <data key="d15">clinical_mimic</data>
+  <data key="d16">5</data>
+</edge>
+<edge source="app" target="alzheimer's disease">
+  <data key="d12">CAUSES</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="psen1" target="alzheimer's disease">
+  <data key="d12">CAUSES</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="apoe" target="alzheimer's disease">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.9</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="tp53" target="breast cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.88</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="tp53" target="lung cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.85</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="tp53" target="pembrolizumab">
+  <data key="d12">TARGETED_BY</data>
+  <data key="d13">0.7</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="egfr" target="lung cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.92</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="kras" target="lung cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.8</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="braf" target="lung cancer">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.75</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="her2" target="breast cancer">
+  <data key="d12">BIOMARKER_FOR</data>
+  <data key="d13">0.94</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="trem2" target="alzheimer's disease">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.85</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="cd19" target="diffuse large b-cell lymphoma">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.9</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="bcma" target="multiple myeloma">
+  <data key="d12">ASSOCIATED_WITH</data>
+  <data key="d13">0.88</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="il6" target="sepsis">
+  <data key="d12">CAUSES</data>
+  <data key="d13">0.8</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="tnf" target="sepsis">
+  <data key="d12">CAUSES</data>
+  <data key="d13">0.82</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="olaparib" target="breast cancer">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.93</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="olaparib" target="brca1">
+  <data key="d12">INHIBITS</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="olaparib" target="brca2">
+  <data key="d12">INHIBITS</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="pembrolizumab" target="lung cancer">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.9</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="nivolumab" target="lung cancer">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.88</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="trastuzumab" target="breast cancer">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="trastuzumab" target="her2">
+  <data key="d12">INHIBITS</data>
+  <data key="d13">0.97</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="rituximab" target="diffuse large b-cell lymphoma">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.95</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="rituximab" target="mantle cell lymphoma">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.9</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="imatinib" target="lung cancer">
+  <data key="d12">TREATS</data>
+  <data key="d13">0.72</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="imatinib" target="kras">
+  <data key="d12">INHIBITS</data>
+  <data key="d13">0.8</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="tau protein" target="alzheimer's disease">
+  <data key="d12">BIOMARKER_FOR</data>
+  <data key="d13">0.93</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+<edge source="c-reactive protein" target="sepsis">
+  <data key="d12">BIOMARKER_FOR</data>
+  <data key="d13">0.88</data>
+  <data key="d14"></data>
+  <data key="d15">curated</data>
+</edge>
+</graph></graphml>

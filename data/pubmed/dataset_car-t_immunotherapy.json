@@ -1,0 +1,20 @@
+[
+  {
+    "pmid":"37019876",
+    "title":"CAR-T cell therapy in hematologic malignancies: current status and future directions",
+    "abstract":"Chimeric antigen receptor T-cell (CAR-T) therapy has transformed treatment of relapsed\/refractory B-cell malignancies. Six FDA-approved CAR-T products now target CD19 or BCMA. BACKGROUND: Complete response rates of 40\u201380% are achieved in diffuse large B-cell lymphoma, mantle cell lymphoma, and multiple myeloma. METHODS: We reviewed all pivotal trials and FDA approval data. RESULTS: Cytokine release syndrome (CRS) and immune effector cell-associated neurotoxicity syndrome (ICANS) are primary toxicities. Manufacturing challenges and high cost ($370,000\u2013$500,000) limit access. CONCLUSIONS: Next-generation allogeneic CAR-T and armored CAR-T platforms aim to overcome current limitations.",
+    "abstract_words":132,
+    "first_author":"June C",
+    "author_count":2,
+    "journal":"New England Journal of Medicine",
+    "pub_year":"2023",
+    "pub_month":"Mar",
+    "doi":"10.1056\/NEJMra2215844",
+    "mesh_count":5,
+    "mesh_terms_flat":"Receptors, Chimeric Antigen; Immunotherapy, Adoptive; Hematologic Neoplasms; Cytokine Release Syndrome; Antigens, CD19",
+    "major_mesh":"Receptors, Chimeric Antigen; Immunotherapy, Adoptive; Hematologic Neoplasms",
+    "keywords":"CAR-T; immunotherapy; CD19; BCMA; lymphoma; myeloma",
+    "pubmed_url":"https:\/\/pubmed.ncbi.nlm.nih.gov\/37019876\/",
+    "topic":"CAR-T Immunotherapy"
+  }
+]

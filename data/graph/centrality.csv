@@ -1,0 +1,93 @@
+node,name,type,degree,in_degree,out_degree,degree_centrality,betweenness_centrality,pagerank,eigenvector_centrality,closeness_centrality
+33462182,33462182,Paper,14,8,6,0.15385,0.03367,0.051664,2e-05,0.16529
+copd,copd,Disease,7,7,0,0.07692,0.00998,0.047508,0.22521,0.1942
+myocardial infarction,myocardial infarction,Disease,11,8,3,0.12088,0.04418,0.039713,0.33964,0.20748
+breast cancer,breast cancer,Disease,14,11,3,0.07692,0.08639,0.035261,0.0043,0.15763
+37019876,37019876,Paper,10,5,5,0.10989,0.02302,0.034523,0.0,0.11607
+alzheimer's disease,alzheimer's disease,Disease,10,9,1,0.10989,0.02449,0.032807,2e-05,0.14168
+heart failure,heart failure,Disease,6,5,1,0.06593,0.00023,0.031862,0.25668,0.16857
+lung cancer,lung cancer,Disease,10,7,3,0.10989,0.14426,0.030533,0.16124,0.2227
+type 2 diabetes,type 2 diabetes,Disease,18,11,7,0.17582,0.09991,0.030404,0.43374,0.2227
+pneumonia,pneumonia,Disease,5,5,0,0.05495,3e-05,0.022649,0.17583,0.15661
+35078996,35078996,Paper,8,3,5,0.08791,0.0424,0.021426,0.00091,0.12912
+major depressive disorder,major depressive disorder,Disease,10,6,4,0.10989,0.00699,0.020248,0.34132,0.17719
+36402859,36402859,Paper,9,4,5,0.08791,0.04711,0.019565,0.07852,0.17095
+sepsis,sepsis,Disease,8,6,2,0.08791,0.02429,0.019159,0.1797,0.16402
+multiple sclerosis,multiple sclerosis,Disease,9,7,2,0.0989,0.00136,0.016869,0.32408,0.17216
+acute kidney injury,acute kidney injury,Disease,2,2,0,0.02198,5e-05,0.016698,0.07403,0.15077
+brca2,brca2,Gene,6,2,4,0.03297,0.00022,0.01596,0.00083,0.12578
+brca1,brca1,Gene,6,2,4,0.03297,0.00022,0.01596,0.00083,0.12578
+34942836,34942836,Paper,7,2,5,0.06593,0.0034,0.014689,0.0,0.06593
+neuroinflammatory diseases,Neuroinflammatory Diseases,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+disease progression,Disease Progression,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+immunotherapy,Immunotherapy,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+tau proteins,tau Proteins,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+amyloid beta-peptides,Amyloid beta-Peptides,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+alzheimer disease,Alzheimer Disease,MeSHTerm,1,1,0,0.01099,0.0,0.011974,0.0,0.09445
+metformin,metformin,Drug,5,2,3,0.02198,0.0,0.011673,0.07065,0.16402
+diffuse large b-cell lymphoma,diffuse large b-cell lymphoma,Disease,3,2,1,0.03297,0.00667,0.010588,0.0,0.07738
+"receptors, chimeric antigen","Receptors, Chimeric Antigen",MeSHTerm,1,1,0,0.01099,0.0,0.010524,0.0,0.06633
+"immunotherapy, adoptive","Immunotherapy, Adoptive",MeSHTerm,1,1,0,0.01099,0.0,0.010524,0.0,0.06633
+cytokine release syndrome,Cytokine Release Syndrome,MeSHTerm,1,1,0,0.01099,0.0,0.010524,0.0,0.06633
+hematologic neoplasms,Hematologic Neoplasms,MeSHTerm,1,1,0,0.01099,0.0,0.010524,0.0,0.06633
+"antigens, cd19","Antigens, CD19",MeSHTerm,1,1,0,0.01099,0.0,0.010524,0.0,0.06633
+multiple myeloma,multiple myeloma,Disease,2,1,1,0.02198,0.00204,0.00861,0.0,0.07143
+breast neoplasms,Breast Neoplasms,MeSHTerm,1,1,0,0.01099,0.0,0.008296,0.00013,0.10374
+genetic predisposition to disease,Genetic Predisposition to Disease,MeSHTerm,1,1,0,0.01099,0.0,0.008296,0.00013,0.10374
+meta-analysis as topic,Meta-Analysis as Topic,MeSHTerm,1,1,0,0.01099,0.0,0.008296,0.00013,0.10374
+brca1 protein,BRCA1 Protein,MeSHTerm,1,1,0,0.01099,0.0,0.008296,0.00013,0.10374
+brca2 protein,BRCA2 Protein,MeSHTerm,1,1,0,0.01099,0.0,0.008296,0.00013,0.10374
+amp-activated protein kinases,AMP-Activated Protein Kinases,MeSHTerm,1,1,0,0.01099,0.0,0.00798,0.01083,0.12912
+gastrointestinal microbiome,Gastrointestinal Microbiome,MeSHTerm,1,1,0,0.01099,0.0,0.00798,0.01083,0.12912
+gluconeogenesis,Gluconeogenesis,MeSHTerm,1,1,0,0.01099,0.0,0.00798,0.01083,0.12912
+"diabetes mellitus, type 2","Diabetes Mellitus, Type 2",MeSHTerm,1,1,0,0.01099,0.0,0.00798,0.01083,0.12912
+post-acute covid-19 syndrome,Post-Acute COVID-19 Syndrome,MeSHTerm,1,1,0,0.01099,0.0,0.007151,0.0,0.03596
+cognitive dysfunction,Cognitive Dysfunction,MeSHTerm,1,1,0,0.01099,0.0,0.007151,0.0,0.03596
+sars-cov-2,sars-cov-2,Disease,2,1,1,0.01099,0.0,0.007151,0.0,0.03596
+risk factors,Risk Factors,MeSHTerm,1,1,0,0.01099,0.0,0.007151,0.0,0.03596
+fatigue,Fatigue,MeSHTerm,1,1,0,0.01099,0.0,0.007151,0.0,0.03596
+mantle cell lymphoma,mantle cell lymphoma,Disease,2,1,1,0.02198,0.002,0.006632,0.0,0.07143
+her2,her2,Gene,3,1,2,0.02198,0.0,0.006632,0.00069,0.12198
+kras,kras,Gene,2,1,1,0.02198,0.0,0.006632,0.02579,0.15763
+app,app,Gene,2,1,1,0.02198,0.0,0.005973,1e-05,0.08816
+pembrolizumab,pembrolizumab,Drug,2,1,1,0.02198,0.0,0.005973,0.02588,0.17095
+long covid,long covid,Disease,1,0,1,0.01099,0.0,0.004654,0.0,0.03596
+dementia,dementia,Disease,1,0,1,0.01099,0.0,0.004654,0.0,0.09445
+neuroinflammation,neuroinflammation,Disease,1,0,1,0.01099,0.0,0.004654,0.0,0.09445
+amyloid-beta,amyloid-beta,Protein,2,0,2,0.02198,0.0,0.004654,1e-05,0.1102
+lecanemab,lecanemab,Drug,3,0,3,0.03297,0.00167,0.004654,1e-05,0.11334
+aducanumab,aducanumab,Drug,2,0,2,0.02198,0.0,0.004654,1e-05,0.1102
+microglia,microglia,ANATOMICAL_STRUCTURE,1,0,1,0.01099,0.0,0.004654,0.0,0.09445
+donanemab,donanemab,Drug,2,0,2,0.02198,0.0,0.004654,1e-05,0.1102
+glucose,glucose,Chemical,1,0,1,0.01099,0.0,0.004654,0.01083,0.12912
+ampk,ampk,Protein,1,0,1,0.01099,0.0,0.004654,0.01083,0.12912
+car-t,car-t,Protein,1,0,1,0.01099,0.0,0.004654,0.0,0.06633
+chimeric antigen receptor,chimeric antigen receptor,Protein,1,0,1,0.01099,0.0,0.004654,0.0,0.06633
+acetaminophen,acetaminophen,Drug,6,0,6,0.06593,0.00156,0.004654,0.23168,0.17095
+furosemide,furosemide,Drug,1,0,1,0.01099,0.0,0.004654,0.05982,0.15661
+aspirin,aspirin,Drug,5,0,5,0.05495,0.00021,0.004654,0.20666,0.16741
+insulin regular,insulin regular,Drug,3,0,3,0.03297,0.0,0.004654,0.15373,0.16513
+metoprolol,metoprolol,Drug,5,0,5,0.05495,0.00252,0.004654,0.19719,0.16741
+heparin,heparin,Drug,4,0,4,0.04396,0.0,0.004654,0.18264,0.16513
+psen1,psen1,Gene,1,0,1,0.01099,0.0,0.004654,0.0,0.08624
+parkinson's disease,parkinson's disease,Disease,0,0,0,0.0,0.0,0.004654,0.0,0.0
+apoe,apoe,Gene,1,0,1,0.01099,0.0,0.004654,0.0,0.08624
+tp53,tp53,Gene,3,0,3,0.03297,0.08933,0.004654,0.0264,0.18673
+norepinephrine,norepinephrine,Drug,4,0,4,0.04396,0.00139,0.004654,0.15569,0.16975
+vancomycin,vancomycin,Drug,4,0,4,0.04396,0.00132,0.004654,0.16035,0.16741
+braf,braf,Gene,1,0,1,0.01099,0.0,0.004654,0.02224,0.15661
+egfr,egfr,Gene,1,0,1,0.01099,0.0,0.004654,0.02224,0.15661
+cd19,cd19,Gene,1,0,1,0.01099,0.0,0.004654,0.0,0.05159
+trem2,trem2,Gene,1,0,1,0.01099,0.0,0.004654,0.0,0.08624
+bcma,bcma,Gene,1,0,1,0.01099,0.0,0.004654,0.0,0.04887
+il6,il6,Gene,1,0,1,0.01099,0.0,0.004654,0.02478,0.12513
+tnf,tnf,Gene,1,0,1,0.01099,0.0,0.004654,0.02478,0.12513
+olaparib,olaparib,Drug,3,0,3,0.03297,0.0,0.004654,0.00082,0.1226
+nivolumab,nivolumab,Drug,1,0,1,0.01099,0.0,0.004654,0.02224,0.15661
+trastuzumab,trastuzumab,Drug,2,0,2,0.02198,0.0,0.004654,0.00069,0.12198
+rituximab,rituximab,Drug,2,0,2,0.02198,0.00011,0.004654,0.0,0.05462
+imatinib,imatinib,Drug,2,0,2,0.02198,0.0,0.004654,0.02579,0.15763
+tau protein,tau protein,Protein,1,0,1,0.01099,0.0,0.004654,0.0,0.08624
+pd-1,pd-1,Protein,0,0,0,0.0,0.0,0.004654,0.0,0.0
+pd-l1,pd-l1,Protein,0,0,0,0.0,0.0,0.004654,0.0,0.0
+c-reactive protein,c-reactive protein,Protein,1,0,1,0.01099,0.0,0.004654,0.02478,0.12513

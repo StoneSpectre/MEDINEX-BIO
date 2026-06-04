@@ -1,0 +1,196 @@
+[
+  {
+    "community_id": 1,
+    "label": "Community 1: Disease+Drug",
+    "size": 20,
+    "density": 0.2737,
+    "dominant_types": [
+      "Disease",
+      "Drug"
+    ],
+    "type_breakdown": {
+      "Disease": 9,
+      "Drug": 8,
+      "Gene": 2,
+      "Protein": 1
+    },
+    "members": [
+      "copd",
+      "insulin regular",
+      "heart failure",
+      "type 2 diabetes",
+      "major depressive disorder",
+      "tnf",
+      "c-reactive protein",
+      "acute kidney injury",
+      "furosemide",
+      "norepinephrine"
+    ]
+  },
+  {
+    "community_id": 2,
+    "label": "Community 2: MeSHTerm+Gene",
+    "size": 20,
+    "density": 0.1263,
+    "dominant_types": [
+      "MeSHTerm",
+      "Gene"
+    ],
+    "type_breakdown": {
+      "Gene": 4,
+      "Drug": 3,
+      "MeSHTerm": 6,
+      "Disease": 3,
+      "Paper": 1,
+      "Protein": 2,
+      "ANATOMICAL_STRUCTURE": 1
+    },
+    "members": [
+      "trem2",
+      "lecanemab",
+      "tau proteins",
+      "dementia",
+      "aducanumab",
+      "amyloid beta-peptides",
+      "33462182",
+      "alzheimer disease",
+      "amyloid-beta",
+      "apoe"
+    ]
+  },
+  {
+    "community_id": 3,
+    "label": "Community 3: MeSHTerm+Disease",
+    "size": 14,
+    "density": 0.1538,
+    "dominant_types": [
+      "MeSHTerm",
+      "Disease"
+    ],
+    "type_breakdown": {
+      "Drug": 1,
+      "Gene": 2,
+      "Protein": 2,
+      "Disease": 3,
+      "Paper": 1,
+      "MeSHTerm": 5
+    },
+    "members": [
+      "rituximab",
+      "cd19",
+      "chimeric antigen receptor",
+      "diffuse large b-cell lymphoma",
+      "37019876",
+      "multiple myeloma",
+      "receptors, chimeric antigen",
+      "car-t",
+      "hematologic neoplasms",
+      "bcma"
+    ]
+  },
+  {
+    "community_id": 4,
+    "label": "Community 4: MeSHTerm+Gene",
+    "size": 12,
+    "density": 0.2424,
+    "dominant_types": [
+      "MeSHTerm",
+      "Gene"
+    ],
+    "type_breakdown": {
+      "MeSHTerm": 5,
+      "Disease": 1,
+      "Gene": 3,
+      "Drug": 2,
+      "Paper": 1
+    },
+    "members": [
+      "brca2 protein",
+      "breast cancer",
+      "brca1",
+      "her2",
+      "trastuzumab",
+      "genetic predisposition to disease",
+      "35078996",
+      "meta-analysis as topic",
+      "brca2",
+      "brca1 protein"
+    ]
+  },
+  {
+    "community_id": 5,
+    "label": "Community 5: MeSHTerm+Drug",
+    "size": 8,
+    "density": 0.25,
+    "dominant_types": [
+      "MeSHTerm",
+      "Drug"
+    ],
+    "type_breakdown": {
+      "Drug": 1,
+      "MeSHTerm": 4,
+      "Chemical": 1,
+      "Protein": 1,
+      "Paper": 1
+    },
+    "members": [
+      "metformin",
+      "gastrointestinal microbiome",
+      "glucose",
+      "amp-activated protein kinases",
+      "ampk",
+      "gluconeogenesis",
+      "36402859",
+      "diabetes mellitus, type 2"
+    ]
+  },
+  {
+    "community_id": 6,
+    "label": "Community 6: Gene+Drug",
+    "size": 8,
+    "density": 0.3214,
+    "dominant_types": [
+      "Gene",
+      "Drug"
+    ],
+    "type_breakdown": {
+      "Disease": 1,
+      "Drug": 3,
+      "Gene": 4
+    },
+    "members": [
+      "lung cancer",
+      "pembrolizumab",
+      "kras",
+      "tp53",
+      "braf",
+      "egfr",
+      "imatinib",
+      "nivolumab"
+    ]
+  },
+  {
+    "community_id": 7,
+    "label": "Community 7: MeSHTerm+Disease",
+    "size": 7,
+    "density": 0.2857,
+    "dominant_types": [
+      "MeSHTerm",
+      "Disease"
+    ],
+    "type_breakdown": {
+      "MeSHTerm": 4,
+      "Disease": 2,
+      "Paper": 1
+    },
+    "members": [
+      "cognitive dysfunction",
+      "long covid",
+      "post-acute covid-19 syndrome",
+      "risk factors",
+      "34942836",
+      "sars-cov-2",
+      "fatigue"
+    ]
+  }
+]

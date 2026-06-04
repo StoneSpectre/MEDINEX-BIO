@@ -1,0 +1,71 @@
+{
+  "pmid": "34942836",
+  "title": "Long COVID: mechanisms, risk factors, and management",
+  "abstract": "Post-acute sequelae of SARS-CoV-2 (PASC), commonly known as long COVID, affects 10\u201330% of infected individuals. Symptoms persist beyond 12 weeks and include fatigue, cognitive impairment, dyspnea, and chest pain. Proposed mechanisms include viral persistence, autoimmunity, microbiome dysbiosis, and reactivation of latent viruses such as EBV. BACKGROUND: Long COVID disproportionately affects women aged 35\u201360 and those with higher initial viral loads. METHODS: Meta-analysis of 43 studies comprising 860,000 patients. RESULTS: Fatigue (58%), cognitive symptoms (26%), and breathlessness (25%) are most prevalent. Vaccination reduces long COVID risk by approximately 50%. CONCLUSIONS: Multidisciplinary care models are needed.",
+  "authors": [
+    {
+      "name": "Davis H",
+      "affiliation": "Yale School of Medicine"
+    },
+    {
+      "name": "Assaf G",
+      "affiliation": "Patient-Led Research Collaborative"
+    },
+    {
+      "name": "McCorkell L",
+      "affiliation": "Patient-Led Research Collaborative"
+    }
+  ],
+  "journal": "Nature Medicine",
+  "issn": "1078-8956",
+  "volume": "28",
+  "issue": "1",
+  "pub_year": "2022",
+  "pub_month": "Mar",
+  "mesh_terms": [
+    {
+      "term": "Post-Acute COVID-19 Syndrome",
+      "major": true,
+      "qualifiers": [
+        "epidemiology",
+        "physiopathology"
+      ]
+    },
+    {
+      "term": "SARS-CoV-2",
+      "major": true,
+      "qualifiers": []
+    },
+    {
+      "term": "Fatigue",
+      "major": false,
+      "qualifiers": [
+        "etiology"
+      ]
+    },
+    {
+      "term": "Cognitive Dysfunction",
+      "major": false,
+      "qualifiers": [
+        "etiology"
+      ]
+    },
+    {
+      "term": "Risk Factors",
+      "major": false,
+      "qualifiers": []
+    }
+  ],
+  "keywords": [
+    "long COVID",
+    "PASC",
+    "fatigue",
+    "cognitive impairment",
+    "SARS-CoV-2"
+  ],
+  "doi": "10.1038/s41591-021-01283-z",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/34942836/",
+  "abstract_word_count": 128,
+  "author_count": 3,
+  "mesh_count": 5
+}

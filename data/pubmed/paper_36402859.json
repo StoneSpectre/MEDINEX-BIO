@@ -1,0 +1,73 @@
+{
+  "pmid": "36402859",
+  "title": "Metformin and type 2 diabetes: mechanisms and novel applications",
+  "abstract": "Metformin remains the first-line pharmacological treatment for type 2 diabetes, taken by >200 million patients worldwide. Its primary mechanism involves AMPK activation and suppression of hepatic gluconeogenesis via complex I inhibition. BACKGROUND: Emerging evidence suggests metformin has anti-aging, anti-cancer, and cardioprotective effects beyond glucose lowering. METHODS: Systematic review of mechanistic and clinical studies from 2015\u20132022. RESULTS: Metformin reduces HbA1c by 1.0\u20131.5%, reduces cardiovascular events, and extends healthspan in model organisms. Gut microbiome modulation is a key mechanism. CONCLUSIONS: Metformin is being investigated in clinical trials for cancer prevention (MPOWER) and anti-aging (TAME trial).",
+  "authors": [
+    {
+      "name": "Foretz M",
+      "affiliation": "INSERM"
+    },
+    {
+      "name": "Guigas B",
+      "affiliation": "Leiden University"
+    },
+    {
+      "name": "Viollet B",
+      "affiliation": "CNRS Paris"
+    }
+  ],
+  "journal": "Nature Reviews Endocrinology",
+  "issn": "1759-5029",
+  "volume": "19",
+  "issue": "2",
+  "pub_year": "2023",
+  "pub_month": "Feb",
+  "mesh_terms": [
+    {
+      "term": "Metformin",
+      "major": true,
+      "qualifiers": [
+        "pharmacology",
+        "therapeutic use"
+      ]
+    },
+    {
+      "term": "Diabetes Mellitus, Type 2",
+      "major": true,
+      "qualifiers": [
+        "drug therapy"
+      ]
+    },
+    {
+      "term": "AMP-Activated Protein Kinases",
+      "major": false,
+      "qualifiers": [
+        "metabolism"
+      ]
+    },
+    {
+      "term": "Gluconeogenesis",
+      "major": false,
+      "qualifiers": [
+        "drug effects"
+      ]
+    },
+    {
+      "term": "Gastrointestinal Microbiome",
+      "major": false,
+      "qualifiers": []
+    }
+  ],
+  "keywords": [
+    "metformin",
+    "AMPK",
+    "diabetes",
+    "aging",
+    "microbiome"
+  ],
+  "doi": "10.1038/s41574-022-00786-6",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/36402859/",
+  "abstract_word_count": 135,
+  "author_count": 3,
+  "mesh_count": 5
+}

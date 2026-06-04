@@ -1,0 +1,521 @@
+[
+  {
+    "pmid": "33462182",
+    "title": "Alzheimer's disease: pathogenesis and therapeutic interventions",
+    "entities": [
+      {
+        "text": "alzheimer's disease",
+        "canonical": "alzheimer's disease",
+        "label": "DISEASE",
+        "start_char": 0,
+        "end_char": 19,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "alzheimer's disease",
+        "canonical": "alzheimer's disease",
+        "label": "DISEASE",
+        "start_char": 64,
+        "end_char": 83,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "dementia",
+        "canonical": "dementia",
+        "label": "DISEASE",
+        "start_char": 117,
+        "end_char": 125,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "amyloid-beta",
+        "canonical": "amyloid-beta",
+        "label": "PROTEIN",
+        "start_char": 214,
+        "end_char": 226,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "neuroinflammation",
+        "canonical": "neuroinflammation",
+        "label": "DISEASE",
+        "start_char": 425,
+        "end_char": 442,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "microglia",
+        "canonical": "microglia",
+        "label": "ANATOMICAL_STRUCTURE",
+        "start_char": 455,
+        "end_char": 464,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "aducanumab",
+        "canonical": "aducanumab",
+        "label": "DRUG",
+        "start_char": 672,
+        "end_char": 682,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "lecanemab",
+        "canonical": "lecanemab",
+        "label": "DRUG",
+        "start_char": 684,
+        "end_char": 693,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "donanemab",
+        "canonical": "donanemab",
+        "label": "DRUG",
+        "start_char": 699,
+        "end_char": 708,
+        "source": "entity_ruler"
+      }
+    ],
+    "entity_summary": {
+      "DISEASE": [
+        "alzheimer's disease",
+        "dementia",
+        "neuroinflammation"
+      ],
+      "PROTEIN": [
+        "amyloid-beta"
+      ],
+      "ANATOMICAL_STRUCTURE": [
+        "microglia"
+      ],
+      "DRUG": [
+        "aducanumab",
+        "lecanemab",
+        "donanemab"
+      ]
+    },
+    "relations": [],
+    "entity_count": 9,
+    "relation_count": 0
+  },
+  {
+    "pmid": "34942836",
+    "title": "Long COVID: mechanisms, risk factors, and management",
+    "entities": [
+      {
+        "text": "long covid",
+        "canonical": "long covid",
+        "label": "DISEASE",
+        "start_char": 0,
+        "end_char": 10,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "sars-cov-2",
+        "canonical": "sars-cov-2",
+        "label": "DISEASE",
+        "start_char": 76,
+        "end_char": 86,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "long covid",
+        "canonical": "long covid",
+        "label": "DISEASE",
+        "start_char": 113,
+        "end_char": 123,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "long covid",
+        "canonical": "long covid",
+        "label": "DISEASE",
+        "start_char": 409,
+        "end_char": 419,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "long covid",
+        "canonical": "long covid",
+        "label": "DISEASE",
+        "start_char": 688,
+        "end_char": 698,
+        "source": "entity_ruler"
+      }
+    ],
+    "entity_summary": {
+      "DISEASE": [
+        "long covid",
+        "sars-cov-2"
+      ]
+    },
+    "relations": [],
+    "entity_count": 5,
+    "relation_count": 0
+  },
+  {
+    "pmid": "35078996",
+    "title": "BRCA1 and BRCA2 mutations and breast cancer risk: updated meta-analysis",
+    "entities": [
+      {
+        "text": "brca1",
+        "canonical": "brca1",
+        "label": "GENE",
+        "start_char": 0,
+        "end_char": 5,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "brca2",
+        "canonical": "brca2",
+        "label": "GENE",
+        "start_char": 10,
+        "end_char": 15,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "breast cancer",
+        "canonical": "breast cancer",
+        "label": "DISEASE",
+        "start_char": 30,
+        "end_char": 43,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "brca1",
+        "canonical": "brca1",
+        "label": "GENE",
+        "start_char": 104,
+        "end_char": 109,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "brca2",
+        "canonical": "brca2",
+        "label": "GENE",
+        "start_char": 114,
+        "end_char": 119,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "brca1",
+        "canonical": "brca1",
+        "label": "GENE",
+        "start_char": 289,
+        "end_char": 294,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "breast cancer",
+        "canonical": "breast cancer",
+        "label": "DISEASE",
+        "start_char": 324,
+        "end_char": 337,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "brca2",
+        "canonical": "brca2",
+        "label": "GENE",
+        "start_char": 344,
+        "end_char": 349,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "breast cancer",
+        "canonical": "breast cancer",
+        "label": "DISEASE",
+        "start_char": 573,
+        "end_char": 586,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "breast cancer",
+        "canonical": "breast cancer",
+        "label": "DISEASE",
+        "start_char": 657,
+        "end_char": 670,
+        "source": "entity_ruler"
+      }
+    ],
+    "entity_summary": {
+      "GENE": [
+        "brca1",
+        "brca2"
+      ],
+      "DISEASE": [
+        "breast cancer"
+      ]
+    },
+    "relations": [
+      {
+        "subject": "brca1",
+        "subject_type": "GENE",
+        "relation": "ASSOCIATED_WITH",
+        "object": "breast cancer",
+        "object_type": "DISEASE",
+        "method": "pattern",
+        "confidence": 0.68
+      },
+      {
+        "subject": "brca2",
+        "subject_type": "GENE",
+        "relation": "ASSOCIATED_WITH",
+        "object": "breast cancer",
+        "object_type": "DISEASE",
+        "method": "pattern",
+        "confidence": 0.68
+      },
+      {
+        "subject": "brca1",
+        "subject_type": "GENE",
+        "relation": "CO_OCCURS",
+        "object": "breast cancer",
+        "object_type": "DISEASE",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "35078996"
+      },
+      {
+        "subject": "brca2",
+        "subject_type": "GENE",
+        "relation": "CO_OCCURS",
+        "object": "breast cancer",
+        "object_type": "DISEASE",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "35078996"
+      },
+      {
+        "subject": "breast cancer",
+        "subject_type": "DISEASE",
+        "relation": "CO_OCCURS",
+        "object": "brca1",
+        "object_type": "GENE",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "35078996"
+      },
+      {
+        "subject": "breast cancer",
+        "subject_type": "DISEASE",
+        "relation": "CO_OCCURS",
+        "object": "brca2",
+        "object_type": "GENE",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "35078996"
+      }
+    ],
+    "entity_count": 10,
+    "relation_count": 6
+  },
+  {
+    "pmid": "36402859",
+    "title": "Metformin and type 2 diabetes: mechanisms and novel applications",
+    "entities": [
+      {
+        "text": "metformin",
+        "canonical": "metformin",
+        "label": "DRUG",
+        "start_char": 0,
+        "end_char": 9,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "type 2 diabetes",
+        "canonical": "type 2 diabetes",
+        "label": "DISEASE",
+        "start_char": 14,
+        "end_char": 29,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "metformin",
+        "canonical": "metformin",
+        "label": "DRUG",
+        "start_char": 65,
+        "end_char": 74,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "type 2 diabetes",
+        "canonical": "type 2 diabetes",
+        "label": "DISEASE",
+        "start_char": 128,
+        "end_char": 143,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "ampk",
+        "canonical": "ampk",
+        "label": "PROTEIN",
+        "start_char": 218,
+        "end_char": 222,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "metformin",
+        "canonical": "metformin",
+        "label": "DRUG",
+        "start_char": 342,
+        "end_char": 351,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "glucose",
+        "canonical": "glucose",
+        "label": "CHEMICAL",
+        "start_char": 417,
+        "end_char": 424,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "metformin",
+        "canonical": "metformin",
+        "label": "DRUG",
+        "start_char": 523,
+        "end_char": 532,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "metformin",
+        "canonical": "metformin",
+        "label": "DRUG",
+        "start_char": 693,
+        "end_char": 702,
+        "source": "entity_ruler"
+      }
+    ],
+    "entity_summary": {
+      "DRUG": [
+        "metformin"
+      ],
+      "DISEASE": [
+        "type 2 diabetes"
+      ],
+      "PROTEIN": [
+        "ampk"
+      ],
+      "CHEMICAL": [
+        "glucose"
+      ]
+    },
+    "relations": [
+      {
+        "subject": "metformin",
+        "subject_type": "DRUG",
+        "relation": "CO_OCCURS",
+        "object": "type 2 diabetes",
+        "object_type": "DISEASE",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "36402859"
+      },
+      {
+        "subject": "type 2 diabetes",
+        "subject_type": "DISEASE",
+        "relation": "CO_OCCURS",
+        "object": "metformin",
+        "object_type": "DRUG",
+        "method": "cooccurrence",
+        "confidence": 0.5,
+        "pmid": "36402859"
+      }
+    ],
+    "entity_count": 9,
+    "relation_count": 2
+  },
+  {
+    "pmid": "37019876",
+    "title": "CAR-T cell therapy in hematologic malignancies: current status and future directions",
+    "entities": [
+      {
+        "text": "car-t",
+        "canonical": "car-t",
+        "label": "PROTEIN",
+        "start_char": 0,
+        "end_char": 5,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "chimeric antigen receptor",
+        "canonical": "chimeric antigen receptor",
+        "label": "PROTEIN",
+        "start_char": 85,
+        "end_char": 110,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "car-t",
+        "canonical": "car-t",
+        "label": "PROTEIN",
+        "start_char": 119,
+        "end_char": 124,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "car-t",
+        "canonical": "car-t",
+        "label": "PROTEIN",
+        "start_char": 221,
+        "end_char": 226,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "diffuse large b-cell lymphoma",
+        "canonical": "diffuse large b-cell lymphoma",
+        "label": "DISEASE",
+        "start_char": 323,
+        "end_char": 352,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "mantle cell lymphoma",
+        "canonical": "mantle cell lymphoma",
+        "label": "DISEASE",
+        "start_char": 354,
+        "end_char": 374,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "multiple myeloma",
+        "canonical": "multiple myeloma",
+        "label": "DISEASE",
+        "start_char": 380,
+        "end_char": 396,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "car-t",
+        "canonical": "car-t",
+        "label": "PROTEIN",
+        "start_char": 706,
+        "end_char": 711,
+        "source": "entity_ruler"
+      },
+      {
+        "text": "car-t",
+        "canonical": "car-t",
+        "label": "PROTEIN",
+        "start_char": 724,
+        "end_char": 729,
+        "source": "entity_ruler"
+      }
+    ],
+    "entity_summary": {
+      "PROTEIN": [
+        "car-t",
+        "chimeric antigen receptor"
+      ],
+      "DISEASE": [
+        "diffuse large b-cell lymphoma",
+        "mantle cell lymphoma",
+        "multiple myeloma"
+      ]
+    },
+    "relations": [],
+    "entity_count": 9,
+    "relation_count": 0
+  }
+]

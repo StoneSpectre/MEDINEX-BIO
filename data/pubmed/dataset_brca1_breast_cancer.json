@@ -1,0 +1,20 @@
+[
+  {
+    "pmid":"35078996",
+    "title":"BRCA1 and BRCA2 mutations and breast cancer risk: updated meta-analysis",
+    "abstract":"Germline pathogenic variants in BRCA1 and BRCA2 confer substantially elevated lifetime risks of breast and ovarian cancer. This updated meta-analysis synthesizes data from 55 studies and 271,000 carriers. BACKGROUND: BRCA1 carriers have a 72% lifetime breast cancer risk; BRCA2 carriers have 69%. Risk modification by polygenic background is now well-established. METHODS: We performed PROSPERO-registered meta-analysis of cohort studies. RESULTS: Risk-reducing surgery (bilateral mastectomy) reduces breast cancer risk by 90%. PARP inhibitors show efficacy in BRCA-mutated metastatic breast cancer. CONCLUSIONS: Cascade testing of relatives of BRCA carriers should be standard of care.",
+    "abstract_words":121,
+    "first_author":"Kuchenbaecker K",
+    "author_count":3,
+    "journal":"JAMA Oncology",
+    "pub_year":"2022",
+    "pub_month":"Feb",
+    "doi":"10.1001\/jamaoncol.2021.7000",
+    "mesh_count":5,
+    "mesh_terms_flat":"BRCA1 Protein; BRCA2 Protein; Breast Neoplasms; Genetic Predisposition to Disease; Meta-Analysis as Topic",
+    "major_mesh":"BRCA1 Protein; BRCA2 Protein; Breast Neoplasms",
+    "keywords":"BRCA1; BRCA2; breast cancer; genetic risk; PARP inhibitor",
+    "pubmed_url":"https:\/\/pubmed.ncbi.nlm.nih.gov\/35078996\/",
+    "topic":"BRCA1 Breast Cancer"
+  }
+]

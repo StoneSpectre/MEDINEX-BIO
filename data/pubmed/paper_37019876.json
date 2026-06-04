@@ -1,0 +1,69 @@
+{
+  "pmid": "37019876",
+  "title": "CAR-T cell therapy in hematologic malignancies: current status and future directions",
+  "abstract": "Chimeric antigen receptor T-cell (CAR-T) therapy has transformed treatment of relapsed/refractory B-cell malignancies. Six FDA-approved CAR-T products now target CD19 or BCMA. BACKGROUND: Complete response rates of 40\u201380% are achieved in diffuse large B-cell lymphoma, mantle cell lymphoma, and multiple myeloma. METHODS: We reviewed all pivotal trials and FDA approval data. RESULTS: Cytokine release syndrome (CRS) and immune effector cell-associated neurotoxicity syndrome (ICANS) are primary toxicities. Manufacturing challenges and high cost ($370,000\u2013$500,000) limit access. CONCLUSIONS: Next-generation allogeneic CAR-T and armored CAR-T platforms aim to overcome current limitations.",
+  "authors": [
+    {
+      "name": "June C",
+      "affiliation": "University of Pennsylvania"
+    },
+    {
+      "name": "Sadelain M",
+      "affiliation": "Memorial Sloan Kettering"
+    }
+  ],
+  "journal": "New England Journal of Medicine",
+  "issn": "0028-4793",
+  "volume": "388",
+  "issue": "12",
+  "pub_year": "2023",
+  "pub_month": "Mar",
+  "mesh_terms": [
+    {
+      "term": "Receptors, Chimeric Antigen",
+      "major": true,
+      "qualifiers": [
+        "therapeutic use"
+      ]
+    },
+    {
+      "term": "Immunotherapy, Adoptive",
+      "major": true,
+      "qualifiers": [
+        "methods"
+      ]
+    },
+    {
+      "term": "Hematologic Neoplasms",
+      "major": true,
+      "qualifiers": [
+        "therapy"
+      ]
+    },
+    {
+      "term": "Cytokine Release Syndrome",
+      "major": false,
+      "qualifiers": [
+        "etiology"
+      ]
+    },
+    {
+      "term": "Antigens, CD19",
+      "major": false,
+      "qualifiers": []
+    }
+  ],
+  "keywords": [
+    "CAR-T",
+    "immunotherapy",
+    "CD19",
+    "BCMA",
+    "lymphoma",
+    "myeloma"
+  ],
+  "doi": "10.1056/NEJMra2215844",
+  "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/37019876/",
+  "abstract_word_count": 132,
+  "author_count": 2,
+  "mesh_count": 5
+}

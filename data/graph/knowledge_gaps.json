@@ -1,0 +1,51 @@
+{
+  "untreated_diseases": [
+    "long covid",
+    "dementia",
+    "neuroinflammation",
+    "multiple myeloma",
+    "parkinson's disease",
+    "sars-cov-2"
+  ],
+  "undrugged_genes": [
+    "trem2",
+    "psen1",
+    "tp53",
+    "egfr",
+    "braf",
+    "apoe",
+    "tnf",
+    "bcma",
+    "cd19",
+    "il6"
+  ],
+  "understudied_diseases": [
+    "long covid",
+    "copd",
+    "heart failure",
+    "mantle cell lymphoma",
+    "multiple sclerosis",
+    "dementia",
+    "myocardial infarction",
+    "neuroinflammation",
+    "type 2 diabetes",
+    "diffuse large b-cell lymphoma",
+    "major depressive disorder",
+    "multiple myeloma",
+    "parkinson's disease",
+    "pneumonia",
+    "sars-cov-2",
+    "acute kidney injury"
+  ],
+  "isolated_nodes": [
+    "pd-1",
+    "parkinson's disease",
+    "pd-l1"
+  ],
+  "n_untreated": 6,
+  "n_undrugged": 10,
+  "n_understudied": 16,
+  "n_isolated": 3,
+  "coverage_disease": 0.7,
+  "coverage_gene": 0.333
+}

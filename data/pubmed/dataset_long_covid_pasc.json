@@ -1,0 +1,20 @@
+[
+  {
+    "pmid":"34942836",
+    "title":"Long COVID: mechanisms, risk factors, and management",
+    "abstract":"Post-acute sequelae of SARS-CoV-2 (PASC), commonly known as long COVID, affects 10\u201330% of infected individuals. Symptoms persist beyond 12 weeks and include fatigue, cognitive impairment, dyspnea, and chest pain. Proposed mechanisms include viral persistence, autoimmunity, microbiome dysbiosis, and reactivation of latent viruses such as EBV. BACKGROUND: Long COVID disproportionately affects women aged 35\u201360 and those with higher initial viral loads. METHODS: Meta-analysis of 43 studies comprising 860,000 patients. RESULTS: Fatigue (58%), cognitive symptoms (26%), and breathlessness (25%) are most prevalent. Vaccination reduces long COVID risk by approximately 50%. CONCLUSIONS: Multidisciplinary care models are needed.",
+    "abstract_words":128,
+    "first_author":"Davis H",
+    "author_count":3,
+    "journal":"Nature Medicine",
+    "pub_year":"2022",
+    "pub_month":"Mar",
+    "doi":"10.1038\/s41591-021-01283-z",
+    "mesh_count":5,
+    "mesh_terms_flat":"Post-Acute COVID-19 Syndrome; SARS-CoV-2; Fatigue; Cognitive Dysfunction; Risk Factors",
+    "major_mesh":"Post-Acute COVID-19 Syndrome; SARS-CoV-2",
+    "keywords":"long COVID; PASC; fatigue; cognitive impairment; SARS-CoV-2",
+    "pubmed_url":"https:\/\/pubmed.ncbi.nlm.nih.gov\/34942836\/",
+    "topic":"Long COVID PASC"
+  }
+]
