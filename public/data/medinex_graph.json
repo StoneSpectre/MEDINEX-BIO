@@ -1,0 +1,1827 @@
+{
+  "nodes": [
+    {
+      "id": "33462182",
+      "type": "Paper",
+      "name": "33462182",
+      "color": "#c84eff",
+      "title": "Alzheimer's disease: pathogenesis and therapeutic interventions",
+      "journal": "Nature Reviews Neuroscience",
+      "year": "2021",
+      "doi": "10.1038/s41583-020-00398-1"
+    },
+    {
+      "id": "alzheimer's disease",
+      "type": "Disease",
+      "name": "alzheimer's disease",
+      "color": "#ff4e4e",
+      "icd_code": "G30.9"
+    },
+    {
+      "id": "dementia",
+      "type": "Disease",
+      "name": "dementia",
+      "color": "#ff4e4e",
+      "icd_code": ""
+    },
+    {
+      "id": "neuroinflammation",
+      "type": "Disease",
+      "name": "neuroinflammation",
+      "color": "#ff4e4e",
+      "icd_code": ""
+    },
+    {
+      "id": "amyloid-beta",
+      "type": "Protein",
+      "name": "amyloid-beta",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "microglia",
+      "type": "ANATOMICAL_STRUCTURE",
+      "name": "microglia",
+      "color": "#aaaaaa"
+    },
+    {
+      "id": "aducanumab",
+      "type": "Drug",
+      "name": "aducanumab",
+      "color": "#4eaaff",
+      "mechanism": "anti-amyloid monoclonal antibody"
+    },
+    {
+      "id": "lecanemab",
+      "type": "Drug",
+      "name": "lecanemab",
+      "color": "#4eaaff",
+      "mechanism": "anti-amyloid monoclonal antibody"
+    },
+    {
+      "id": "donanemab",
+      "type": "Drug",
+      "name": "donanemab",
+      "color": "#4eaaff",
+      "mechanism": "anti-amyloid monoclonal antibody"
+    },
+    {
+      "id": "alzheimer disease",
+      "type": "MeSHTerm",
+      "name": "Alzheimer Disease",
+      "color": "#4effd0"
+    },
+    {
+      "id": "amyloid beta-peptides",
+      "type": "MeSHTerm",
+      "name": "Amyloid beta-Peptides",
+      "color": "#4effd0"
+    },
+    {
+      "id": "tau proteins",
+      "type": "MeSHTerm",
+      "name": "tau Proteins",
+      "color": "#4effd0"
+    },
+    {
+      "id": "neuroinflammatory diseases",
+      "type": "MeSHTerm",
+      "name": "Neuroinflammatory Diseases",
+      "color": "#4effd0"
+    },
+    {
+      "id": "immunotherapy",
+      "type": "MeSHTerm",
+      "name": "Immunotherapy",
+      "color": "#4effd0"
+    },
+    {
+      "id": "disease progression",
+      "type": "MeSHTerm",
+      "name": "Disease Progression",
+      "color": "#4effd0"
+    },
+    {
+      "id": "34942836",
+      "type": "Paper",
+      "name": "34942836",
+      "color": "#c84eff",
+      "title": "Long COVID: mechanisms, risk factors, and management",
+      "journal": "Nature Medicine",
+      "year": "2022",
+      "doi": "10.1038/s41591-021-01283-z"
+    },
+    {
+      "id": "long covid",
+      "type": "Disease",
+      "name": "long covid",
+      "color": "#ff4e4e",
+      "icd_code": ""
+    },
+    {
+      "id": "sars-cov-2",
+      "type": "Disease",
+      "name": "sars-cov-2",
+      "color": "#ff4e4e",
+      "icd_code": ""
+    },
+    {
+      "id": "post-acute covid-19 syndrome",
+      "type": "MeSHTerm",
+      "name": "Post-Acute COVID-19 Syndrome",
+      "color": "#4effd0"
+    },
+    {
+      "id": "fatigue",
+      "type": "MeSHTerm",
+      "name": "Fatigue",
+      "color": "#4effd0"
+    },
+    {
+      "id": "cognitive dysfunction",
+      "type": "MeSHTerm",
+      "name": "Cognitive Dysfunction",
+      "color": "#4effd0"
+    },
+    {
+      "id": "risk factors",
+      "type": "MeSHTerm",
+      "name": "Risk Factors",
+      "color": "#4effd0"
+    },
+    {
+      "id": "35078996",
+      "type": "Paper",
+      "name": "35078996",
+      "color": "#c84eff",
+      "title": "BRCA1 and BRCA2 mutations and breast cancer risk: updated meta-analysis",
+      "journal": "JAMA Oncology",
+      "year": "2022",
+      "doi": "10.1001/jamaoncol.2021.7000"
+    },
+    {
+      "id": "brca1",
+      "type": "Gene",
+      "name": "brca1",
+      "color": "#4eff91",
+      "chromosome": "17q21"
+    },
+    {
+      "id": "brca2",
+      "type": "Gene",
+      "name": "brca2",
+      "color": "#4eff91",
+      "chromosome": "13q12"
+    },
+    {
+      "id": "breast cancer",
+      "type": "Disease",
+      "name": "breast cancer",
+      "color": "#ff4e4e",
+      "icd_code": "C50.9"
+    },
+    {
+      "id": "brca1 protein",
+      "type": "MeSHTerm",
+      "name": "BRCA1 Protein",
+      "color": "#4effd0",
+      "uniprot_id": ""
+    },
+    {
+      "id": "brca2 protein",
+      "type": "MeSHTerm",
+      "name": "BRCA2 Protein",
+      "color": "#4effd0"
+    },
+    {
+      "id": "breast neoplasms",
+      "type": "MeSHTerm",
+      "name": "Breast Neoplasms",
+      "color": "#4effd0"
+    },
+    {
+      "id": "genetic predisposition to disease",
+      "type": "MeSHTerm",
+      "name": "Genetic Predisposition to Disease",
+      "color": "#4effd0"
+    },
+    {
+      "id": "meta-analysis as topic",
+      "type": "MeSHTerm",
+      "name": "Meta-Analysis as Topic",
+      "color": "#4effd0"
+    },
+    {
+      "id": "36402859",
+      "type": "Paper",
+      "name": "36402859",
+      "color": "#c84eff",
+      "title": "Metformin and type 2 diabetes: mechanisms and novel applications",
+      "journal": "Nature Reviews Endocrinology",
+      "year": "2023",
+      "doi": "10.1038/s41574-022-00786-6"
+    },
+    {
+      "id": "metformin",
+      "type": "Drug",
+      "name": "metformin",
+      "color": "#4eaaff",
+      "mechanism": "AMPK activator / biguanide"
+    },
+    {
+      "id": "type 2 diabetes",
+      "type": "Disease",
+      "name": "type 2 diabetes",
+      "color": "#ff4e4e",
+      "icd_code": "E11.9",
+      "clinical_frequency": 15
+    },
+    {
+      "id": "ampk",
+      "type": "Protein",
+      "name": "ampk",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "glucose",
+      "type": "Chemical",
+      "name": "glucose",
+      "color": "#ff8c4e"
+    },
+    {
+      "id": "diabetes mellitus, type 2",
+      "type": "MeSHTerm",
+      "name": "Diabetes Mellitus, Type 2",
+      "color": "#4effd0"
+    },
+    {
+      "id": "amp-activated protein kinases",
+      "type": "MeSHTerm",
+      "name": "AMP-Activated Protein Kinases",
+      "color": "#4effd0"
+    },
+    {
+      "id": "gluconeogenesis",
+      "type": "MeSHTerm",
+      "name": "Gluconeogenesis",
+      "color": "#4effd0"
+    },
+    {
+      "id": "gastrointestinal microbiome",
+      "type": "MeSHTerm",
+      "name": "Gastrointestinal Microbiome",
+      "color": "#4effd0"
+    },
+    {
+      "id": "37019876",
+      "type": "Paper",
+      "name": "37019876",
+      "color": "#c84eff",
+      "title": "CAR-T cell therapy in hematologic malignancies: current status and future directions",
+      "journal": "New England Journal of Medicine",
+      "year": "2023",
+      "doi": "10.1056/NEJMra2215844"
+    },
+    {
+      "id": "car-t",
+      "type": "Protein",
+      "name": "car-t",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "chimeric antigen receptor",
+      "type": "Protein",
+      "name": "chimeric antigen receptor",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "diffuse large b-cell lymphoma",
+      "type": "Disease",
+      "name": "diffuse large b-cell lymphoma",
+      "color": "#ff4e4e",
+      "icd_code": "C83.3"
+    },
+    {
+      "id": "mantle cell lymphoma",
+      "type": "Disease",
+      "name": "mantle cell lymphoma",
+      "color": "#ff4e4e",
+      "icd_code": "C83.1"
+    },
+    {
+      "id": "multiple myeloma",
+      "type": "Disease",
+      "name": "multiple myeloma",
+      "color": "#ff4e4e",
+      "icd_code": "C90.0"
+    },
+    {
+      "id": "receptors, chimeric antigen",
+      "type": "MeSHTerm",
+      "name": "Receptors, Chimeric Antigen",
+      "color": "#4effd0"
+    },
+    {
+      "id": "immunotherapy, adoptive",
+      "type": "MeSHTerm",
+      "name": "Immunotherapy, Adoptive",
+      "color": "#4effd0"
+    },
+    {
+      "id": "hematologic neoplasms",
+      "type": "MeSHTerm",
+      "name": "Hematologic Neoplasms",
+      "color": "#4effd0"
+    },
+    {
+      "id": "cytokine release syndrome",
+      "type": "MeSHTerm",
+      "name": "Cytokine Release Syndrome",
+      "color": "#4effd0"
+    },
+    {
+      "id": "antigens, cd19",
+      "type": "MeSHTerm",
+      "name": "Antigens, CD19",
+      "color": "#4effd0"
+    },
+    {
+      "id": "multiple sclerosis",
+      "type": "Disease",
+      "name": "multiple sclerosis",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 9
+    },
+    {
+      "id": "major depressive disorder",
+      "type": "Disease",
+      "name": "major depressive disorder",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 9
+    },
+    {
+      "id": "myocardial infarction",
+      "type": "Disease",
+      "name": "myocardial infarction",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 8
+    },
+    {
+      "id": "acute kidney injury",
+      "type": "Disease",
+      "name": "acute kidney injury",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 7
+    },
+    {
+      "id": "pneumonia",
+      "type": "Disease",
+      "name": "pneumonia",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 7
+    },
+    {
+      "id": "lung cancer",
+      "type": "Disease",
+      "name": "lung cancer",
+      "color": "#ff4e4e",
+      "icd_code": "C34.10",
+      "clinical_frequency": 7
+    },
+    {
+      "id": "copd",
+      "type": "Disease",
+      "name": "copd",
+      "color": "#ff4e4e",
+      "icd_code": "",
+      "clinical_frequency": 6
+    },
+    {
+      "id": "heart failure",
+      "type": "Disease",
+      "name": "heart failure",
+      "color": "#ff4e4e",
+      "icd_code": "I50.9",
+      "clinical_frequency": 5
+    },
+    {
+      "id": "sepsis",
+      "type": "Disease",
+      "name": "sepsis",
+      "color": "#ff4e4e",
+      "icd_code": "A41.9",
+      "clinical_frequency": 5
+    },
+    {
+      "id": "aspirin",
+      "type": "Drug",
+      "name": "aspirin",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "insulin regular",
+      "type": "Drug",
+      "name": "insulin regular",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "norepinephrine",
+      "type": "Drug",
+      "name": "norepinephrine",
+      "color": "#4eaaff",
+      "mechanism": "vasopressor / alpha-1 agonist"
+    },
+    {
+      "id": "vancomycin",
+      "type": "Drug",
+      "name": "vancomycin",
+      "color": "#4eaaff",
+      "mechanism": "glycopeptide antibiotic"
+    },
+    {
+      "id": "acetaminophen",
+      "type": "Drug",
+      "name": "acetaminophen",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "furosemide",
+      "type": "Drug",
+      "name": "furosemide",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "heparin",
+      "type": "Drug",
+      "name": "heparin",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "metoprolol",
+      "type": "Drug",
+      "name": "metoprolol",
+      "color": "#4eaaff",
+      "mechanism": ""
+    },
+    {
+      "id": "parkinson's disease",
+      "type": "Disease",
+      "name": "parkinson's disease",
+      "color": "#ff4e4e",
+      "icd_code": "G20"
+    },
+    {
+      "id": "app",
+      "type": "Gene",
+      "name": "app",
+      "color": "#4eff91",
+      "chromosome": "21q21"
+    },
+    {
+      "id": "psen1",
+      "type": "Gene",
+      "name": "psen1",
+      "color": "#4eff91",
+      "chromosome": "14q24"
+    },
+    {
+      "id": "apoe",
+      "type": "Gene",
+      "name": "apoe",
+      "color": "#4eff91",
+      "chromosome": "19q13"
+    },
+    {
+      "id": "tp53",
+      "type": "Gene",
+      "name": "tp53",
+      "color": "#4eff91",
+      "chromosome": "17p13"
+    },
+    {
+      "id": "egfr",
+      "type": "Gene",
+      "name": "egfr",
+      "color": "#4eff91",
+      "chromosome": "7p12"
+    },
+    {
+      "id": "kras",
+      "type": "Gene",
+      "name": "kras",
+      "color": "#4eff91",
+      "chromosome": "12p12"
+    },
+    {
+      "id": "braf",
+      "type": "Gene",
+      "name": "braf",
+      "color": "#4eff91",
+      "chromosome": "7q34"
+    },
+    {
+      "id": "her2",
+      "type": "Gene",
+      "name": "her2",
+      "color": "#4eff91",
+      "chromosome": "17q12",
+      "uniprot_id": ""
+    },
+    {
+      "id": "trem2",
+      "type": "Gene",
+      "name": "trem2",
+      "color": "#4eff91",
+      "chromosome": "6p21"
+    },
+    {
+      "id": "cd19",
+      "type": "Gene",
+      "name": "cd19",
+      "color": "#4eff91",
+      "chromosome": "16p11"
+    },
+    {
+      "id": "bcma",
+      "type": "Gene",
+      "name": "bcma",
+      "color": "#4eff91",
+      "chromosome": "16p13"
+    },
+    {
+      "id": "il6",
+      "type": "Gene",
+      "name": "il6",
+      "color": "#4eff91",
+      "chromosome": "7p21"
+    },
+    {
+      "id": "tnf",
+      "type": "Gene",
+      "name": "tnf",
+      "color": "#4eff91",
+      "chromosome": "6p21"
+    },
+    {
+      "id": "olaparib",
+      "type": "Drug",
+      "name": "olaparib",
+      "color": "#4eaaff",
+      "mechanism": "PARP1/2 inhibitor"
+    },
+    {
+      "id": "pembrolizumab",
+      "type": "Drug",
+      "name": "pembrolizumab",
+      "color": "#4eaaff",
+      "mechanism": "PD-1 checkpoint inhibitor"
+    },
+    {
+      "id": "nivolumab",
+      "type": "Drug",
+      "name": "nivolumab",
+      "color": "#4eaaff",
+      "mechanism": "PD-1 checkpoint inhibitor"
+    },
+    {
+      "id": "trastuzumab",
+      "type": "Drug",
+      "name": "trastuzumab",
+      "color": "#4eaaff",
+      "mechanism": "HER2-targeted monoclonal antibody"
+    },
+    {
+      "id": "rituximab",
+      "type": "Drug",
+      "name": "rituximab",
+      "color": "#4eaaff",
+      "mechanism": "anti-CD20 monoclonal antibody"
+    },
+    {
+      "id": "imatinib",
+      "type": "Drug",
+      "name": "imatinib",
+      "color": "#4eaaff",
+      "mechanism": "BCR-ABL tyrosine kinase inhibitor"
+    },
+    {
+      "id": "tau protein",
+      "type": "Protein",
+      "name": "tau protein",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "pd-1",
+      "type": "Protein",
+      "name": "pd-1",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "pd-l1",
+      "type": "Protein",
+      "name": "pd-l1",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    },
+    {
+      "id": "c-reactive protein",
+      "type": "Protein",
+      "name": "c-reactive protein",
+      "color": "#ffd04e",
+      "uniprot_id": ""
+    }
+  ],
+  "edges": [
+    {
+      "src": "33462182",
+      "dst": "alzheimer disease",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "33462182",
+      "dst": "amyloid beta-peptides",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "33462182",
+      "dst": "tau proteins",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "33462182",
+      "dst": "neuroinflammatory diseases",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "33462182",
+      "dst": "immunotherapy",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "33462182",
+      "dst": "disease progression",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "alzheimer's disease",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "dementia",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "neuroinflammation",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "amyloid-beta",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "amyloid-beta",
+      "dst": "alzheimer's disease",
+      "relation": "BIOMARKER_FOR",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "microglia",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "aducanumab",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "aducanumab",
+      "dst": "alzheimer's disease",
+      "relation": "TREATS",
+      "confidence": 0.78,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "lecanemab",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "lecanemab",
+      "dst": "alzheimer's disease",
+      "relation": "TREATS",
+      "confidence": 0.85,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "lecanemab",
+      "dst": "app",
+      "relation": "INHIBITS",
+      "confidence": 0.85,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "donanemab",
+      "dst": "33462182",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "donanemab",
+      "dst": "alzheimer's disease",
+      "relation": "TREATS",
+      "confidence": 0.82,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "34942836",
+      "dst": "post-acute covid-19 syndrome",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "34942836",
+      "dst": "sars-cov-2",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "34942836",
+      "dst": "fatigue",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "34942836",
+      "dst": "cognitive dysfunction",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "34942836",
+      "dst": "risk factors",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "long covid",
+      "dst": "34942836",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "sars-cov-2",
+      "dst": "34942836",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "35078996",
+      "dst": "brca1 protein",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "35078996",
+      "dst": "brca2 protein",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "35078996",
+      "dst": "breast neoplasms",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "35078996",
+      "dst": "genetic predisposition to disease",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "35078996",
+      "dst": "meta-analysis as topic",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "brca1",
+      "dst": "35078996",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "brca1",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.68,
+      "pmid": "35078996"
+    },
+    {
+      "src": "brca1",
+      "dst": "breast cancer",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "35078996"
+    },
+    {
+      "src": "brca1",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.99,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "brca2",
+      "dst": "35078996",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "brca2",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.68,
+      "pmid": "35078996"
+    },
+    {
+      "src": "brca2",
+      "dst": "breast cancer",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "35078996"
+    },
+    {
+      "src": "brca2",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.99,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "breast cancer",
+      "dst": "35078996",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "breast cancer",
+      "dst": "brca1",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "35078996"
+    },
+    {
+      "src": "breast cancer",
+      "dst": "brca2",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "35078996"
+    },
+    {
+      "src": "36402859",
+      "dst": "metformin",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "36402859",
+      "dst": "diabetes mellitus, type 2",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "36402859",
+      "dst": "amp-activated protein kinases",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "36402859",
+      "dst": "gluconeogenesis",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "36402859",
+      "dst": "gastrointestinal microbiome",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "metformin",
+      "dst": "36402859",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "metformin",
+      "dst": "type 2 diabetes",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "36402859"
+    },
+    {
+      "src": "metformin",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.98,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "36402859",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "metformin",
+      "relation": "CO_OCCURS",
+      "confidence": 0.5,
+      "pmid": "36402859"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "heart failure",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 10,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "copd",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 10,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "major depressive disorder",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "multiple sclerosis",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "type 2 diabetes",
+      "dst": "myocardial infarction",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "ampk",
+      "dst": "36402859",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "glucose",
+      "dst": "36402859",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "37019876",
+      "dst": "receptors, chimeric antigen",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "37019876",
+      "dst": "immunotherapy, adoptive",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "37019876",
+      "dst": "hematologic neoplasms",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "37019876",
+      "dst": "cytokine release syndrome",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "37019876",
+      "dst": "antigens, cd19",
+      "relation": "HAS_MESH_TERM",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "car-t",
+      "dst": "37019876",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "chimeric antigen receptor",
+      "dst": "37019876",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "diffuse large b-cell lymphoma",
+      "dst": "37019876",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "mantle cell lymphoma",
+      "dst": "37019876",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "multiple myeloma",
+      "dst": "37019876",
+      "relation": "MENTIONED_IN",
+      "confidence": 1.0,
+      "pmid": ""
+    },
+    {
+      "src": "multiple sclerosis",
+      "dst": "myocardial infarction",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "multiple sclerosis",
+      "dst": "heart failure",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "major depressive disorder",
+      "dst": "myocardial infarction",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 9,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "major depressive disorder",
+      "dst": "heart failure",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "major depressive disorder",
+      "dst": "multiple sclerosis",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "major depressive disorder",
+      "dst": "pneumonia",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "myocardial infarction",
+      "dst": "heart failure",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "myocardial infarction",
+      "dst": "pneumonia",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "myocardial infarction",
+      "dst": "acute kidney injury",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "lung cancer",
+      "dst": "myocardial infarction",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "lung cancer",
+      "dst": "type 2 diabetes",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "lung cancer",
+      "dst": "copd",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 6,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "heart failure",
+      "dst": "copd",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "sepsis",
+      "dst": "major depressive disorder",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 8,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "sepsis",
+      "dst": "myocardial infarction",
+      "relation": "CLINICAL_COMORBIDITY",
+      "confidence": 0.7,
+      "pmid": "",
+      "frequency": 7,
+      "source": "mimic_iv"
+    },
+    {
+      "src": "aspirin",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 11
+    },
+    {
+      "src": "aspirin",
+      "dst": "multiple sclerosis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 7
+    },
+    {
+      "src": "aspirin",
+      "dst": "myocardial infarction",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "aspirin",
+      "dst": "pneumonia",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "aspirin",
+      "dst": "copd",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "insulin regular",
+      "dst": "major depressive disorder",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 9
+    },
+    {
+      "src": "insulin regular",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "insulin regular",
+      "dst": "myocardial infarction",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "norepinephrine",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 9
+    },
+    {
+      "src": "norepinephrine",
+      "dst": "myocardial infarction",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "norepinephrine",
+      "dst": "pneumonia",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "norepinephrine",
+      "dst": "sepsis",
+      "relation": "TREATS",
+      "confidence": 0.9,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "vancomycin",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 9
+    },
+    {
+      "src": "vancomycin",
+      "dst": "multiple sclerosis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "vancomycin",
+      "dst": "copd",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "vancomycin",
+      "dst": "sepsis",
+      "relation": "TREATS",
+      "confidence": 0.8,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 8
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "major depressive disorder",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 7
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "multiple sclerosis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "sepsis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "pneumonia",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 4
+    },
+    {
+      "src": "acetaminophen",
+      "dst": "copd",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 4
+    },
+    {
+      "src": "furosemide",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 8
+    },
+    {
+      "src": "heparin",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 8
+    },
+    {
+      "src": "heparin",
+      "dst": "multiple sclerosis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "heparin",
+      "dst": "copd",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "heparin",
+      "dst": "major depressive disorder",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "metoprolol",
+      "dst": "type 2 diabetes",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 8
+    },
+    {
+      "src": "metoprolol",
+      "dst": "multiple sclerosis",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 6
+    },
+    {
+      "src": "metoprolol",
+      "dst": "major depressive disorder",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "metoprolol",
+      "dst": "heart failure",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "metoprolol",
+      "dst": "acute kidney injury",
+      "relation": "TREATS",
+      "confidence": 0.6,
+      "pmid": "",
+      "source": "clinical_mimic",
+      "frequency": 5
+    },
+    {
+      "src": "app",
+      "dst": "alzheimer's disease",
+      "relation": "CAUSES",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "psen1",
+      "dst": "alzheimer's disease",
+      "relation": "CAUSES",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "apoe",
+      "dst": "alzheimer's disease",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.9,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "tp53",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.88,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "tp53",
+      "dst": "lung cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.85,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "tp53",
+      "dst": "pembrolizumab",
+      "relation": "TARGETED_BY",
+      "confidence": 0.7,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "egfr",
+      "dst": "lung cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.92,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "kras",
+      "dst": "lung cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.8,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "braf",
+      "dst": "lung cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.75,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "her2",
+      "dst": "breast cancer",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.93,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "her2",
+      "dst": "breast cancer",
+      "relation": "BIOMARKER_FOR",
+      "confidence": 0.94,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "trem2",
+      "dst": "alzheimer's disease",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.85,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "cd19",
+      "dst": "diffuse large b-cell lymphoma",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.9,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "bcma",
+      "dst": "multiple myeloma",
+      "relation": "ASSOCIATED_WITH",
+      "confidence": 0.88,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "il6",
+      "dst": "sepsis",
+      "relation": "CAUSES",
+      "confidence": 0.8,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "tnf",
+      "dst": "sepsis",
+      "relation": "CAUSES",
+      "confidence": 0.82,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "olaparib",
+      "dst": "breast cancer",
+      "relation": "TREATS",
+      "confidence": 0.93,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "olaparib",
+      "dst": "brca1",
+      "relation": "INHIBITS",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "olaparib",
+      "dst": "brca2",
+      "relation": "INHIBITS",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "pembrolizumab",
+      "dst": "lung cancer",
+      "relation": "TREATS",
+      "confidence": 0.9,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "nivolumab",
+      "dst": "lung cancer",
+      "relation": "TREATS",
+      "confidence": 0.88,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "trastuzumab",
+      "dst": "breast cancer",
+      "relation": "TREATS",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "trastuzumab",
+      "dst": "her2",
+      "relation": "INHIBITS",
+      "confidence": 0.97,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "rituximab",
+      "dst": "diffuse large b-cell lymphoma",
+      "relation": "TREATS",
+      "confidence": 0.95,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "rituximab",
+      "dst": "mantle cell lymphoma",
+      "relation": "TREATS",
+      "confidence": 0.9,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "imatinib",
+      "dst": "lung cancer",
+      "relation": "TREATS",
+      "confidence": 0.72,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "imatinib",
+      "dst": "kras",
+      "relation": "INHIBITS",
+      "confidence": 0.8,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "tau protein",
+      "dst": "alzheimer's disease",
+      "relation": "BIOMARKER_FOR",
+      "confidence": 0.93,
+      "pmid": "",
+      "source": "curated"
+    },
+    {
+      "src": "c-reactive protein",
+      "dst": "sepsis",
+      "relation": "BIOMARKER_FOR",
+      "confidence": 0.88,
+      "pmid": "",
+      "source": "curated"
+    }
+  ],
+  "stats": {
+    "total_nodes": 92,
+    "total_edges": 145,
+    "nodes_Paper": 5,
+    "nodes_Disease": 20,
+    "edges_MENTIONED_IN": 22,
+    "nodes_Protein": 8,
+    "nodes_ANATOMICAL_STRUCTURE": 1,
+    "nodes_Drug": 18,
+    "nodes_MeSHTerm": 24,
+    "edges_HAS_MESH_TERM": 26,
+    "nodes_Gene": 15,
+    "edges_ASSOCIATED_WITH": 14,
+    "edges_CO_OCCURS": 6,
+    "nodes_Chemical": 1,
+    "edges_TREATS": 43,
+    "edges_CLINICAL_COMORBIDITY": 20,
+    "edges_CAUSES": 4,
+    "edges_INHIBITS": 5,
+    "edges_TARGETED_BY": 1,
+    "edges_BIOMARKER_FOR": 4
+  }
+}

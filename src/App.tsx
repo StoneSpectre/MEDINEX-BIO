@@ -14,6 +14,8 @@ import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import TermsOfService from "./pages/TermsOfService";
 import Roadmap from "./pages/Roadmap";
+import { KnowledgeGraph } from "./pages/KnowledgeGraph";
+import { Analytics } from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +38,8 @@ const App = () => (
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/knowledge-graph" element={<KnowledgeGraph />} />
+            <Route path="/analytics" element={<Analytics />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
