@@ -13,7 +13,6 @@ const navItems = [
   { path: "/system-thinking", label: "System Thinking", icon: Brain, color: "text-systems" },
   { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
   { path: "/analytics", label: "Analytics", icon: Activity, color: "text-indigo-500" },
-  { path: "/phases", label: "Phase Tracker", icon: Layers, color: "text-emerald-500" },
 ];
 
 export function Header() {
@@ -61,8 +60,9 @@ export function Header() {
             </Link>
           )}
           <Link to="/roadmap" className="hidden sm:block">
-            <Button variant="ghost" size="sm">
-              Architecture
+            <Button variant="ghost" size="sm" className="gap-2">
+              <Layers className="h-4 w-4 text-emerald-500" />
+              Phase Tracker
             </Button>
           </Link>
           <Link to="/about" className="hidden sm:block">
@@ -123,8 +123,9 @@ export function Header() {
                 </Link>
               )}
               <Link to="/roadmap" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="ghost" className="w-full justify-start">
-                  Architecture
+                <Button variant="ghost" className="w-full justify-start gap-3">
+                  <Layers className="h-5 w-5 text-emerald-500" />
+                  Phase Tracker
                 </Button>
               </Link>
               <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
