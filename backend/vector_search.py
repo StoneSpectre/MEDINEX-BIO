@@ -21,10 +21,10 @@ class VectorSearchEngine:
             df = pd.read_csv("combined_dataset.csv")
             for _, row in df.iterrows():
                 self.abstracts.append({
-                    "pmid": row.get("PMID", str(uuid.uuid4())),
-                    "text": row.get("Abstract", ""),
-                    "title": row.get("Title", ""),
-                    "year": row.get("Year", 2024)
+                    "pmid": str(row.get("pmid", str(uuid.uuid4()))),
+                    "text": str(row.get("abstract", "")),
+                    "title": str(row.get("title", "")),
+                    "year": row.get("pub_year", 2024)
                 })
         
         self.texts = [a["text"] for a in self.abstracts if isinstance(a.get("text"), str)]

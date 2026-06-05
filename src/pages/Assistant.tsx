@@ -168,12 +168,16 @@ export default function Assistant() {
               <div>
                 <h3 className="text-sm uppercase tracking-widest text-slate-500 mb-4 ml-2">Retrieved Evidence Context</h3>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {result.sources.map((source, idx) => (
+                  {result.sources.map((source, idx) => {
+                    const pmid = source.pmid || source.metadata?.pmid;
+                    const text = source.text || source.metadata?.text || "No text available.";
+                    
+                    return (
                     <Card key={idx} className="bg-slate-950/50 border-slate-800 hover:border-cyan-500/30 transition-colors">
                       <CardContent className="p-5">
                         <div className="flex justify-between items-start mb-3">
                           <span className="text-xs font-mono text-fuchsia-400 bg-fuchsia-400/10 px-2 py-1 rounded">
-                            {source.pmid ? `PMID: ${source.pmid}` : "Source"}
+                            {pmid ? `PMID: ${pmid}` : "Source"}
                           </span>
                           {source.score !== undefined && (
                             <span className="text-xs font-mono text-emerald-400">
@@ -182,11 +186,12 @@ export default function Assistant() {
                           )}
                         </div>
                         <p className="text-sm text-slate-400 line-clamp-6">
-                          {source.text || "No text available."}
+                          {text}
                         </p>
                       </CardContent>
                     </Card>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}

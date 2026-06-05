@@ -36,11 +36,11 @@ class RAGEngine:
         df = pd.read_csv(csv_path)
         docs = []
         for _, row in df.iterrows():
-            text = row.get("Abstract", "")
-            if isinstance(text, str) and text.strip():
+            text = str(row.get("abstract", ""))
+            if isinstance(text, str) and text.strip() and text != "nan":
                 docs.append(Document(
                     text=text,
-                    metadata={"pmid": str(row.get("PMID", "")), "title": row.get("Title", "")}
+                    metadata={"pmid": str(row.get("pmid", "")), "title": str(row.get("title", ""))}
                 ))
                 
         splitter = SentenceSplitter(chunk_size=512, chunk_overlap=64)
@@ -56,7 +56,7 @@ class RAGEngine:
         retriever = VectorIndexRetriever(index=self.index, similarity_top_k=5)
         self.engine = RetrieverQueryEngine(
             retriever=retriever,
-            node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.6)],
+            node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.3)],
         )
         print("RAG Index Built Successfully.")
 
@@ -75,7 +75,7 @@ class RAGEngine:
         response = self.engine.query(question)
         return {
             "answer": str(response),
-            "sources": [{"score": n.score, "metadata": n.node.metadata} for n in response.source_nodes]
+            "sources": [{"score": n.score, "metadata": n.node.metadata, "text": n.node.text[:200]} for n in response.source_nodes]
         }
 
 if __name__ == "__main__":
