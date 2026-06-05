@@ -1,16 +1,25 @@
 import { Link, useLocation } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import EarlyAccessModal from "@/components/common/EarlyAccessModal";
 import medinexLogo from "@/assets/medinex-logo.png";
-const navItems = [
+const topicItems = [
   { path: "/cardiovascular", label: "Cardiovascular", icon: Heart, color: "text-cardio" },
   { path: "/renal", label: "Renal", icon: Droplet, color: "text-renal" },
   { path: "/immunology", label: "Immunology", icon: Shield, color: "text-immune" },
   { path: "/system-thinking", label: "System Thinking", icon: Brain, color: "text-systems" },
+];
+
+const mainItems = [
   { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
   { path: "/analytics", label: "Analytics", icon: Activity, color: "text-indigo-500" },
   { path: "/assistant", label: "Assistant", icon: Sparkles, color: "text-fuchsia-400" },
@@ -30,7 +39,30 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => {
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="gap-2 transition-colors">
+                <Layers className="h-4 w-4" />
+                <span className="hidden lg:inline">Topics</span>
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56 bg-background/95 backdrop-blur-md border-border/50">
+              {topicItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <DropdownMenuItem key={item.path} asChild className="cursor-pointer">
+                    <Link to={item.path} className="flex items-center gap-3 w-full py-2">
+                      <Icon className={cn("h-4 w-4", item.color)} />
+                      <span>{item.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {mainItems.map((item) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
@@ -95,25 +127,50 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="border-t border-border md:hidden">
           <nav className="container flex flex-col gap-1 py-4">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <Button
-                    variant={isActive ? "secondary" : "ghost"}
-                    className="w-full justify-start gap-3"
+            <div className="flex flex-col gap-1 pb-2 border-b border-border/30">
+              <span className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 mt-2">Topics</span>
+              {topicItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
-                    <Icon className={cn("h-5 w-5", item.color)} />
-                    {item.label}
-                  </Button>
-                </Link>
-              );
-            })}
+                    <Button
+                      variant={isActive ? "secondary" : "ghost"}
+                      className="w-full justify-start gap-3 pl-6"
+                    >
+                      <Icon className={cn("h-5 w-5", item.color)} />
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              })}
+            </div>
+            
+            <div className="flex flex-col gap-1 pt-2">
+              {mainItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Button
+                      variant={isActive ? "secondary" : "ghost"}
+                      className="w-full justify-start gap-3"
+                    >
+                      <Icon className={cn("h-5 w-5", item.color)} />
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              })}
+            </div>
             <div className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
               {isAdmin && (
                 <Link to="/admin" onClick={() => setMobileMenuOpen(false)}>
