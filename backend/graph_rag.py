@@ -1,71 +1,86 @@
 from neo4j import GraphDatabase
+from neo4j.exceptions import ServiceUnavailable, AuthError
 import os
 import json
 from dotenv import load_dotenv
 
+try:
+    from graph.db import MedinexGraph
+except ImportError:
+    MedinexGraph = None
+
 load_dotenv()
 
 class GraphRAGEngine:
-    def __init__(self, uri="bolt://localhost:7687", user="neo4j", password="password"):
-        self.uri = uri
-        self.user = user
-        self.password = password
-        self.driver = None
+    def __init__(self):
+        self.graph = None
         self.connected = False
         self.connect()
 
     def connect(self):
-        try:
-            self.driver = GraphDatabase.driver(self.uri, auth=(self.user, self.password))
-            # Test connection
-            with self.driver.session() as session:
-                session.run("RETURN 1")
-            self.connected = True
-            print("Connected to Neo4j successfully.")
-        except Exception as e:
-            print(f"Warning: Could not connect to Neo4j at {self.uri}. GraphRAG will return mock/stub data. ({str(e)})")
-            self.connected = False
-
-    def close(self):
-        if self.driver:
-            self.driver.close()
-
-    def text_to_cypher(self, question: str) -> str:
-        # In a real setup, we use an LLM to generate the Cypher query.
-        # Since we might not have OPENAI_API_KEY, we will use a basic mock for demonstration.
-        query_lower = question.lower()
-        if "alzheimer" in query_lower:
-            return "MATCH (g:Gene)-[:ASSOCIATED_WITH]->(d:Disease {name: 'Alzheimer\\'s Disease'}) RETURN g.name LIMIT 10"
-        return "MATCH (n) RETURN n LIMIT 5"
-
-    def run_cypher(self, cypher: str) -> list:
-        if not self.connected:
-            return [{"mock_data": "Neo4j connection not active. Please start Neo4j container."}]
+        if not MedinexGraph:
+            print("Warning: graph.db.MedinexGraph not found.")
+            return
             
         try:
-            with self.driver.session() as s:
-                return [dict(r) for r in s.run(cypher)]
-        except Exception as e:
-            return [{"error": str(e)}]
+            self.graph = MedinexGraph()
+            # Test connection
+            self.graph.run("RETURN 1")
+            self.connected = True
+            print("Connected to Neo4j successfully via MedinexGraph.")
+        except (ServiceUnavailable, AuthError, Exception) as e:
+            print(f"Warning: Could not connect to Neo4j. GraphRAG will return mock/stub data. ({str(e)})")
+            self.connected = False
+            self.graph = None
+
+    def close(self):
+        if self.graph:
+            self.graph.close()
 
     def query(self, question: str):
-        cypher = self.text_to_cypher(question)
-        graph_data = self.run_cypher(cypher)
+        # We perform a basic disease extraction from the question for demo purposes
+        # In a real setup, an LLM extracts the entity and builds the cypher query
+        query_lower = question.lower()
         
-        # If we had an LLM configured, we would synthesize the answer here.
-        # For now, we return the raw graph data directly.
-        if not self.connected:
+        disease_target = None
+        if "alzheimer" in query_lower:
+            disease_target = "Alzheimer"
+        elif "parkinson" in query_lower:
+            disease_target = "Parkinson"
+        elif "diabetes" in query_lower:
+            disease_target = "Diabetes"
+        elif "cancer" in query_lower:
+            disease_target = "Cancer"
+            
+        if not self.connected or not self.graph:
             return {
                 "answer": "Neo4j is not running. I would normally write a Cypher query to traverse the knowledge graph to answer this.",
-                "cypher": cypher,
+                "cypher": "MATCH (d:Disease)-[:HAS_SYMPTOM]->(s:Symptom) RETURN d, s LIMIT 10",
+                "data": [{"mock_data": "Neo4j connection not active. Please start Neo4j container."}]
+            }
+            
+        if disease_target:
+            graph_data = self.graph.get_disease_graph(disease_target)
+            return {
+                "answer": f"Here is the topological graph data retrieved for {disease_target}.",
+                "cypher": "MATCH (d:Disease) WHERE toLower(d.name) CONTAINS ...",
                 "data": graph_data
             }
             
-        return {
-            "answer": "Here is the data retrieved from the knowledge graph based on your query.",
-            "cypher": cypher,
-            "data": graph_data
-        }
+        # Fallback cypher if no specific disease matches
+        try:
+            graph_data = self.graph.run("MATCH (n) RETURN labels(n) as label, count(n) as count")
+            return {
+                "answer": "Here is a summary of the current knowledge graph nodes.",
+                "cypher": "MATCH (n) RETURN labels(n) as label, count(n) as count",
+                "data": graph_data
+            }
+        except Exception as e:
+             return {
+                "answer": f"Neo4j Query Failed: {str(e)}",
+                "cypher": "",
+                "data": []
+            }
 
 if __name__ == "__main__":
     engine = GraphRAGEngine()
