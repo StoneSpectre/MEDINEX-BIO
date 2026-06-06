@@ -5,11 +5,14 @@ from llama_index.core.node_parser import SentenceSplitter
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 # Config
-PDF_PATH = "data/robbins_basic_pathology.pdf"
+PDF_PATHS = [
+    ("data/robbins_basic_pathology.pdf", "Robbins Basic Pathology"),
+    ("data/guyton_hall_physiology.pdf", "Guyton and Hall Physiology")
+]
 STORAGE_DIR = "backend/storage"
-MAX_PAGES = 50  # Limit to first 50 pages for faster testing. Set to None to embed the whole book.
+MAX_PAGES = 10  # Limit to 10 pages each for reasonable ingestion speed on CPU
 
-def extract_text_from_pdf(pdf_path, max_pages=None):
+def extract_text_from_pdf(pdf_path, source_name, max_pages=None):
     if not os.path.exists(pdf_path):
         print(f"Error: {pdf_path} not found.")
         return []
@@ -30,10 +33,10 @@ def extract_text_from_pdf(pdf_path, max_pages=None):
         if text.strip():
             documents.append(Document(
                 text=text,
-                metadata={"source": "Robbins Basic Pathology", "page": i + 1}
+                metadata={"source": source_name, "page": i + 1}
             ))
             
-    print(f"Extracted {len(documents)} pages of text.")
+    print(f"Extracted {len(documents)} pages from {source_name}.")
     return documents
 
 def main():
@@ -44,9 +47,14 @@ def main():
     )
     Settings.llm = None  # We don't need LLM just for ingestion
     
-    # 2. Extract text
-    docs = extract_text_from_pdf(PDF_PATH, MAX_PAGES)
-    if not docs:
+    # 2. Extract text from multiple books
+    all_docs = []
+    for path, name in PDF_PATHS:
+        docs = extract_text_from_pdf(path, name, MAX_PAGES)
+        all_docs.extend(docs)
+        
+    if not all_docs:
+        print("No documents were extracted.")
         return
         
     # 3. Create Index and Persist to Disk
@@ -54,7 +62,7 @@ def main():
     print("Building Vector Index... This may take a while depending on MAX_PAGES.")
     
     index = VectorStoreIndex.from_documents(
-        docs,
+        all_docs,
         transformations=[splitter],
         show_progress=True
     )
