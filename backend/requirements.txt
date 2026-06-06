@@ -13,4 +13,3 @@ qdrant-client
 transformers
 torch
 python-dotenv
-sentence-transformers

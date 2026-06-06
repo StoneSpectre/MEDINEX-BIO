@@ -1,7 +1,7 @@
 import faiss
 import json
 import numpy as np
-from sentence_transformers import SentenceTransformer
+from google import genai
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, Range
 from rank_bm25 import BM25Okapi
@@ -12,7 +12,7 @@ class VectorSearchEngine:
     def __init__(self, data_path="pubmed_abstracts.json"):
         # We will use the output from our existing literature explorer
         # For this prototype, we look for pubmed data in backend/data/pubmed
-        self.model = SentenceTransformer("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+        self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
         self.abstracts = []
         
         # Try to load existing data
@@ -52,12 +52,14 @@ class VectorSearchEngine:
             return
 
         print(f"Embedding {len(self.texts)} abstracts...")
-        embeddings = self.model.encode(
-            self.texts,
-            batch_size=64,
-            show_progress_bar=True,
-            normalize_embeddings=True
-        )
+        # Use Gemini instead of SentenceTransformer
+        # Split into batches of 100 to avoid API limits
+        embeddings = []
+        batch_size = 100
+        for i in range(0, len(self.texts), batch_size):
+            batch = self.texts[i:i+batch_size]
+            response = self.client.models.embed_content(model='text-embedding-004', contents=batch)
+            embeddings.extend([e.values for e in response.embeddings])
         embeddings = np.array(embeddings, dtype="float32")
         
         # Add to FAISS
@@ -82,7 +84,8 @@ class VectorSearchEngine:
 
     def semantic_search_faiss(self, query: str, top_k: int = 5):
         if not self.texts: return []
-        q_vec = self.model.encode([query], normalize_embeddings=True).astype("float32")
+        res = self.client.models.embed_content(model='text-embedding-004', contents=[query])
+        q_vec = np.array([res.embeddings[0].values], dtype="float32")
         distances, indices = self.faiss_index.search(q_vec, top_k)
         
         results = []
@@ -99,7 +102,8 @@ class VectorSearchEngine:
         if not self.texts or not self.bm25: return []
         
         # FAISS
-        q_vec = self.model.encode([query], normalize_embeddings=True).astype("float32")
+        res = self.client.models.embed_content(model='text-embedding-004', contents=[query])
+        q_vec = np.array([res.embeddings[0].values], dtype="float32")
         sem_dists, sem_idx = self.faiss_index.search(q_vec, top_k * 3)
         sem_scores = {int(i): float(d) for d, i in zip(sem_dists[0], sem_idx[0])}
         
