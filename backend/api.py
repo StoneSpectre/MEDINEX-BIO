@@ -21,8 +21,8 @@ app = FastAPI(
 # Allow frontend applications to access this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080", "http://localhost:5173", "http://127.0.0.1:8080"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -53,7 +53,7 @@ class QueryResponse(BaseModel):
 async def startup_event():
     print("MEDINEX API Starting up...")
     # Initialize engines
-    global vector_engine, rag_engine, graph_engine
+    global vector_engine, rag_engine, graph_engine, predictive_engine
     
     # Init Vector Search
     print("Initializing Vector Search Engine...")
@@ -136,3 +136,42 @@ async def health_check():
         "graph": graph_engine is not None and graph_engine.connected,
         "predictive": predictive_engine is not None
     }}
+
+@app.get("/graph")
+async def get_graph_topology():
+    """
+    Returns the live topological nodes and edges from the Neo4j database 
+    formatted perfectly for react-force-graph-2d.
+    """
+    if not graph_engine or not graph_engine.connected or not graph_engine.graph:
+        return {"nodes": [], "edges": []}
+        
+    records = graph_engine.graph.run("""
+        MATCH (n)-[r]->(m) 
+        RETURN 
+            n.id AS src_id, labels(n)[0] AS src_type, n.name AS src_name,
+            m.id AS dst_id, labels(m)[0] AS dst_type, m.name AS dst_name,
+            type(r) AS rel_type
+        LIMIT 500
+    """)
+    
+    nodes = {}
+    edges = []
+    
+    for row in records:
+        # Fallback to internal Neo4j ID if 'id' property is missing
+        src_id = str(row.get("src_id") or row.get("src_name") or "UNK")
+        dst_id = str(row.get("dst_id") or row.get("dst_name") or "UNK")
+        
+        if src_id not in nodes:
+            nodes[src_id] = {"id": src_id, "type": row.get("src_type"), "name": row.get("src_name")}
+        if dst_id not in nodes:
+            nodes[dst_id] = {"id": dst_id, "type": row.get("dst_type"), "name": row.get("dst_name")}
+            
+        edges.append({
+            "src": src_id,
+            "dst": dst_id,
+            "relation": row.get("rel_type")
+        })
+        
+    return {"nodes": list(nodes.values()), "edges": edges}

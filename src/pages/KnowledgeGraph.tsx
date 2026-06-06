@@ -20,7 +20,7 @@ export function KnowledgeGraph() {
   const fgRef = useRef<any>();
 
   useEffect(() => {
-    fetch('/data/medinex_graph.json')
+    fetch('http://localhost:8000/graph')
       .then(res => res.json())
       .then(data => {
         // Map backend format to react-force-graph format
