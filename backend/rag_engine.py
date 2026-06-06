@@ -27,7 +27,7 @@ class RAGEngine:
         self.index = None
         self.engine = None
 
-    def build_index_from_csv(self, csv_path="backend/combined_dataset.csv", storage_dir="backend/storage"):
+    def build_index_from_csv(self, csv_path="combined_dataset.csv", storage_dir="storage"):
         from llama_index.core import StorageContext, load_index_from_storage
         
         # 1. Try to load persistent storage first

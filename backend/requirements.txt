@@ -1,24 +1,15 @@
-pandas
-networkx
-biopython
-requests
-tqdm
-python-dotenv
-# Vector Search
-faiss-cpu
-qdrant-client
-sentence-transformers
-rank_bm25
-# RAG
-llama-index
-llama-index-vector-stores-qdrant
-langchain
-langchain-openai
-langchain-community
-# GraphRAG
-neo4j
-openai
-# API
-fastapi
-uvicorn
-pydantic
+fastapi==0.110.0
+uvicorn==0.27.1
+pydantic==2.6.3
+neo4j==5.18.0
+scikit-learn==1.8.0
+pandas==3.0.1
+numpy==2.4.2
+joblib==1.5.3
+google-genai==0.2.2
+pymupdf==1.25.3
+faiss-cpu==1.10.0
+qdrant-client==1.8.0
+transformers==4.38.2
+torch==2.2.1
+python-dotenv==1.0.1

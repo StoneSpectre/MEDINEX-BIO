@@ -78,7 +78,7 @@ export function Footer() {
             <span>•</span>
             <span>Not for clinical use</span>
             <span>•</span>
-            <span>Primary Reference: Guyton & Hall Textbook of Medical Physiology</span>
+            <span>Primary References: Multi-Source Synthesized Knowledge Base (Robbins Pathology, Guyton Physiology, Clinical Data)</span>
           </div>
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} MEDINEX. All rights reserved.
