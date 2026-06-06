@@ -20,7 +20,8 @@ export function KnowledgeGraph() {
   const fgRef = useRef<any>();
 
   useEffect(() => {
-    fetch('http://localhost:8000/graph')
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    fetch(`${API_URL}/graph`)
       .then(res => res.json())
       .then(data => {
         // Map backend format to react-force-graph format
