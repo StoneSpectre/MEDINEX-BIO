@@ -27,30 +27,42 @@ class RAGEngine:
         self.index = None
         self.engine = None
 
-    def build_index_from_csv(self, csv_path="combined_dataset.csv"):
-        if not os.path.exists(csv_path):
-            print("CSV dataset not found.")
-            return
-
-        print("Loading documents for RAG...")
-        df = pd.read_csv(csv_path)
-        docs = []
-        for _, row in df.iterrows():
-            text = str(row.get("abstract", ""))
-            if isinstance(text, str) and text.strip() and text != "nan":
-                docs.append(Document(
-                    text=text,
-                    metadata={"pmid": str(row.get("pmid", "")), "title": str(row.get("title", ""))}
-                ))
-                
-        splitter = SentenceSplitter(chunk_size=512, chunk_overlap=64)
+    def build_index_from_csv(self, csv_path="backend/combined_dataset.csv", storage_dir="backend/storage"):
+        from llama_index.core import StorageContext, load_index_from_storage
         
-        print(f"Building vector index for {len(docs)} documents...")
-        self.index = VectorStoreIndex.from_documents(
-            docs,
-            transformations=[splitter],
-            show_progress=True,
-        )
+        # 1. Try to load persistent storage first
+        if os.path.exists(storage_dir):
+            print(f"Loading persistent vector index from {storage_dir}...")
+            storage_context = StorageContext.from_defaults(persist_dir=storage_dir)
+            self.index = load_index_from_storage(storage_context)
+        else:
+            # 2. Fallback to building from CSV if storage doesn't exist
+            if not os.path.exists(csv_path):
+                print("Persistent storage and CSV dataset not found.")
+                return
+
+            print("Loading documents for RAG...")
+            df = pd.read_csv(csv_path)
+            docs = []
+            for _, row in df.iterrows():
+                text = str(row.get("abstract", ""))
+                if isinstance(text, str) and text.strip() and text != "nan":
+                    docs.append(Document(
+                        text=text,
+                        metadata={"pmid": str(row.get("pmid", "")), "title": str(row.get("title", ""))}
+                    ))
+                    
+            splitter = SentenceSplitter(chunk_size=512, chunk_overlap=64)
+            
+            print(f"Building vector index for {len(docs)} documents...")
+            self.index = VectorStoreIndex.from_documents(
+                docs,
+                transformations=[splitter],
+                show_progress=True,
+            )
+            # Persist it for next time
+            print(f"Persisting index to {storage_dir}...")
+            self.index.storage_context.persist(persist_dir=storage_dir)
         
         # Build retrieval query engine
         retriever = VectorIndexRetriever(index=self.index, similarity_top_k=5)

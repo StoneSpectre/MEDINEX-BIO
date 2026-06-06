@@ -7,6 +7,7 @@ from typing import List, Optional, Any
 from vector_search import VectorSearchEngine
 from rag_engine import RAGEngine
 from graph_rag import GraphRAGEngine
+from predictive_engine import PredictiveEngine
 import os
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -30,6 +31,7 @@ app.add_middleware(
 vector_engine = None
 rag_engine = None
 graph_engine = None
+predictive_engine = None
 
 class QueryRequest(BaseModel):
     question: str
@@ -66,6 +68,10 @@ async def startup_event():
     # Init GraphRAG Engine
     print("Initializing GraphRAG Engine...")
     graph_engine = GraphRAGEngine()
+    
+    # Init Predictive Engine
+    print("Initializing Predictive Engine...")
+    predictive_engine = PredictiveEngine()
 
 @app.post("/query", response_model=QueryResponse)
 async def query_endpoint(req: QueryRequest):
@@ -110,10 +116,23 @@ async def query_endpoint(req: QueryRequest):
     else:
         raise HTTPException(status_code=400, detail=f"Unknown mode: {req.mode}")
 
+@app.post("/predict/cardiovascular")
+async def predict_cardiovascular_endpoint(vitals: dict):
+    if not predictive_engine:
+        raise HTTPException(status_code=500, detail="Predictive engine not initialized")
+    return predictive_engine.predict_cardiovascular(vitals)
+
+@app.post("/predict/renal")
+async def predict_renal_endpoint(vitals: dict):
+    if not predictive_engine:
+        raise HTTPException(status_code=500, detail="Predictive engine not initialized")
+    return predictive_engine.predict_renal(vitals)
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "engines": {
         "vector": vector_engine is not None,
         "rag": rag_engine is not None,
-        "graph": graph_engine is not None and graph_engine.connected
+        "graph": graph_engine is not None and graph_engine.connected,
+        "predictive": predictive_engine is not None
     }}

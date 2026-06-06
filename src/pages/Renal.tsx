@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Droplet, Info, Search, Database, BookOpen, Activity, ArrowRight, Loader2 } from "lucide-react";
+import { Droplet, Info, Search, Database, BookOpen, Activity, ArrowRight, Loader2, BrainCircuit } from "lucide-react";
 import RenalModel from "@/components/renal/RenalModel";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useProgressTracking } from "@/hooks/useProgressTracking";
@@ -21,6 +21,13 @@ const Renal = () => {
   const [clinicalResults, setClinicalResults] = useState<ClinicalTrial[]>([]);
   const [isSearchingClinical, setIsSearchingClinical] = useState(false);
 
+  // Predictive AI State
+  const [predictiveVitals, setPredictiveVitals] = useState({
+    age: 50, egfr: 90, creatinine: 1.0, diabetes: "no"
+  });
+  const [predictionResult, setPredictionResult] = useState<any>(null);
+  const [isPredicting, setIsPredicting] = useState(false);
+
   useEffect(() => {
     markModuleVisited('renal');
     handlePubMedSearch();
@@ -39,6 +46,22 @@ const Renal = () => {
     const results = await searchClinicalTrials(clinicalQuery, 4);
     setClinicalResults(results);
     setIsSearchingClinical(false);
+  };
+
+  const handlePredictiveAnalysis = async () => {
+    setIsPredicting(true);
+    try {
+      const response = await fetch("http://localhost:8000/predict/renal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(predictiveVitals),
+      });
+      const data = await response.json();
+      setPredictionResult(data);
+    } catch (error) {
+      console.error("Prediction failed:", error);
+    }
+    setIsPredicting(false);
   };
 
   return (
@@ -70,6 +93,9 @@ const Renal = () => {
             </TabsTrigger>
             <TabsTrigger value="datasets" className="flex-1 min-w-[150px] gap-2 py-2">
               <Database className="h-4 w-4" /> Dataset Hub
+            </TabsTrigger>
+            <TabsTrigger value="predictive" className="flex-1 min-w-[150px] gap-2 py-2">
+              <BrainCircuit className="h-4 w-4" /> Predictive AI
             </TabsTrigger>
           </TabsList>
 
@@ -307,6 +333,87 @@ const Renal = () => {
                   </Card>
                 ))
               )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="predictive" className="space-y-6 animate-fade-in">
+            <div>
+              <h2 className="text-2xl font-semibold mb-2">AI Renal Risk Assessment</h2>
+              <p className="text-muted-foreground mb-6">
+                Run real-time predictive models on patient vitals. Powered by backend machine learning algorithms.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="p-6 border-border/60 shadow-sm">
+                <h3 className="font-semibold text-lg mb-4">Patient Parameters Input</h3>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium">Age</label>
+                      <input type="number" className="w-full bg-muted/50 border rounded-md px-3 py-2 text-sm" value={predictiveVitals.age} onChange={(e) => setPredictiveVitals({...predictiveVitals, age: Number(e.target.value)})} />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium">eGFR (mL/min/1.73m²)</label>
+                      <input type="number" className="w-full bg-muted/50 border rounded-md px-3 py-2 text-sm" value={predictiveVitals.egfr} onChange={(e) => setPredictiveVitals({...predictiveVitals, egfr: Number(e.target.value)})} />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium">Serum Creatinine (mg/dL)</label>
+                      <input type="number" step="0.1" className="w-full bg-muted/50 border rounded-md px-3 py-2 text-sm" value={predictiveVitals.creatinine} onChange={(e) => setPredictiveVitals({...predictiveVitals, creatinine: Number(e.target.value)})} />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-sm font-medium">Diabetes History</label>
+                      <select className="w-full bg-muted/50 border rounded-md px-3 py-2 text-sm" value={predictiveVitals.diabetes} onChange={(e) => setPredictiveVitals({...predictiveVitals, diabetes: e.target.value})}>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <Button className="w-full mt-4 bg-renal hover:bg-renal/90" onClick={handlePredictiveAnalysis} disabled={isPredicting}>
+                    {isPredicting ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : <BrainCircuit className="h-4 w-4 mr-2" />}
+                    Analyze Risk
+                  </Button>
+                </div>
+              </Card>
+              
+              <Card className="p-6 border-border/60 shadow-sm bg-muted/5">
+                <h3 className="font-semibold text-lg mb-4">Prediction Results</h3>
+                {predictionResult ? (
+                  <div className="space-y-6 animate-fade-in">
+                    <div className="flex items-center justify-between p-4 rounded-lg bg-background border">
+                      <div>
+                        <p className="text-sm text-muted-foreground">Calculated Risk Score</p>
+                        <p className="text-3xl font-bold text-renal">{(predictionResult.risk_score * 100).toFixed(1)}%</p>
+                      </div>
+                      <Badge className={predictionResult.risk_category === "High" ? "bg-destructive text-destructive-foreground" : "bg-renal text-white"}>
+                        {predictionResult.risk_category} Risk
+                      </Badge>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-sm mb-2 text-muted-foreground">Model Output</h4>
+                      <p className="text-sm bg-renal/10 text-renal p-3 rounded-md italic">"{predictionResult.message}"</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-sm mb-2 text-muted-foreground">Clinical Recommendations</h4>
+                      <ul className="space-y-2">
+                        {predictionResult.recommendations.map((rec: string, i: number) => (
+                          <li key={i} className="flex items-start gap-2 text-sm">
+                            <Activity className="h-4 w-4 text-renal shrink-0 mt-0.5" />
+                            {rec}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="h-full min-h-[200px] flex flex-col items-center justify-center text-muted-foreground text-sm opacity-60">
+                    <BrainCircuit className="h-12 w-12 mb-3 opacity-20" />
+                    <p>Enter patient parameters and click analyze to see predictions.</p>
+                  </div>
+                )}
+              </Card>
             </div>
           </TabsContent>
 
