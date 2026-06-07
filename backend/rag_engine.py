@@ -15,7 +15,7 @@ class RAGEngine:
     def __init__(self, use_llm=False):
         # Configure biomedical embedding + LLM
         Settings.embed_model = GeminiEmbedding(
-            model_name="models/text-embedding-004", api_key=os.getenv("GEMINI_API_KEY")
+            model_name="models/gemini-embedding-001", api_key=os.getenv("GEMINI_API_KEY")
         )
         
         # We only init OpenAI if the API key is present and use_llm is true

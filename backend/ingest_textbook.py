@@ -43,7 +43,7 @@ def main():
     # 1. Setup embedding model to match rag_engine.py
     print("Loading Biomedical Embedding Model...")
     Settings.embed_model = GeminiEmbedding(
-        model_name="models/text-embedding-004", api_key=os.getenv("GEMINI_API_KEY")
+        model_name="models/gemini-embedding-001", api_key=os.getenv("GEMINI_API_KEY")
     )
     Settings.llm = None  # We don't need LLM just for ingestion
     

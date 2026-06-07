@@ -58,7 +58,7 @@ class VectorSearchEngine:
         batch_size = 100
         for i in range(0, len(self.texts), batch_size):
             batch = self.texts[i:i+batch_size]
-            response = self.client.models.embed_content(model='text-embedding-004', contents=batch)
+            response = self.client.models.embed_content(model='gemini-embedding-001', contents=batch)
             embeddings.extend([e.values for e in response.embeddings])
         embeddings = np.array(embeddings, dtype="float32")
         
@@ -84,7 +84,7 @@ class VectorSearchEngine:
 
     def semantic_search_faiss(self, query: str, top_k: int = 5):
         if not self.texts: return []
-        res = self.client.models.embed_content(model='text-embedding-004', contents=[query])
+        res = self.client.models.embed_content(model='gemini-embedding-001', contents=[query])
         q_vec = np.array([res.embeddings[0].values], dtype="float32")
         distances, indices = self.faiss_index.search(q_vec, top_k)
         
@@ -102,7 +102,7 @@ class VectorSearchEngine:
         if not self.texts or not self.bm25: return []
         
         # FAISS
-        res = self.client.models.embed_content(model='text-embedding-004', contents=[query])
+        res = self.client.models.embed_content(model='gemini-embedding-001', contents=[query])
         q_vec = np.array([res.embeddings[0].values], dtype="float32")
         sem_dists, sem_idx = self.faiss_index.search(q_vec, top_k * 3)
         sem_scores = {int(i): float(d) for d, i in zip(sem_dists[0], sem_idx[0])}
