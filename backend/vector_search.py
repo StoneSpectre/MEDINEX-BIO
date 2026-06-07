@@ -30,7 +30,7 @@ class VectorSearchEngine:
         self.texts = [a["text"] for a in self.abstracts if isinstance(a.get("text"), str)]
         
         # FAISS
-        self.dim = 768
+        self.dim = 3072
         self.faiss_index = faiss.IndexHNSWFlat(self.dim, 32)
         self.faiss_index.hnsw.efConstruction = 200
         
