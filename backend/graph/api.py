@@ -56,7 +56,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:8080"],   # Dev servers
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://localhost:8080",
+        "https://medinex-bio.vercel.app",
+        "https://medinex-bio.netlify.app"
+    ],   # Dev & Prod servers
     allow_methods=["GET"],
     allow_headers=["*"],
 )
