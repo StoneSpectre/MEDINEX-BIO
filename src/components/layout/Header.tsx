@@ -23,6 +23,8 @@ const mainItems = [
   { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
   { path: "/analytics", label: "Analytics", icon: Activity, color: "text-indigo-500" },
   { path: "/assistant", label: "Assistant", icon: Sparkles, color: "text-fuchsia-400" },
+  { path: "/explorer-v1", label: "Explorer V1", icon: Network, color: "text-teal-400" },
+  { path: "/explorer-v2", label: "Explorer V2", icon: Network, color: "text-teal-600" },
 ];
 
 export function Header() {

@@ -18,6 +18,8 @@ import { KnowledgeGraph } from "./pages/KnowledgeGraph";
 import { Analytics } from "./pages/Analytics";
 import MedinexDashboard from "./pages/MedinexPhase";
 import Assistant from "./pages/Assistant";
+import ExplorerV1 from "./pages/ExplorerV1";
+import ExplorerV2 from "./pages/ExplorerV2";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +45,8 @@ const App = () => (
             <Route path="/knowledge-graph" element={<KnowledgeGraph />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/assistant" element={<Assistant />} />
+            <Route path="/explorer-v1" element={<ExplorerV1 />} />
+            <Route path="/explorer-v2" element={<ExplorerV2 />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
