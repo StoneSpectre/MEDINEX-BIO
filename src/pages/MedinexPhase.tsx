@@ -2088,18 +2088,24 @@ export default function MedinexDashboard() {
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px", alignItems: "center" }}>
             {[
               { label: "Phase 0", sub: "Biomedical Intelligence Layer", color: "#00d4ff", active: true },
-              { label: "Phase 1", sub: "Clinical AI Integration", color: "#a78bfa", active: true },
-              { label: "Phase 2", sub: "Drug Discovery Engine", color: "#34d399", active: true },
+              { label: "Phase 1", sub: "Multi-Omics & Genomics", color: "#a78bfa", active: true },
+              { label: "Phase 2", sub: "Imaging & Drug Discovery", color: "#34d399", active: true },
               { label: "Phase 3", sub: "Regulatory & Deployment", color: "#fbbf24" },
             ].map((p, i) => (
               <div key={p.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                <div style={{
+                <div 
+                  onClick={() => setActivePhaseTab(i)}
+                  style={{
                   padding: "10px 20px",
-                  background: p.active ? `rgba(${hexToRgb(p.color)},0.15)` : "rgba(255,255,255,0.02)",
-                  border: `1px solid ${p.active ? p.color + "50" : "rgba(255,255,255,0.06)"}`,
+                  background: p.active || activePhaseTab === i ? `rgba(${hexToRgb(p.color)},0.15)` : "rgba(255,255,255,0.02)",
+                  border: `1px solid ${p.active || activePhaseTab === i ? p.color + "50" : "rgba(255,255,255,0.06)"}`,
                   borderRadius: "10px",
                   textAlign: "left",
                   opacity: p.active ? 1 : 0.4,
+                  cursor: "pointer",
+                  boxShadow: activePhaseTab === i ? `0 0 15px ${p.color}40` : "none",
+                  transform: activePhaseTab === i ? "scale(1.05)" : "scale(1)",
+                  transition: "all 0.2s ease"
                 }}>
                   <div style={{ fontSize: "11px", color: p.color, fontWeight: 700, marginBottom: "2px" }}>{p.label}</div>
                   <div style={{ fontSize: "10px", color: "#64748b" }}>{p.sub}</div>
