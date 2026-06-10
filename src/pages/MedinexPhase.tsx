@@ -1310,6 +1310,33 @@ const steps = [
     isFinal: true,
     codeKey: 10,
   },
+  {
+    id: 11,
+    title: "Phase 1: Clinical AI Integration",
+    subtitle: "MIMIC-IV & Patient Timelines",
+    color: "#a78bfa",
+    icon: "🏥",
+    description: "Integrating clinical trial data, electronic health records (MIMIC-IV), and patient timeline analysis.",
+    resources: [],
+    learn: ["FHIR Standards", "Clinical Trial Parsing", "Patient Outcome Prediction"],
+    deliverable: "Clinical integration capabilities",
+    flow: null,
+    codeKey: 11,
+  },
+  {
+    id: 12,
+    title: "Phase 2: Research Workspace",
+    subtitle: "Personalized Drug Discovery Engine",
+    color: "#34d399",
+    icon: "🔬",
+    description: "Implement the interactive Workspace data model: Projects, Collections, and Literature tracking with SQLite and FastAPI.",
+    resources: [],
+    learn: ["FastAPI CRUD", "SQLite Database", "React UI Layout", "Drag-and-Drop Management"],
+    deliverable: "Personalized Research Workspace",
+    flow: ["Projects", "Collections", "Saved Papers", "Notes"],
+    isFinal: true,
+    codeKey: 12,
+  },
 ];
 
 // ─── BADGE STYLES ─────────────────────────────────────────────────────────────
@@ -1574,7 +1601,7 @@ function TaskPanel({ stepId, stepColor, completedTasks, toggleTask }) {
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function MedinexDashboard() {
-  const defaultSteps = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const defaultSteps = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   const defaultTasks = new Set([
     "7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7", "7-8", "7-9", "7-10",
     "8-1", "8-2", "8-3", "8-4", "8-5", "8-6", "8-7", "8-8", "8-9", "8-10",
