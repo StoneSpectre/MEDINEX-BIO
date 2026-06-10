@@ -2034,8 +2034,8 @@ export default function MedinexDashboard() {
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px", alignItems: "center" }}>
             {[
               { label: "Phase 0", sub: "Biomedical Intelligence Layer", color: "#00d4ff", active: true },
-              { label: "Phase 1", sub: "Clinical AI Integration", color: "#a78bfa" },
-              { label: "Phase 2", sub: "Drug Discovery Engine", color: "#34d399" },
+              { label: "Phase 1", sub: "Clinical AI Integration", color: "#a78bfa", active: true },
+              { label: "Phase 2", sub: "Drug Discovery Engine", color: "#34d399", active: true },
               { label: "Phase 3", sub: "Regulatory & Deployment", color: "#fbbf24" },
             ].map((p, i) => (
               <div key={p.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
@@ -2055,7 +2055,7 @@ export default function MedinexDashboard() {
             ))}
           </div>
           <div style={{ marginTop: "24px", fontSize: "11px", color: "#334155", letterSpacing: "1px" }}>
-            Complete all 10 steps to unlock Phase 1 — Clinical AI Integration
+            Phase 1 & 2 are now unlocked. Complete all Phase 2 steps to unlock Phase 3.
           </div>
         </div>
 
