@@ -7,3 +7,4 @@ backend/models/*.pkl
 *.log
 backend/vector_index/
 .gemini/
+workspace.db

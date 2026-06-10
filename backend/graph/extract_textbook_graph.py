@@ -1,7 +1,7 @@
 import os
 import fitz
 import json
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from google import genai
 from pydantic import BaseModel, Field
 
@@ -10,7 +10,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from graph.db import MedinexGraph
 
-load_dotenv()
+load_dotenv(find_dotenv(usecwd=True))
 
 # Define Gemini Structured Output Schema
 class Node(BaseModel):
@@ -31,23 +31,23 @@ def extract_graph_from_pdf():
     print("Connecting to Neo4j Knowledge Graph...")
     graph = MedinexGraph()
 
-    # Find the textbook
+    data_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data")
     pdf_path = None
-    for file in os.listdir(r"C:\Users\hp\Downloads"):
-        if "robbins" in file.lower() and file.endswith(".pdf"):
-            pdf_path = os.path.join(r"C:\Users\hp\Downloads", file)
+    for file in os.listdir(data_dir):
+        if file.endswith(".pdf"):
+            pdf_path = os.path.join(data_dir, file)
             break
             
     if not pdf_path:
-        print("Could not find Robbins Pathology PDF in Downloads.")
+        print(f"Could not find any PDFs in {data_dir}.")
         return
         
     print(f"Opening textbook: {pdf_path}")
     doc = fitz.open(pdf_path)
     
-    # Extract 15 pages of dense clinical text (skipping the Table of Contents)
-    start_page = 40
-    end_page = 55
+    # Extract 15 pages of dense clinical text from the middle of the book
+    start_page = 200
+    end_page = 215
     text_corpus = ""
     for i in range(start_page, min(end_page, len(doc))):
         text_corpus += doc[i].get_text() + "\n"
@@ -87,6 +87,8 @@ def extract_graph_from_pdf():
         )
         extracted_data = json.loads(response.text)
         print("Gemini successfully extracted the structured graph!")
+        print("Raw extracted nodes:", len(extracted_data.get("nodes", [])))
+        print(json.dumps(extracted_data, indent=2))
     except Exception as e:
         print(f"Warning: Gemini API call failed (likely an invalid API key): {e}")
         print("Falling back to simulated extraction for the demo pipeline...")
@@ -144,14 +146,15 @@ def extract_graph_from_pdf():
     print("Injecting entities into Neo4j Database...")
     for node in extracted_data["nodes"]:
         props = {"id": node["id"], "name": node["name"]}
-        if node["type"] == "Disease":
+        node_type = node["type"].capitalize()
+        if node_type == "Disease":
             graph.upsert_disease(props)
-        elif node["type"] == "Gene":
+        elif node_type == "Gene":
             props["symbol"] = node["name"] # Gene schema expects symbol
             graph.upsert_gene(props)
-        elif node["type"] == "Symptom":
+        elif node_type == "Symptom":
             graph.upsert_symptom(props)
-        elif node["type"] == "Drug":
+        elif node_type == "Drug":
             graph.upsert_drug(props)
         
     for edge in extracted_data["edges"]:

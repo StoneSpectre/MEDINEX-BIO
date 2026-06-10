@@ -28,19 +28,22 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from .db import MedinexGraph
+from .citation_intelligence import CitationIntelligence
 
 # ── App lifecycle ─────────────────────────────────────────────
 
 _graph: Optional[MedinexGraph] = None
+_ci: Optional[CitationIntelligence] = None
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global _graph
+    global _graph, _ci
     _graph = MedinexGraph()
     health = _graph.health_check()
     if not health["ok"]:
         raise RuntimeError(f"Neo4j unreachable at startup: {health['error']}")
+    _ci = CitationIntelligence(_graph)
     print(f"[API] Neo4j connected — {health['version']}")
     yield
     _graph.close()
@@ -71,6 +74,11 @@ def graph() -> MedinexGraph:
     if _graph is None:
         raise HTTPException(503, "Graph not initialised")
     return _graph
+
+def ci() -> CitationIntelligence:
+    if _ci is None:
+        raise HTTPException(503, "Citation intelligence not initialised")
+    return _ci
 
 
 # ── Routes ────────────────────────────────────────────────────
@@ -355,3 +363,63 @@ def research_timeline(disease_id: str):
         disease_id=disease_id,
     )
     return {"disease_id": disease_id, "timeline": results}
+
+# ── Citation intelligence routes (Step 6) ─────────────────────
+
+@app.get("/citations/path")
+def citation_path(
+    from_pmid: str = Query(...),
+    to_pmid:   str = Query(...),
+    max_depth: int = Query(5, ge=1, le=8),
+):
+    """Trace how knowledge flowed from paper A to paper B via citations."""
+    paths = ci().find_citation_path(from_pmid, to_pmid, max_depth=max_depth)
+    if not paths:
+        raise HTTPException(404, f"No citation path from {from_pmid} to {to_pmid}")
+    return {"from_pmid": from_pmid, "to_pmid": to_pmid, "paths": paths}
+
+
+@app.get("/citations/landmark")
+def landmark_papers(top_n: int = Query(20, ge=1, le=100)):
+    """Top influential papers by PageRank / in-degree."""
+    papers = ci().detect_landmark_papers(top_n=top_n)
+    return {"papers": papers, "count": len(papers)}
+
+
+@app.get("/citations/competing")
+def competing_theories(
+    disease_id: Optional[str] = Query(None),
+    min_papers: int           = Query(2, ge=1),
+    limit:      int           = Query(20, ge=1, le=100),
+):
+    """Gene-level competing mechanistic theories per disease."""
+    theories = ci().find_competing_theories(
+        disease_id=disease_id, min_papers=min_papers, limit=limit
+    )
+    return {"theories": theories, "count": len(theories)}
+
+
+@app.get("/citations/researcher-influence")
+def researcher_influence(
+    top_n:      int            = Query(20, ge=1, le=100),
+    disease_id: Optional[str] = Query(None),
+):
+    """Researcher influence: h_index, papers, diseases, collaborators."""
+    results = ci().researcher_influence(top_n=top_n, disease_id=disease_id)
+    return {"researchers": results, "count": len(results)}
+
+
+@app.get("/citations/evolution/{disease_id}")
+def citation_evolution(disease_id: str, start_year: int = Query(2000)):
+    """Research volume over time for a disease."""
+    timeline = ci().research_evolution(disease_id=disease_id, start_year=start_year)
+    return {"disease_id": disease_id, "start_year": start_year, "data": timeline}
+
+
+@app.post("/citations/pagerank")
+def run_pagerank():
+    """Trigger PageRank computation (requires GDS plugin). POST to avoid accidental runs."""
+    result = ci().run_pagerank()
+    if not result["ok"]:
+        raise HTTPException(503, result["reason"])
+    return result

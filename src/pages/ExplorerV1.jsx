@@ -499,7 +499,7 @@ const css = `
 `;
 
 // ─── Mock API (replace with real fetch to api.py) ─────────────────────────────
-const API_BASE = "http://localhost:8000";
+const API_BASE = "http://localhost:8001";
 
 async function fetchStats() {
   try {
@@ -1023,7 +1023,7 @@ export default function ExplorerV1() {
       const res = await searchDiseases(query, filters);
       setDiseases(res.results || []);
     } catch (e) {
-      setError("Query failed — check that api.py is running on :8000");
+      setError("Query failed — check that api.py is running on :8001");
     }
     setLoading(false);
   };

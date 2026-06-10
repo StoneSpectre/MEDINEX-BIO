@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
@@ -19,11 +19,15 @@ const topicItems = [
   { path: "/system-thinking", label: "System Thinking", icon: Brain, color: "text-systems" },
 ];
 
-const mainItems = [
+const featureItems = [
   { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
   { path: "/analytics", label: "Analytics", icon: Activity, color: "text-indigo-500" },
   { path: "/assistant", label: "Assistant", icon: Sparkles, color: "text-fuchsia-400" },
   { path: "/explorer", label: "Explorer", icon: Network, color: "text-teal-500" },
+];
+
+const mainItems = [
+  { path: "/workspace", label: "Workspace", icon: BookOpen, color: "text-emerald-500" },
 ];
 
 export function Header() {
@@ -50,6 +54,29 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-56 bg-background/95 backdrop-blur-md border-border/50">
               {topicItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <DropdownMenuItem key={item.path} asChild className="cursor-pointer">
+                    <Link to={item.path} className="flex items-center gap-3 w-full py-2">
+                      <Icon className={cn("h-4 w-4", item.color)} />
+                      <span>{item.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="gap-2 transition-colors">
+                <Settings className="h-4 w-4" />
+                <span className="hidden lg:inline">Tools</span>
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-56 bg-background/95 backdrop-blur-md border-border/50">
+              {featureItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <DropdownMenuItem key={item.path} asChild className="cursor-pointer">
@@ -130,6 +157,29 @@ export function Header() {
             <div className="flex flex-col gap-1 pb-2 border-b border-border/30">
               <span className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 mt-2">Topics</span>
               {topicItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Button
+                      variant={isActive ? "secondary" : "ghost"}
+                      className="w-full justify-start gap-3 pl-6"
+                    >
+                      <Icon className={cn("h-5 w-5", item.color)} />
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              })}
+            </div>
+            
+            <div className="flex flex-col gap-1 pb-2 border-b border-border/30">
+              <span className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 mt-2">Tools</span>
+              {featureItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path;
                 return (

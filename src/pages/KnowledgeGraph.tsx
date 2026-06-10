@@ -23,7 +23,7 @@ export function KnowledgeGraph() {
   const fgRef = useRef<any>();
 
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
     fetch(`${API_URL}/graph`)
       .then(res => res.json())
       .then(data => {

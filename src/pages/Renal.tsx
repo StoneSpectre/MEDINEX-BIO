@@ -51,7 +51,7 @@ const Renal = () => {
   const handlePredictiveAnalysis = async () => {
     setIsPredicting(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8001";
       const response = await fetch(`${API_URL}/predict/renal`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
