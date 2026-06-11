@@ -155,6 +155,29 @@ export function Header() {
         <div className="border-t border-border md:hidden">
           <nav className="container flex flex-col gap-1 py-4">
             <div className="flex flex-col gap-1 pb-2 border-b border-border/30">
+              <span className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 mt-2">Main</span>
+              {mainItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Button
+                      variant={isActive ? "secondary" : "ghost"}
+                      className="w-full justify-start gap-3 pl-6"
+                    >
+                      <Icon className={cn("h-5 w-5", item.color)} />
+                      {item.label}
+                    </Button>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-col gap-1 pb-2 border-b border-border/30">
               <span className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 mt-2">Topics</span>
               {topicItems.map((item) => {
                 const Icon = item.icon;

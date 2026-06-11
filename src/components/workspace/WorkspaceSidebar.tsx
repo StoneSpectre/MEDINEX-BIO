@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { workspaceApi } from "@/lib/api/workspace";
-import { Folder, FolderOpen, FileText, Library, Tag, Plus, PlusCircle, BrainCircuit, Map, Users, Layers } from "lucide-react";
+import { Folder, FolderOpen, FileText, Library, Tag, Plus, PlusCircle, BrainCircuit, Map, Users, Layers, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -69,6 +69,14 @@ export function WorkspaceSidebar({ projectId, activeView, setActiveView }: Works
           >
             <Map className="mr-2 h-4 w-4 text-emerald-500" />
             Research Map
+          </Button>
+          <Button 
+            variant={activeView === "activity" ? "secondary" : "ghost"} 
+            onClick={() => setActiveView("activity")}
+            className={cn("w-full justify-start h-8 px-2 text-sm font-normal mt-2", activeView !== "activity" && "text-muted-foreground")}
+          >
+            <Activity className="mr-2 h-4 w-4 text-orange-500" />
+            Activity Feed
           </Button>
         </div>
 
