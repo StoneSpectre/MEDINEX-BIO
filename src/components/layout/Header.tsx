@@ -122,7 +122,7 @@ export function Header() {
           )}
           <Link to="/roadmap" className="hidden sm:block">
             <Button variant="ghost" size="sm">
-              Biomedical Intelligence
+              Phase Tracker
             </Button>
           </Link>
           <Link to="/about" className="hidden sm:block">
@@ -232,7 +232,7 @@ export function Header() {
               )}
               <Link to="/roadmap" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start">
-                  Biomedical Intelligence
+                  Phase Tracker
                 </Button>
               </Link>
               <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
