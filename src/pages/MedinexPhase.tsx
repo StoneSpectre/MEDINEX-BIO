@@ -1350,45 +1350,110 @@ const steps = [
     flow: null,
   },
   {
-    id: 14,
+    id: 21,
     phase: 2,
-    title: "MONAI Framework",
-    subtitle: "Medical Imaging",
+    title: "Workspace Data Model",
+    subtitle: "PostgreSQL Schema",
     color: "#34d399",
-    icon: "🖼️",
-    description: "Implement MONAI for deep learning in medical imaging.",
+    icon: "🗄️",
+    description: "Database foundation for projects, collections, notes, folders, and saved papers. Ensuring everything is user-scoped and project-scoped for seamless collaboration.",
     resources: [],
-    learn: ["Medical Image Segmentation", "Classification", "MONAI"],
-    deliverable: "Imaging AI Models",
-    flow: ["Images", "MONAI", "Predictions"],
+    learn: ["PostgreSQL", "Data Modeling", "Collaboration Schema"],
+    deliverable: "Robust Database Architecture",
+    flow: ["Schema Design", "Migrations", "Database Provisioning"],
   },
   {
-    id: 15,
+    id: 22,
     phase: 2,
-    title: "SimpleITK",
-    subtitle: "Image Processing",
+    title: "CRUD API Layer",
+    subtitle: "FastAPI Endpoints",
     color: "#34d399",
-    icon: "⚙️",
-    description: "Use SimpleITK for robust medical image processing and registration.",
+    icon: "⚡",
+    description: "Building the REST API layer for saving papers, creating collections, and managing notes within isolated workspaces.",
     resources: [],
-    learn: ["Image Registration", "Filtering", "Segmentation"],
-    deliverable: "Image Processing Pipeline",
-    flow: null,
+    learn: ["FastAPI", "JWT Auth", "RESTful Design"],
+    deliverable: "Workspace API Endpoints",
+    flow: ["Endpoints", "Validation", "Auth Middleware"],
   },
   {
-    id: 16,
+    id: 23,
     phase: 2,
-    title: "DeepChem",
-    subtitle: "Drug Discovery",
+    title: "Literature Tracker",
+    subtitle: "React Table UI",
     color: "#34d399",
-    icon: "💊",
-    description: "Leverage DeepChem for virtual screening and drug discovery.",
+    icon: "📊",
+    description: "Interactive data tables for researchers to track reading status, tags, and AI-generated summaries of their saved literature.",
     resources: [],
-    learn: ["Molecular Fingerprints", "GNNs", "Virtual Screening"],
-    deliverable: "Drug Discovery Engine",
-    flow: ["Molecules", "DeepChem", "Hit Compounds"],
+    learn: ["React Table", "State Management", "UI Design"],
+    deliverable: "Literature Tracking Interface",
+    flow: ["Table Component", "Filtering/Sorting", "API Integration"],
+  },
+  {
+    id: 24,
+    phase: 2,
+    title: "Next.js Frontend",
+    subtitle: "Workspace Integration",
+    color: "#34d399",
+    icon: "🖥️",
+    description: "Comprehensive frontend workspace with a project sidebar, rich-text note editor, and 'Save to Project' integrations from the Disease Explorer.",
+    resources: [],
+    learn: ["Next.js/Vite", "React Quill", "Component Architecture"],
+    deliverable: "Fully Integrated Workspace UI",
+    flow: ["Sidebar", "Note Editor", "Explorer Hooks"],
+  },
+  {
+    id: 25,
+    phase: 2,
+    title: "AI Literature Review",
+    subtitle: "GraphRAG Pipeline",
+    color: "#34d399",
+    icon: "🧠",
+    description: "Connecting the workspace collections to LlamaIndex to synthesize comprehensive literature reviews and generate dynamic citation networks.",
+    resources: [],
+    learn: ["GraphRAG", "LLM Synthesis", "Citation Mapping"],
+    deliverable: "Automated AI Review Generator",
+    flow: ["Knowledge Graph", "Prompt Engineering", "Review Draft UI"],
+  },
+  {
+    id: 26,
+    phase: 2,
+    title: "Research Maps",
+    subtitle: "Topic Map Visualization",
+    color: "#34d399",
+    icon: "🗺️",
+    description: "Clustering high-dimensional PubMedBERT embeddings to create interactive 2D thematic maps of a researcher's saved literature.",
+    resources: [],
+    learn: ["KMeans Clustering", "Dimensionality Reduction", "Recharts"],
+    deliverable: "Interactive Topic Maps",
+    flow: ["Embeddings", "Clustering", "Scatter Plot UI"],
+  },
+  {
+    id: 27,
+    phase: 2,
+    title: "Collaboration Layer",
+    subtitle: "Team Features",
+    color: "#34d399",
+    icon: "👥",
+    description: "Enabling teamwork through teammate invitations, task assignment dropdowns, inline note comments, and a chronological activity feed.",
+    resources: [],
+    learn: ["Real-time UI", "Activity Feeds", "Role Management"],
+    deliverable: "Multi-user Project Support",
+    flow: ["Invites", "Activity Feed", "Comments Sidebar"],
+  },
+  {
+    id: 28,
+    phase: 2,
+    title: "Final Integration",
+    subtitle: "Deployment",
+    color: "#34d399",
+    icon: "🚀",
+    description: "End-to-end integration of the workspace frontend and FastAPI backend, preparing the system for scalable deployment.",
+    resources: [],
+    learn: ["Docker", "Vercel", "CI/CD"],
+    deliverable: "Production-ready Workspace",
+    flow: ["Build", "Test", "Deploy"],
+    isFinal: true,
   }
-
 ];
 
 // ─── BADGE STYLES ─────────────────────────────────────────────────────────────
@@ -1653,18 +1718,21 @@ function TaskPanel({ stepId, stepColor, completedTasks, toggleTask }) {
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function MedinexDashboard() {
-  const defaultSteps = new Set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const defaultSteps = new Set([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    21, 22, 23, 24, 25, 26, 27
+  ]);
   const defaultTasks = new Set([
     "7-1", "7-2", "7-3", "7-4", "7-5", "7-6", "7-7", "7-8", "7-9", "7-10",
     "8-1", "8-2", "8-3", "8-4", "8-5", "8-6", "8-7", "8-8", "8-9", "8-10",
     "9-1", "9-2", "9-3", "9-4", "9-5", "9-6", "9-7", "9-8", "9-9", "9-10",
     "10-1", "10-2", "10-3", "10-4", "10-5", "10-6", "10-7", "10-8", "10-9", "10-10", "10-11", "10-12"
   ]);
-  const [activeStep, setActiveStep]         = useState(null);
+  const [activeStep, setActiveStep]         = useState<number | null>(null);
   const [completedSteps, setCompletedSteps] = useState(defaultSteps);
   const [completedTasks, setCompletedTasks] = useState(defaultTasks);
   const [activeTab, setActiveTabState]      = useState("tasks"); // "tasks" | "code"
-  const [activePhaseTab, setActivePhaseTab] = useState(0);
+  const [activePhaseTab, setActivePhaseTab] = useState(2); // Default to Phase 2 where our current work is
 
   const toggleComplete = (id, e) => {
     e.stopPropagation();
