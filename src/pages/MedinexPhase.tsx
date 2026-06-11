@@ -1790,7 +1790,7 @@ export default function MedinexDashboard() {
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <div style={{ fontSize: "11px", letterSpacing: "6px", color: activePhaseTab === 0 ? "#00d4ff" : activePhaseTab === 1 ? "#a78bfa" : activePhaseTab === 2 ? "#34d399" : "#fbbf24", textTransform: "uppercase", marginBottom: "16px", opacity: 0.8 }}>
-            {activePhaseTab === 0 ? "PHASE 0 · BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PHASE 1 · MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "PHASE 2 · IMAGING & DRUG DISCOVERY" : "PHASE 3 · REGULATORY & DEPLOYMENT"}
+            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PHASE 1 · MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "PHASE 2 · BIOMEDICAL WORKSPACE & COLLABORATION" : "PHASE 3 · REGULATORY & DEPLOYMENT"}
           </div>
           <h1 style={{
             fontSize: "clamp(36px, 6vw, 72px)",
@@ -2155,9 +2155,9 @@ export default function MedinexDashboard() {
           <div style={{ fontSize: "10px", letterSpacing: "4px", color: "#475569", marginBottom: "16px" }}>PHASE ROADMAP</div>
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px", alignItems: "center" }}>
             {[
-              { label: "Phase 0", sub: "Biomedical Intelligence Layer", color: "#00d4ff", active: true },
+              { label: "Biomedical Intelligence", sub: "Data Pipeline Layer", color: "#00d4ff", active: true },
               { label: "Phase 1", sub: "Multi-Omics & Genomics", color: "#a78bfa", active: true },
-              { label: "Phase 2", sub: "Imaging & Drug Discovery", color: "#34d399", active: true },
+              { label: "Phase 2", sub: "Biomedical Workspace", color: "#34d399", active: true },
               { label: "Phase 3", sub: "Regulatory & Deployment", color: "#fbbf24" },
             ].map((p, i) => (
               <div key={p.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
