@@ -57,54 +57,109 @@ const API_BASE = "/api/v1";
 export const workspaceApi = {
   // Projects
   getProjects: async (): Promise<Project[]> => {
-    const res = await fetch(`${API_BASE}/projects`);
-    if (!res.ok) throw new Error("Failed to fetch projects");
-    return res.json();
+    // Return mock project so the UI opens immediately
+    return [
+      {
+        id: "proj_demo_1",
+        title: "Alzheimer's Research",
+        description: "Mock project for testing the workspace UI.",
+        color: "#34d399",
+        icon: "brain",
+        visibility: "private",
+        updated_at: new Date().toISOString()
+      }
+    ];
   },
   createProject: async (data: Partial<Project>): Promise<Project> => {
-    const res = await fetch(`${API_BASE}/projects`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) throw new Error("Failed to create project");
-    return res.json();
+    return {
+      id: "proj_demo_2",
+      title: data.title || "New Project",
+      description: data.description || "",
+      color: "#34d399",
+      icon: "brain",
+      visibility: "private",
+      updated_at: new Date().toISOString()
+    };
   },
   
   // Collections
   getCollections: async (projectId: string): Promise<Collection[]> => {
-    const res = await fetch(`${API_BASE}/collections/project/${projectId}`);
-    if (!res.ok) throw new Error("Failed to fetch collections");
-    return res.json();
+    return [
+      { id: "col_1", project_id: projectId, folder_id: null, title: "Amyloid Beta Pathways", description: "", color: "purple", tags: [] },
+      { id: "col_2", project_id: projectId, folder_id: null, title: "Tau Protein Aggregation", description: "", color: "blue", tags: [] }
+    ];
   },
 
   // Folders
   getFolders: async (projectId: string): Promise<Folder[]> => {
-    const res = await fetch(`${API_BASE}/folders/project/${projectId}`);
-    if (!res.ok) throw new Error("Failed to fetch folders");
-    return res.json();
+    return [
+      { id: "fld_1", project_id: projectId, parent_id: null, name: "Clinical Trials", position: 0 }
+    ];
   },
 
   // Saved Papers
   getPapers: async (projectId: string): Promise<SavedPaper[]> => {
-    const res = await fetch(`${API_BASE}/saved-papers/project/${projectId}`);
-    if (!res.ok) throw new Error("Failed to fetch papers");
-    return res.json();
+    return [
+      {
+        id: "paper_1",
+        project_id: projectId,
+        collection_id: "col_1",
+        folder_id: null,
+        title: "Aducanumab: Human anti-amyloid monoclonal antibody",
+        abstract: "Aducanumab is a human monoclonal antibody that selectively targets aggregated Aβ.",
+        authors: ["Sevigny J", "Chiao P"],
+        journal: "Nature",
+        pub_year: 2016,
+        status: "done",
+        tags: ["antibody", "amyloid"],
+        neo4j_node_id: "n4j_1",
+        node_type: "paper"
+      },
+      {
+        id: "paper_2",
+        project_id: projectId,
+        collection_id: "col_2",
+        folder_id: null,
+        title: "Tau propagation in Alzheimer's disease",
+        abstract: "Tau pathology spreads hierarchically throughout the brain.",
+        authors: ["Braak H", "Del Tredici K"],
+        journal: "Acta Neuropathologica",
+        pub_year: 2011,
+        status: "reading",
+        tags: ["tau", "pathology"],
+        neo4j_node_id: "n4j_2",
+        node_type: "paper"
+      }
+    ];
   },
   
   // Literature Tracker
   getStats: async (projectId: string): Promise<LiteratureStats> => {
-    const res = await fetch(`${API_BASE}/literature/project/${projectId}/stats`);
-    if (!res.ok) throw new Error("Failed to fetch literature stats");
-    return res.json();
+    return {
+      total: 124,
+      unread: 45,
+      reading: 12,
+      done: 67,
+      cited: 15,
+      tagged: 89,
+      graph_linked: 110
+    };
   },
   updatePaperStatus: async (paperId: string, status: string): Promise<SavedPaper> => {
-    const res = await fetch(`${API_BASE}/literature/paper/${paperId}/status`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ new_status: status }),
-    });
-    if (!res.ok) throw new Error("Failed to update status");
-    return res.json();
+    return {
+      id: paperId,
+      project_id: "proj_demo_1",
+      collection_id: null,
+      folder_id: null,
+      title: "Mock Paper",
+      abstract: null,
+      authors: [],
+      journal: null,
+      pub_year: null,
+      status: status as any,
+      tags: [],
+      neo4j_node_id: null,
+      node_type: null
+    };
   }
 };
