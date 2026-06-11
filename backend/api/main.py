@@ -9,8 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.core.config import settings
 from api.core.database import engine, Base
-from api.routers import projects, folders, collections, saved_papers, notes, literature
-
+from api.routers import projects, folders, collections, saved_papers, notes, literature, literature_review, research_maps
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -18,7 +17,6 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     yield
-
 
 app = FastAPI(
     title="Medinex Workspace API",
@@ -42,6 +40,8 @@ app.include_router(collections.router,   prefix="/api/v1/collections",    tags=[
 app.include_router(saved_papers.router,  prefix="/api/v1/saved-papers",   tags=["Saved Papers"])
 app.include_router(notes.router,         prefix="/api/v1/notes",          tags=["Notes"])
 app.include_router(literature.router,    prefix="/api/v1/literature",     tags=["Literature Tracker"])
+app.include_router(literature_review.router, prefix="/api/v1/workspace/projects", tags=["AI Literature Review"])
+app.include_router(research_maps.router, prefix="/api/v1/workspace/projects", tags=["Research Maps"])
 
 
 @app.get("/health")

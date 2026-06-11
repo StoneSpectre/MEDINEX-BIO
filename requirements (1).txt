@@ -1,0 +1,16 @@
+# ── Core graph driver ────────────────────────────────────────
+neo4j==5.20.0
+
+# ── HTTP + data ───────────────────────────────────────────────
+requests==2.31.0
+pandas==2.2.0
+
+# ── Config ───────────────────────────────────────────────────
+python-dotenv==1.0.1
+
+# ── API layer (Step 5) ────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+
+# ── XML parsing (PubMed efetch — stdlib, listed for clarity) ──
+# xml.etree.ElementTree  (stdlib — no install needed)

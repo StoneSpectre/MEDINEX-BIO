@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/layout/Header";
 import { WorkspaceLayout } from "@/components/workspace/WorkspaceLayout";
 import { PapersTable } from "@/components/workspace/PapersTable";
+import { NoteEditor } from "@/components/workspace/NoteEditor";
+import { ReviewDraftUI } from "@/components/workspace/ReviewDraftUI";
+import { TopicMapVis } from "@/components/workspace/TopicMapVis";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { workspaceApi } from "@/lib/api/workspace";
 import { Layers, Plus, ExternalLink, Activity, Network } from "lucide-react";
@@ -44,6 +47,8 @@ export default function Workspace() {
     enabled: !!activeProjectId
   });
 
+  const [activeView, setActiveView] = useState("papers");
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground selection:bg-primary/20">
       <Header />
@@ -77,7 +82,7 @@ export default function Workspace() {
           </Button>
         </div>
       ) : activeProjectId ? (
-        <WorkspaceLayout projectId={activeProjectId}>
+        <WorkspaceLayout projectId={activeProjectId} activeView={activeView} setActiveView={setActiveView}>
           {/* Top Statistics Dashboard Strip */}
           <div className="h-14 border-b border-border/50 bg-card/30 flex items-center px-6 gap-6 shrink-0">
             <div className="text-sm font-semibold text-foreground flex items-center gap-2 mr-4">
@@ -112,7 +117,12 @@ export default function Workspace() {
             </div>
           </div>
 
-          <PapersTable projectId={activeProjectId} />
+          <div className="flex-1 overflow-hidden p-6">
+            {activeView === "papers" && <PapersTable projectId={activeProjectId} />}
+            {activeView === "notes" && <NoteEditor projectId={activeProjectId} />}
+            {activeView === "ai_review" && <ReviewDraftUI projectId={activeProjectId} />}
+            {activeView === "research_map" && <TopicMapVis projectId={activeProjectId} />}
+          </div>
         </WorkspaceLayout>
       ) : null}
     </div>

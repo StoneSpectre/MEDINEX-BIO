@@ -1,0 +1,30 @@
+:root {
+  --color-background-tertiary: #0C0E14; /* deep background */
+  --color-background-secondary: #141820; /* surface */
+  --color-background-primary: #1E2330; /* border/card used as primary card bg? wait, the prompt says #141820 is surface. I will use 141820 for primary card */
+  
+  --color-border-primary: #1BC99A; /* teal */
+  --color-border-secondary: #2E7D6E; /* teal-dim */
+  --color-border-tertiary: #1E2330; /* border/card */
+  
+  --color-text-primary: #F0F2F8; /* primary text */
+  --color-text-secondary: #8891A8; /* muted */
+  --color-text-tertiary: #6b7280; /* even more muted */
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  --border-radius-md: 6px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+* {
+  box-sizing: border-box;
+}

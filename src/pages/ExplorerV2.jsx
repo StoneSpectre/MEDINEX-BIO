@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { BookmarkPlus } from "lucide-react";
 
 // ── Color tokens — maps node label → teal/amber/violet/slate family
 const NODE_COLOR = {
@@ -592,11 +593,12 @@ function DiseasePanel({ data, selectedNode, onNodeSelect }) {
             background: "var(--color-background-secondary)",
             borderRadius: "var(--border-radius-md)",
             border: "0.5px solid var(--color-border-tertiary)",
+            position: "relative"
           }}>
-            <div style={{ fontSize: 11, color: "var(--color-text-primary)", lineHeight: 1.45, marginBottom: 3 }}>
+            <div style={{ fontSize: 11, color: "var(--color-text-primary)", lineHeight: 1.45, marginBottom: 3, paddingRight: 24 }}>
               {p.title}
             </div>
-            <div style={{ display: "flex", gap: 8 }}>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <span style={{
                 fontFamily: "var(--font-mono)", fontSize: 10,
                 color: "#94A3B8",
@@ -605,6 +607,32 @@ function DiseasePanel({ data, selectedNode, onNodeSelect }) {
               </span>
               <span style={{ fontSize: 10, color: "var(--color-text-tertiary)" }}>{p.year}</span>
             </div>
+            <button 
+              onClick={() => {
+                alert(`Saved paper "${p.title}" to Workspace!`);
+                // TODO: Wire this to POST /api/workspace/projects/{id}/papers
+              }}
+              style={{
+                position: "absolute",
+                right: 8,
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                color: "var(--color-text-tertiary)",
+                padding: 4,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "color 0.2s"
+              }}
+              onMouseOver={(e) => e.currentTarget.style.color = "#A78BFA"}
+              onMouseOut={(e) => e.currentTarget.style.color = "var(--color-text-tertiary)"}
+              title="Save to Project"
+            >
+              <BookmarkPlus size={16} />
+            </button>
           </div>
         )}
       />
