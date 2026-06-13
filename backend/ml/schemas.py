@@ -33,6 +33,7 @@ class PredictionResponse(BaseModel):
     risk_score: float          # 0.0 – 1.0
     risk_level: RiskLevel
     risk_percent: int          # rounded % for display
+    diagnosis: str             # Actual clinical diagnosis string
     top_factors: List[SHAPFeature]
     summary: str               # plain-English one-liner for the doctor
     anomalies: List[str]       # list of flagged impossible/outlier values

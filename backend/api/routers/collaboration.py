@@ -15,7 +15,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, WebSocket, WebSock
 from sqlalchemy import delete, insert, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..db import get_db
+from api.core.database import get_db
 from ..models import (
     ActivityEvent,
     Comment,

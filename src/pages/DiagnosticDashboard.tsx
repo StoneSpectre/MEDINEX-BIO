@@ -16,6 +16,11 @@ export default function DiagnosticDashboard() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
+  // Set the document title dynamically
+  useEffect(() => {
+    document.title = "Diagnostic Intelligence | MEDINEX";
+  }, []);
+
   // Fetch fields when module changes
   useEffect(() => {
     fetch(`http://localhost:8000/api/v1/${activeModule.id}/fields`)
@@ -154,8 +159,8 @@ export default function DiagnosticDashboard() {
                   <div style={{ fontSize: "3rem", fontWeight: 700, color: result.risk_score > 0.5 ? "#E05C5C" : activeModule.color, fontFamily: "JetBrains Mono, monospace" }}>
                     {result.risk_percent}%
                   </div>
-                  <div style={{ fontSize: "1rem", color: result.risk_score > 0.5 ? "#E05C5C" : activeModule.color, marginTop: "5px", textTransform: "uppercase", fontWeight: 600 }}>
-                    {result.risk_level} RISK
+                  <div style={{ fontSize: "1.2rem", color: result.risk_score > 0.5 ? "#E05C5C" : activeModule.color, marginTop: "5px", fontWeight: 600 }}>
+                    {result.diagnosis}
                   </div>
                   {result.summary && (
                     <div style={{ fontSize: "0.9rem", color: "#8A8FA8", marginTop: "10px" }}>

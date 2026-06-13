@@ -16,7 +16,7 @@ from sqlalchemy import func, select, text, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..db import get_db
+from api.core.database import get_db
 from ..models import PaperCoSave, PaperAnalytic, ResearchEvent, TopicAnalytic, TrendAnalytic
 from ..schemas.research_events import (
     AnalyticsDashboard,

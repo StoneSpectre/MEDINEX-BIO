@@ -514,11 +514,24 @@ class MedinexPredictor:
                 f"Primary driver: {top_driver}."
             )
 
+        # Diagnosis formulation
+        if module == "thyroid":
+            diagnosis = f"Clinical {thyroid_class.title()}" if risk_score > 0.50 else "Euthyroid (Normal)"
+        elif module == "diabetes":
+            diagnosis = "Type 2 Diabetes Mellitus" if risk_score > 0.50 else "No Diabetes Detected"
+        elif module == "hepatic":
+            diagnosis = "Hepatocellular Disease / Cirrhosis" if risk_score > 0.50 else "Healthy Hepatic Function"
+        elif module == "respiratory":
+            diagnosis = "Chronic Respiratory Disease (COPD/Asthma)" if risk_score > 0.50 else "Healthy Respiratory Function"
+        else:
+            diagnosis = "Positive Finding" if risk_score > 0.50 else "Negative Finding"
+
         return {
             "module": module,
             "risk_score": risk_score,
             "risk_level": level,
             "risk_percent": int(risk_score * 100),
+            "diagnosis": diagnosis,
             "top_factors": top_factors,
             "summary": summary,
             "anomalies": anomalies,
