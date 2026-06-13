@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_URL=postgresql://medinex_user:password@db:5432/medinex_db
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - medinex-net
+    volumes:
+      - ./backend:/app/backend
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=medinex_user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=medinex_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medinex_user -d medinex_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - medinex-net
+
+networks:
+  medinex-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
