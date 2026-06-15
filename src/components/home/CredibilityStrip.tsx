@@ -19,16 +19,16 @@ export function CredibilityStrip() {
   return (
     <section className="border-y border-border bg-muted/30">
       <div className="container py-6">
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8 divide-y md:divide-y-0 md:divide-x divide-border/50">
           {credibilityItems.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
                 key={index}
-                className="flex items-center gap-2.5 text-sm text-muted-foreground"
+                className="flex items-center justify-center gap-2.5 text-sm text-muted-foreground py-2 md:py-0"
               >
-                <Icon className="h-4 w-4" />
-                <span>{item.text}</span>
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className="text-center md:text-left">{item.text}</span>
               </div>
             );
           })}
