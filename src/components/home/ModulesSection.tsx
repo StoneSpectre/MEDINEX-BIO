@@ -84,7 +84,7 @@ const modules = [
 export function ModulesSection() {
   return (
     <section className="py-16 sm:py-24 overflow-hidden">
-      <div className="container mb-12 text-center">
+      <div className="container mb-20 text-center">
         <h2 className="mb-4">Explore Physiology Modules</h2>
         <p className="mx-auto max-w-2xl text-muted-foreground">
           Each module presents physiology as interconnected systems with
