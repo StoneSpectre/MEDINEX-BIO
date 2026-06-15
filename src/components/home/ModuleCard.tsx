@@ -25,7 +25,7 @@ export function ModuleCard({
       className="group animate-fade-in"
       style={{ animationDelay: `${delay}s` }}
     >
-      <article className="relative h-full overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-7 transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
+      <article className="relative h-full overflow-hidden rounded-2xl border border-border/60 bg-card p-7 transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1">
         {/* Icon */}
         <div
           className={cn(
@@ -33,7 +33,13 @@ export function ModuleCard({
             colorClass === "text-cardio" && "bg-cardio/10",
             colorClass === "text-renal" && "bg-renal/10",
             colorClass === "text-immune" && "bg-immune/10",
-            colorClass === "text-systems" && "bg-systems/10"
+            colorClass === "text-systems" && "bg-systems/10",
+            colorClass === "text-purple-500" && "bg-purple-500/10",
+            colorClass === "text-pink-500" && "bg-pink-500/10",
+            colorClass === "text-orange-500" && "bg-orange-500/10",
+            colorClass === "text-blue-500" && "bg-blue-500/10",
+            colorClass === "text-yellow-500" && "bg-yellow-500/10",
+            colorClass === "text-sky-500" && "bg-sky-500/10"
           )}
         >
           <Icon className={cn("h-6 w-6", colorClass)} />
