@@ -4,7 +4,7 @@ import medinexLogo from "@/assets/medinex-logo.png";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="container py-12">
+      <div className="container pt-24 pb-12">
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
@@ -65,7 +65,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="mt-0 mb-10" />
+        <Separator className="my-8" />
 
         {/* Disclaimer */}
         <div className="space-y-3 text-xs text-muted-foreground">
