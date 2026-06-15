@@ -18,7 +18,7 @@ const credibilityItems = [
 export function CredibilityStrip() {
   return (
     <section className="border-y border-border bg-muted/30">
-      <div className="container py-6">
+      <div className="container py-3">
         <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8">
           {credibilityItems.map((item, index) => {
             const Icon = item.icon;
