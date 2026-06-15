@@ -3,7 +3,7 @@ import { BookOpen, Lock, Shield } from "lucide-react";
 const credibilityItems = [
   {
     icon: BookOpen,
-    text: "Based on Guyton & Hall Textbook of Medical Physiology",
+    text: "Multi-Source Synthesized Knowledge Base",
   },
   {
     icon: Lock,
@@ -19,7 +19,7 @@ export function CredibilityStrip() {
   return (
     <section className="border-y border-border bg-muted/30">
       <div className="container py-6">
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8 divide-y md:divide-y-0 md:divide-x divide-border/50">
+        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8">
           {credibilityItems.map((item, index) => {
             const Icon = item.icon;
             return (
