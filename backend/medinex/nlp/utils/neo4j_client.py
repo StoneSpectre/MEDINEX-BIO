@@ -72,6 +72,16 @@ MATCH ()-[r:MENTIONS]->() WITH papers, entities, count(r) AS mentions
 RETURN papers, entities, mentions
 """
 
+SET_LAST_RUN = """
+MERGE (s:SystemState {id: 'singleton'})
+SET s.last_scheduler_run = $iso_time
+"""
+
+GET_LAST_RUN = """
+MATCH (s:SystemState {id: 'singleton'})
+RETURN s.last_scheduler_run AS last_run
+"""
+
 
 class Neo4jClient:
     """
@@ -206,15 +216,28 @@ class Neo4jClient:
 
     # ── Admin ─────────────────────────────────────────────────────────────────
 
+    def set_last_run_time(self, iso_time: str):
+        if not self._available:
+            return
+        with self.session() as s:
+            s.run(SET_LAST_RUN, iso_time=iso_time)
+
     def get_stats(self) -> dict:
         if not self._available:
             return {"status": "unavailable"}
         with self.session() as s:
             row = s.run(KG_STATS).single()
+            try:
+                run_row = s.run(GET_LAST_RUN).single()
+                last_run = run_row["last_run"] if run_row else None
+            except Exception:
+                last_run = None
+                
             return {
                 "status": "connected",
-                "papers": row["papers"],
-                "entities": row["entities"],
-                "mentions": row["mentions"],
+                "papers": row["papers"] if row else 0,
+                "entities": row["entities"] if row else 0,
+                "mentions": row["mentions"] if row else 0,
+                "last_scheduler_run": last_run,
                 "uri": self._uri,
             }
