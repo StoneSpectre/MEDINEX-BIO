@@ -92,9 +92,9 @@ export function ModulesSection() {
         </p>
       </div>
 
-      <div className="relative flex w-full gap-6 overflow-hidden">
+      <div className="relative flex w-full overflow-hidden">
         {/* First Marquee Track */}
-        <div className="flex shrink-0 animate-marquee items-stretch gap-6 hover:[animation-play-state:paused] px-3">
+        <div className="flex shrink-0 animate-marquee items-stretch gap-6 pr-6 hover:[animation-play-state:paused]">
           {modules.map((module) => (
             <div key={module.path} className="w-[320px] sm:w-[380px] shrink-0">
               <ModuleCard {...module} delay={0} />
@@ -102,7 +102,7 @@ export function ModulesSection() {
           ))}
         </div>
         {/* Second Duplicate Marquee Track (Seamless looping) */}
-        <div className="flex shrink-0 animate-marquee items-stretch gap-6 hover:[animation-play-state:paused] px-3" aria-hidden="true">
+        <div className="flex shrink-0 animate-marquee items-stretch gap-6 pr-6 hover:[animation-play-state:paused]" aria-hidden="true">
           {modules.map((module) => (
             <div key={`dup-${module.path}`} className="w-[320px] sm:w-[380px] shrink-0">
               <ModuleCard {...module} delay={0} />
