@@ -92,7 +92,7 @@ export function ModulesSection() {
         </p>
       </div>
 
-      <div className="relative flex w-full overflow-hidden">
+      <div className="relative flex w-full overflow-hidden py-10">
         {/* First Marquee Track */}
         <div className="flex shrink-0 animate-marquee items-stretch gap-6 pr-6 hover:[animation-play-state:paused]">
           {modules.map((module) => (
