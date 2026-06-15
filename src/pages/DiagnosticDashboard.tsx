@@ -81,7 +81,7 @@ export default function DiagnosticDashboard() {
         </div>
 
         {/* Module Selector */}
-        <div style={{ display: "flex", gap: "15px", justifyContent: "center", marginBottom: "40px" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", justifyContent: "center", marginBottom: "40px" }}>
           {MODULES.map((m) => (
             <button
               key={m.id}
@@ -142,7 +142,7 @@ export default function DiagnosticDashboard() {
             <h2 style={{ fontSize: "1.2rem", fontWeight: 600, color: "#fff" }}>AI Assessment Results</h2>
             
             {!result && !error && !loading && (
-              <div style={{ flex: 1, display: "flex", alignItems: "center", justifyCenter: "center", border: "1px dashed #252A35", borderRadius: "12px", justifyContent: "center", color: "#4A5068" }}>
+              <div style={{ flex: 1, display: "flex", alignItems: "center", border: "1px dashed #252A35", borderRadius: "12px", justifyContent: "center", color: "#4A5068" }}>
                 Enter patient biomarkers to generate AI inference.
               </div>
             )}
