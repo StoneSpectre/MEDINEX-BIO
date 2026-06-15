@@ -1,5 +1,6 @@
-import { Heart, Droplet, Shield, Brain, Zap, Baby, Waves, Wind, ActivitySquare, Eye, Ear } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Zap, Baby, Waves, Wind, ActivitySquare, Eye, Ear, ChevronLeft, ChevronRight } from "lucide-react";
 import { ModuleCard } from "./ModuleCard";
+import { useRef } from "react";
 
 const modules = [
   {
@@ -82,8 +83,17 @@ const modules = [
 ];
 
 export function ModulesSection() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === "left" ? -400 : 400;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="py-16 sm:py-24 overflow-hidden">
+    <section className="py-16 sm:py-24 overflow-hidden relative">
       <div className="container mb-20 text-center">
         <h2 className="mb-4">Explore Physiology Modules</h2>
         <p className="mx-auto max-w-2xl text-muted-foreground">
@@ -92,23 +102,36 @@ export function ModulesSection() {
         </p>
       </div>
 
-      <div className="relative flex w-full overflow-hidden py-10">
-        {/* First Marquee Track */}
-        <div className="flex shrink-0 animate-marquee items-stretch gap-6 pr-6 hover:[animation-play-state:paused]">
+      <div className="relative w-full max-w-[100vw] group">
+        {/* Left Arrow */}
+        <button 
+          onClick={() => scroll("left")}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-background/80 text-foreground border border-border/50 shadow-lg backdrop-blur-sm transition-all hover:bg-background hover:scale-110 sm:group-hover:flex"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+
+        {/* Scrollable Container */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex w-full gap-6 overflow-x-auto snap-x snap-mandatory py-10 px-6 sm:px-12 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        >
           {modules.map((module) => (
-            <div key={module.path} className="w-[320px] sm:w-[380px] shrink-0">
+            <div key={module.path} className="w-[300px] sm:w-[380px] shrink-0 snap-center">
               <ModuleCard {...module} delay={0} />
             </div>
           ))}
         </div>
-        {/* Second Duplicate Marquee Track (Seamless looping) */}
-        <div className="flex shrink-0 animate-marquee items-stretch gap-6 pr-6 hover:[animation-play-state:paused]" aria-hidden="true">
-          {modules.map((module) => (
-            <div key={`dup-${module.path}`} className="w-[320px] sm:w-[380px] shrink-0">
-              <ModuleCard {...module} delay={0} />
-            </div>
-          ))}
-        </div>
+
+        {/* Right Arrow */}
+        <button 
+          onClick={() => scroll("right")}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden h-12 w-12 items-center justify-center rounded-full bg-background/80 text-foreground border border-border/50 shadow-lg backdrop-blur-sm transition-all hover:bg-background hover:scale-110 sm:group-hover:flex"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
       </div>
     </section>
   );
