@@ -1,295 +1,1019 @@
-import React, { useState } from "react";
+﻿import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
-import { Button } from "@/components/ui/button";
 
-function hexToRgb(hex: string) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}` : "0,0,0";
-}
+// ΓöÇΓöÇΓöÇ CODE SNIPPETS ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
 
-const codeSnippets: Record<number, { tabs: string[]; code: string[] }> = {
-  11: {
-    tabs: ["ML Inference Engine"],
-    code: [
-      `from fastapi import APIRouter
-from pydantic import BaseModel
-import numpy as np
-
-router = APIRouter()
-
-class HealthInput(BaseModel):
-    age: float
-    blood_pressure: float
-    cholesterol: float
-
-@router.post("/predict/cardiovascular")
-def predict_cvd(data: HealthInput):
-    risk_score = (data.age * 0.1) + (data.blood_pressure * 0.2) + (data.cholesterol * 0.15)
-    return {"risk_probability": round(min(risk_score / 100, 1.0), 4)}`
-    ]
-  },
-  21: {
-    tabs: ["Pathway Modal UI"],
-    code: [
-      `import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog"
-
-export function PathwayModal({ isOpen, onClose, pathwayId }) {
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl bg-slate-950 text-slate-200">
-        <DialogHeader>Clinical Pathway Explorer</DialogHeader>
-        <div className="overflow-y-auto max-h-[70vh]">
-          {/* Rich interactive pathway visualization */}
-        </div>
-      </DialogContent>
-    </Dialog>
-  )
-}`
-    ]
-  },
-  6: {
-    tabs: ["PubMed E-utilities", "Neo4j Ingestion"],
-    code: [
-      `from Bio import Entrez
-import time
-
-Entrez.email = "research@medinex.ai"
-
-def fetch_pubmed_abstracts(query, max_results=100):
-    handle = Entrez.esearch(db="pubmed", term=query, retmax=max_results)
-    record = Entrez.read(handle)
-    handle.close()
-    
-    id_list = record["IdList"]
-    abstracts = []
-    
-    for pmid in id_list:
-        handle = Entrez.efetch(db="pubmed", id=pmid, retmode="xml")
-        records = Entrez.read(handle)
-        handle.close()
-        try:
-            abstract = records['PubmedArticle'][0]['MedlineCitation']['Article']['Abstract']['AbstractText'][0]
-            abstracts.append({"pmid": pmid, "text": str(abstract)})
-        except KeyError:
-            continue
-        time.sleep(0.34) # Rate limit
-    
-    return abstracts`,
-      `from neo4j import GraphDatabase
-
-class Neo4jIngestor:
-    def __init__(self, uri, user, password):
-        self.driver = GraphDatabase.driver(uri, auth=(user, password))
-
-    def close(self):
-        self.driver.close()
-
-    def merge_paper(self, pmid, title, abstract):
-        query = """
-        MERGE (p:Paper {pmid: $pmid})
-        SET p.title = $title, p.abstract = $abstract
-        RETURN p
-        """
-        with self.driver.session() as session:
-            session.run(query, pmid=pmid, title=title, abstract=abstract)
-`
-    ]
-  },
+const codeSnippets = {
   7: {
-    tabs: ["Qdrant Semantic Search", "Hybrid Retrieval"],
+    tabs: ["Install", "Embed & Index", "FAISS Search", "Qdrant Search", "Hybrid BM25+Vector"],
     code: [
-      `from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams, PointStruct
+      `# Install dependencies
+pip install faiss-cpu sentence-transformers qdrant-client rank_bm25
+
+# For GPU acceleration
+pip install faiss-gpu`,
+
+      `from sentence_transformers import SentenceTransformer
+import faiss, numpy as np, json
+
+# Load biomedical embedding model
+model = SentenceTransformer(
+    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+
+# Load your abstracts
+with open("pubmed_abstracts.json") as f:
+    abstracts = json.load(f)   # list of {"pmid": ..., "text": ...}
+
+texts = [a["text"] for a in abstracts]
+
+# Generate embeddings in batches (512-dim vectors)
+print("Embedding", len(texts), "abstracts...")
+embeddings = model.encode(
+    texts,
+    batch_size=64,
+    show_progress_bar=True,
+    normalize_embeddings=True,   # required for cosine similarity
+)
+embeddings = np.array(embeddings, dtype="float32")
+
+# Build FAISS HNSW index (fast ANN, no training needed)
+dim = embeddings.shape[1]          # 768
+index = faiss.IndexHNSWFlat(dim, 32)
+index.hnsw.efConstruction = 200
+index.add(embeddings)
+
+# Save index + metadata
+faiss.write_index(index, "biomedical.index")
+with open("biomedical_meta.json", "w") as f:
+    json.dump(abstracts, f)
+
+print(f"Index built: {index.ntotal} vectors @ {dim}d")`,
+
+      `import faiss, json, numpy as np
 from sentence_transformers import SentenceTransformer
-import uuid
 
-client = QdrantClient(":memory:")
-model = SentenceTransformer("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
+model = SentenceTransformer(
+    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+index = faiss.read_index("biomedical.index")
+with open("biomedical_meta.json") as f:
+    abstracts = json.load(f)
 
+def semantic_search(query: str, top_k: int = 10):
+    # Embed query
+    q_vec = model.encode(
+        [query],
+        normalize_embeddings=True
+    ).astype("float32")
+
+    # FAISS search ΓåÆ distances + indices
+    distances, indices = index.search(q_vec, top_k)
+
+    results = []
+    for dist, idx in zip(distances[0], indices[0]):
+        results.append({
+            "pmid":  abstracts[idx]["pmid"],
+            "text":  abstracts[idx]["text"][:300],
+            "score": float(dist),   # cosine similarity (0ΓÇô1)
+        })
+    return results
+
+# Example query
+hits = semantic_search(
+    "APOE4 gene association with late-onset Alzheimer's disease",
+    top_k=5
+)
+for h in hits:
+    print(f"[{h['score']:.3f}] PMID {h['pmid']}: {h['text'][:80]}...")`,
+
+      `from qdrant_client import QdrantClient
+from qdrant_client.models import (
+    Distance, VectorParams, PointStruct
+)
+from sentence_transformers import SentenceTransformer
+import uuid, json
+
+client = QdrantClient(":memory:")   # use url="http://localhost:6333" for prod
+model  = SentenceTransformer(
+    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+
+COLLECTION = "biomedical_papers"
+
+# Create collection
 client.create_collection(
-    collection_name="biomedical_papers",
+    collection_name=COLLECTION,
     vectors_config=VectorParams(size=768, distance=Distance.COSINE),
 )
 
-def index_paper(text, metadata):
-    vector = model.encode([text])[0].tolist()
-    client.upsert(
-        collection_name="biomedical_papers",
-        points=[PointStruct(id=str(uuid.uuid4()), vector=vector, payload=metadata)]
-    )`,
-      `# Hybrid Search with RRF Fusion
-async def retrieve(query: str, top_k=50):
-  dense = await qdrant.search(embed(query), top=top_k)
-  sparse = bm25_index.search(query, top=top_k)
-  return reciprocal_rank_fusion(dense, sparse, k=60)`
-    ]
-  },
-  41: {
-    tabs: ["Entity Extraction", "Intent Classification"],
-    code: [
-      `from transformers import pipeline
+# Upsert embeddings with payloads
+with open("pubmed_abstracts.json") as f:
+    abstracts = json.load(f)
 
-ner_pipeline = pipeline("ner", model="d4data/biomedical-ner-all")
+embeddings = model.encode(
+    [a["text"] for a in abstracts],
+    batch_size=64, normalize_embeddings=True
+)
 
-text = "Patient presents with severe hypertension and was prescribed Lisinopril."
-entities = ner_pipeline(text)
+points = [
+    PointStruct(
+        id=str(uuid.uuid4()),
+        vector=embeddings[i].tolist(),
+        payload={
+            "pmid":    a["pmid"],
+            "title":   a.get("title", ""),
+            "journal": a.get("journal", ""),
+            "year":    a.get("year", 0),
+        },
+    )
+    for i, a in enumerate(abstracts)
+]
+client.upsert(collection_name=COLLECTION, points=points)
 
-for ent in entities:
-    print(f"{ent['word']}: {ent['entity_group']} ({ent['score']:.2f})")`,
-      `from transformers import AutoModelForSequenceClassification, AutoTokenizer
-import torch
+# Filtered semantic search
+def qdrant_search(query, year_min=2018, top_k=5):
+    from qdrant_client.models import Filter, FieldCondition, Range
+    q_vec = model.encode([query], normalize_embeddings=True)[0].tolist()
+    hits = client.search(
+        collection_name=COLLECTION,
+        query_vector=q_vec,
+        query_filter=Filter(
+            must=[FieldCondition(
+                key="year",
+                range=Range(gte=year_min)
+            )]
+        ),
+        limit=top_k,
+        with_payload=True,
+    )
+    return [{"pmid": h.payload["pmid"], "score": h.score} for h in hits]
 
-model_id = "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-model = AutoModelForSequenceClassification.from_pretrained(model_id, num_labels=5)
+results = qdrant_search("tau protein aggregation neurodegeneration")
+print(results)`,
 
-query = "What is the mechanism of action of Aspirin in cardiovascular disease?"
-inputs = tokenizer(query, return_tensors="pt")
-outputs = model(**inputs)
-intent = torch.argmax(outputs.logits).item()
-print(f"Detected Intent Class: {intent}")`
-    ],
-  },
-  42: {
-    tabs: ["Qdrant Search", "Hybrid BM25+Vector"],
-    code: [
-      `from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams
+      `from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer
+import faiss, numpy as np, json
 
-client = QdrantClient(":memory:")
-model = SentenceTransformer("microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract")
-
-# Searching Qdrant
-query = "novel treatments for alzheimer's"
-q_vec = model.encode(query).tolist()
-
-hits = client.search(
-    collection_name="biomedical_papers",
-    query_vector=q_vec,
-    limit=5
+# Load data
+with open("pubmed_abstracts.json") as f:
+    abstracts = json.load(f)
+texts  = [a["text"] for a in abstracts]
+model  = SentenceTransformer(
+    "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
 )
+index  = faiss.read_index("biomedical.index")
+
+# Build BM25 index (keyword/lexical)
+tokenized = [t.lower().split() for t in texts]
+bm25 = BM25Okapi(tokenized)
+
+def hybrid_search(query: str, top_k=10, alpha=0.6):
+    """
+    alpha: weight for semantic score (1-alpha for BM25)
+    """
+    # 1. Semantic scores (FAISS)
+    q_vec = model.encode([query], normalize_embeddings=True).astype("float32")
+    sem_dists, sem_idx = index.search(q_vec, top_k * 3)
+    sem_scores = {int(i): float(d) for d, i in
+                  zip(sem_dists[0], sem_idx[0])}
+
+    # 2. BM25 scores (keyword)
+    bm25_scores = bm25.get_scores(query.lower().split())
+    top_bm25 = np.argsort(bm25_scores)[::-1][:top_k * 3]
+    bm25_map  = {int(i): bm25_scores[i] for i in top_bm25}
+
+    # 3. Normalise & merge
+    max_sem  = max(sem_scores.values(),  default=1)
+    max_bm25 = max(bm25_map.values(),    default=1)
+    all_idx  = set(sem_scores) | set(bm25_map)
+
+    fused = {
+        i: alpha * (sem_scores.get(i, 0) / max_sem)
+         + (1 - alpha) * (bm25_map.get(i, 0) / max_bm25)
+        for i in all_idx
+    }
+    ranked = sorted(fused, key=fused.get, reverse=True)[:top_k]
+    return [{"pmid": abstracts[i]["pmid"], "score": fused[i]} for i in ranked]
+
+hits = hybrid_search("BRCA1 mutation breast cancer risk", alpha=0.6)
 for h in hits:
-    print(h.payload["pmid"], h.score)`,
-      `# Hybrid Search with RRF Fusion
-async def retrieve(query: str, top_k=50):
-  dense = await qdrant.search(embed(query), top=top_k)
-  sparse = bm25_index.search(query, top=top_k)
-  return reciprocal_rank_fusion(dense, sparse, k=60)`
+    print(f"[{h['score']:.3f}] {h['pmid']}")`,
     ],
   },
-  43: {
-    tabs: ["Cypher Multi-hop", "PyKEEN Alignment"],
+
+  8: {
+    tabs: ["Install", "LlamaIndex RAG", "LangChain RAG", "Agents & Tools", "RAGAS Eval"],
     code: [
-      `from neo4j import GraphDatabase
+      `# Core RAG stack
+pip install llama-index llama-index-vector-stores-qdrant
+pip install langchain langchain-community langchain-openai
+pip install dspy-ai ragas trulens-eval sentence-transformers
+pip install openai tiktoken`,
 
-driver = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j","password"))
+      `from llama_index.core import (
+    VectorStoreIndex, SimpleDirectoryReader, Settings
+)
+from llama_index.core.node_parser import SentenceSplitter
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.llms.openai import OpenAI
+from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.core.postprocessor import SimilarityPostprocessor
 
-# Cypher: multi-hop from disease to drug candidates
-query = """
-MATCH (d:Disease {cui: $cui})
-  -[:ASSOCIATED_WITH]->(g:Gene)
-  -[:TARGETED_BY]->(drug:Drug)
-WHERE drug.fda_approved = true
-RETURN d, g, drug
-LIMIT 100
-"""
+# Configure biomedical embedding + LLM
+Settings.embed_model = HuggingFaceEmbedding(
+    model_name="microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+Settings.llm = OpenAI(model="gpt-4o", temperature=0)
 
-with driver.session() as session:
-    result = session.run(query, cui="C0002395")
-    for record in result:
-        print(record["drug"]["name"])`,
-      `from pykeen.pipeline import pipeline
+# Load & chunk documents
+documents = SimpleDirectoryReader("./papers/").load_data()
+splitter  = SentenceSplitter(chunk_size=512, chunk_overlap=64)
 
-# Train TransE model on extracted knowledge graph
-result = pipeline(
-    dataset='Nations', # Placeholder for custom KG dataset
-    model='TransE',
-    epochs=50,
+# Build vector index
+index = VectorStoreIndex.from_documents(
+    documents,
+    transformations=[splitter],
+    show_progress=True,
+)
+index.storage_context.persist("./storage")
+
+# Build retrieval query engine
+retriever = VectorIndexRetriever(index=index, similarity_top_k=6)
+engine    = RetrieverQueryEngine(
+    retriever=retriever,
+    node_postprocessors=[SimilarityPostprocessor(similarity_cutoff=0.7)],
 )
 
-model = result.model
-print("Knowledge Graph Embeddings trained.")`
-    ],
-  },
-  44: {
-    tabs: ["RAG Engine Prompt", "Citation Linking"],
-    code: [
-      `from langchain.prompts import PromptTemplate
+# Query with citations
+response = engine.query(
+    "What are the known genetic risk factors for Alzheimer's disease?"
+)
+print(response)
+# Show source nodes (citations)
+for node in response.source_nodes:
+    print(f"  Γå│ [{node.score:.3f}] {node.metadata.get('file_name')} "
+          f"p.{node.metadata.get('page_label','?')}")`,
 
+      `from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.vectorstores import Qdrant
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain.chains import RetrievalQAWithSourcesChain
+from langchain.prompts import PromptTemplate
+
+# Load biomedical PDFs
+loader = DirectoryLoader("./papers/", glob="**/*.pdf", loader_cls=PyPDFLoader)
+docs   = loader.load()
+
+# Split into chunks
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=512, chunk_overlap=64,
+    separators=["\n\n", "\n", ". ", " "],
+)
+chunks = splitter.split_documents(docs)
+
+# Create Qdrant vector store
+embeddings = HuggingFaceEmbeddings(
+    model_name="microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+vectorstore = Qdrant.from_documents(
+    chunks, embeddings,
+    location=":memory:",
+    collection_name="medinex_papers",
+)
+
+# Biomedical-specific prompt
 PROMPT = PromptTemplate(
-    input_variables=["context", "question"],
-    template="""You are MEDINEX, a biomedical AI. Use ONLY the
-provided context to answer. Do not hallucinate.
+    input_variables=["summaries", "question"],
+    template="""You are a biomedical research assistant. Use ONLY the
+provided context. If unsure, say "I don't have enough information."
+Always cite your sources.
 
 Context:
-{context}
+{summaries}
 
 Question: {question}
-Answer:"""
+Answer (with citations):""",
 )
 
-print(PROMPT.format(context="Aspirin inhibits COX-1.", question="How does aspirin work?"))`,
-      `def link_citations(generated_text, retrieved_chunks):
-    # Simplistic citation linking logic
-    cited_text = generated_text
-    for i, chunk in enumerate(retrieved_chunks):
-        if chunk.keyword in generated_text:
-            cited_text = cited_text.replace(chunk.keyword, f"{chunk.keyword} [{i+1}]")
-    return cited_text`
+# Build chain
+llm   = ChatOpenAI(model="gpt-4o", temperature=0)
+chain = RetrievalQAWithSourcesChain.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=vectorstore.as_retriever(search_kwargs={"k": 6}),
+    chain_type_kwargs={"prompt": PROMPT},
+    return_source_documents=True,
+)
+
+result = chain.invoke(
+    {"question": "How does tau hyperphosphorylation cause neurodegeneration?"}
+)
+print("Answer:", result["answer"])
+print("Sources:", result["sources"])`,
+
+      `from langchain_openai import ChatOpenAI
+from langchain.agents import AgentExecutor, create_openai_tools_agent
+from langchain.tools import tool
+from langchain_community.vectorstores import Qdrant
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+import requests
+
+embeddings  = HuggingFaceEmbeddings(
+    model_name="microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract"
+)
+vectorstore = Qdrant.from_existing_collection(
+    embeddings, collection_name="medinex_papers",
+    url="http://localhost:6333",
+)
+
+@tool
+def search_literature(query: str) -> str:
+    """Search the indexed biomedical literature for relevant passages."""
+    docs = vectorstore.similarity_search(query, k=5)
+    return "\n\n".join(
+        f"[{d.metadata.get('source','?')}] {d.page_content}" for d in docs
+    )
+
+@tool
+def pubmed_live_search(query: str) -> str:
+    """Search PubMed live for the most recent papers on a topic."""
+    url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+    r = requests.get(url, params={
+        "db": "pubmed", "term": query,
+        "retmax": 5, "retmode": "json",
+        "sort": "relevance",
+    })
+    ids = r.json()["esearchresult"]["idlist"]
+    return f"Top PubMed IDs for '{query}': {', '.join(ids)}"
+
+@tool
+def drug_target_lookup(gene_name: str) -> str:
+    """Look up known drugs targeting a specific gene/protein."""
+    # Stub ΓÇö connect to ChEMBL / OpenTargets API in production
+    return f"Known inhibitors of {gene_name}: [ChEMBL lookup pending]"
+
+# Build agent
+llm   = ChatOpenAI(model="gpt-4o", temperature=0)
+tools = [search_literature, pubmed_live_search, drug_target_lookup]
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are MEDINEX, a biomedical AI research assistant. "
+               "Use your tools to answer questions with evidence."),
+    ("user",   "{input}"),
+    MessagesPlaceholder("agent_scratchpad"),
+])
+
+agent          = create_openai_tools_agent(llm, tools, prompt)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+result = agent_executor.invoke({
+    "input": "What approved drugs target APOE4 and what does recent "
+             "literature say about their efficacy in Alzheimer's?"
+})
+print(result["output"])`,
+
+      `from ragas import evaluate
+from ragas.metrics import (
+    faithfulness,
+    answer_relevancy,
+    context_precision,
+    context_recall,
+)
+from datasets import Dataset
+
+# Prepare evaluation dataset
+# Each row: question, ground_truth, answer (LLM), contexts (retrieved)
+eval_data = {
+    "question": [
+        "What genes are associated with Alzheimer's disease?",
+        "How does amyloid-beta cause neurodegeneration?",
+        "What are the BRCA1 mutation risks?",
+    ],
+    "ground_truth": [
+        "APOE4, APP, PSEN1, PSEN2 are key Alzheimer's genes.",
+        "Amyloid-beta aggregates into plaques, triggering tau ...",
+        "BRCA1 mutations increase breast and ovarian cancer risk ...",
+    ],
+    "answer": [
+        # Your RAG system's answers
+        rag_chain.invoke(q)["answer"] for q in eval_data["question"]
+    ],
+    "contexts": [
+        # Retrieved contexts per question
+        [d.page_content for d in vectorstore.similarity_search(q, k=4)]
+        for q in eval_data["question"]
+    ],
+}
+
+dataset = Dataset.from_dict(eval_data)
+
+# Run RAGAS evaluation
+result = evaluate(
+    dataset,
+    metrics=[
+        faithfulness,       # Is the answer grounded in context?
+        answer_relevancy,   # Is the answer relevant to the question?
+        context_precision,  # Is retrieved context precise?
+        context_recall,     # Does context cover the ground truth?
+    ],
+)
+
+print(result)
+# faithfulness        0.91
+# answer_relevancy    0.87
+# context_precision   0.83
+# context_recall      0.79`,
+    ],
+  },
+
+  9: {
+    tabs: ["Install", "Build Graph Index", "GraphRAG Index", "Multi-hop Query", "Cypher + LLM"],
+    code: [
+      `# Microsoft GraphRAG
+pip install graphrag
+
+# Neo4j GraphRAG Python SDK
+pip install neo4j-graphrag
+
+# Supporting tools
+pip install neo4j openai tiktoken pandas`,
+
+      `from neo4j import GraphDatabase
+from neo4j_graphrag.indexes import create_vector_index
+from neo4j_graphrag.embeddings import OpenAIEmbeddings
+
+# Connect to Neo4j
+driver = GraphDatabase.driver(
+    "bolt://localhost:7687",
+    auth=("neo4j", "password")
+)
+
+# ΓöÇΓöÇ Step 1: Insert entities & relationships ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+with driver.session() as s:
+    # Disease ΓåÆ Gene relationship
+    s.run("""
+        MERGE (d:Disease {name: $disease})
+        MERGE (g:Gene    {name: $gene, hgnc: $hgnc})
+        MERGE (d)-[:ASSOCIATED_WITH {evidence: $ev, pmid: $pmid}]->(g)
+    """, disease="Alzheimer's Disease", gene="APOE",
+         hgnc="HGNC:613", ev="GWAS meta-analysis", pmid="30617256")
+
+    # Gene ΓåÆ Drug relationship
+    s.run("""
+        MERGE (g:Gene {name: $gene})
+        MERGE (dr:Drug {name: $drug, chembl: $chembl})
+        MERGE (g)-[:TARGETED_BY {mechanism: $mech}]->(dr)
+    """, gene="APOE", drug="Lecanemab", chembl="CHEMBL4523360",
+         mech="amyloid-beta clearance")
+
+    # Gene ΓåÆ Pathway
+    s.run("""
+        MERGE (g:Gene {name: $gene})
+        MERGE (p:Pathway {name: $pathway, id: $pid})
+        MERGE (g)-[:IN_PATHWAY]->(p)
+    """, gene="TREM2", pathway="Neuroinflammation",
+         pid="R-HSA-6798695")
+
+# ΓöÇΓöÇ Step 2: Create vector index on Paper nodes ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+embedder = OpenAIEmbeddings(model="text-embedding-3-small")
+
+create_vector_index(
+    driver,
+    name="paper_embedding_index",
+    label="Paper",
+    embedding_property="embedding",
+    dimensions=1536,
+    similarity_fn="cosine",
+)
+print("Neo4j graph + vector index ready")`,
+
+      `# Microsoft GraphRAG: build community-aware index
+# 1. Initialise project
+graphrag init --root ./graphrag_biomedical
+
+# 2. Edit graphrag_biomedical/settings.yml:
+#    model: gpt-4o
+#    input.file_type: text
+#    entity_extraction.entity_types: [disease, gene, drug, pathway, protein]
+
+# 3. Place your biomedical text corpus in ./graphrag_biomedical/input/
+#    (one .txt per document ΓÇö abstracts, clinical notes, etc.)
+
+# 4. Run indexing pipeline (extracts entities, relations, communities)
+graphrag index --root ./graphrag_biomedical
+
+# Python: load the resulting index for querying
+import asyncio
+from graphrag.query.context_builder.entity_extraction import EntityVectorStoreKey
+from graphrag.query.llm.oai.chat_openai import ChatOpenAI
+from graphrag.query.structured_search.local_search.search import LocalSearch
+from graphrag.query.structured_search.global_search.search import GlobalSearch
+
+# Local search: deep-dive on specific entity
+local_search  = LocalSearch(...)
+
+# Global search: cross-community synthesis
+global_search = GlobalSearch(...)
+
+# Run query
+result = asyncio.run(
+    global_search.asearch(
+        "What genes are involved in neuroinflammation pathways "
+        "that are also targeted by approved drugs?"
+    )
+)
+print(result.response)`,
+
+      `from neo4j_graphrag.retrievers import (
+    VectorRetriever, VectorCypherRetriever
+)
+from neo4j_graphrag.generation import GraphRAG
+from neo4j_graphrag.embeddings import OpenAIEmbeddings
+from neo4j_graphrag.llm import OpenAILLM
+from neo4j import GraphDatabase
+
+driver   = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j","password"))
+embedder = OpenAIEmbeddings(model="text-embedding-3-small")
+llm      = OpenAILLM(model_name="gpt-4o", model_params={"temperature": 0})
+
+# ΓöÇΓöÇ Multi-hop Cypher Retriever ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+# This traverses: Paper ΓåÆ mentions ΓåÆ Gene ΓåÆ ASSOCIATED_WITH ΓåÆ Disease
+# and pulls drugs targeting those genes
+MULTIHOP_CYPHER = """
+MATCH (p:Paper)-[:MENTIONS]->(g:Gene)-[:ASSOCIATED_WITH]->(d:Disease)
+WHERE d.name CONTAINS $query_param
+WITH g, d, p
+OPTIONAL MATCH (g)-[:IN_PATHWAY]->(pw:Pathway)
+OPTIONAL MATCH (g)-[:TARGETED_BY]->(dr:Drug)
+RETURN
+    g.name        AS gene,
+    d.name        AS disease,
+    collect(DISTINCT pw.name)  AS pathways,
+    collect(DISTINCT dr.name)  AS drugs,
+    p.title       AS paper,
+    p.pmid        AS pmid
+ORDER BY gene
+LIMIT 20
+"""
+
+retriever = VectorCypherRetriever(
+    driver=driver,
+    index_name="paper_embedding_index",
+    embedder=embedder,
+    retrieval_query=MULTIHOP_CYPHER,
+    result_formatter=lambda r: str(r.data),
+)
+
+# ΓöÇΓöÇ GraphRAG pipeline ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+rag = GraphRAG(retriever=retriever, llm=llm)
+
+response = rag.search(
+    query_text=(
+        "Which genes are associated with Alzheimer's disease through "
+        "neuroinflammation pathways and are targeted by approved drugs?"
+    ),
+    retriever_config={"top_k": 10},
+)
+print(response.answer)`,
+
+      `from neo4j import GraphDatabase
+from openai import OpenAI
+import json
+
+driver    = GraphDatabase.driver("bolt://localhost:7687", auth=("neo4j","password"))
+oai       = OpenAI()
+
+SYSTEM_PROMPT = """You are a biomedical Cypher expert. Given a natural
+language question about a biomedical knowledge graph with nodes:
+Disease, Gene, Drug, Pathway, Paper, Protein
+and relationships:
+ASSOCIATED_WITH, TARGETED_BY, IN_PATHWAY, MENTIONS, INTERACTS_WITH
+Generate a valid Cypher query to answer the question.
+Return ONLY the Cypher query, no explanation."""
+
+def text_to_cypher(question: str) -> str:
+    resp = oai.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": question},
+        ],
+        temperature=0,
+    )
+    return resp.choices[0].message.content.strip()
+
+def run_cypher(cypher: str) -> list:
+    with driver.session() as s:
+        return [dict(r) for r in s.run(cypher)]
+
+def graph_rag_answer(question: str) -> str:
+    # Step 1: Generate Cypher from natural language
+    cypher = text_to_cypher(question)
+    print("Generated Cypher:\n", cypher)
+
+    # Step 2: Execute against Neo4j
+    graph_data = run_cypher(cypher)
+
+    # Step 3: Synthesise answer with LLM
+    synthesis = oai.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content":
+                "You are MEDINEX. Synthesise a clear biomedical answer "
+                "from the graph query results provided."},
+            {"role": "user", "content":
+                f"Question: {question}\n\n"
+                f"Graph data: {json.dumps(graph_data, indent=2)}"},
+        ],
+        temperature=0,
+    )
+    return synthesis.choices[0].message.content
+
+answer = graph_rag_answer(
+    "Which inflammation-pathway genes are linked to Alzheimer's "
+    "and have at least one approved drug targeting them?"
+)
+print(answer)`,
+    ],
+  },
+
+  10: {
+    tabs: ["Full Stack Setup", "Integration Pipeline", "API Server", "Evaluation Suite", "Docker Deploy"],
+    code: [
+      `# ΓöÇΓöÇ MEDINEX Phase 0 ΓÇö Full Stack Requirements ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+# requirements.txt
+
+# Data ingestion
+biopython==1.83
+requests==2.31.0
+pandas==2.1.4
+tqdm==4.66.1
+
+# Biomedical NLP
+scispacy==0.5.4
+https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_lg-0.5.4.tar.gz
+transformers==4.40.0
+torch==2.2.0
+
+# Knowledge graph
+neo4j==5.18.0
+py2neo==2021.2.4
+
+# Graph analytics
+networkx==3.2.1
+python-igraph==0.11.4
+pyvis==0.3.2
+
+# Vector search
+faiss-cpu==1.8.0
+qdrant-client==1.8.0
+sentence-transformers==2.7.0
+
+# RAG
+llama-index==0.10.35
+llama-index-vector-stores-qdrant==0.2.8
+langchain==0.1.20
+langchain-community==0.0.38
+langchain-openai==0.1.7
+
+# Graph RAG
+graphrag==0.3.0
+neo4j-graphrag==0.3.0
+
+# Evaluation
+ragas==0.1.9
+trulens-eval==0.28.0
+
+# API
+fastapi==0.111.0
+uvicorn==0.29.0
+pydantic==2.7.0
+
+# Infra
+python-dotenv==1.0.1
+loguru==0.7.2`,
+
+      `"""
+medinex/pipeline.py
+Full Phase 0 integration pipeline ΓÇö runs end-to-end
+"""
+import asyncio
+from loguru import logger
+from medinex.ingestion   import fetch_pubmed_batch
+from medinex.nlp         import extract_entities_and_relations
+from medinex.graph       import build_neo4j_graph
+from medinex.analytics   import run_graph_analytics
+from medinex.embeddings  import build_vector_index
+from medinex.rag         import build_rag_engine
+
+async def run_phase0_pipeline(
+    query: str,
+    max_papers: int = 1000,
+):
+    logger.info("ΓöÇΓöÇ MEDINEX Phase 0 Pipeline ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ")
+
+    # ΓöÇΓöÇ Step 1: Data Ingestion ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 1: Fetching PubMed abstracts...")
+    papers = await fetch_pubmed_batch(
+        query=query, max_results=max_papers
+    )
+    logger.info(f"  Γ£ô Fetched {len(papers)} papers")
+
+    # ΓöÇΓöÇ Step 2: Biomedical NLP ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 2: Running NLP (NER + Relation Extraction)...")
+    entities, relations = extract_entities_and_relations(papers)
+    logger.info(f"  Γ£ô {len(entities)} entities, {len(relations)} relations")
+
+    # ΓöÇΓöÇ Step 3: Knowledge Graph ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 3: Building Neo4j knowledge graph...")
+    graph_stats = build_neo4j_graph(entities, relations)
+    logger.info(f"  Γ£ô {graph_stats['nodes']} nodes, {graph_stats['edges']} edges")
+
+    # ΓöÇΓöÇ Step 4: Graph Analytics ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 4: Running graph analytics...")
+    hub_genes, communities = run_graph_analytics()
+    logger.info(f"  Γ£ô Top hub genes: {hub_genes[:5]}")
+
+    # ΓöÇΓöÇ Step 5: Semantic Search Index ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 5: Building FAISS + Qdrant vector indices...")
+    index_stats = build_vector_index(papers)
+    logger.info(f"  Γ£ô Indexed {index_stats['count']} vectors @ {index_stats['dim']}d")
+
+    # ΓöÇΓöÇ Step 6: RAG Engine ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+    logger.info("Step 6: Initialising RAG engine...")
+    rag = build_rag_engine()
+    logger.info("  Γ£ô RAG engine ready")
+
+    logger.info("ΓöÇΓöÇ Pipeline complete ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ")
+    return {"papers": len(papers), "entities": len(entities),
+            "relations": len(relations), "rag": rag}
+
+if __name__ == "__main__":
+    asyncio.run(run_phase0_pipeline(
+        query="Alzheimer's disease neuroinflammation",
+        max_papers=500,
+    ))`,
+
+      `"""
+medinex/api.py ΓÇö FastAPI server exposing MEDINEX endpoints
+"""
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from medinex.rag         import get_rag_engine
+from medinex.graph       import query_graph
+from medinex.embeddings  import semantic_search
+from medinex.analytics   import get_hub_genes, get_communities
+
+app = FastAPI(
+    title="MEDINEX Biomedical Intelligence API",
+    version="0.1.0",
+    description="Phase 0 ΓÇö RAG + Graph + Semantic Search",
+)
+
+class QueryRequest(BaseModel):
+    question: str
+    top_k: int = 5
+    mode: str = "rag"  # "rag" | "graph" | "hybrid" | "semantic"
+
+class QueryResponse(BaseModel):
+    answer:   str
+    sources:  list[dict]
+    metadata: dict
+
+@app.post("/query", response_model=QueryResponse)
+async def query(req: QueryRequest):
+    if req.mode == "rag":
+        rag = get_rag_engine()
+        res = rag.query(req.question)
+        return QueryResponse(
+            answer=str(res),
+            sources=[n.metadata for n in res.source_nodes],
+            metadata={"mode": "rag"},
+        )
+    elif req.mode == "semantic":
+        hits = semantic_search(req.question, top_k=req.top_k)
+        return QueryResponse(
+            answer="Top semantic matches returned.",
+            sources=hits,
+            metadata={"mode": "semantic"},
+        )
+    elif req.mode == "graph":
+        results = query_graph(req.question)
+        return QueryResponse(
+            answer=results["synthesis"],
+            sources=results["graph_data"],
+            metadata={"mode": "graph_rag"},
+        )
+    raise HTTPException(status_code=400, detail="Unknown mode")
+
+@app.get("/analytics/hubs")
+async def hub_genes(top_k: int = 20):
+    return {"hub_genes": get_hub_genes(top_k)}
+
+@app.get("/analytics/communities")
+async def communities():
+    return {"communities": get_communities()}
+
+@app.get("/health")
+async def health():
+    return {"status": "ok", "service": "MEDINEX Phase 0"}
+
+# Run: uvicorn medinex.api:app --reload --port 8000`,
+
+      `"""
+medinex/evaluation.py ΓÇö RAGAS + BioASQ benchmark suite
+"""
+from ragas import evaluate
+from ragas.metrics import (
+    faithfulness, answer_relevancy,
+    context_precision, context_recall,
+)
+from datasets import Dataset
+from medinex.rag import get_rag_engine
+import json, pandas as pd
+from datetime import datetime
+
+# BioASQ-style gold standard (subset)
+BIOASQ_GOLD = [
+    {
+        "question":     "What is the role of APOE4 in Alzheimer's disease?",
+        "ground_truth": "APOE4 is the strongest genetic risk factor for late-onset AD, promoting amyloid-beta aggregation and impairing clearance.",
+    },
+    {
+        "question":     "Which pathways are implicated in neuroinflammation?",
+        "ground_truth": "NF-╬║B, TREM2, complement cascade, and microglial activation pathways are central to neuroinflammation.",
+    },
+    {
+        "question":     "What drugs target tau aggregation?",
+        "ground_truth": "Methylene blue, TRx0237 (LMTM), and several kinase inhibitors targeting GSK3╬▓ and CDK5 have been studied.",
+    },
+]
+
+def run_evaluation():
+    rag = get_rag_engine()
+
+    answers, contexts = [], []
+    for item in BIOASQ_GOLD:
+        response = rag.query(item["question"])
+        answers.append(str(response))
+        contexts.append([n.text for n in response.source_nodes])
+
+    dataset = Dataset.from_dict({
+        "question":     [i["question"]     for i in BIOASQ_GOLD],
+        "ground_truth": [i["ground_truth"] for i in BIOASQ_GOLD],
+        "answer":       answers,
+        "contexts":     contexts,
+    })
+
+    result = evaluate(dataset, metrics=[
+        faithfulness, answer_relevancy,
+        context_precision, context_recall,
+    ])
+
+    df = result.to_pandas()
+    report = {
+        "timestamp":         datetime.utcnow().isoformat(),
+        "faithfulness":      round(df["faithfulness"].mean(), 3),
+        "answer_relevancy":  round(df["answer_relevancy"].mean(), 3),
+        "context_precision": round(df["context_precision"].mean(), 3),
+        "context_recall":    round(df["context_recall"].mean(), 3),
+    }
+    print(json.dumps(report, indent=2))
+    df.to_csv(f"eval_{report['timestamp'][:10]}.csv", index=False)
+    return report
+
+if __name__ == "__main__":
+    run_evaluation()`,
+
+      `# ΓöÇΓöÇ docker-compose.yml ΓÇö MEDINEX Phase 0 Full Stack ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+version: "3.9"
+
+services:
+
+  neo4j:
+    image: neo4j:5.18-community
+    ports:
+      - "7474:7474"   # Neo4j Browser
+      - "7687:7687"   # Bolt protocol
+    environment:
+      NEO4J_AUTH: neo4j/medinex_password
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+    volumes:
+      - neo4j_data:/data
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  medinex_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      NEO4J_URI:      bolt://neo4j:7687
+      NEO4J_USER:     neo4j
+      NEO4J_PASSWORD: medinex_password
+      QDRANT_HOST:    qdrant
+      QDRANT_PORT:    6333
+      OPENAI_API_KEY: \${OPENAI_API_KEY}
+    depends_on:
+      - neo4j
+      - qdrant
+    command: uvicorn medinex.api:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  neo4j_data:
+  qdrant_data:
+
+# ΓöÇΓöÇ Dockerfile ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+# FROM python:3.11-slim
+# WORKDIR /app
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
+# COPY . .
+# CMD ["uvicorn", "medinex.api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# ΓöÇΓöÇ Run ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+# docker-compose up -d
+# open http://localhost:8000/docs  ΓåÆ Swagger UI
+# open http://localhost:7474       ΓåÆ Neo4j Browser
+# open http://localhost:6333/dashboard ΓåÆ Qdrant Dashboard`,
     ],
   },
 };
 
-const stepTasks: Record<number, {id: string, label: string, difficulty: string, est: string}[]> = {
-  11: [
-    { id: "11-1", label: "Develop Cardiovascular ML Prediction Model", difficulty: "medium", est: "Completed" },
-    { id: "11-2", label: "Develop Renal ML Prediction Model", difficulty: "medium", est: "Completed" },
-    { id: "11-3", label: "Develop Hepatic ML Prediction Model", difficulty: "medium", est: "Completed" },
-    { id: "11-4", label: "Develop Respiratory ML Prediction Model", difficulty: "medium", est: "Completed" },
-    { id: "11-5", label: "Develop Immunology ML Prediction Model", difficulty: "medium", est: "Completed" },
-    { id: "11-6", label: "Develop Thyroid ML Prediction Model", difficulty: "medium", est: "Completed" }
-  ],
-  21: [
-    { id: "21-1", label: "Build main Biomedical Workspace UI", difficulty: "medium", est: "Completed" },
-    { id: "21-2", label: "Implement diagnostic risk progress bars", difficulty: "easy", est: "Completed" },
-    { id: "21-3", label: "Create Clinical Pathway Modal", difficulty: "hard", est: "Completed" },
-    { id: "21-4", label: "Implement scrollable content areas", difficulty: "easy", est: "Completed" }
-  ],
-  6: [
-    { id: "6-1", label: "Implement fetch_pubmed_batch() async ingestion module", difficulty: "medium", est: "2h" },
-    { id: "6-2", label: "Implement build_neo4j_graph() graph writer layer", difficulty: "hard", est: "3h" },
-    { id: "6-3", label: "Set up Celery scheduling for daily updates", difficulty: "medium", est: "1h" },
-    { id: "6-4", label: "Add Prometheus operational monitoring", difficulty: "easy", est: "1h" }
-  ],
+// ΓöÇΓöÇΓöÇ STEP DATA ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+// ΓöÇΓöÇΓöÇ STEP TASKS (Steps 7ΓÇô10) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+
+const stepTasks = {
   7: [
-    { id: "7-1", label: "Set up Qdrant Vector DB for biomedical embeddings", difficulty: "medium", est: "2h" },
-    { id: "7-2", label: "Integrate Sentence-Transformers for semantic encoding", difficulty: "medium", est: "2h" },
-    { id: "7-3", label: "Implement Hybrid BM25+Dense retrieval strategy", difficulty: "hard", est: "3h" },
-    { id: "7-4", label: "Build FastAPI endpoints for search and analytics", difficulty: "easy", est: "1h" }
+    { id: "7-1",  label: "Install FAISS, Qdrant client & Sentence-Transformers", difficulty: "easy",   est: "5 min" },
+    { id: "7-2",  label: "Load BiomedBERT embedding model from HuggingFace", difficulty: "easy",   est: "10 min" },
+    { id: "7-3",  label: "Generate embeddings for PubMed abstracts in batches", difficulty: "medium", est: "30 min" },
+    { id: "7-4",  label: "Build & persist a FAISS HNSW index (768-dim vectors)", difficulty: "medium", est: "20 min" },
+    { id: "7-5",  label: "Implement semantic_search() with top-k ANN retrieval", difficulty: "medium", est: "20 min" },
+    { id: "7-6",  label: "Create Qdrant collection with metadata payloads", difficulty: "medium", est: "25 min" },
+    { id: "7-7",  label: "Add filtered Qdrant search (year range, journal, etc.)", difficulty: "medium", est: "20 min" },
+    { id: "7-8",  label: "Build BM25 keyword index with rank_bm25", difficulty: "easy",   est: "15 min" },
+    { id: "7-9",  label: "Implement hybrid_search() fusing BM25 + vector scores", difficulty: "hard",   est: "40 min" },
+    { id: "7-10", label: "Benchmark retrieval quality: top-5 precision on BioASQ", difficulty: "hard",   est: "1 hr"  },
   ],
-  41: [
-    { id: "41-1", label: "Implement query parser", difficulty: "medium", est: "2h" },
-    { id: "41-2", label: "Train/Integrate PubMedBERT NER", difficulty: "hard", est: "4h" },
-    { id: "41-3", label: "Build entity disambiguation map", difficulty: "hard", est: "3h" }
+  8: [
+    { id: "8-1",  label: "Install LlamaIndex, LangChain, DSPy & RAGAS", difficulty: "easy",   est: "5 min"  },
+    { id: "8-2",  label: "Configure BiomedBERT as the embedding model in LlamaIndex Settings", difficulty: "easy",   est: "10 min" },
+    { id: "8-3",  label: "Load PDF corpus & split into 512-token chunks with overlap", difficulty: "medium", est: "20 min" },
+    { id: "8-4",  label: "Build VectorStoreIndex and persist to disk", difficulty: "medium", est: "20 min" },
+    { id: "8-5",  label: "Create RetrieverQueryEngine with similarity cutoff postprocessor", difficulty: "medium", est: "25 min" },
+    { id: "8-6",  label: "Build LangChain RetrievalQAWithSourcesChain with biomedical prompt", difficulty: "medium", est: "30 min" },
+    { id: "8-7",  label: "Implement PubMed live-search tool for LangChain agent", difficulty: "hard",   est: "45 min" },
+    { id: "8-8",  label: "Wire up drug target lookup tool (ChEMBL stub ΓåÆ real API)", difficulty: "hard",   est: "1 hr"  },
+    { id: "8-9",  label: "Build multi-tool AgentExecutor with MEDINEX system prompt", difficulty: "hard",   est: "1 hr"  },
+    { id: "8-10", label: "Run RAGAS evaluation: faithfulness, relevancy, precision, recall", difficulty: "hard",   est: "1 hr"  },
   ],
-  42: [
-    { id: "42-1", label: "Set up Qdrant Vector DB", difficulty: "easy", est: "2h" },
-    { id: "42-2", label: "Implement Hybrid BM25+Dense", difficulty: "medium", est: "3h" },
-    { id: "42-3", label: "RRF Fusion algorithm", difficulty: "hard", est: "2h" }
+  9: [
+    { id: "9-1",  label: "Install Microsoft GraphRAG & Neo4j GraphRAG Python SDK", difficulty: "easy",   est: "5 min"  },
+    { id: "9-2",  label: "Connect Neo4j driver and create vector index on Paper nodes", difficulty: "medium", est: "20 min" },
+    { id: "9-3",  label: "Ingest entities/relations: MERGE Disease ΓåÆ Gene ΓåÆ Drug in Neo4j", difficulty: "medium", est: "45 min" },
+    { id: "9-4",  label: "Initialise Microsoft GraphRAG project & edit settings.yml", difficulty: "medium", est: "30 min" },
+    { id: "9-5",  label: "Run graphrag index pipeline on biomedical text corpus", difficulty: "hard",   est: "2 hr"  },
+    { id: "9-6",  label: "Implement VectorCypherRetriever with multi-hop Cypher query", difficulty: "hard",   est: "1 hr"  },
+    { id: "9-7",  label: "Wire GraphRAG pipeline: retriever + OpenAI LLM ΓåÆ answer", difficulty: "hard",   est: "45 min" },
+    { id: "9-8",  label: "Build text_to_cypher() LLM function with Neo4j schema prompt", difficulty: "hard",   est: "1 hr"  },
+    { id: "9-9",  label: "Implement graph_rag_answer(): Cypher ΓåÆ Neo4j ΓåÆ LLM synthesis", difficulty: "hard",   est: "1 hr"  },
+    { id: "9-10", label: "Test multi-hop query: genes ΓåÆ inflammation ΓåÆ approved drugs", difficulty: "hard",   est: "30 min" },
   ],
-  43: [
-    { id: "43-1", label: "Neo4j Cypher Multi-hop queries", difficulty: "medium", est: "3h" },
-    { id: "43-2", label: "Extract Pathway subgraphs", difficulty: "hard", est: "2h" }
+  10: [
+    { id: "10-1",  label: "Pin all dependencies in requirements.txt & verify installs", difficulty: "easy",   est: "15 min" },
+    { id: "10-2",  label: "Implement fetch_pubmed_batch() async ingestion module", difficulty: "medium", est: "45 min" },
+    { id: "10-3",  label: "Implement extract_entities_and_relations() NLP module", difficulty: "hard",   est: "2 hr"  },
+    { id: "10-4",  label: "Implement build_neo4j_graph() + run_graph_analytics()", difficulty: "hard",   est: "1.5 hr"},
+    { id: "10-5",  label: "Implement build_vector_index() (FAISS + Qdrant)", difficulty: "medium", est: "1 hr"  },
+    { id: "10-6",  label: "Implement build_rag_engine() wiring LlamaIndex + LangChain", difficulty: "hard",   est: "1.5 hr"},
+    { id: "10-7",  label: "Wire run_phase0_pipeline() end-to-end async orchestrator", difficulty: "hard",   est: "1 hr"  },
+    { id: "10-8",  label: "Build FastAPI server with /query, /analytics, /health endpoints", difficulty: "medium", est: "1 hr"  },
+    { id: "10-9",  label: "Write RAGAS + BioASQ evaluation suite with CSV export", difficulty: "hard",   est: "1.5 hr"},
+    { id: "10-10", label: "Write docker-compose.yml (Neo4j + Qdrant + medinex_api)", difficulty: "medium", est: "45 min" },
+    { id: "10-11", label: "Smoke-test full pipeline: PubMed ingest ΓåÆ RAG query end-to-end", difficulty: "hard",   est: "2 hr"  },
+    { id: "10-12", label: "Deploy & verify Swagger UI, Neo4j Browser, Qdrant Dashboard", difficulty: "medium", est: "1 hr"  },
   ],
-  44: [
-    { id: "44-1", label: "Build joint RAG prompt", difficulty: "medium", est: "1h" },
-    { id: "44-2", label: "Implement exact citation engine", difficulty: "hard", est: "4h" }
-  ]
 };
 
+
 const steps = [
-{
+  {
     id: 1,
     title: "Biomedical Knowledge Sources",
     subtitle: "Literature Layer",
@@ -1312,1073 +2036,4 @@ export default function MedinexDashboard() {
     </div>
     </Layout>
   );
-},
-{
-    id: 11,
-    phase: 1,
-    title: "Predictive ML Engine",
-    subtitle: "Implemented",
-    color: "#a78bfa",
-    icon: "🧬",
-    description: "Fully implemented machine learning models for early risk detection across Cardiovascular, Renal, Hepatic, Respiratory, Immunology, and Thyroid domains.",
-    resources: [],
-    learn: ["FastAPI Backend", "Ensemble Models", "Clinical Logic"],
-    deliverable: "ML Prediction API",
-    flow: ["Patient Data", "Rules Engine", "ML Model", "Risk Score"],
-    codeKey: 11
-  },
-  {
-    id: 21,
-    phase: 2,
-    title: "Clinical Workspace & Pathway UI",
-    subtitle: "Implemented",
-    color: "#34d399",
-    icon: "💻",
-    description: "Built the comprehensive Medinex Workspace interface, including diagnostic progress bars and the deep-dive Clinical Pathway Explorer Modal for clinical decision support.",
-    resources: [],
-    learn: ["React", "TailwindCSS", "Radix UI", "Responsive Design"],
-    deliverable: "Frontend Workspace UI",
-    flow: ["Dashboard", "Risk Analysis", "Pathway Modal", "Clinical Guidelines"],
-    codeKey: 21
-  },
-  {
-    id: 6,
-    phase: 3,
-    title: "Production Knowledge Graph",
-    subtitle: "In Progress",
-    color: "#fbbf24",
-    icon: "🕸️",
-    description: "Automated PubMed ingestion pipeline, multi-database schema, Celery scheduling, graph versioning, and operational monitoring.",
-    resources: [],
-    learn: ["Microservices", "Celery", "Neo4j", "Prometheus"],
-    deliverable: "Production KG",
-    flow: ["PubMed", "Celery", "NLP", "Neo4j"],
-    codeKey: 6
-  },
-  {
-    id: 7,
-    phase: 3,
-    title: "Research Intelligence Layer",
-    subtitle: "In Progress",
-    color: "#fbbf24",
-    icon: "🔍",
-    description: "Semantic search, vector embedding, graph integration using Qdrant and fast embeddings to query the ingested literature accurately.",
-    resources: [],
-    learn: ["Qdrant", "FastAPI", "Redis", "Embeddings"],
-    deliverable: "Intelligence API",
-    flow: ["Query", "Vector", "Graph", "RAG"],
-    codeKey: 7
-  },
-  {
-    id: 41,
-    phase: 4,
-    title: "Biomedical Question Understanding",
-    subtitle: "In Progress",
-    color: "#00d4c8",
-    icon: "🧠",
-    description: "Raw clinical or research questions are far noisier than web search queries. Before anything else, MEDINEX must parse intent, disambiguate entities, and classify question type.",
-    resources: [],
-    learn: ["Intent classification", "NER with PubMedBERT", "Entity disambiguation", "Multi-hop detection"],
-    deliverable: "Parsed Query",
-    flow: ["Input", "PubMedBERT", "UMLS/MeSH", "Query Plan"],
-    codeKey: 41
-  },
-  {
-    id: 42,
-    phase: 4,
-    title: "Semantic Vector Search",
-    subtitle: "In Progress",
-    color: "#00d4c8",
-    icon: "🔍",
-    description: "Parallel dense retrieval across multi-index Qdrant collections. Hybrid BM25 + dense retrieval with RRF fusion.",
-    resources: [],
-    learn: ["Dual-encoder setup", "Multi-collection retrieval", "Hybrid BM25 + dense"],
-    deliverable: "Top-k Evidence Chunks",
-    flow: ["Qdrant", "BioLinkBERT", "BM25", "RRF Fusion"],
-    codeKey: 42
-  },
-  {
-    id: 43,
-    phase: 4,
-    title: "Knowledge Graph Query",
-    subtitle: "In Progress",
-    color: "#00d4c8",
-    icon: "🕸️",
-    description: "Vector search returns candidate documents; the knowledge graph returns structural context via Cypher-based traversal.",
-    resources: [],
-    learn: ["Seed node lookup", "Typed edge traversal", "Pathway subgraph extraction"],
-    deliverable: "Biological Subgraph",
-    flow: ["Neo4j", "Cypher", "PyKEEN", "KEGG/Reactome"],
-    codeKey: 43
-  },
-  {
-    id: 44,
-    phase: 4,
-    title: "Constrained Generation & Citation",
-    subtitle: "In Progress",
-    color: "#00d4c8",
-    icon: "📝",
-    description: "LLM synthesis grounded tightly in the retrieved multi-modal evidence, with strict hallucination constraints and exact sentence-level citations.",
-    resources: [],
-    learn: ["Joint context formatting", "Chain-of-Verification", "Exact citation generation"],
-    deliverable: "Grounded Answer",
-    flow: ["Context Assembly", "LLM Generation", "Citation Linking"],
-    isFinal: true,
-    codeKey: 44
-  }
-];
-
-export default function MedinexDashboard() {
-
-  const defaultSteps = new Set([11, 21]);
-
-  const defaultTasks = new Set(["11-1", "11-2", "11-3", "11-4", "11-5", "11-6", "21-1", "21-2", "21-3", "21-4"]);
-
-  const [activeStep, setActiveStep]         = useState<number | null>(null);
-
-  const [completedSteps, setCompletedSteps] = useState(defaultSteps);
-
-  const [completedTasks, setCompletedTasks] = useState(defaultTasks);
-
-  const [activeTab, setActiveTabState]      = useState("tasks"); // "tasks" | "code"
-
-  const [activePhaseTab, setActivePhaseTab] = useState(4); // Default to Phase 2 where our current work is
-
-
-
-  const toggleComplete = (id, e) => {
-
-    e.stopPropagation();
-
-    setCompletedSteps(prev => {
-
-      const next = new Set(prev);
-
-      next.has(id) ? next.delete(id) : next.add(id);
-
-      return next;
-
-    });
-
-  };
-
-
-
-  const toggleTask = (taskId) => {
-
-    setCompletedTasks(prev => {
-
-      const next = new Set(prev);
-
-      next.has(taskId) ? next.delete(taskId) : next.add(taskId);
-
-      return next;
-
-    });
-
-  };
-
-
-
-  // Total tasks progress across steps 7-10
-
-  const allTasks = [11, 21, 6, 7, 41, 42, 43, 44].flatMap(k => stepTasks[k] || []);
-
-  const doneTaskCount = allTasks.filter(t => completedTasks.has(t.id)).length;
-
-  const totalTasks    = allTasks.length;
-
-
-
-  const stepProgress  = (completedSteps.size / steps.length) * 100;
-
-  const taskProgress  = totalTasks > 0 ? (doneTaskCount / totalTasks) * 100 : 0;
-
-
-
-  return (
-
-    <Layout>
-
-    <div style={{
-
-      minHeight: "100vh",
-
-      background: "#030712",
-
-      color: "#e2e8f0",
-
-      fontFamily: "'DM Mono', 'Fira Code', monospace",
-
-      position: "relative",
-
-      overflow: "hidden",
-
-    }}>
-
-
-
-      {/* Animated grid background */}
-
-      <div style={{
-
-        position: "fixed", inset: 0, pointerEvents: "none",
-
-        backgroundImage: `
-
-          linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
-
-          linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px)
-
-        `,
-
-        backgroundSize: "40px 40px",
-
-        zIndex: 0,
-
-      }} />
-
-
-
-      {/* Glowing orbs */}
-
-      <div style={{ position: "fixed", top: "-200px", left: "-200px", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-
-      <div style={{ position: "fixed", bottom: "-200px", right: "-200px", width: "600px", height: "600px", borderRadius: "50%", background: "radial-gradient(circle, rgba(255,78,205,0.06) 0%, transparent 70%)", pointerEvents: "none", zIndex: 0 }} />
-
-
-
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto", padding: "40px 24px" }}>
-
-
-
-        {/* Header */}
-
-        <div style={{ textAlign: "center", marginBottom: "60px" }}>
-
-          <div style={{ fontSize: "11px", letterSpacing: "6px", color: activePhaseTab === 0 ? "#00d4ff" : activePhaseTab === 1 ? "#a78bfa" : activePhaseTab === 2 ? "#34d399" : "#fbbf24", textTransform: "uppercase", marginBottom: "16px", opacity: 0.8 }}>
-
-            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PHASE 1 ┬╖ MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "PHASE 2 ┬╖ BIOMEDICAL WORKSPACE & COLLABORATION" : activePhaseTab === 3 ? "PHASE 3 ┬╖ REGULATORY & DEPLOYMENT" : activePhaseTab === 4 ? "PHASE 4 ┬╖ KNOWLEDGE GRAPH RAG" : activePhaseTab === 6 ? "PHASE 6 ┬╖ DIAGNOSTIC AGENTS" : "PHASE 7 ┬╖ PATIENT DIGITAL TWIN"}
-
-          </div>
-
-          <h1 style={{
-
-            fontSize: "clamp(36px, 6vw, 72px)",
-
-            fontFamily: "'Space Grotesk', 'DM Mono', sans-serif",
-
-            fontWeight: 800,
-
-            letterSpacing: "-2px",
-
-            margin: 0,
-
-            background: "linear-gradient(135deg, #ffffff 0%, #00d4ff 40%, #ff4ecd 100%)",
-
-            WebkitBackgroundClip: "text",
-
-            WebkitTextFillColor: "transparent",
-
-            backgroundClip: "text",
-
-            lineHeight: 1.1,
-
-          }}>
-
-            MEDINEX
-
-          </h1>
-
-          <p style={{ color: "#64748b", fontSize: "15px", marginTop: "12px", letterSpacing: "1px" }}>
-
-            Build the first true Biomedical Intelligence Layer
-
-          </p>
-
-
-
-          {/* Progress bars */}
-
-          <div style={{ marginTop: "32px", maxWidth: "500px", margin: "32px auto 0", display: "flex", flexDirection: "column", gap: "12px" }}>
-
-            <div>
-
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", fontSize: "11px", color: "#475569" }}>
-
-                <span>STEPS COMPLETED</span>
-
-                <span style={{ color: "#00d4ff" }}>{completedSteps.size}/{steps.length}</span>
-
-              </div>
-
-              <div style={{ height: "4px", background: "#0f172a", borderRadius: "2px", overflow: "hidden" }}>
-
-                <div style={{ height: "100%", width: `${stepProgress}%`, background: "linear-gradient(90deg, #00d4ff, #ff4ecd)", borderRadius: "2px", transition: "width 0.5s ease" }} />
-
-              </div>
-
-            </div>
-
-            <div>
-
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", fontSize: "11px", color: "#475569" }}>
-
-                <span>IMPLEMENTATION TASKS (Steps 7ΓÇô10)</span>
-
-                <span style={{ color: "#f97316" }}>{doneTaskCount}/{totalTasks}</span>
-
-              </div>
-
-              <div style={{ height: "4px", background: "#0f172a", borderRadius: "2px", overflow: "hidden" }}>
-
-                <div style={{ height: "100%", width: `${taskProgress}%`, background: "linear-gradient(90deg, #f97316, #ff4ecd)", borderRadius: "2px", transition: "width 0.5s ease" }} />
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        {/* Architecture flow */}
-
-        <div style={{
-
-          background: "rgba(15,23,42,0.8)",
-
-          border: "1px solid rgba(0,212,255,0.15)",
-
-          borderRadius: "16px",
-
-          padding: "24px",
-
-          marginBottom: "48px",
-
-          backdropFilter: "blur(10px)",
-
-        }}>
-
-          <div style={{ fontSize: "10px", letterSpacing: "4px", color: "#475569", marginBottom: "20px" }}>SYSTEM ARCHITECTURE</div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }}>
-
-            {["PubMed", "PMC", "PhysioNet", "MIMIC-IV", "NCBI APIs", "scispaCy", "BioBERT", "PubMedBERT", "Neo4j", "NetworkX", "FAISS", "Qdrant", "LlamaIndex", "LangChain", "GraphRAG"].map((item, i, arr) => (
-
-              <div key={item} style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-
-                <div style={{
-
-                  padding: "6px 12px",
-
-                  background: "rgba(0,212,255,0.06)",
-
-                  border: "1px solid rgba(0,212,255,0.2)",
-
-                  borderRadius: "6px",
-
-                  fontSize: "12px",
-
-                  color: "#94a3b8",
-
-                  whiteSpace: "nowrap",
-
-                }}>
-
-                  {item}
-
-                </div>
-
-                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "16px" }}>ΓåÆ</span>}
-
-              </div>
-
-            ))}
-
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-
-              <span style={{ color: "#1e3a4a", fontSize: "16px" }}>ΓåÆ</span>
-
-              <div style={{
-
-                padding: "6px 14px",
-
-                background: "linear-gradient(135deg, rgba(0,212,255,0.15), rgba(255,78,205,0.15))",
-
-                border: "1px solid rgba(255,78,205,0.4)",
-
-                borderRadius: "6px",
-
-                fontSize: "12px",
-
-                color: "#ff4ecd",
-
-                fontWeight: 700,
-
-                letterSpacing: "1px",
-
-              }}>
-
-                MEDINEX
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-
-        {/* Steps grid */}
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "20px", marginBottom: "48px" }}>
-
-          {steps.filter(s => (s.phase || 0) === activePhaseTab).map((s, idx) => {
-
-            const i = steps.findIndex(st => st.id === s.id);
-
-            const isComplete  = completedSteps.has(s.id);
-
-            const isActive    = activeStep === i;
-
-            const hasTasks    = !!stepTasks[s.id];
-
-            const tasksDone   = hasTasks ? (stepTasks[s.id] || []).filter(t => completedTasks.has(t.id)).length : 0;
-
-            const tasksTotal  = hasTasks ? (stepTasks[s.id] || []).length : 0;
-
-            const tasksPct    = tasksTotal > 0 ? Math.round((tasksDone / tasksTotal) * 100) : 0;
-
-
-
-            return (
-
-              <div
-
-                key={s.id}
-
-                onClick={() => setActiveStep(isActive ? null : i)}
-
-                style={{
-
-                  background: isActive
-
-                    ? `linear-gradient(135deg, rgba(${hexToRgb(s.color)},0.12), rgba(${hexToRgb(s.color)},0.04))`
-
-                    : "rgba(15,23,42,0.7)",
-
-                  border: `1px solid ${isActive ? s.color + "60" : "rgba(255,255,255,0.06)"}`,
-
-                  borderRadius: "16px",
-
-                  padding: "24px",
-
-                  cursor: "pointer",
-
-                  transition: "all 0.2s ease",
-
-                  backdropFilter: "blur(10px)",
-
-                  position: "relative",
-
-                  overflow: "hidden",
-
-                  gridColumn: s.isFinal ? "1 / -1" : undefined,
-
-                }}
-
-              >
-
-                {/* Completion top-bar */}
-
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: isComplete ? s.color : "transparent", transition: "background 0.3s" }} />
-
-
-
-                {/* Task progress bar (steps 7-10) */}
-
-                {hasTasks && tasksDone > 0 && (
-
-                  <div style={{ position: "absolute", top: "2px", left: 0, right: 0, height: "2px", background: "rgba(255,255,255,0.04)" }}>
-
-                    <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color + "80", transition: "width 0.4s" }} />
-
-                  </div>
-
-                )}
-
-
-
-                {/* Card header */}
-
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-
-                    <div style={{
-
-                      width: "36px", height: "36px", borderRadius: "10px",
-
-                      background: `rgba(${hexToRgb(s.color)},0.15)`,
-
-                      border: `1px solid ${s.color}40`,
-
-                      display: "flex", alignItems: "center", justifyContent: "center",
-
-                      fontSize: "18px",
-
-                    }}>
-
-                      {s.icon}
-
-                    </div>
-
-                    <div>
-
-                      <div style={{ fontSize: "10px", color: s.color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "2px" }}>
-
-                        STEP {s.id}
-
-                      </div>
-
-                      <div style={{ fontSize: "15px", fontWeight: 700, color: "#f1f5f9", lineHeight: 1.2 }}>{s.title}</div>
-
-                    </div>
-
-                  </div>
-
-                  <button
-
-                    onClick={(e) => toggleComplete(s.id, e)}
-
-                    style={{
-
-                      width: "28px", height: "28px", borderRadius: "8px",
-
-                      background: isComplete ? s.color : "rgba(255,255,255,0.05)",
-
-                      border: `1px solid ${isComplete ? s.color : "rgba(255,255,255,0.1)"}`,
-
-                      color: isComplete ? "#000" : "#475569",
-
-                      fontSize: "14px", cursor: "pointer",
-
-                      display: "flex", alignItems: "center", justifyContent: "center",
-
-                      transition: "all 0.2s",
-
-                      flexShrink: 0,
-
-                    }}
-
-                  >
-
-                    Γ£ô
-
-                  </button>
-
-                </div>
-
-
-
-                <div style={{ fontSize: "11px", color: "#64748b", marginBottom: "16px", lineHeight: 1.5 }}>
-
-                  {s.subtitle}
-
-                </div>
-
-
-
-                <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "16px", lineHeight: 1.6, margin: "0 0 16px 0" }}>
-
-                  {s.description}
-
-                </p>
-
-
-
-                {/* Task mini-summary for steps 7-10 (collapsed) */}
-
-                {hasTasks && !isActive && (
-
-                  <div style={{
-
-                    display: "flex", alignItems: "center", gap: "8px",
-
-                    padding: "8px 12px",
-
-                    background: `rgba(${hexToRgb(s.color)},0.05)`,
-
-                    border: `1px solid ${s.color}20`,
-
-                    borderRadius: "8px",
-
-                    marginBottom: "12px",
-
-                  }}>
-
-                    <div style={{ flex: 1, height: "3px", background: "rgba(255,255,255,0.05)", borderRadius: "2px", overflow: "hidden" }}>
-
-                      <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color, borderRadius: "2px", transition: "width 0.4s" }} />
-
-                    </div>
-
-                    <span style={{ fontSize: "10px", color: tasksDone === tasksTotal && tasksTotal > 0 ? s.color : "#475569", whiteSpace: "nowrap" }}>
-
-                      {tasksDone}/{tasksTotal} tasks
-
-                    </span>
-
-                  </div>
-
-                )}
-
-
-
-                {/* Resources */}
-
-                {s.resources.length > 0 && (
-
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
-
-                    {s.resources.map(r => {
-
-                      const badge = badgeStyle[r.type] || badgeStyle.website;
-
-                      return (
-
-                        <a
-
-                          key={r.name}
-
-                          href={r.url}
-
-                          target="_blank"
-
-                          rel="noopener noreferrer"
-
-                          onClick={e => e.stopPropagation()}
-
-                          style={{
-
-                            display: "flex", alignItems: "center", gap: "4px",
-
-                            padding: "4px 10px",
-
-                            background: badge.bg,
-
-                            border: `1px solid ${badge.color}30`,
-
-                            borderRadius: "6px",
-
-                            fontSize: "11px",
-
-                            color: badge.color,
-
-                            textDecoration: "none",
-
-                            transition: "all 0.15s",
-
-                          }}
-
-                        >
-
-                          <span style={{ fontSize: "9px", opacity: 0.6 }}>{badge.label}</span>
-
-                          <span>{r.name}</span>
-
-                          <span style={{ opacity: 0.4 }}>Γåù</span>
-
-                        </a>
-
-                      );
-
-                    })}
-
-                  </div>
-
-                )}
-
-
-
-                {/* Expandable detail */}
-
-                {isActive && (
-
-                  <div style={{ marginTop: "20px", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px", animation: "fadeIn 0.2s ease" }}>
-
-
-
-                    {/* Graph schema */}
-
-                    {s.graph && (
-
-                      <div style={{ marginBottom: "16px" }}>
-
-                        <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>GRAPH SCHEMA</div>
-
-                        {s.graph.map(g => (
-
-                          <div key={g.rel} style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px", fontSize: "12px" }}>
-
-                            <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.from}</span>
-
-                            <span style={{ color: "#475569", fontSize: "10px" }}>ΓöÇΓöÇΓöÇ {g.rel} ΓöÇΓöÇΓöÇΓû╢</span>
-
-                            <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.to}</span>
-
-                          </div>
-
-                        ))}
-
-                      </div>
-
-                    )}
-
-
-
-                    {/* Learn */}
-
-                    <div style={{ marginBottom: "16px" }}>
-
-                      <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>LEARN</div>
-
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-
-                        {s.learn.map(l => (
-
-                          <span key={l} style={{
-
-                            padding: "3px 10px",
-
-                            background: `rgba(${hexToRgb(s.color)},0.08)`,
-
-                            border: `1px solid ${s.color}20`,
-
-                            borderRadius: "4px",
-
-                            fontSize: "11px",
-
-                            color: "#94a3b8",
-
-                          }}>
-
-                            {l}
-
-                          </span>
-
-                        ))}
-
-                      </div>
-
-                    </div>
-
-
-
-                    {/* Pipeline flow */}
-
-                    {s.flow && (
-
-                      <div style={{ marginBottom: "16px" }}>
-
-                        <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>PIPELINE</div>
-
-                        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px" }}>
-
-                          {s.flow.map((f, idx) => (
-
-                            <div key={f} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-
-                              <span style={{
-
-                                padding: "3px 10px",
-
-                                background: "rgba(255,255,255,0.04)",
-
-                                border: "1px solid rgba(255,255,255,0.08)",
-
-                                borderRadius: "4px",
-
-                                fontSize: "11px",
-
-                                color: "#cbd5e1",
-
-                              }}>{f}</span>
-
-                              {idx < s.flow.length - 1 && <span style={{ color: "#1e3a4a" }}>Γåô</span>}
-
-                            </div>
-
-                          ))}
-
-                        </div>
-
-                      </div>
-
-                    )}
-
-
-
-                    {/* Deliverable */}
-
-                    <div style={{
-
-                      padding: "12px 16px",
-
-                      background: `rgba(${hexToRgb(s.color)},0.06)`,
-
-                      border: `1px solid ${s.color}25`,
-
-                      borderRadius: "8px",
-
-                      fontSize: "12px",
-
-                      color: s.color,
-
-                      marginBottom: hasTasks ? "0" : "0",
-
-                    }}>
-
-                      <span style={{ opacity: 0.6, marginRight: "8px", fontSize: "10px", letterSpacing: "2px" }}>DELIVERABLE</span>
-
-                      {s.deliverable}
-
-                    </div>
-
-
-
-                    {/* ΓöÇΓöÇ TASKS + CODE PANEL (Steps 7ΓÇô10) ΓöÇΓöÇ */}
-
-                    {hasTasks && (
-
-                      <div>
-
-                        {/* Tab switcher */}
-
-                        <div style={{
-
-                          display: "flex", gap: "0", marginTop: "20px",
-
-                          border: `1px solid ${s.color}20`,
-
-                          borderRadius: "10px 10px 0 0",
-
-                          overflow: "hidden",
-
-                          background: "rgba(15,23,42,0.9)",
-
-                        }}>
-
-                          {["tasks", "code"].map(tab => (
-
-                            <button
-
-                              key={tab}
-
-                              onClick={e => { e.stopPropagation(); setActiveTabState(tab); }}
-
-                              style={{
-
-                                flex: 1, padding: "10px",
-
-                                fontSize: "11px", letterSpacing: "2px",
-
-                                textTransform: "uppercase",
-
-                                cursor: "pointer", border: "none",
-
-                                background: activeTab === tab ? `rgba(${hexToRgb(s.color)},0.12)` : "transparent",
-
-                                color: activeTab === tab ? s.color : "#475569",
-
-                                borderBottom: activeTab === tab ? `2px solid ${s.color}` : "2px solid transparent",
-
-                                transition: "all 0.15s",
-
-                              }}
-
-                            >
-
-                              {tab === "tasks" ? `Γ£ª Tasks (${stepTasks[s.id].length})` : "Γƒ¿/Γƒ⌐ Code"}
-
-                            </button>
-
-                          ))}
-
-                        </div>
-
-
-
-                        {activeTab === "tasks" ? (
-
-                          <TaskPanel
-
-                            stepId={s.id}
-
-                            stepColor={s.color}
-
-                            completedTasks={completedTasks}
-
-                            toggleTask={toggleTask}
-
-                          />
-
-                        ) : (
-
-                          <CodePanel codeKey={s.codeKey} stepColor={s.color} />
-
-                        )}
-
-                      </div>
-
-                    )}
-
-                  </div>
-
-                )}
-
-
-
-                {!isActive && (
-
-                  <div style={{ marginTop: "12px", fontSize: "10px", color: "#334155", letterSpacing: "1px" }}>
-
-                    {hasTasks ? "CLICK TO EXPAND ┬╖ TASKS + CODE Γåô" : s.codeKey ? "CLICK TO EXPAND ┬╖ CODE INCLUDED Γåô" : "CLICK TO EXPAND Γåô"}
-
-                  </div>
-
-                )}
-
-              </div>
-
-            );
-
-          })}
-
-        </div>
-
-
-
-        {/* Phase Roadmap */}
-
-        <div style={{
-
-          background: "rgba(15,23,42,0.8)",
-
-          border: "1px solid rgba(255,78,205,0.15)",
-
-          borderRadius: "16px",
-
-          padding: "32px",
-
-          backdropFilter: "blur(10px)",
-
-          textAlign: "center",
-
-        }}>
-
-          <div style={{ fontSize: "10px", letterSpacing: "4px", color: "#475569", marginBottom: "16px" }}>PHASE ROADMAP</div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px", alignItems: "center" }}>
-
-            {[
-
-              { label: "Biomedical Intelligence", sub: "Data Pipeline Layer", color: "#00d4ff", active: true, phaseId: 0 },
-
-              { label: "Phase 1", sub: "Multi-Omics & Genomics", color: "#a78bfa", active: true, phaseId: 1 },
-
-              { label: "Phase 2", sub: "Biomedical Workspace", color: "#34d399", active: true, phaseId: 2 },
-
-              { label: "Phase 3", sub: "Regulatory & Deployment", color: "#fbbf24", active: true, phaseId: 3 },
-
-              { label: "Phase 4", sub: "Knowledge Graph RAG", color: "#00d4c8", active: true, phaseId: 4 },
-
-              { label: "Phase 6", sub: "Diagnostic Agents", color: "#ff4ecd", active: true, phaseId: 6 },
-
-              { label: "Phase 7", sub: "Patient Digital Twin", color: "#f97316", active: true, phaseId: 7 },
-
-            ].map((p, i, arr) => (
-
-              <div key={p.label} style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-
-                <div 
-
-                  onClick={() => setActivePhaseTab(p.phaseId)}
-
-                  style={{
-
-                  padding: "10px 20px",
-
-                  background: p.active || activePhaseTab === p.phaseId ? `rgba(${hexToRgb(p.color)},0.15)` : "rgba(255,255,255,0.02)",
-
-                  border: `1px solid ${p.active || activePhaseTab === p.phaseId ? p.color + "50" : "rgba(255,255,255,0.06)"}`,
-
-                  borderRadius: "10px",
-
-                  textAlign: "left",
-
-                  opacity: p.active ? 1 : 0.4,
-
-                  cursor: "pointer",
-
-                  boxShadow: activePhaseTab === p.phaseId ? `0 0 15px ${p.color}40` : "none",
-
-                  transform: activePhaseTab === p.phaseId ? "scale(1.05)" : "scale(1)",
-
-                  transition: "all 0.2s ease"
-
-                }}>
-
-                  <div style={{ fontSize: "11px", color: p.color, fontWeight: 700, marginBottom: "2px" }}>{p.label}</div>
-
-                  <div style={{ fontSize: "10px", color: "#64748b" }}>{p.sub}</div>
-
-                </div>
-
-                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "20px" }}>ΓåÆ</span>}
-
-              </div>
-
-            ))}
-
-          </div>
-
-          <div style={{ marginTop: "24px", fontSize: "11px", color: "#334155", letterSpacing: "1px" }}>
-
-            Phase 1 & 2 are now unlocked. Complete all Phase 2 steps to unlock Phase 3.
-
-          </div>
-
-        </div>
-
-
-
-      </div>
-
-
-
-      <style>{`
-
-        @keyframes fadeIn {
-
-          from { opacity: 0; transform: translateY(8px); }
-
-          to   { opacity: 1; transform: translateY(0); }
-
-        }
-
-      `}</style>
-
-    </div>
-
-    </Layout>
-
-  );
-
 }
-
