@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { Play, Activity, Beaker, Map, Database, Search, Cpu, Globe, Share2, Layers } from 'lucide-react';
+import './Phase4.css';
 
 function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -1009,529 +1011,499 @@ export default function MedinexDashboard() {
 
         {/* Steps grid */}
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "20px", marginBottom: "48px" }}>
+        <div className="phase4-container" style={{ marginBottom: "48px" }}>
 
-          {steps.filter(s => (s.phase || 0) === activePhaseTab).map((s, idx) => {
+          <div className="pipeline-visual">
 
-            const i = steps.findIndex(st => st.id === s.id);
+            {steps.filter(s => (s.phase || 0) === activePhaseTab).map((s, idx) => {
 
-            const isComplete  = completedSteps.has(s.id);
+              const i = steps.findIndex(st => st.id === s.id);
 
-            const isActive    = activeStep === i;
+              const isComplete  = completedSteps.has(s.id);
 
-            const hasTasks    = !!stepTasks[s.id];
+              const isActive    = activeStep === i;
 
-            const tasksDone   = hasTasks ? (stepTasks[s.id] || []).filter(t => completedTasks.has(t.id)).length : 0;
+              const hasTasks    = !!stepTasks[s.id];
 
-            const tasksTotal  = hasTasks ? (stepTasks[s.id] || []).length : 0;
+              const tasksDone   = hasTasks ? (stepTasks[s.id] || []).filter(t => completedTasks.has(t.id)).length : 0;
 
-            const tasksPct    = tasksTotal > 0 ? Math.round((tasksDone / tasksTotal) * 100) : 0;
+              const tasksTotal  = hasTasks ? (stepTasks[s.id] || []).length : 0;
 
-
-
-            return (
-
-              <div
-
-                key={s.id}
-
-                onClick={() => setActiveStep(isActive ? null : i)}
-
-                style={{
-
-                  background: isActive
-
-                    ? `linear-gradient(135deg, rgba(${hexToRgb(s.color)},0.12), rgba(${hexToRgb(s.color)},0.04))`
-
-                    : "rgba(15,23,42,0.7)",
-
-                  border: `1px solid ${isActive ? s.color + "60" : "rgba(255,255,255,0.06)"}`,
-
-                  borderRadius: "16px",
-
-                  padding: "24px",
-
-                  cursor: "pointer",
-
-                  transition: "all 0.2s ease",
-
-                  backdropFilter: "blur(10px)",
-
-                  position: "relative",
-
-                  overflow: "hidden",
-
-                  gridColumn: s.isFinal ? "1 / -1" : undefined,
-
-                }}
-
-              >
-
-                {/* Completion top-bar */}
-
-                <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: isComplete ? s.color : "transparent", transition: "background 0.3s" }} />
+              const tasksPct    = tasksTotal > 0 ? Math.round((tasksDone / tasksTotal) * 100) : 0;
 
 
 
-                {/* Task progress bar (steps 7-10) */}
+              return (
 
-                {hasTasks && tasksDone > 0 && (
+                <div
 
-                  <div style={{ position: "absolute", top: "2px", left: 0, right: 0, height: "2px", background: "rgba(255,255,255,0.04)" }}>
+                  key={s.id}
 
-                    <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color + "80", transition: "width 0.4s" }} />
+                  className={`step visible`}
 
-                  </div>
+                >
 
-                )}
+                  <div className="step-spine">
 
+                    <div
 
+                      className="step-node"
 
-                {/* Card header */}
+                      style={{
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
+                        background: `rgba(${hexToRgb(s.color)},0.15)`,
 
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                        border: `1.5px solid ${s.color}`,
 
-                    <div style={{
+                        color: s.color,
 
-                      width: "36px", height: "36px", borderRadius: "10px",
+                        boxShadow: isActive ? `0 0 24px ${s.color}60` : `0 0 14px ${s.color}33`
 
-                      background: `rgba(${hexToRgb(s.color)},0.15)`,
+                      }}
 
-                      border: `1px solid ${s.color}40`,
+                    >
 
-                      display: "flex", alignItems: "center", justifyContent: "center",
-
-                      fontSize: "18px",
-
-                    }}>
-
-                      {s.icon}
-
-                    </div>
-
-                    <div>
-
-                      <div style={{ fontSize: "10px", color: s.color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "2px" }}>
-
-                        STEP {s.id}
-
-                      </div>
-
-                      <div style={{ fontSize: "15px", fontWeight: 700, color: "#f1f5f9", lineHeight: 1.2 }}>{s.title}</div>
+                      {String(idx + 1).padStart(2, '0')}
 
                     </div>
 
                   </div>
 
-                  <button
 
-                    onClick={(e) => toggleComplete(s.id, e)}
+
+                  <div
+
+                    className="step-card"
+
+                    onClick={() => setActiveStep(isActive ? null : i)}
 
                     style={{
 
-                      width: "28px", height: "28px", borderRadius: "8px",
+                      borderColor: isActive ? s.color : "rgba(255,255,255,0.08)",
 
-                      background: isComplete ? s.color : "rgba(255,255,255,0.05)",
+                      boxShadow: isActive ? `0 8px 40px rgba(0,0,0,0.4), 0 0 20px ${s.color}20` : "none",
 
-                      border: `1px solid ${isComplete ? s.color : "rgba(255,255,255,0.1)"}`,
+                      cursor: "pointer",
 
-                      color: isComplete ? "#000" : "#475569",
+                      padding: "0",
 
-                      fontSize: "14px", cursor: "pointer",
+                      overflow: "hidden",
 
-                      display: "flex", alignItems: "center", justifyContent: "center",
+                      background: "rgba(15,23,42,0.6)",
 
-                      transition: "all 0.2s",
-
-                      flexShrink: 0,
+                      transition: "all 0.3s ease"
 
                     }}
 
                   >
 
-                    Γ£ô
+                    <div style={{ position: "relative", padding: "28px 32px", minHeight: "280px" }}>
 
-                  </button>
+                      {/* Completion top-bar */}
 
-                </div>
-
-
-
-                <div style={{ fontSize: "11px", color: "#64748b", marginBottom: "16px", lineHeight: 1.5 }}>
-
-                  {s.subtitle}
-
-                </div>
+                      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: isComplete ? s.color : "transparent", transition: "background 0.3s" }} />
 
 
 
-                <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "16px", lineHeight: 1.6, margin: "0 0 16px 0" }}>
+                      {/* Task progress bar (steps 7-10) */}
 
-                  {s.description}
+                      {hasTasks && tasksDone > 0 && (
 
-                </p>
+                        <div style={{ position: "absolute", top: "2px", left: 0, right: 0, height: "2px", background: "rgba(255,255,255,0.04)" }}>
 
+                          <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color + "80", transition: "width 0.4s" }} />
 
+                        </div>
 
-                {/* Task mini-summary for steps 7-10 (collapsed) */}
-
-                {hasTasks && !isActive && (
-
-                  <div style={{
-
-                    display: "flex", alignItems: "center", gap: "8px",
-
-                    padding: "8px 12px",
-
-                    background: `rgba(${hexToRgb(s.color)},0.05)`,
-
-                    border: `1px solid ${s.color}20`,
-
-                    borderRadius: "8px",
-
-                    marginBottom: "12px",
-
-                  }}>
-
-                    <div style={{ flex: 1, height: "3px", background: "rgba(255,255,255,0.05)", borderRadius: "2px", overflow: "hidden" }}>
-
-                      <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color, borderRadius: "2px", transition: "width 0.4s" }} />
-
-                    </div>
-
-                    <span style={{ fontSize: "10px", color: tasksDone === tasksTotal && tasksTotal > 0 ? s.color : "#475569", whiteSpace: "nowrap" }}>
-
-                      {tasksDone}/{tasksTotal} tasks
-
-                    </span>
-
-                  </div>
-
-                )}
+                      )}
 
 
 
-                {/* Resources */}
+                      {/* Card header */}
 
-                {s.resources.length > 0 && (
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
 
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
 
-                    {s.resources.map(r => {
+                          <div style={{
 
-                      const badge = badgeStyle[r.type] || badgeStyle.website;
+                            width: "36px", height: "36px", borderRadius: "10px",
 
-                      return (
+                            background: `rgba(${hexToRgb(s.color)},0.15)`,
 
-                        <a
+                            border: `1px solid ${s.color}40`,
 
-                          key={r.name}
+                            display: "flex", alignItems: "center", justifyContent: "center",
 
-                          href={r.url}
+                            fontSize: "18px",
 
-                          target="_blank"
+                          }}>
 
-                          rel="noopener noreferrer"
+                            {s.icon}
 
-                          onClick={e => e.stopPropagation()}
+                          </div>
+
+                          <div>
+
+                            <div style={{ fontSize: "10px", color: s.color, letterSpacing: "3px", textTransform: "uppercase", marginBottom: "2px" }}>
+
+                              STEP {s.id}
+
+                            </div>
+
+                            <div style={{ fontSize: "15px", fontWeight: 700, color: "#f1f5f9", lineHeight: 1.2 }}>{s.title}</div>
+
+                          </div>
+
+                        </div>
+
+                        <button
+
+                          onClick={(e) => toggleComplete(s.id, e)}
 
                           style={{
 
-                            display: "flex", alignItems: "center", gap: "4px",
+                            width: "28px", height: "28px", borderRadius: "8px",
 
-                            padding: "4px 10px",
+                            background: isComplete ? s.color : "rgba(255,255,255,0.05)",
 
-                            background: badge.bg,
+                            border: `1px solid ${isComplete ? s.color : "rgba(255,255,255,0.1)"}`,
 
-                            border: `1px solid ${badge.color}30`,
+                            color: isComplete ? "#000" : "#475569",
 
-                            borderRadius: "6px",
+                            fontSize: "14px", cursor: "pointer",
 
-                            fontSize: "11px",
+                            display: "flex", alignItems: "center", justifyContent: "center",
 
-                            color: badge.color,
+                            transition: "all 0.2s",
 
-                            textDecoration: "none",
-
-                            transition: "all 0.15s",
+                            flexShrink: 0,
 
                           }}
 
                         >
 
-                          <span style={{ fontSize: "9px", opacity: 0.6 }}>{badge.label}</span>
+                          Γ£ô
 
-                          <span>{r.name}</span>
-
-                          <span style={{ opacity: 0.4 }}>Γåù</span>
-
-                        </a>
-
-                      );
-
-                    })}
-
-                  </div>
-
-                )}
-
-
-
-                {/* Expandable detail */}
-
-                {isActive && (
-
-                  <div style={{ marginTop: "20px", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px", animation: "fadeIn 0.2s ease" }}>
-
-
-
-                    {/* Graph schema */}
-
-                    {s.graph && (
-
-                      <div style={{ marginBottom: "16px" }}>
-
-                        <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>GRAPH SCHEMA</div>
-
-                        {s.graph.map(g => (
-
-                          <div key={g.rel} style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px", fontSize: "12px" }}>
-
-                            <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.from}</span>
-
-                            <span style={{ color: "#475569", fontSize: "10px" }}>─── {g.rel} ───▶</span>
-
-                            <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.to}</span>
-
-                          </div>
-
-                        ))}
+                        </button>
 
                       </div>
 
-                    )}
 
 
+                      <div style={{ fontSize: "11px", color: "#64748b", marginBottom: "16px", lineHeight: 1.5 }}>
 
-                    {/* Learn */}
-
-                    <div style={{ marginBottom: "16px" }}>
-
-                      <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>LEARN</div>
-
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-
-                        {s.learn.map(l => (
-
-                          <span key={l} style={{
-
-                            padding: "3px 10px",
-
-                            background: `rgba(${hexToRgb(s.color)},0.08)`,
-
-                            border: `1px solid ${s.color}20`,
-
-                            borderRadius: "4px",
-
-                            fontSize: "11px",
-
-                            color: "#94a3b8",
-
-                          }}>
-
-                            {l}
-
-                          </span>
-
-                        ))}
+                        {s.subtitle}
 
                       </div>
 
-                    </div>
+
+
+                      <p style={{ fontSize: "13px", color: "#94a3b8", marginBottom: "16px", lineHeight: 1.6, margin: "0 0 16px 0" }}>
+
+                        {s.description}
+
+                      </p>
 
 
 
-                    {/* Pipeline flow */}
+                      {/* Task mini-summary for steps 7-10 (collapsed) */}
 
-                    {s.flow && (
-
-                      <div style={{ marginBottom: "16px" }}>
-
-                        <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>PIPELINE</div>
-
-                        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px" }}>
-
-                          {s.flow.map((f, idx) => (
-
-                            <div key={f} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-
-                              <span style={{
-
-                                padding: "3px 10px",
-
-                                background: "rgba(255,255,255,0.04)",
-
-                                border: "1px solid rgba(255,255,255,0.08)",
-
-                                borderRadius: "4px",
-
-                                fontSize: "11px",
-
-                                color: "#cbd5e1",
-
-                              }}>{f}</span>
-
-                              {idx < s.flow.length - 1 && <span style={{ color: "#1e3a4a" }}>↓</span>}
-
-                            </div>
-
-                          ))}
-
-                        </div>
-
-                      </div>
-
-                    )}
-
-
-
-                    {/* Deliverable */}
-
-                    <div style={{
-
-                      padding: "12px 16px",
-
-                      background: `rgba(${hexToRgb(s.color)},0.06)`,
-
-                      border: `1px solid ${s.color}25`,
-
-                      borderRadius: "8px",
-
-                      fontSize: "12px",
-
-                      color: s.color,
-
-                      marginBottom: hasTasks ? "0" : "0",
-
-                    }}>
-
-                      <span style={{ opacity: 0.6, marginRight: "8px", fontSize: "10px", letterSpacing: "2px" }}>DELIVERABLE</span>
-
-                      {s.deliverable}
-
-                    </div>
-
-
-
-                    {/* ── TASKS + CODE PANEL (Steps 7–10) ── */}
-
-                    {hasTasks && (
-
-                      <div>
-
-                        {/* Tab switcher */}
+                      {hasTasks && !isActive && (
 
                         <div style={{
 
-                          display: "flex", gap: "0", marginTop: "20px",
+                          display: "flex", alignItems: "center", gap: "8px",
+
+                          padding: "8px 12px",
+
+                          background: `rgba(${hexToRgb(s.color)},0.05)`,
 
                           border: `1px solid ${s.color}20`,
 
-                          borderRadius: "10px 10px 0 0",
+                          borderRadius: "8px",
 
-                          overflow: "hidden",
-
-                          background: "rgba(15,23,42,0.9)",
+                          marginBottom: "12px",
 
                         }}>
 
-                          {["tasks", "code"].map(tab => (
+                          <div style={{ flex: 1, height: "3px", background: "rgba(255,255,255,0.05)", borderRadius: "2px", overflow: "hidden" }}>
 
-                            <button
+                            <div style={{ height: "100%", width: `${tasksPct}%`, background: s.color, borderRadius: "2px", transition: "width 0.4s" }} />
 
-                              key={tab}
+                          </div>
 
-                              onClick={e => { e.stopPropagation(); setActiveTabState(tab); }}
+                          <span style={{ fontSize: "10px", color: tasksDone === tasksTotal && tasksTotal > 0 ? s.color : "#475569", whiteSpace: "nowrap" }}>
 
-                              style={{
+                            {tasksDone}/{tasksTotal} tasks
 
-                                flex: 1, padding: "10px",
-
-                                fontSize: "11px", letterSpacing: "2px",
-
-                                textTransform: "uppercase",
-
-                                cursor: "pointer", border: "none",
-
-                                background: activeTab === tab ? `rgba(${hexToRgb(s.color)},0.12)` : "transparent",
-
-                                color: activeTab === tab ? s.color : "#475569",
-
-                                borderBottom: activeTab === tab ? `2px solid ${s.color}` : "2px solid transparent",
-
-                                transition: "all 0.15s",
-
-                              }}
-
-                            >
-
-                              {tab === "tasks" ? `✓ Tasks (${stepTasks[s.id].length})` : "</> Code"}
-
-                            </button>
-
-                          ))}
+                          </span>
 
                         </div>
 
+                      )}
 
 
-                        {activeTab === "tasks" ? (
 
-                          <TaskPanel
+                      {/* Expandable detail */}
 
-                            stepId={s.id}
+                      {isActive && (
 
-                            stepColor={s.color}
+                        <div style={{ marginTop: "20px", borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "20px", animation: "fadeIn 0.2s ease" }}>
 
-                            completedTasks={completedTasks}
 
-                            toggleTask={toggleTask}
 
-                          />
+                          {/* Graph schema */}
 
-                        ) : (
+                          {s.graph && (
 
-                          <CodePanel codeKey={s.codeKey} stepColor={s.color} />
+                            <div style={{ marginBottom: "16px" }}>
 
-                        )}
+                              <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>GRAPH SCHEMA</div>
 
-                      </div>
+                              {s.graph.map(g => (
 
-                    )}
+                                <div key={g.rel} style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "6px", fontSize: "12px" }}>
+
+                                  <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.from}</span>
+
+                                  <span style={{ color: "#475569", fontSize: "10px" }}>─── {g.rel} ───▶</span>
+
+                                  <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.to}</span>
+
+                                </div>
+
+                              ))}
+
+                            </div>
+
+                          )}
+
+
+
+                          {/* Learn */}
+
+                          <div style={{ marginBottom: "16px" }}>
+
+                            <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>LEARN</div>
+
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
+
+                              {s.learn.map(l => (
+
+                                <span key={l} style={{
+
+                                  padding: "3px 10px",
+
+                                  background: `rgba(${hexToRgb(s.color)},0.08)`,
+
+                                  border: `1px solid ${s.color}20`,
+
+                                  borderRadius: "4px",
+
+                                  fontSize: "11px",
+
+                                  color: "#94a3b8",
+
+                                }}>
+
+                                  {l}
+
+                                </span>
+
+                              ))}
+
+                            </div>
+
+                          </div>
+
+
+
+                          {/* Pipeline flow */}
+
+                          {s.flow && (
+
+                            <div style={{ marginBottom: "16px" }}>
+
+                              <div style={{ fontSize: "10px", letterSpacing: "3px", color: "#475569", marginBottom: "10px" }}>PIPELINE</div>
+
+                              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "6px" }}>
+
+                                {s.flow.map((f, idx) => (
+
+                                  <div key={f} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+
+                                    <span style={{
+
+                                      padding: "3px 10px",
+
+                                      background: "rgba(255,255,255,0.04)",
+
+                                      border: "1px solid rgba(255,255,255,0.08)",
+
+                                      borderRadius: "4px",
+
+                                      fontSize: "11px",
+
+                                      color: "#cbd5e1",
+
+                                    }}>{f}</span>
+
+                                    {idx < s.flow.length - 1 && <span style={{ color: "#1e3a4a" }}>↓</span>}
+
+                                  </div>
+
+                                ))}
+
+                              </div>
+
+                            </div>
+
+                          )}
+
+
+
+                          {/* Deliverable */}
+
+                          <div style={{
+
+                            padding: "12px 16px",
+
+                            background: `rgba(${hexToRgb(s.color)},0.06)`,
+
+                            border: `1px solid ${s.color}25`,
+
+                            borderRadius: "8px",
+
+                            fontSize: "12px",
+
+                            color: s.color,
+
+                            marginBottom: hasTasks ? "0" : "0",
+
+                          }}>
+
+                            <span style={{ opacity: 0.6, marginRight: "8px", fontSize: "10px", letterSpacing: "2px" }}>DELIVERABLE</span>
+
+                            {s.deliverable}
+
+                          </div>
+
+
+
+                          {/* ── TASKS + CODE PANEL (Steps 7–10) ── */}
+
+                          {hasTasks && (
+
+                            <div>
+
+                              {/* Tab switcher */}
+
+                              <div style={{
+
+                                display: "flex", gap: "0", marginTop: "20px",
+
+                                border: `1px solid ${s.color}20`,
+
+                                borderRadius: "10px 10px 0 0",
+
+                                overflow: "hidden",
+
+                                background: "rgba(15,23,42,0.9)",
+
+                              }}>
+
+                                {["tasks", "code"].map(tab => (
+
+                                  <button
+
+                                    key={tab}
+
+                                    onClick={e => { e.stopPropagation(); setActiveTabState(tab); }}
+
+                                    style={{
+
+                                      flex: 1, padding: "10px",
+
+                                      fontSize: "11px", letterSpacing: "2px",
+
+                                      textTransform: "uppercase",
+
+                                      cursor: "pointer", border: "none",
+
+                                      background: activeTab === tab ? `rgba(${hexToRgb(s.color)},0.12)` : "transparent",
+
+                                      color: activeTab === tab ? s.color : "#475569",
+
+                                      borderBottom: activeTab === tab ? `2px solid ${s.color}` : "2px solid transparent",
+
+                                      transition: "all 0.15s",
+
+                                    }}
+
+                                  >
+
+                                    {tab === "tasks" ? `✓ Tasks (${stepTasks[s.id].length})` : "</> Code"}
+
+                                  </button>
+
+                                ))}
+
+                              </div>
+
+
+
+                              {activeTab === "tasks" ? (
+
+                                <TaskPanel
+
+                                  stepId={s.id}
+
+                                  stepColor={s.color}
+
+                                  completedTasks={completedTasks}
+
+                                  toggleTask={toggleTask}
+
+                                />
+
+                              ) : (
+
+                                <CodePanel codeKey={s.codeKey} stepColor={s.color} />
+
+                              )}
+
+                            </div>
+
+                          )}
+
+                        </div>
+
+                      )}
+
+
+
+                      {!isActive && (
+
+                        <div style={{ marginTop: "12px", fontSize: "10px", color: "#334155", letterSpacing: "1px" }}>
+
+                          {hasTasks ? "CLICK TO EXPAND · TASKS + CODE ↓" : s.codeKey ? "CLICK TO EXPAND · CODE INCLUDED ↓" : "CLICK TO EXPAND ↓"}
+
+                        </div>
+
+                      )}
+
+                    </div>
 
                   </div>
 
-                )}
+                </div>
 
+              );
 
+            })}
 
-                {!isActive && (
-
-                  <div style={{ marginTop: "12px", fontSize: "10px", color: "#334155", letterSpacing: "1px" }}>
-
-                    {hasTasks ? "CLICK TO EXPAND · TASKS + CODE ↓" : s.codeKey ? "CLICK TO EXPAND · CODE INCLUDED ↓" : "CLICK TO EXPAND ↓"}
-
-                  </div>
-
-                )}
-
-              </div>
-
-            );
-
-          })}
+          </div>
 
         </div>
 
