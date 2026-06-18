@@ -704,19 +704,6 @@ const steps = [
 ];
 
 export default function MedinexDashboard() {
-  useEffect(() => {
-    const steps = document.querySelectorAll('.step');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          obs.unobserve(e.target);
-        }
-      });
-    });
-    steps.forEach(s => obs.observe(s));
-    return () => obs.disconnect();
-  }, [activePhaseTab]);
 
   const defaultSteps = new Set([11, 21]);
 
@@ -731,6 +718,20 @@ export default function MedinexDashboard() {
   const [activeTab, setActiveTabState]      = useState("tasks"); // "tasks" | "code"
 
   const [activePhaseTab, setActivePhaseTab] = useState(4); // Default to Phase 2 where our current work is
+
+  useEffect(() => {
+    const steps = document.querySelectorAll('.step');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    });
+    steps.forEach(s => obs.observe(s));
+    return () => obs.disconnect();
+  }, [activePhaseTab]);
 
 
 
