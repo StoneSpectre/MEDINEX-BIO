@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Play, Activity, Beaker, Map, Database, Search, Cpu, Globe, Share2, Layers } from 'lucide-react';
@@ -704,6 +704,19 @@ const steps = [
 ];
 
 export default function MedinexDashboard() {
+  useEffect(() => {
+    const steps = document.querySelectorAll('.step');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    });
+    steps.forEach(s => obs.observe(s));
+    return () => obs.disconnect();
+  }, [activePhaseTab]);
 
   const defaultSteps = new Set([11, 21]);
 
@@ -1039,7 +1052,7 @@ export default function MedinexDashboard() {
 
                   key={s.id}
 
-                  className={`step visible`}
+                  className={`step`}
 
                 >
 
@@ -1182,9 +1195,7 @@ export default function MedinexDashboard() {
                           }}
 
                         >
-
-                          Γ£ô
-
+                          ✓
                         </button>
 
                       </div>
