@@ -847,7 +847,7 @@ export default function MedinexDashboard() {
 
           <div style={{ fontSize: "11px", letterSpacing: "6px", color: activePhaseTab === 0 ? "#00d4ff" : activePhaseTab === 1 ? "#a78bfa" : activePhaseTab === 2 ? "#34d399" : activePhaseTab === 4 ? "#00d4c8" : activePhaseTab === 6 ? "#ff4ecd" : activePhaseTab === 7 ? "#f97316" : "#fbbf24", textTransform: "uppercase", marginBottom: "16px", opacity: 0.8 }}>
 
-            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "BIOMEDICAL WORKSPACE" : activePhaseTab === 3 ? "REGULATORY & DEPLOYMENT" : activePhaseTab === 4 ? "KNOWLEDGE GRAPH RAG" : activePhaseTab === 6 ? "DIAGNOSTIC AGENTS" : "PATIENT DIGITAL TWIN"}
+            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PREDICTIVE ML ENGINE" : activePhaseTab === 2 ? "CLINICAL WORKSPACE" : activePhaseTab === 3 ? "PRODUCTION KNOWLEDGE GRAPH" : activePhaseTab === 4 ? "KNOWLEDGE GRAPH RAG" : activePhaseTab === 6 ? "DIAGNOSTIC AGENTS" : "PATIENT DIGITAL TWIN"}
 
           </div>
 
@@ -1547,11 +1547,11 @@ export default function MedinexDashboard() {
 
               { label: "Biomedical Intelligence", sub: "Phase 0", color: "#00d4ff", active: true, phaseId: 0 },
 
-              { label: "Multi-Omics & Genomics", sub: "Phase 1", color: "#a78bfa", active: true, phaseId: 1 },
+              { label: "Predictive ML Engine", sub: "Phase 1", color: "#a78bfa", active: true, phaseId: 1 },
 
-              { label: "Biomedical Workspace", sub: "Phase 2", color: "#34d399", active: true, phaseId: 2 },
+              { label: "Clinical Workspace", sub: "Phase 2", color: "#34d399", active: true, phaseId: 2 },
 
-              { label: "Regulatory & Deployment", sub: "Phase 3", color: "#fbbf24", active: true, phaseId: 3 },
+              { label: "Production Knowledge Graph", sub: "Phase 3", color: "#fbbf24", active: true, phaseId: 3 },
 
               { label: "Knowledge Graph RAG", sub: "Phase 4", color: "#00d4c8", active: true, phaseId: 4 },
 
