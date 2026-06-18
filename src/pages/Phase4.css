@@ -98,15 +98,7 @@
   gap: 0;
   position: relative;
 }
-.phase4-container .pipeline-visual::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0; bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--teal) 15%, var(--purple) 85%, transparent);
-  transform: translateX(-50%);
-}
+
 
 /* ── STEP CARDS ── */
 .phase4-container .step {
