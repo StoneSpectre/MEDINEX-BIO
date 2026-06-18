@@ -294,7 +294,7 @@ const steps = [
     title: "Biomedical Knowledge Sources",
     subtitle: "Literature Layer",
     color: "#00d4ff",
-    icon: "≡ƒôÜ",
+    icon: "📚",
     description: "Understand where biomedical knowledge comes from before building AI.",
     resources: [
       { name: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/", type: "website" },
@@ -320,7 +320,7 @@ const steps = [
     title: "Collect Biomedical Data",
     subtitle: "NCBI E-Utilities API",
     color: "#00ffaa",
-    icon: "≡ƒöî",
+    icon: "🔌",
     description: "Build automated data collection pipelines using NCBI's E-Utilities API to fetch papers, metadata, and abstracts at scale.",
     resources: [
       { name: "NCBI E-Utilities Docs", url: "https://www.ncbi.nlm.nih.gov/books/NBK25501/", type: "website" },
@@ -329,17 +329,17 @@ const steps = [
       { name: "requests library", url: "https://github.com/psf/requests", type: "github" },
     ],
     learn: [
-      "ESearch ΓÇö query PubMed for PMIDs",
-      "EFetch ΓÇö retrieve full records",
-      "ESummary ΓÇö fetch metadata",
-      "ELink ΓÇö find related articles",
+      "ESearch — query PubMed for PMIDs",
+      "EFetch — retrieve full records",
+      "ESummary — fetch metadata",
+      "ELink — find related articles",
       "Rate Limiting & API Keys",
       "Parsing XML/JSON responses",
       "Batch fetching large result sets",
       "Abstract Retrieval at scale",
       "Citation Retrieval",
     ],
-    deliverable: "PubMed ΓåÆ Python Pipeline ΓåÆ Structured Dataset (JSON/CSV)",
+    deliverable: "PubMed → Python Pipeline → Structured Dataset (JSON/CSV)",
     flow: ["PubMed Query", "ESearch (PMIDs)", "EFetch (Records)", "XML Parsing", "Structured Dataset"],
   },
   {
@@ -347,8 +347,8 @@ const steps = [
     title: "Clinical Data Infrastructure",
     subtitle: "PhysioNet & MIMIC-IV",
     color: "#ff6b6b",
-    icon: "≡ƒÅÑ",
-    description: "Learn how real hospital data is structured and queried ΓÇö most AI founders skip this critical foundation.",
+    icon: "🏥",
+    description: "Learn how real hospital data is structured and queried — most AI founders skip this critical foundation.",
     resources: [
       { name: "PhysioNet", url: "https://physionet.org/", type: "website" },
       { name: "MIMIC-IV Dataset", url: "https://physionet.org/content/mimiciv/", type: "website" },
@@ -356,26 +356,26 @@ const steps = [
       { name: "MIMIC-Code GitHub", url: "https://github.com/MIT-LCP/mimic-code", type: "github" },
     ],
     learn: [
-      "patients ΓÇö demographics",
-      "admissions ΓÇö hospital stays",
-      "diagnoses_icd ΓÇö ICD-9/ICD-10 codes",
-      "procedures_icd ΓÇö procedure codes",
-      "prescriptions ΓÇö medication orders",
-      "labevents ΓÇö lab results",
-      "chartevents ΓÇö nurse/doctor observations",
+      "patients — demographics",
+      "admissions — hospital stays",
+      "diagnoses_icd — ICD-9/ICD-10 codes",
+      "procedures_icd — procedure codes",
+      "prescriptions — medication orders",
+      "labevents — lab results",
+      "chartevents — nurse/doctor observations",
       "SQL querying across MIMIC tables",
       "ICD Code Systems (ICD-9 vs ICD-10)",
       "Clinical Data De-identification",
     ],
-    deliverable: "Patient ΓåÆ Admission ΓåÆ Diagnosis ΓåÆ Treatment ΓåÆ Outcome pipeline",
+    deliverable: "Patient → Admission → Diagnosis → Treatment → Outcome pipeline",
     flow: ["Patient Record", "Admission", "Diagnosis (ICD)", "Treatment", "Lab/Chart Events", "Outcome"],
   },
   {
     id: 4,
     title: "Biomedical NLP",
-    subtitle: "scispaCy ┬╖ BioBERT ┬╖ PubMedBERT",
+    subtitle: "scispaCy · BioBERT · PubMedBERT",
     color: "#a78bfa",
-    icon: "≡ƒºá",
+    icon: "🧠",
     description: "Convert raw biomedical text into structured knowledge using state-of-the-art domain-specific NLP models.",
     resources: [
       { name: "scispaCy", url: "https://github.com/allenai/scispacy", type: "github" },
@@ -396,7 +396,7 @@ const steps = [
       "Entity Linking to UMLS / MeSH",
       "Fine-tuning BERT on biomedical tasks",
     ],
-    deliverable: "Paper ΓåÆ Entities ΓåÆ Relations ΓåÆ Embeddings",
+    deliverable: "Paper → Entities → Relations → Embeddings",
     flow: ["Raw Paper Text", "scispaCy NER", "BioBERT Relations", "PubMedBERT Embeddings", "Structured Knowledge"],
   },
   {
@@ -404,7 +404,7 @@ const steps = [
     title: "Knowledge Graph Engineering",
     subtitle: "Neo4j",
     color: "#fbbf24",
-    icon: "≡ƒò╕∩╕Å",
+    icon: "🕸️",
     description: "Connect biomedical concepts into a queryable, traversable graph database that powers multi-hop reasoning.",
     resources: [
       { name: "Neo4j Graph Academy", url: "https://graphacademy.neo4j.com/", type: "website" },
@@ -434,9 +434,9 @@ const steps = [
   {
     id: 6,
     title: "Graph Analytics",
-    subtitle: "NetworkX ┬╖ graph-tool ┬╖ iGraph",
+    subtitle: "NetworkX · graph-tool · iGraph",
     color: "#34d399",
-    icon: "≡ƒôè",
+    icon: "📊",
     description: "Discover hidden patterns, key network hubs, and disease communities across the biomedical knowledge graph using graph algorithms.",
     resources: [
       { name: "NetworkX Docs", url: "https://networkx.org/documentation/stable/", type: "website" },
@@ -450,7 +450,7 @@ const steps = [
       "PageRank on Biomedical Graphs",
       "Closeness & Eigenvector Centrality",
       "Louvain Community Detection",
-      "GirvanΓÇôNewman Algorithm",
+      "Girvan–Newman Algorithm",
       "Shortest Path (Dijkstra / BFS)",
       "Link Prediction",
       "Bipartite Graph Projections",
@@ -458,16 +458,16 @@ const steps = [
       "Hub Gene Identification",
       "Graph Visualization (pyvis / Gephi)",
     ],
-    deliverable: "Centrality-ranked diseaseΓÇôgeneΓÇôdrug hub discovery and drug repurposing engine",
+    deliverable: "Centrality-ranked disease–gene–drug hub discovery and drug repurposing engine",
     flow: ["Neo4j Graph Export", "NetworkX Load", "Centrality Scoring", "Community Detection", "Drug Repurposing Candidates"],
   },
   {
     id: 7,
     title: "Semantic Search",
-    subtitle: "FAISS ┬╖ Qdrant ┬╖ Sentence-Transformers",
+    subtitle: "FAISS · Qdrant · Sentence-Transformers",
     color: "#f97316",
-    icon: "≡ƒöì",
-    description: "Build blazing-fast vector search over millions of biomedical abstracts ΓÇö going beyond keyword matching to true semantic understanding.",
+    icon: "🔍",
+    description: "Build blazing-fast vector search over millions of biomedical abstracts — going beyond keyword matching to true semantic understanding.",
     resources: [
       { name: "FAISS GitHub", url: "https://github.com/facebookresearch/faiss", type: "github" },
       { name: "FAISS Docs", url: "https://faiss.ai/", type: "website" },
@@ -487,17 +487,17 @@ const steps = [
       "Embedding Fine-tuning for Biomedical Domain",
       "Re-ranking Retrieved Results",
     ],
-    deliverable: "Research Query ΓåÆ BiomedBERT Embedding ΓåÆ FAISS/Qdrant ANN Search ΓåÆ Ranked Relevant Papers",
+    deliverable: "Research Query → BiomedBERT Embedding → FAISS/Qdrant ANN Search → Ranked Relevant Papers",
     flow: ["Research Query", "BiomedBERT Embed", "FAISS / Qdrant Index", "ANN Search", "Top-k Ranked Papers"],
     codeKey: 7,
   },
   {
     id: 8,
     title: "Retrieval-Augmented Generation",
-    subtitle: "LlamaIndex ┬╖ LangChain ┬╖ DSPy",
+    subtitle: "LlamaIndex · LangChain · DSPy",
     color: "#e879f9",
-    icon: "Γ¢ô∩╕Å",
-    description: "Build end-to-end RAG pipelines that let an LLM answer biomedical questions grounded in your indexed literature and clinical data ΓÇö with citations and reduced hallucination.",
+    icon: "⚙️",
+    description: "Build end-to-end RAG pipelines that let an LLM answer biomedical questions grounded in your indexed literature and clinical data — with citations and reduced hallucination.",
     resources: [
       { name: "LlamaIndex GitHub", url: "https://github.com/run-llama/llama_index", type: "github" },
       { name: "LlamaIndex Docs", url: "https://docs.llamaindex.ai/", type: "website" },
@@ -519,17 +519,17 @@ const steps = [
       "Streaming Responses",
       "Citation-Aware Answer Generation",
     ],
-    deliverable: "Biomedical Research Assistant v1 ΓÇö grounded, citation-aware, hallucination-reduced",
+    deliverable: "Biomedical Research Assistant v1 — grounded, citation-aware, hallucination-reduced",
     flow: ["User Query", "Retriever (FAISS/Qdrant)", "Top-k Chunks", "Prompt + Context", "LLM Generation", "Answer + Citations"],
     codeKey: 8,
   },
   {
     id: 9,
     title: "Graph RAG",
-    subtitle: "Microsoft GraphRAG ┬╖ Neo4j GraphRAG",
+    subtitle: "Microsoft GraphRAG · Neo4j GraphRAG",
     color: "#38bdf8",
-    icon: "≡ƒº¼",
-    description: "Go beyond flat vector search ΓÇö enable multi-hop reasoning across the entire biomedical knowledge graph with structured LLM traversal.",
+    icon: "🧩",
+    description: "Go beyond flat vector search — enable multi-hop reasoning across the entire biomedical knowledge graph with structured LLM traversal.",
     resources: [
       { name: "Microsoft GraphRAG", url: "https://github.com/microsoft/graphrag", type: "github" },
       { name: "GraphRAG Docs", url: "https://microsoft.github.io/graphrag/", type: "website" },
@@ -550,7 +550,7 @@ const steps = [
     deliverable: '"Which genes are associated with Alzheimer\'s through inflammation pathways and are targeted by approved drugs?"',
     flow: ["Natural Language Query", "Entity Extraction", "Graph Traversal (Neo4j Cypher)", "Community Summary", "LLM Synthesis", "Multi-hop Answer"],
     graph: [
-      { from: "NL Query", rel: "extracts_entities", to: "Alzheimer's ┬╖ Inflammation" },
+      { from: "NL Query", rel: "extracts_entities", to: "Alzheimer's · Inflammation" },
       { from: "Alzheimer's", rel: "Associated_With", to: "Gene (APOE, TREM2)" },
       { from: "Gene", rel: "in_Pathway", to: "Inflammation Pathway" },
       { from: "Gene", rel: "Targeted_By", to: "Approved Drug" },
@@ -562,8 +562,8 @@ const steps = [
     title: "Medinex Phase 0 Final System",
     subtitle: "Biomedical Intelligence Platform",
     color: "#ff4ecd",
-    icon: "≡ƒÜÇ",
-    description: "The complete integrated stack ΓÇö from raw PubMed literature and MIMIC-IV clinical records to a production-grade AI biomedical intelligence engine.",
+    icon: "🚀",
+    description: "The complete integrated stack — from raw PubMed literature and MIMIC-IV clinical records to a production-grade AI biomedical intelligence engine.",
     resources: [
       { name: "PubMed", url: "https://pubmed.ncbi.nlm.nih.gov/", type: "website" },
       { name: "MIMIC-IV", url: "https://physionet.org/content/mimiciv/", type: "website" },
@@ -581,8 +581,8 @@ const steps = [
       "Enable multi-hop reasoning via Microsoft GraphRAG",
       "Evaluate outputs with RAGAS, TruLens & BioASQ benchmarks",
     ],
-    deliverable: "MEDINEX ΓÇö Biomedical Intelligence Platform (Phase 0 Complete)",
-    flow: ["PubMed ┬╖ PMC ┬╖ PhysioNet ┬╖ MIMIC-IV", "NCBI APIs", "scispaCy ┬╖ BioBERT ┬╖ PubMedBERT", "Neo4j Knowledge Graph", "NetworkX Analytics", "FAISS ┬╖ Qdrant", "LlamaIndex ┬╖ LangChain", "Microsoft GraphRAG", "MEDINEX"],
+    deliverable: "MEDINEX — Biomedical Intelligence Platform (Phase 0 Complete)",
+    flow: ["PubMed · PMC · PhysioNet · MIMIC-IV", "NCBI APIs", "scispaCy · BioBERT · PubMedBERT", "Neo4j Knowledge Graph", "NetworkX Analytics", "FAISS · Qdrant", "LlamaIndex · LangChain", "Microsoft GraphRAG", "MEDINEX"],
     isFinal: true,
     codeKey: 10,
   },
@@ -831,7 +831,7 @@ export default function MedinexDashboard() {
 
           <div style={{ fontSize: "11px", letterSpacing: "6px", color: activePhaseTab === 0 ? "#00d4ff" : activePhaseTab === 1 ? "#a78bfa" : activePhaseTab === 2 ? "#34d399" : "#fbbf24", textTransform: "uppercase", marginBottom: "16px", opacity: 0.8 }}>
 
-            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PHASE 1 ┬╖ MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "PHASE 2 ┬╖ BIOMEDICAL WORKSPACE & COLLABORATION" : activePhaseTab === 3 ? "PHASE 3 ┬╖ REGULATORY & DEPLOYMENT" : activePhaseTab === 4 ? "PHASE 4 ┬╖ KNOWLEDGE GRAPH RAG" : activePhaseTab === 6 ? "PHASE 6 ┬╖ DIAGNOSTIC AGENTS" : "PHASE 7 ┬╖ PATIENT DIGITAL TWIN"}
+            {activePhaseTab === 0 ? "BIOMEDICAL INTELLIGENCE" : activePhaseTab === 1 ? "PHASE 1 · MULTI-OMICS & GENOMICS" : activePhaseTab === 2 ? "PHASE 2 · BIOMEDICAL WORKSPACE & COLLABORATION" : activePhaseTab === 3 ? "PHASE 3 · REGULATORY & DEPLOYMENT" : activePhaseTab === 4 ? "PHASE 4 · KNOWLEDGE GRAPH RAG" : activePhaseTab === 6 ? "PHASE 6 · DIAGNOSTIC AGENTS" : "PHASE 7 · PATIENT DIGITAL TWIN"}
 
           </div>
 
@@ -897,7 +897,7 @@ export default function MedinexDashboard() {
 
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px", fontSize: "11px", color: "#475569" }}>
 
-                <span>IMPLEMENTATION TASKS (Steps 7ΓÇô10)</span>
+                <span>IMPLEMENTATION TASKS (Steps 7–10)</span>
 
                 <span style={{ color: "#f97316" }}>{doneTaskCount}/{totalTasks}</span>
 
@@ -965,7 +965,7 @@ export default function MedinexDashboard() {
 
                 </div>
 
-                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "16px" }}>ΓåÆ</span>}
+                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "16px" }}>→</span>}
 
               </div>
 
@@ -973,7 +973,7 @@ export default function MedinexDashboard() {
 
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
 
-              <span style={{ color: "#1e3a4a", fontSize: "16px" }}>ΓåÆ</span>
+              <span style={{ color: "#1e3a4a", fontSize: "16px" }}>→</span>
 
               <div style={{
 
@@ -1301,7 +1301,7 @@ export default function MedinexDashboard() {
 
                             <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.from}</span>
 
-                            <span style={{ color: "#475569", fontSize: "10px" }}>ΓöÇΓöÇΓöÇ {g.rel} ΓöÇΓöÇΓöÇΓû╢</span>
+                            <span style={{ color: "#475569", fontSize: "10px" }}>─── {g.rel} ───▶</span>
 
                             <span style={{ color: "#e2e8f0", background: "rgba(255,255,255,0.05)", padding: "2px 8px", borderRadius: "4px" }}>{g.to}</span>
 
@@ -1383,7 +1383,7 @@ export default function MedinexDashboard() {
 
                               }}>{f}</span>
 
-                              {idx < s.flow.length - 1 && <span style={{ color: "#1e3a4a" }}>Γåô</span>}
+                              {idx < s.flow.length - 1 && <span style={{ color: "#1e3a4a" }}>↓</span>}
 
                             </div>
 
@@ -1425,7 +1425,7 @@ export default function MedinexDashboard() {
 
 
 
-                    {/* ΓöÇΓöÇ TASKS + CODE PANEL (Steps 7ΓÇô10) ΓöÇΓöÇ */}
+                    {/* ── TASKS + CODE PANEL (Steps 7–10) ── */}
 
                     {hasTasks && (
 
@@ -1477,7 +1477,7 @@ export default function MedinexDashboard() {
 
                             >
 
-                              {tab === "tasks" ? `Γ£ª Tasks (${stepTasks[s.id].length})` : "Γƒ¿/Γƒ⌐ Code"}
+                              {tab === "tasks" ? `✓ Tasks (${stepTasks[s.id].length})` : "</> Code"}
 
                             </button>
 
@@ -1521,7 +1521,7 @@ export default function MedinexDashboard() {
 
                   <div style={{ marginTop: "12px", fontSize: "10px", color: "#334155", letterSpacing: "1px" }}>
 
-                    {hasTasks ? "CLICK TO EXPAND ┬╖ TASKS + CODE Γåô" : s.codeKey ? "CLICK TO EXPAND ┬╖ CODE INCLUDED Γåô" : "CLICK TO EXPAND Γåô"}
+                    {hasTasks ? "CLICK TO EXPAND · TASKS + CODE ↓" : s.codeKey ? "CLICK TO EXPAND · CODE INCLUDED ↓" : "CLICK TO EXPAND ↓"}
 
                   </div>
 
@@ -1613,7 +1613,7 @@ export default function MedinexDashboard() {
 
                 </div>
 
-                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "20px" }}>ΓåÆ</span>}
+                {i < arr.length - 1 && <span style={{ color: "#1e3a4a", fontSize: "20px" }}>→</span>}
 
               </div>
 
