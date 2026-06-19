@@ -204,36 +204,55 @@ export default function Assistant() {
         )}
 
         {/* GraphRAG Specific Results */}
-        {result && !loading && mode === "graph" && result.data && result.data.step1 && (
+        {result && !loading && mode === "graph" && result.data && result.data.step1_question_understanding && (
           <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* Step 6 Final Answer */}
+            {result.data.step6_grounded_generation && (
+              <Card className="bg-slate-900/80 border-fuchsia-500/30 shadow-lg shadow-fuchsia-900/20 mb-8">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-800">
+                    <h3 className="text-xl font-semibold flex items-center gap-2 text-fuchsia-400">
+                      <BrainCircuit className="h-6 w-6" /> Step 6: Grounded Synthesis
+                    </h3>
+                    <span className="text-xs font-mono bg-fuchsia-900/50 text-fuchsia-200 px-3 py-1 rounded-full border border-fuchsia-700/50">
+                      LLM + GraphRAG Engine
+                    </span>
+                  </div>
+                  <div className="text-slate-200 leading-relaxed text-lg whitespace-pre-wrap">
+                    {result.data.step6_grounded_generation.final_report_markdown}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
             {/* Step 1: Reasoning & Intent */}
             <Card className="bg-slate-900/50 border-cyan-500/30 shadow-lg shadow-cyan-900/10">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4 pb-4 border-b border-slate-800">
                   <h3 className="text-lg font-semibold flex items-center gap-2 text-cyan-400">
-                    <BrainCircuit className="h-5 w-5" /> GraphRAG Intent Classification
+                    <BrainCircuit className="h-5 w-5" /> Step 1: Intent Classification
                   </h3>
                   <span className="text-xs font-mono bg-cyan-900/50 text-cyan-200 px-3 py-1 rounded-full border border-cyan-700/50">
-                    {result.data.step1.intent.intent.toUpperCase()} ({(result.data.step1.intent.confidence * 100).toFixed(0)}% Confidence)
+                    {result.data.step1_question_understanding.intent.intent.toUpperCase()} ({(result.data.step1_question_understanding.intent.confidence * 100).toFixed(0)}% Confidence)
                   </span>
                 </div>
                 
                 <div className="mb-6">
                   <div className="text-sm text-slate-500 mb-2 uppercase tracking-wider font-semibold">Retrieval Strategy</div>
                   <p className="text-slate-300 bg-slate-950/50 p-4 rounded-md border border-slate-800">
-                    {result.data.step1.intent.retrieval_strategy}
+                    {result.data.step1_question_understanding.intent.retrieval_strategy}
                   </p>
                 </div>
 
                 <div className="mb-2">
                   <div className="text-sm text-slate-500 mb-3 uppercase tracking-wider font-semibold">Multi-Hop Reasoning Chain</div>
                   <div className="flex flex-wrap items-center gap-2">
-                    {result.data.step1.multi_hop.reasoning_chain.map((node: string, i: number) => (
+                    {result.data.step1_question_understanding.multi_hop.reasoning_chain.map((node: string, i: number) => (
                       <React.Fragment key={i}>
                         <div className="bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-md text-sm text-fuchsia-300 shadow-sm">
                           {node}
                         </div>
-                        {i < result.data.step1.multi_hop.reasoning_chain.length - 1 && (
+                        {i < result.data.step1_question_understanding.multi_hop.reasoning_chain.length - 1 && (
                           <div className="text-slate-600">→</div>
                         )}
                       </React.Fragment>
@@ -251,10 +270,10 @@ export default function Assistant() {
                     <Database className="h-4 w-4 text-emerald-400" /> Detected Entities
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {result.data.step1.entity_spans.length === 0 ? (
+                    {result.data.step1_question_understanding.entity_spans.length === 0 ? (
                       <span className="text-slate-500 text-sm">No specific biomedical entities detected.</span>
                     ) : (
-                      result.data.step1.entity_spans.map((ent: any, i: number) => (
+                      result.data.step1_question_understanding.entity_spans.map((ent: any, i: number) => (
                         <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border border-emerald-500/20 bg-emerald-500/10 text-emerald-300">
                           {ent.text}
                           <span className="opacity-50 text-[10px] ml-1 uppercase">{ent.entity_type}</span>
@@ -272,10 +291,10 @@ export default function Assistant() {
                     <Database className="h-4 w-4 text-blue-400" /> Knowledge Graph Triples
                   </h3>
                   <div className="space-y-3">
-                    {result.data.step1.triples.length === 0 ? (
+                    {result.data.step1_question_understanding.triples.length === 0 ? (
                       <span className="text-slate-500 text-sm">No explicit relation triples found in query.</span>
                     ) : (
-                      result.data.step1.triples.map((trip: any, i: number) => (
+                      result.data.step1_question_understanding.triples.map((trip: any, i: number) => (
                         <div key={i} className="flex items-center gap-2 text-sm bg-slate-950/50 p-2 rounded border border-slate-800/50">
                           <span className="text-blue-300 font-semibold">{trip.subject}</span>
                           <span className="text-slate-500 text-xs uppercase tracking-widest">{trip.relation}</span>
@@ -288,23 +307,25 @@ export default function Assistant() {
               </Card>
             </div>
 
-            {/* Generated Context Assembly Message */}
+            {/* Step 4 & 5 Context Assembly */}
+            {result.data.step4_context_assembly && (
             <Card className="bg-gradient-to-br from-cyan-950/50 to-blue-950/50 border-cyan-800/50">
               <CardContent className="p-6 text-center">
                 <Sparkles className="h-8 w-8 text-cyan-400 mx-auto mb-3" />
-                <h3 className="text-xl font-semibold text-slate-200 mb-2">Context Assembled Successfully</h3>
+                <h3 className="text-xl font-semibold text-slate-200 mb-2">Step 4 & 5: Context Assembly & Ranking</h3>
                 <p className="text-slate-400 text-sm max-w-xl mx-auto">
-                  The GraphRAG engine has successfully executed biomedical intent classification, entity linking, and knowledge graph traversal. The structured context is now ready to be securely injected into the LLM context window for grounded synthesis.
+                  {result.data.step4_context_assembly.structured_context?.length || 0} pieces of structured context were assembled and ranked by evidence provenance scoring. The data was injected into the LLM context window.
                 </p>
               </CardContent>
             </Card>
+            )}
 
             {/* Source Documents (Step 2 Chunks) */}
-            {result.data.step2 && result.data.step2.retrieved_chunks && result.data.step2.retrieved_chunks.length > 0 && (
+            {result.data.step2_semantic_retrieval && result.data.step2_semantic_retrieval.retrieved_chunks && result.data.step2_semantic_retrieval.retrieved_chunks.length > 0 && (
               <div className="mt-8">
                 <h3 className="text-sm uppercase tracking-widest text-slate-500 mb-4 ml-2">Semantic Retrieved Context (Step 2)</h3>
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {result.data.step2.retrieved_chunks.map((source: any, idx: number) => (
+                  {result.data.step2_semantic_retrieval.retrieved_chunks.map((source: any, idx: number) => (
                     <Card key={idx} className="bg-slate-950/50 border-slate-800 hover:border-cyan-500/30 transition-colors">
                       <CardContent className="p-5">
                         <div className="flex justify-between items-start mb-3">
