@@ -15,7 +15,7 @@ Dependencies:
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Tuple, Optional
-import math, hashlib, json, re
+import math, hashlib, json, re  # noqa: F401 (re used in EmbeddingGenerator.embed)
 from collections import defaultdict
 
 
@@ -110,13 +110,30 @@ class EmbeddingGenerator:
     MODEL_NAME = "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
     DIMS = 768
 
+    def __init__(self):
+        self._word_cache = {}
+
     def embed(self, text: str) -> List[float]:
-        """Stub: returns deterministic pseudo-embedding for testing."""
-        h = int(hashlib.md5(text.encode()).hexdigest(), 16)
+        """
+        Stub embedding for offline testing without a real PubMedBERT model.
+        """
         import random
-        rng = random.Random(h)
-        vec = [rng.gauss(0, 1) for _ in range(self.DIMS)]
-        norm = math.sqrt(sum(v**2 for v in vec))
+        words = re.findall(r"[a-z0-9]+", text.lower())
+        if not words:
+            words = ["empty"]
+
+        vec = [0.0] * self.DIMS
+        for w in words:
+            if w not in self._word_cache:
+                h = int(hashlib.md5(w.encode()).hexdigest(), 16)
+                rng = random.Random(h)
+                self._word_cache[w] = [rng.gauss(0, 1) for _ in range(self.DIMS)]
+            
+            word_vec = self._word_cache[w]
+            for i in range(self.DIMS):
+                vec[i] += word_vec[i]
+
+        norm = math.sqrt(sum(v**2 for v in vec)) or 1.0
         return [round(v / norm, 6) for v in vec]
 
     def cosine_similarity(self, a: List[float], b: List[float]) -> float:
