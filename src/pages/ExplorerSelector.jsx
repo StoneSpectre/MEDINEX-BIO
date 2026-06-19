@@ -5,8 +5,18 @@ export default function ExplorerSelector() {
     <div style={{
       display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
       minHeight: "calc(100vh - 64px)", padding: "2rem", textAlign: "center", gap: "2rem",
-      backgroundColor: "hsl(var(--background))"
+      backgroundColor: "hsl(var(--background))", position: "relative"
     }}>
+      {/* Exit Button */}
+      <button 
+        onClick={() => window.location.href = '/'}
+        style={{ position: "absolute", top: "20px", left: "20px", padding: "8px 16px", background: "transparent", border: "1px solid hsl(var(--border))", borderRadius: "8px", color: "hsl(var(--muted-foreground))", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px", transition: "all 0.2s" }}
+        onMouseEnter={(e) => { e.currentTarget.style.color = "hsl(var(--foreground))"; e.currentTarget.style.background = "hsl(var(--accent))"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.color = "hsl(var(--muted-foreground))"; e.currentTarget.style.background = "transparent"; }}
+      >
+        <span>←</span> Exit to Home
+      </button>
+
       <h1 style={{ fontSize: "2.5rem", fontWeight: "600", color: "hsl(var(--primary))", margin: 0 }}>
         Medinex Explorer
       </h1>

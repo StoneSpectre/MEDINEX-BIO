@@ -553,6 +553,19 @@ async function fetchDiseaseGraph(diseaseId) {
 function StatsBar({ stats }) {
   return (
     <div className="stats-bar">
+      <div style={{
+        display: "flex", alignItems: "center",
+        padding: "0 16px", marginRight: "20px", borderRight: "1px solid " + T.border, flexShrink: 0,
+      }}>
+        <button 
+          onClick={() => window.location.href = '/'}
+          style={{ padding: "4px 10px", background: "transparent", border: "1px solid " + T.border, borderRadius: "4px", color: T.textSecondary, cursor: "pointer", display: "flex", alignItems: "center", gap: "6px", fontSize: "11px", transition: "all 0.2s" }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = T.textPrimary; e.currentTarget.style.background = T.surfaceHi; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = T.textSecondary; e.currentTarget.style.background = "transparent"; }}
+        >
+          <span>←</span> Home
+        </button>
+      </div>
       <div className="stats-bar-logo">MEDI<span>NEX</span></div>
       <div className="stat-item">
         <div className="stat-dot" />
