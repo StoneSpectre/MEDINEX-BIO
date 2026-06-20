@@ -34,6 +34,7 @@ import Steps67 from "./pages/Steps67";
 import Phase4 from "./pages/Phase4";
 
 import Workspace from "./pages/Workspace";
+import ResearchCopilot from "./pages/ResearchCopilot";
 
 const queryClient = new QueryClient();
 
@@ -72,6 +73,7 @@ const App = () => (
             <Route path="/explorer-v2" element={<ExplorerV2 />} />
             <Route path="/steps-6-7" element={<Steps67 />} />
             <Route path="/phase4" element={<Phase4 />} />
+            <Route path="/copilot" element={<ResearchCopilot />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

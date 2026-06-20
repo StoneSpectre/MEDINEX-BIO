@@ -44,3 +44,9 @@ rank-bm25>=0.2.2
 pykeen>=1.10.0
 scipy>=1.12.0
 tqdm>=4.66.0
+
+# ── Step 7 Contradiction Engine ─────────────────────────────
+asyncpg>=0.29
+anthropic>=0.34
+networkx>=3.3
+httpx>=0.27

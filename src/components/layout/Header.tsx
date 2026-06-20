@@ -32,6 +32,7 @@ const featureItems = [
   { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
   { path: "/analytics", label: "Analytics", icon: Activity, color: "text-indigo-500" },
   { path: "/assistant", label: "Assistant", icon: Sparkles, color: "text-fuchsia-400" },
+  { path: "/copilot", label: "Research Copilot", icon: Sparkles, color: "text-emerald-500" },
   { path: "/explorer", label: "Explorer", icon: Compass, color: "text-teal-500" },
   { path: "/diagnostic", label: "Diagnostics", icon: Stethoscope, color: "text-rose-500" },
 ];

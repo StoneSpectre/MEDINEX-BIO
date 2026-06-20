@@ -1,0 +1,934 @@
+{
+  "query": "How does Metformin reduce insulin resistance?",
+  "step1_question_understanding": {
+    "query": "How does Metformin reduce insulin resistance?",
+    "intent": {
+      "intent": "mechanistic",
+      "confidence": 0.79,
+      "retrieval_strategy": "Fetch molecular pathway papers, kinase/enzyme interaction databases, metabolomics studies",
+      "model": "PubMedBERT-intent-v1"
+    },
+    "ner_tokens": [
+      {
+        "text": "How",
+        "bio_label": "O",
+        "start": 0,
+        "end": 3
+      },
+      {
+        "text": "does",
+        "bio_label": "O",
+        "start": 4,
+        "end": 8
+      },
+      {
+        "text": "Metformin",
+        "bio_label": "B-DRUG",
+        "start": 9,
+        "end": 18
+      },
+      {
+        "text": "reduce",
+        "bio_label": "O",
+        "start": 19,
+        "end": 25
+      },
+      {
+        "text": "insulin",
+        "bio_label": "B-DISEASE",
+        "start": 26,
+        "end": 33
+      },
+      {
+        "text": "resistance",
+        "bio_label": "O",
+        "start": 34,
+        "end": 44
+      },
+      {
+        "text": "?",
+        "bio_label": "O",
+        "start": 44,
+        "end": 45
+      }
+    ],
+    "entity_spans": [
+      {
+        "text": "Metformin",
+        "entity_type": "DRUG",
+        "start": 9,
+        "end": 18
+      },
+      {
+        "text": "insulin resistance",
+        "entity_type": "DISEASE",
+        "start": 26,
+        "end": 44
+      }
+    ],
+    "linked_entities": [
+      {
+        "surface_form": "Metformin",
+        "entity_type": "DRUG",
+        "canonical_id": "ChEMBL:CHEMBL1431",
+        "canonical_name": "Metformin",
+        "synonyms": [
+          "Glucophage",
+          "Dimethylbiguanide",
+          "1,1-Dimethylbiguanide"
+        ],
+        "source_db": "ChEMBL",
+        "link_score": 0.97
+      },
+      {
+        "surface_form": "insulin resistance",
+        "entity_type": "DISEASE",
+        "canonical_id": "UMLS:C0021655",
+        "canonical_name": "Insulin Resistance",
+        "synonyms": [
+          "Insulin Insensitivity",
+          "Peripheral Insulin Resistance"
+        ],
+        "source_db": "UMLS",
+        "link_score": 0.97
+      }
+    ],
+    "triples": [
+      {
+        "subject": "Metformin",
+        "relation": "TREATS",
+        "object": "Insulin Resistance",
+        "confidence": 0.88,
+        "evidence_sentence": "How does Metformin reduce insulin resistance?"
+      }
+    ],
+    "multi_hop": {
+      "is_multi_hop": true,
+      "expected_hops": 3,
+      "reasoning_chain": [
+        "Metformin",
+        "Molecular target",
+        "Downstream effector",
+        "Phenotypic outcome"
+      ],
+      "neo4j_traversal_depth": 3
+    }
+  },
+  "step2_semantic_retrieval": {
+    "query": "How does Metformin reduce insulin resistance?",
+    "query_embedding_dims": 768,
+    "embedding_model": "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract",
+    "dense_results": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "title": "Metformin and insulin resistance: a systematic clinical review",
+        "text": "Meta-analysis of 42 RCTs confirms that metformin reduces fasting insulin, HOMA-IR index, and HbA1c in patients with insulin resistance and type 2 diabetes mellitus.",
+        "score": 0.2858,
+        "year": 2024,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 1
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+        "text": "This review covers the pleiotropic mechanisms of metformin, including mitochondrial complex I inhibition, AMPK activation, and insulin sensitization at the level of hepatic and peripheral tissues.",
+        "score": 0.1402,
+        "year": 2023,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 2
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+        "text": "AMPK directly phosphorylates IRS1 and modulates PI3K-AKT signaling, providing a molecular link between cellular energy status and insulin sensitivity.",
+        "score": 0.0782,
+        "year": 2023,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 3
+      },
+      {
+        "chunk_id": "pmid:38765432::chunk0",
+        "title": "EGFR signaling crosstalk with PI3K-AKT-mTOR axis",
+        "text": "Activated EGFR recruits the p85 subunit of PI3K to phosphorylated Y1068, generating PIP3 and triggering AKT phosphorylation at T308 and S473, with subsequent mTORC1 activation.",
+        "score": 0.0429,
+        "year": 2024,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 4
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+        "text": "Metformin treatment in primary hepatocytes led to significant AMPK phosphorylation and subsequent inhibition of mTORC1, reducing hepatic glucose production via suppression of the gluconeogenic program",
+        "score": 0.037,
+        "year": 2024,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 5
+      }
+    ],
+    "bm25_results": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "title": "Metformin and insulin resistance: a systematic clinical review",
+        "text": "Meta-analysis of 42 RCTs confirms that metformin reduces fasting insulin, HOMA-IR index, and HbA1c in patients with insulin resistance and type 2 diabetes mellitus.",
+        "score": 2.188,
+        "year": 2024,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 1
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+        "text": "Metformin treatment in primary hepatocytes led to significant AMPK phosphorylation and subsequent inhibition of mTORC1, reducing hepatic glucose production via suppression of the gluconeogenic program",
+        "score": 1.236,
+        "year": 2024,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 2
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+        "text": "AMPK directly phosphorylates IRS1 and modulates PI3K-AKT signaling, providing a molecular link between cellular energy status and insulin sensitivity.",
+        "score": 1.027,
+        "year": 2023,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 3
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+        "text": "This review covers the pleiotropic mechanisms of metformin, including mitochondrial complex I inhibition, AMPK activation, and insulin sensitization at the level of hepatic and peripheral tissues.",
+        "score": 0.894,
+        "year": 2023,
+        "source": "pubmed",
+        "doi": "",
+        "rank": 4
+      }
+    ],
+    "rrf_results": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "title": "Metformin and insulin resistance: a systematic clinical review",
+        "rrf_score": 0.032787,
+        "dense_rank": 1,
+        "bm25_rank": 1,
+        "sources": [
+          "dense",
+          "bm25"
+        ],
+        "rank": 1
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+        "rrf_score": 0.031754,
+        "dense_rank": 2,
+        "bm25_rank": 4,
+        "sources": [
+          "dense",
+          "bm25"
+        ],
+        "rank": 2
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+        "rrf_score": 0.031746,
+        "dense_rank": 3,
+        "bm25_rank": 3,
+        "sources": [
+          "dense",
+          "bm25"
+        ],
+        "rank": 3
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+        "rrf_score": 0.031514,
+        "dense_rank": 5,
+        "bm25_rank": 2,
+        "sources": [
+          "dense",
+          "bm25"
+        ],
+        "rank": 4
+      },
+      {
+        "chunk_id": "pmid:38765432::chunk0",
+        "title": "EGFR signaling crosstalk with PI3K-AKT-mTOR axis",
+        "rrf_score": 0.015625,
+        "dense_rank": 4,
+        "bm25_rank": null,
+        "sources": [
+          "dense"
+        ],
+        "rank": 5
+      }
+    ],
+    "total_candidates": 8
+  },
+  "step3_graph_traversal": {
+    "seed_nodes": [
+      {
+        "node_id": "n:metformin",
+        "label": "Drug",
+        "name": "Metformin",
+        "canonical_id": "ChEMBL:CHEMBL1431",
+        "degree": 312,
+        "is_seed": true,
+        "properties": {}
+      },
+      {
+        "node_id": "n:insulin_resistance",
+        "label": "Disease",
+        "name": "Insulin Resistance",
+        "canonical_id": "UMLS:C0021655",
+        "degree": 187,
+        "is_seed": true,
+        "properties": {}
+      }
+    ],
+    "cypher_query": "MATCH path = (src:Drug {name: \"Metformin\"})-[r*1..3]->(tgt)\nWHERE tgt:Protein OR tgt:Pathway OR tgt:Gene\nRETURN src, tgt, relationships(path) AS rels\nORDER BY length(path) ASC\nLIMIT 50",
+    "traversal_paths": [
+      {
+        "nodes": [
+          "Metformin",
+          "Complex I"
+        ],
+        "edges": [
+          "INHIBITS"
+        ],
+        "hops": 1,
+        "total_confidence": 0.96
+      },
+      {
+        "nodes": [
+          "Metformin",
+          "AMPK"
+        ],
+        "edges": [
+          "ACTIVATES"
+        ],
+        "hops": 1,
+        "total_confidence": 0.94
+      },
+      {
+        "nodes": [
+          "Metformin",
+          "Insulin Resistance"
+        ],
+        "edges": [
+          "TREATS"
+        ],
+        "hops": 1,
+        "total_confidence": 0.91
+      },
+      {
+        "nodes": [
+          "Insulin Resistance",
+          "Glucose Uptake"
+        ],
+        "edges": [
+          "IMPAIRS"
+        ],
+        "hops": 1,
+        "total_confidence": 0.85
+      },
+      {
+        "nodes": [
+          "Metformin",
+          "AMPK",
+          "mTOR"
+        ],
+        "edges": [
+          "ACTIVATES",
+          "INHIBITS"
+        ],
+        "hops": 2,
+        "total_confidence": 0.827
+      },
+      {
+        "nodes": [
+          "Metformin",
+          "Insulin Resistance",
+          "Glucose Uptake"
+        ],
+        "edges": [
+          "TREATS",
+          "IMPAIRS"
+        ],
+        "hops": 2,
+        "total_confidence": 0.773
+      }
+    ],
+    "discovered_nodes": [
+      {
+        "node_id": "n:complex_i",
+        "label": "Protein",
+        "name": "Complex I",
+        "canonical_id": "UniProt:Q16718",
+        "degree": 88,
+        "is_seed": false,
+        "properties": {}
+      },
+      {
+        "node_id": "n:ampk",
+        "label": "Protein",
+        "name": "AMPK",
+        "canonical_id": "UniProt:Q13131",
+        "degree": 147,
+        "is_seed": false,
+        "properties": {}
+      },
+      {
+        "node_id": "n:mtor",
+        "label": "Protein",
+        "name": "mTOR",
+        "canonical_id": "UniProt:P42345",
+        "degree": 312,
+        "is_seed": false,
+        "properties": {}
+      },
+      {
+        "node_id": "n:glucose_uptake",
+        "label": "Pathway",
+        "name": "Glucose Uptake",
+        "canonical_id": "KEGG:hsa04910",
+        "degree": 54,
+        "is_seed": false,
+        "properties": {}
+      }
+    ],
+    "embedding_predictions": [
+      {
+        "model": "TransE",
+        "subject": "Metformin",
+        "relation": "TREATS",
+        "object_predicted": "Type 2 Diabetes",
+        "score": 0.93,
+        "is_known_edge": false
+      },
+      {
+        "model": "RotatE",
+        "subject": "Metformin",
+        "relation": "INHIBITS",
+        "object_predicted": "mTORC1",
+        "score": 0.87,
+        "is_known_edge": false
+      },
+      {
+        "model": "ComplEx",
+        "subject": "Metformin",
+        "relation": "SUPPRESSES",
+        "object_predicted": "Hepatic Gluconeogenesis",
+        "score": 0.81,
+        "is_known_edge": false
+      },
+      {
+        "model": "DistMult",
+        "subject": "Metformin",
+        "relation": "INTERACTS_WITH",
+        "object_predicted": "Complex I",
+        "score": 0.737,
+        "is_known_edge": true
+      },
+      {
+        "model": "DistMult",
+        "subject": "Metformin",
+        "relation": "INTERACTS_WITH",
+        "object_predicted": "AMPK",
+        "score": 0.709,
+        "is_known_edge": true
+      }
+    ],
+    "total_nodes_visited": 6,
+    "total_edges_traversed": 5
+  },
+  "step4_context_assembly": {
+    "ranked_chunks": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "title": "Metformin and insulin resistance: a systematic clinical review",
+        "text": "Meta-analysis of 42 RCTs confirms that metformin reduces fasting insulin, HOMA-IR index, and HbA1c in patients with insulin resistance and type 2 diabetes mellitus.",
+        "semantic_similarity": 1.0,
+        "entity_overlap": 1.0,
+        "combined_score": 1.0,
+        "matched_entities": [
+          "Metformin",
+          "Insulin Resistance"
+        ],
+        "year": 2024,
+        "source": "pubmed"
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+        "text": "This review covers the pleiotropic mechanisms of metformin, including mitochondrial complex I inhibition, AMPK activation, and insulin sensitization at the level of hepatic and peripheral tissues.",
+        "semantic_similarity": 0.4906,
+        "entity_overlap": 0.5,
+        "combined_score": 0.4948,
+        "matched_entities": [
+          "Metformin"
+        ],
+        "year": 2023,
+        "source": "pubmed"
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+        "text": "Metformin treatment in primary hepatocytes led to significant AMPK phosphorylation and subsequent inhibition of mTORC1, reducing hepatic glucose production via suppression of the gluconeogenic program",
+        "semantic_similarity": 0.1295,
+        "entity_overlap": 0.5,
+        "combined_score": 0.2962,
+        "matched_entities": [
+          "Metformin"
+        ],
+        "year": 2024,
+        "source": "pubmed"
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+        "text": "AMPK directly phosphorylates IRS1 and modulates PI3K-AKT signaling, providing a molecular link between cellular energy status and insulin sensitivity.",
+        "semantic_similarity": 0.2736,
+        "entity_overlap": 0.0,
+        "combined_score": 0.1505,
+        "matched_entities": [],
+        "year": 2023,
+        "source": "pubmed"
+      },
+      {
+        "chunk_id": "pmid:38765432::chunk0",
+        "title": "EGFR signaling crosstalk with PI3K-AKT-mTOR axis",
+        "text": "Activated EGFR recruits the p85 subunit of PI3K to phosphorylated Y1068, generating PIP3 and triggering AKT phosphorylation at T308 and S473, with subsequent mTORC1 activation.",
+        "semantic_similarity": 0.1501,
+        "entity_overlap": 0.0,
+        "combined_score": 0.0826,
+        "matched_entities": [],
+        "year": 2024,
+        "source": "pubmed"
+      }
+    ],
+    "subgraph_triples": [
+      {
+        "subject": "Insulin Resistance",
+        "relation": "IMPAIRS",
+        "object": "Glucose Uptake",
+        "confidence": 0.85,
+        "hop_distance": 1
+      },
+      {
+        "subject": "Metformin",
+        "relation": "INHIBITS",
+        "object": "Complex I",
+        "confidence": 0.96,
+        "hop_distance": 1
+      },
+      {
+        "subject": "Metformin",
+        "relation": "ACTIVATES",
+        "object": "AMPK",
+        "confidence": 0.94,
+        "hop_distance": 1
+      },
+      {
+        "subject": "Metformin",
+        "relation": "TREATS",
+        "object": "Insulin Resistance",
+        "confidence": 0.91,
+        "hop_distance": 1
+      },
+      {
+        "subject": "AMPK",
+        "relation": "INHIBITS",
+        "object": "mTOR",
+        "confidence": 0.827,
+        "hop_distance": 2
+      }
+    ],
+    "graph_facts": [
+      {
+        "triple_index": 1,
+        "sentence": "Insulin Resistance impairs Glucose Uptake.",
+        "confidence": 0.85
+      },
+      {
+        "triple_index": 2,
+        "sentence": "Metformin inhibits Complex I.",
+        "confidence": 0.96
+      },
+      {
+        "triple_index": 3,
+        "sentence": "Metformin activates AMPK.",
+        "confidence": 0.94
+      },
+      {
+        "triple_index": 4,
+        "sentence": "Metformin treats Insulin Resistance.",
+        "confidence": 0.91
+      },
+      {
+        "triple_index": 5,
+        "sentence": "AMPK inhibits mTOR.",
+        "confidence": 0.827
+      }
+    ],
+    "contradictions": [],
+    "compression_stats": {
+      "original_tokens": 157,
+      "compressed_tokens": 157,
+      "chunks_dropped": 0,
+      "compression_ratio": 1.0
+    },
+    "fused_context": "QUESTION:\nHow does Metformin reduce insulin resistance?\n\nSECTION A \u2014 GRAPH RELATIONSHIPS:\n  1. Insulin Resistance impairs Glucose Uptake. (confidence: 0.85)\n  2. Metformin inhibits Complex I. (confidence: 0.96)\n  3. Metformin activates AMPK. (confidence: 0.94)\n  4. Metformin treats Insulin Resistance. (confidence: 0.91)\n  5. AMPK inhibits mTOR. (confidence: 0.827)\n\nSECTION B \u2014 SUPPORTING LITERATURE:\n  [1] Metformin and insulin resistance: a systematic clinical review (2024) \u2014 score: 1.0\n      \"Meta-analysis of 42 RCTs confirms that metformin reduces fasting insulin, HOMA-IR index, and HbA1c in patients with insulin resistance and type 2 diabetes melli\u2026\"\n  [2] Mechanisms of metformin action on glucose metabolism and insulin resistance (2023) \u2014 score: 0.4948\n      \"This review covers the pleiotropic mechanisms of metformin, including mitochondrial complex I inhibition, AMPK activation, and insulin sensitization at the leve\u2026\"\n  [3] Metformin activates AMP-activated protein kinase in hepatocytes (2024) \u2014 score: 0.2962\n      \"Metformin treatment in primary hepatocytes led to significant AMPK phosphorylation and subsequent inhibition of mTORC1, reducing hepatic glucose production via\u2026\"\n  [4] AMPK-mediated phosphorylation of insulin signaling nodes (2023) \u2014 score: 0.1505\n      \"AMPK directly phosphorylates IRS1 and modulates PI3K-AKT signaling, providing a molecular link between cellular energy status and insulin sensitivity.\"\n  [5] EGFR signaling crosstalk with PI3K-AKT-mTOR axis (2024) \u2014 score: 0.0826\n      \"Activated EGFR recruits the p85 subunit of PI3K to phosphorylated Y1068, generating PIP3 and triggering AKT phosphorylation at T308 and S473, with subsequent mT\u2026\"\n\nSECTION C \u2014 EVIDENCE METADATA:\n  [1] source=pubmed, chunk_id=pmid:38112233::chunk0, matched_entities=['Metformin', 'Insulin Resistance']\n  [2] source=pubmed, chunk_id=pmid:37812456::chunk0, matched_entities=['Metformin']\n  [3] source=pubmed, chunk_id=pmid:38901234::chunk0, matched_entities=['Metformin']\n  [4] source=pubmed, chunk_id=pmid:37654321::chunk0, matched_entities=[]\n  [5] source=pubmed, chunk_id=pmid:38765432::chunk0, matched_entities=[]"
+  },
+  "step5_evidence_ranking": {
+    "ranked_evidence": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "title": "Metformin and insulin resistance: a systematic clinical review",
+        "study_type": "Meta-Analysis",
+        "evidence_level_score": 1.0,
+        "authority_score": 0.92,
+        "recency_score": 0.852,
+        "sample_size_score": 0.915,
+        "relevance_score": 1.0,
+        "contradiction_penalty_applied": false,
+        "final_score": 0.9376,
+        "provenance": {
+          "chunk_id": "pmid:38112233::chunk0",
+          "doi": "10.1234/diabcare.2024.112",
+          "authors": "M\u00fcller et al.",
+          "journal": "JAMA",
+          "year": 2024,
+          "sample_size": 20000
+        }
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+        "study_type": "Cohort",
+        "evidence_level_score": 0.571,
+        "authority_score": 0.95,
+        "recency_score": 0.787,
+        "sample_size_score": 0.0,
+        "relevance_score": 0.495,
+        "contradiction_penalty_applied": false,
+        "final_score": 0.6158,
+        "provenance": {
+          "chunk_id": "pmid:37812456::chunk0",
+          "doi": "10.1234/diab.2023.045",
+          "authors": "Singh & Romero",
+          "journal": "The Lancet",
+          "year": 2023,
+          "sample_size": 1
+        }
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+        "study_type": "Cohort",
+        "evidence_level_score": 0.571,
+        "authority_score": 0.96,
+        "recency_score": 0.852,
+        "sample_size_score": 0.0,
+        "relevance_score": 0.296,
+        "contradiction_penalty_applied": false,
+        "final_score": 0.6114,
+        "provenance": {
+          "chunk_id": "pmid:38901234::chunk0",
+          "doi": "10.1234/jhep.2024.001",
+          "authors": "Tanaka et al.",
+          "journal": "Nature Medicine",
+          "year": 2024,
+          "sample_size": 1
+        }
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+        "study_type": "Cohort",
+        "evidence_level_score": 0.571,
+        "authority_score": 0.94,
+        "recency_score": 0.787,
+        "sample_size_score": 0.0,
+        "relevance_score": 0.15,
+        "contradiction_penalty_applied": false,
+        "final_score": 0.45,
+        "provenance": {
+          "chunk_id": "pmid:37654321::chunk0",
+          "doi": "10.1234/cellsig.2023.087",
+          "authors": "Okafor et al.",
+          "journal": "Cell",
+          "year": 2023,
+          "sample_size": 1
+        }
+      },
+      {
+        "chunk_id": "pmid:38765432::chunk0",
+        "title": "EGFR signaling crosstalk with PI3K-AKT-mTOR axis",
+        "study_type": "Cohort",
+        "evidence_level_score": 0.571,
+        "authority_score": 0.94,
+        "recency_score": 0.852,
+        "sample_size_score": 0.0,
+        "relevance_score": 0.083,
+        "contradiction_penalty_applied": false,
+        "final_score": 0.45,
+        "provenance": {
+          "chunk_id": "pmid:38765432::chunk0",
+          "doi": "10.1234/molcell.2024.077",
+          "authors": "Park & Liu",
+          "journal": "Science",
+          "year": 2024,
+          "sample_size": 1
+        }
+      }
+    ],
+    "provenance": [
+      {
+        "chunk_id": "pmid:38112233::chunk0",
+        "doi": "10.1234/diabcare.2024.112",
+        "authors": "M\u00fcller et al.",
+        "journal": "JAMA",
+        "year": 2024,
+        "sample_size": 20000
+      },
+      {
+        "chunk_id": "pmid:37812456::chunk0",
+        "doi": "10.1234/diab.2023.045",
+        "authors": "Singh & Romero",
+        "journal": "The Lancet",
+        "year": 2023,
+        "sample_size": 1
+      },
+      {
+        "chunk_id": "pmid:38901234::chunk0",
+        "doi": "10.1234/jhep.2024.001",
+        "authors": "Tanaka et al.",
+        "journal": "Nature Medicine",
+        "year": 2024,
+        "sample_size": 1
+      },
+      {
+        "chunk_id": "pmid:37654321::chunk0",
+        "doi": "10.1234/cellsig.2023.087",
+        "authors": "Okafor et al.",
+        "journal": "Cell",
+        "year": 2023,
+        "sample_size": 1
+      },
+      {
+        "chunk_id": "pmid:38765432::chunk0",
+        "doi": "10.1234/molcell.2024.077",
+        "authors": "Park & Liu",
+        "journal": "Science",
+        "year": 2024,
+        "sample_size": 1
+      }
+    ],
+    "confidence_scores": {
+      "pmid:38112233::chunk0": 0.9376,
+      "pmid:37812456::chunk0": 0.6158,
+      "pmid:38901234::chunk0": 0.6114,
+      "pmid:37654321::chunk0": 0.45,
+      "pmid:38765432::chunk0": 0.45
+    },
+    "scoring_weights": {
+      "evidence_level": 0.3,
+      "authority": 0.25,
+      "recency": 0.2,
+      "sample_size": 0.15,
+      "relevance": 0.1
+    }
+  },
+  "step6_grounded_generation": {
+    "structured_answer": {
+      "summary": {
+        "text": "Based on the strongest available evidence, metformin reduce insulin resistance is supported by current research.",
+        "citation_indices": [
+          1
+        ],
+        "confidence": "high",
+        "supported": true
+      },
+      "mechanism": [
+        {
+          "text": "Insulin Resistance impairs Glucose Uptake.",
+          "citation_indices": [
+            1
+          ],
+          "confidence": "high",
+          "supported": true
+        },
+        {
+          "text": "Metformin inhibits Complex I.",
+          "citation_indices": [
+            2
+          ],
+          "confidence": "high",
+          "supported": true
+        },
+        {
+          "text": "Metformin activates AMPK.",
+          "citation_indices": [
+            3
+          ],
+          "confidence": "high",
+          "supported": true
+        }
+      ],
+      "evidence": [
+        {
+          "text": "Meta-Analysis evidence (JAMA, 2024) supports this relationship.",
+          "citation_indices": [
+            1
+          ],
+          "confidence": "high",
+          "supported": true
+        },
+        {
+          "text": "Cohort evidence (The Lancet, 2023) supports this relationship.",
+          "citation_indices": [
+            2
+          ],
+          "confidence": "medium",
+          "supported": true
+        },
+        {
+          "text": "Cohort evidence (Nature Medicine, 2024) supports this relationship.",
+          "citation_indices": [
+            3
+          ],
+          "confidence": "medium",
+          "supported": true
+        },
+        {
+          "text": "Cohort evidence (Cell, 2023) supports this relationship.",
+          "citation_indices": [
+            4
+          ],
+          "confidence": "medium",
+          "supported": true
+        }
+      ],
+      "uncertainty": [
+        {
+          "text": "The strength of the relationship \"AMPK inhibits mTOR\" is not fully established (confidence: 0.827).",
+          "citation_indices": [],
+          "confidence": "low",
+          "supported": true
+        }
+      ],
+      "references": [
+        {
+          "index": 1,
+          "title": "Metformin and insulin resistance: a systematic clinical review",
+          "journal": "JAMA",
+          "year": 2024,
+          "doi": "10.1234/diabcare.2024.112",
+          "evidence_score": 0.9376
+        },
+        {
+          "index": 2,
+          "title": "Mechanisms of metformin action on glucose metabolism and insulin resistance",
+          "journal": "The Lancet",
+          "year": 2023,
+          "doi": "10.1234/diab.2023.045",
+          "evidence_score": 0.6158
+        },
+        {
+          "index": 3,
+          "title": "Metformin activates AMP-activated protein kinase in hepatocytes",
+          "journal": "Nature Medicine",
+          "year": 2024,
+          "doi": "10.1234/jhep.2024.001",
+          "evidence_score": 0.6114
+        },
+        {
+          "index": 4,
+          "title": "AMPK-mediated phosphorylation of insulin signaling nodes",
+          "journal": "Cell",
+          "year": 2023,
+          "doi": "10.1234/cellsig.2023.087",
+          "evidence_score": 0.45
+        }
+      ]
+    },
+    "hallucination_checks": [
+      {
+        "claim_text": "Based on the strongest available evidence, metformin reduce insulin resistance is supported by current research.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 0.75,
+        "matched_evidence_index": 3
+      },
+      {
+        "claim_text": "Insulin Resistance impairs Glucose Uptake.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 1.0,
+        "matched_evidence_index": 0
+      },
+      {
+        "claim_text": "Metformin inhibits Complex I.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 1.0,
+        "matched_evidence_index": 1
+      },
+      {
+        "claim_text": "Metformin activates AMPK.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 1.0,
+        "matched_evidence_index": 2
+      },
+      {
+        "claim_text": "Meta-Analysis evidence (JAMA, 2024) supports this relationship.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 0.6,
+        "matched_evidence_index": null
+      },
+      {
+        "claim_text": "Cohort evidence (The Lancet, 2023) supports this relationship.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 0.6,
+        "matched_evidence_index": null
+      },
+      {
+        "claim_text": "Cohort evidence (Nature Medicine, 2024) supports this relationship.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 0.6,
+        "matched_evidence_index": null
+      },
+      {
+        "claim_text": "Cohort evidence (Cell, 2023) supports this relationship.",
+        "supported": true,
+        "nli_label": "entailment",
+        "nli_score": 0.6,
+        "matched_evidence_index": null
+      },
+      {
+        "claim_text": "The strength of the relationship \"AMPK inhibits mTOR\" is not fully established (confidence: 0.827).",
+        "supported": true,
+        "nli_label": "neutral",
+        "nli_score": 0.5,
+        "matched_evidence_index": null
+      }
+    ],
+    "claims_removed": 0,
+    "final_report_markdown": "# Medinex Research Answer\n\n**Question:** How does Metformin reduce insulin resistance?\n\n## Summary\n- Based on the strongest available evidence, metformin reduce insulin resistance is supported by current research. [1] _(confidence: high)_\n\n## Mechanism\n- Insulin Resistance impairs Glucose Uptake. [1] _(confidence: high)_\n- Metformin inhibits Complex I. [2] _(confidence: high)_\n- Metformin activates AMPK. [3] _(confidence: high)_\n\n## Evidence\n- Meta-Analysis evidence (JAMA, 2024) supports this relationship. [1] _(confidence: high)_\n- Cohort evidence (The Lancet, 2023) supports this relationship. [2] _(confidence: medium)_\n- Cohort evidence (Nature Medicine, 2024) supports this relationship. [3] _(confidence: medium)_\n- Cohort evidence (Cell, 2023) supports this relationship. [4] _(confidence: medium)_\n\n## Uncertainty\n- The strength of the relationship \"AMPK inhibits mTOR\" is not fully established (confidence: 0.827).  _(confidence: low)_\n\n## References\n[1] Metformin and insulin resistance: a systematic clinical review. *JAMA*, 2024. doi:10.1234/diabcare.2024.112 (evidence score: 0.9376)\n[2] Mechanisms of metformin action on glucose metabolism and insulin resistance. *The Lancet*, 2023. doi:10.1234/diab.2023.045 (evidence score: 0.6158)\n[3] Metformin activates AMP-activated protein kinase in hepatocytes. *Nature Medicine*, 2024. doi:10.1234/jhep.2024.001 (evidence score: 0.6114)\n[4] AMPK-mediated phosphorylation of insulin signaling nodes. *Cell*, 2023. doi:10.1234/cellsig.2023.087 (evidence score: 0.45)"
+  }
+}

@@ -10,7 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.core.config import settings
 from api.core.database import engine, Base
 from api.routers import projects, folders, collections, saved_papers, notes, literature, literature_review, research_maps
-from api.ml_routes import hepatic, endocrine, respiratory, cardiovascular, renal, immunology, feedback, graphrag
+from api.ml_routes import hepatic, endocrine, respiratory, cardiovascular, renal, immunology, feedback, graphrag, contradiction
+from medinex.step8_research_copilot import copilot_api
 # from websockets.manager import manager
 # from services.scheduler import start_scheduler
 
@@ -61,10 +62,12 @@ app.include_router(respiratory.router, prefix="/api/v1/respiratory", tags=["ML -
 app.include_router(cardiovascular.router, prefix="/api/v1/cardiovascular", tags=["ML - Cardiovascular"])
 app.include_router(renal.router, prefix="/api/v1/renal", tags=["ML - Renal"])
 app.include_router(immunology.router, prefix="/api/v1/immunology", tags=["ML - Immunology"])
-app.include_router(feedback.router,    prefix="/api/v1/feedback",    tags=["Feedback ML"])
+app.include_router(feedback.router, prefix="/api/v1/feedback", tags=["ML - Feedback"])
+app.include_router(graphrag.router, prefix="/api/v1/graphrag", tags=["ML - GraphRAG"])
+app.include_router(contradiction.router, prefix="/api/v1/contradiction", tags=["ML - Contradiction Engine"])
 
-# ---- Phase 4: GraphRAG --------------------------------
-app.include_router(graphrag.router, prefix="/api/v1/graphrag", tags=["Phase 4 - GraphRAG"])
+# ---- Phase 8: Multi-Agent Research Copilot ----
+app.include_router(copilot_api.router, prefix="/api/v1", tags=["Step 8 - Copilot"])
 
 # @app.websocket("/ws/projects/{project_id}")
 # async def websocket_endpoint(websocket, project_id: str):
