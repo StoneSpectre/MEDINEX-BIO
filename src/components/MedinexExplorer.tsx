@@ -1065,10 +1065,11 @@ function GraphCanvas({ diseaseId, diseaseName }) {
                       <Geography
                         key={geo.rsmKey}
                         geography={geo}
+                        className="map-geography"
                         style={{
-                          default: { fill: "#1E242D", stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.75, outline: "none" },
-                          hover: { fill: "#252A35", stroke: "rgba(255, 255, 255, 0.5)", strokeWidth: 0.75, outline: "none" },
-                          pressed: { fill: "#1E242D", stroke: "rgba(255, 255, 255, 0.25)", strokeWidth: 0.75, outline: "none" },
+                          default: { outline: "none" },
+                          hover: { outline: "none" },
+                          pressed: { outline: "none" },
                         }}
                       />
                     ))

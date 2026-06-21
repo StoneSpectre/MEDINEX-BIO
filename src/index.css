@@ -419,12 +419,16 @@ main { flex: 1; padding: 2rem 0 4rem; }
   border: 2px solid var(--slate-300);
   border-top-color: var(--teal-800);
   border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  display: inline-block;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── Scrollbar ───────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: 3px; }
+
+/* ── Map Overrides ─────────────────────────────────────────────────────── */
+.map-geography {
+  fill: #1E242D !important;
+  stroke: rgba(255, 255, 255, 0.25) !important;
+  stroke-width: 0.75px !important;
+  outline: none !important;
+}
+.map-geography:hover {
+  fill: #252A35 !important;
+  stroke: rgba(255, 255, 255, 0.5) !important;
+}
