@@ -986,9 +986,13 @@ function GraphCanvas({ diseaseId, diseaseName }) {
         </div>
         {diseaseName && <span style={{ marginLeft: "10px", fontSize: 11, color: "#23D4A6", fontFamily: "'JetBrains Mono', monospace", maxWidth: 200, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{diseaseName}</span>}
         <div style={{ flex: 1 }} />
-        <button className="icon-btn" onClick={resetView} title="Reset view">⟳ Reset</button>
-        <button className="icon-btn" onClick={() => { zoomRef.current = Math.min(2.5, zoomRef.current + 0.2); setZoom(zoomRef.current); }}>＋</button>
-        <button className="icon-btn" onClick={() => { zoomRef.current = Math.max(0.3, zoomRef.current - 0.2); setZoom(zoomRef.current); }}>－</button>
+        {viewMode === "network" && (
+          <>
+            <button className="icon-btn" onClick={resetView} title="Reset view">⟳ Reset</button>
+            <button className="icon-btn" onClick={() => { zoomRef.current = Math.min(2.5, zoomRef.current + 0.2); setZoom(zoomRef.current); }}>＋</button>
+            <button className="icon-btn" onClick={() => { zoomRef.current = Math.max(0.3, zoomRef.current - 0.2); setZoom(zoomRef.current); }}>－</button>
+          </>
+        )}
       </div>
 
       <div className="graph-canvas-wrap" ref={wrapRef}>
@@ -1036,13 +1040,12 @@ function GraphCanvas({ diseaseId, diseaseName }) {
                     <Geography
                       key={geo.rsmKey}
                       geography={geo}
-                      fill={T.surfaceHi}
                       stroke={T.border}
                       strokeWidth={0.5}
                       style={{
-                        default: { outline: "none" },
+                        default: { outline: "none", fill: T.surfaceHi },
                         hover: { fill: T.border, outline: "none" },
-                        pressed: { outline: "none" },
+                        pressed: { outline: "none", fill: T.surfaceHi },
                       }}
                     />
                   ))
