@@ -506,7 +506,7 @@ async function fetchStats() {
     const r = await fetch(`${API_BASE}/stats`);
     return await r.json();
   } catch {
-    return { total_diseases: 8342, total_genes: 21419, total_associations: 146820, db_version: "v2.1.4" };
+    return { total_diseases: 8342, total_genes: 21419, total_associations: 146820, db_version: "v3.0.0" };
   }
 }
 
@@ -553,7 +553,18 @@ async function fetchDiseaseGraph(diseaseId) {
 function StatsBar({ stats }) {
   return (
     <div className="stats-bar">
-      <div className="stats-bar-logo">MEDI<span>NEX</span></div>
+      <button 
+        onClick={() => window.location.href = '/explorer'}
+        style={{ 
+          background: "transparent", border: "1px solid #252A35", borderRadius: "4px", color: "#1DB891", 
+          cursor: "pointer", display: "flex", alignItems: "center", 
+          marginRight: "16px", padding: "4px 8px", fontSize: "11px",
+          fontFamily: "'JetBrains Mono', monospace", fontWeight: 600
+        }}
+      >
+        ← BACK
+      </button>
+      <div className="stats-bar-logo">MEDI<span>NEX</span> V3</div>
       <div className="stat-item">
         <div className="stat-dot" />
         <span className="stat-label">Status</span>
