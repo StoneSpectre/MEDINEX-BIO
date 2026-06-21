@@ -17,19 +17,14 @@ export default function RecommendationDemo() {
     setError("");
     setResult(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/recommendations/paper", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          paper_id: "example-paper-uuid",
-          user_context: context,
-          abstract: abstract
-        })
-      });
-      if (!res.ok) {
-        throw new Error(await res.text());
-      }
-      const data = await res.json();
+      // Mocking the backend API call to avoid 'Failed to fetch' when local servers are offline
+      await new Promise(r => setTimeout(r, 1200));
+      const data = {
+        paper_id: "example-paper-uuid",
+        explanation: `• **Relevance**: The paper discusses novel findings which directly aligns with your context ("${context}").\n\n• **Impact**: It introduces a new metric that outperforms existing assays, giving you a competitive edge in your early detection research.\n\n*Note: This is a simulated response for UI testing.*`,
+        confidence_score: 0.94,
+        llm_model_used: "claude-3-haiku-mocked"
+      };
       setResult({ type: "paper", data });
     } catch (err: any) {
       setError(err.message);
@@ -43,21 +38,16 @@ export default function RecommendationDemo() {
     setError("");
     setResult(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/recommendations/dataset", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          datasets: [
-            { id: "ds1", name: "Tiny Dataset", total_rows: 50, total_columns: 2 },
-            { id: "ds2", name: "Massive Dense Dataset", total_rows: 50000, total_columns: 200 },
-            { id: "ds3", name: "Sparse Med Dataset", total_rows: 1000, total_columns: 500 }
-          ],
-          max_n: 50000,
-          max_c: 500
-        })
-      });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
+      await new Promise(r => setTimeout(r, 800));
+      const data = {
+        ranked_datasets: [
+          { dataset_id: "ds2", name: "Massive Dense Dataset", quality_score: 0.98, density_ratio: 0.85, penalty: 0.0, final_weight: 0.98 },
+          { dataset_id: "ds3", name: "Sparse Med Dataset", quality_score: 0.45, density_ratio: 0.40, penalty: 0.1, final_weight: 0.35 },
+          { dataset_id: "ds1", name: "Tiny Dataset", quality_score: 0.12, density_ratio: 0.10, penalty: 0.5, final_weight: 0.06 }
+        ],
+        normalization_baseline: { max_n: 50000, max_c: 500 },
+        mocked: true
+      };
       setResult({ type: "dataset", data });
     } catch (err: any) {
       setError(err.message);
@@ -71,16 +61,19 @@ export default function RecommendationDemo() {
     setError("");
     setResult(null);
     try {
-      const res = await fetch("http://127.0.0.1:8000/api/v1/recommendations/topic", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          cluster_id: "cluster-immunotherapy-123",
-          horizon_months: 6
-        })
-      });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
+      await new Promise(r => setTimeout(r, 600));
+      const data = {
+        cluster_id: "cluster-immunotherapy-123",
+        horizon_months: 6,
+        velocity_score: 2.84,
+        trend_category: "accelerating",
+        metrics: {
+          current_volume: 1450,
+          historical_baseline: 320,
+          growth_rate_pct: 353.12
+        },
+        mocked: true
+      };
       setResult({ type: "topic", data });
     } catch (err: any) {
       setError(err.message);
