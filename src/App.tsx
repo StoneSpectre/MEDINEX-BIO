@@ -36,6 +36,9 @@ import Phase4 from "./pages/Phase4";
 import Workspace from "./pages/Workspace";
 import ResearchCopilot from "./pages/ResearchCopilot";
 
+import MedinexExplorer from "./components/MedinexExplorer";
+import RecommendationOnboarding from "./components/RecommendationOnboarding";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -74,6 +77,8 @@ const App = () => (
             <Route path="/steps-6-7" element={<Steps67 />} />
             <Route path="/phase4" element={<Phase4 />} />
             <Route path="/copilot" element={<ResearchCopilot />} />
+            <Route path="/medinex-explorer" element={<MedinexExplorer />} />
+            <Route path="/recommendations" element={<RecommendationOnboarding />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

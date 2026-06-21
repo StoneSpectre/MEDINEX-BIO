@@ -39,7 +39,7 @@ export default function ExplorerSelector() {
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "hsl(var(--border))"; e.currentTarget.style.transform = "translateY(0)"; }}
           >
             <h2 style={{ fontSize: "1.5rem", color: "hsl(var(--card-foreground))", marginBottom: "1rem" }}>
-              Version 1
+              V1
             </h2>
             <p style={{ color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
               The original Medinex Explorer prototype.
@@ -61,10 +61,32 @@ export default function ExplorerSelector() {
           onMouseLeave={(e) => { e.currentTarget.style.borderColor = "hsl(var(--border))"; e.currentTarget.style.transform = "translateY(0)"; }}
           >
             <h2 style={{ fontSize: "1.5rem", color: "hsl(var(--card-foreground))", marginBottom: "1rem" }}>
-              Version 2
+              V2
             </h2>
             <p style={{ color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
               The new dark-themed, data-dense clinical explorer.
+            </p>
+          </div>
+        </Link>
+
+        <Link to="/medinex-explorer" style={{ textDecoration: "none" }}>
+          <div style={{
+            background: "hsl(var(--card))",
+            border: "1px solid hsl(var(--border))",
+            padding: "2rem",
+            borderRadius: "12px",
+            width: "300px",
+            transition: "transform 0.2s, border-color 0.2s",
+            cursor: "pointer",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "hsl(var(--primary))"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "hsl(var(--border))"; e.currentTarget.style.transform = "translateY(0)"; }}
+          >
+            <h2 style={{ fontSize: "1.5rem", color: "hsl(var(--card-foreground))", marginBottom: "1rem" }}>
+              V3
+            </h2>
+            <p style={{ color: "hsl(var(--muted-foreground))", fontSize: "0.95rem" }}>
+              The Phase 4 AI-driven geographic and disease surveillance tool.
             </p>
           </div>
         </Link>

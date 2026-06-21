@@ -1,4 +1,4 @@
-import { Heart, Droplet, Shield, Brain, Zap, Baby, Waves, Wind, ActivitySquare, Eye, Ear, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Zap, Baby, Waves, Wind, ActivitySquare, Eye, Ear, Globe, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { ModuleCard } from "./ModuleCard";
 import { useRef } from "react";
 
@@ -79,6 +79,13 @@ const modules = [
     icon: Ear,
     path: "/ent",
     colorClass: "text-orange-500",
+  },
+  {
+    title: "Recommendations Engine",
+    description: "Personalized research paper recommendations driven by semantic vector embeddings and Anthropic Claude AI explanations.",
+    icon: Layers,
+    path: "/recommendations",
+    colorClass: "text-amber-500",
   },
 ];
 

@@ -3,7 +3,11 @@ from typing import Optional
 from pydantic import BaseModel
 import logging
 
-from medinex.step7_contradiction.pipeline import (
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), "contradiction_engine"))
+
+from api.ml_routes.contradiction_engine.pipeline import (
     ingest_paper, 
     detect_contradictions_for_pair, 
     cluster_and_hypothesize, 

@@ -52,19 +52,27 @@ app.include_router(notes.router,         prefix="/api/v1/notes",          tags=[
 app.include_router(literature.router,    prefix="/api/v1/literature",     tags=["Literature Tracker"])
 app.include_router(literature_review.router, prefix="/api/v1/workspace/projects", tags=["AI Literature Review"])
 app.include_router(research_maps.router, prefix="/api/v1/workspace/projects", tags=["Research Maps"])
+
+# from api.routers import collaboration, research_events
 # app.include_router(collaboration.router, prefix="/api/v1/workspace/projects", tags=["Collaboration"])
 # app.include_router(research_events.router, prefix="/api/v1/events", tags=["Research Analytics"])
 
 # ---- Phase 3: ML Diagnostic Routers ----
 app.include_router(hepatic.router, prefix="/api/v1/hepatic", tags=["ML - Hepatic"])
 app.include_router(endocrine.router, prefix="/api/v1/endocrine", tags=["ML - Endocrine"])
+
+from api.nlp.api.router import router as nlp_router
+app.include_router(nlp_router, prefix="/api/v1/nlp", tags=["Phase 3 NLP Pipeline"])
 app.include_router(respiratory.router, prefix="/api/v1/respiratory", tags=["ML - Respiratory"])
 app.include_router(cardiovascular.router, prefix="/api/v1/cardiovascular", tags=["ML - Cardiovascular"])
 app.include_router(renal.router, prefix="/api/v1/renal", tags=["ML - Renal"])
 app.include_router(immunology.router, prefix="/api/v1/immunology", tags=["ML - Immunology"])
-app.include_router(feedback.router, prefix="/api/v1/feedback", tags=["ML - Feedback"])
-app.include_router(graphrag.router, prefix="/api/v1/graphrag", tags=["ML - GraphRAG"])
-app.include_router(contradiction.router, prefix="/api/v1/contradiction", tags=["ML - Contradiction Engine"])
+app.include_router(feedback.router, prefix="/api/v1/feedback", tags=["Human Feedback"])
+app.include_router(graphrag.router, prefix="/api/v1/graphrag", tags=["GraphRAG"])
+app.include_router(contradiction.router, prefix="/api/v1/contradiction", tags=["Step 7 Contradiction Engine"])
+
+from api.recommendations.router import router as rec_router
+app.include_router(rec_router, prefix="/api/v1/recommendations", tags=["Phase 5 Recommendation Systems"])
 
 # ---- Phase 8: Multi-Agent Research Copilot ----
 app.include_router(copilot_api.router, prefix="/api/v1", tags=["Step 8 - Copilot"])
