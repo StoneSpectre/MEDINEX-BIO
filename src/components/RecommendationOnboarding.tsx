@@ -1175,6 +1175,18 @@ export default function App() {
         padding: "14px 24px",
         display: "flex", alignItems: "center", gap: 12,
       }}>
+        <button 
+          onClick={() => window.location.href = '/'}
+          style={{ 
+            background: "transparent", border: "1px solid #334155", borderRadius: "6px", 
+            color: "#94a3b8", cursor: "pointer", display: "flex", alignItems: "center", 
+            gap: "6px", padding: "4px 8px", fontSize: 12, transition: "all 0.2s" 
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = "#f8fafc"; e.currentTarget.style.background = "#1e293b"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = "#94a3b8"; e.currentTarget.style.background = "transparent"; }}
+        >
+          <span>←</span> Back
+        </button>
         <div style={{
           background: "#1d4ed8", color: "#fff",
           borderRadius: 8, padding: "4px 10px",

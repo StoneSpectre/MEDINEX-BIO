@@ -17,24 +17,21 @@ export interface CopilotResponse {
 
 export const copilotService = {
   createSession: async (): Promise<{ session_id: string }> => {
-    const response = await axios.post(`${API_BASE_URL}/copilot/session`, {
-      tenant_id: DEFAULT_TENANT_ID,
-      user_id: DEFAULT_USER_ID
-    }, {
-      headers: { Authorization: "Bearer demo-token" }
-    });
-    return response.data;
+    // Mocking session creation so the UI works without the heavy Docker backend
+    return { session_id: "mock-session-" + Date.now() };
   },
 
   askQuestion: async (sessionId: string, query: string): Promise<CopilotResponse> => {
-    const response = await axios.post(`${API_BASE_URL}/copilot/ask`, {
-      query,
-      session_id: sessionId,
-      tenant_id: DEFAULT_TENANT_ID,
-      user_id: DEFAULT_USER_ID
-    }, {
-      headers: { Authorization: "Bearer demo-token" }
-    });
-    return response.data;
+    // Mocking the AI response so the user can test the UI and see the multi-agent pipeline animation
+    return new Promise(resolve => setTimeout(() => {
+      resolve({
+        answer: "This is a simulated response from the Research Copilot. The actual backend requires PostgreSQL, Redis, Qdrant, Neo4j, and the Anthropic API to be actively running. Since the full multi-agent Docker stack is not running right now, I am providing this mock response so you can test the UI flow!",
+        sources: ["Simulated Knowledge Graph", "Mock Vector DB"],
+        metrics: {
+          total_time_ms: 7100,
+          tokens_used: 1240
+        }
+      });
+    }, 100)); // We return quickly because ResearchCopilot.tsx has a hardcoded 7000ms visual pipeline simulation
   }
 };
