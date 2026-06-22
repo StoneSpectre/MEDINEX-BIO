@@ -11,7 +11,7 @@ from api.core.config import settings
 from api.core.database import engine, Base
 from api.routers import projects, folders, collections, saved_papers, notes, literature, literature_review, research_maps
 from api.ml_routes import hepatic, endocrine, respiratory, cardiovascular, renal, immunology, feedback, graphrag, contradiction
-from medinex.step8_research_copilot import copilot_api
+# from medinex.step8_research_copilot import copilot_api
 # from websockets.manager import manager
 # from services.scheduler import start_scheduler
 
@@ -75,7 +75,7 @@ from api.recommendations.router import router as rec_router
 app.include_router(rec_router, prefix="/api/v1/recommendations", tags=["Phase 5 Recommendation Systems"])
 
 # ---- Phase 8: Multi-Agent Research Copilot ----
-app.include_router(copilot_api.router, prefix="/api/v1", tags=["Step 8 - Copilot"])
+# app.include_router(copilot_api.router, prefix="/api/v1", tags=["Step 8 - Copilot"])
 
 # @app.websocket("/ws/projects/{project_id}")
 # async def websocket_endpoint(websocket, project_id: str):
