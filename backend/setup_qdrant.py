@@ -1,5 +1,5 @@
 """
-Run once to initialise Qdrant collections for Medinex.
+Run once to initialise Qdrant collections for Bioquora.
 Requires: pip install qdrant-client
 """
 from qdrant_client import QdrantClient

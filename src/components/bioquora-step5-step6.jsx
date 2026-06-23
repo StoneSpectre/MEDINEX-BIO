@@ -213,7 +213,7 @@ function Step5({ onDone }) {
     setExpLoading(true);
     try {
       const top5 = results.ranked.slice(0,5);
-      const exps = await callClaude(`You are Medinex, a biomedical research intelligence platform.
+      const exps = await callClaude(`You are Bioquora, a biomedical research intelligence platform.
 
 Generate explanations for why each paper was recommended. Return ONLY valid JSON:
 
@@ -666,7 +666,7 @@ function Step6() {
     setEntityLoading(true);
     setEntityResult(null);
     try {
-      const r = await callClaude(`You are Medinex's Biomedical Entity Intelligence module. Extract structured knowledge from this biomedical text. Return ONLY valid JSON:
+      const r = await callClaude(`You are Bioquora's Biomedical Entity Intelligence module. Extract structured knowledge from this biomedical text. Return ONLY valid JSON:
 
 Text: "${entityText}"
 
@@ -691,7 +691,7 @@ Return exactly:
     setDatasetsLoading(true);
     setDatasets(null);
     try {
-      const r = await callClaude(`You are Medinex's Dataset Intelligence module. Recommend real biomedical datasets for this research query. Return ONLY valid JSON:
+      const r = await callClaude(`You are Bioquora's Dataset Intelligence module. Recommend real biomedical datasets for this research query. Return ONLY valid JSON:
 
 Query: "${datasetQuery}"
 
@@ -738,7 +738,7 @@ Return exactly:
     setRoadmapLoading(true);
     setRoadmap(null);
     try {
-      const r = await callClaude(`You are Medinex's AI Research Planner. Generate a personalized research roadmap. Return ONLY valid JSON:
+      const r = await callClaude(`You are Bioquora's AI Research Planner. Generate a personalized research roadmap. Return ONLY valid JSON:
 
 Research Goal: "${roadmapGoal}"
 
@@ -779,7 +779,7 @@ Return exactly:
           <span style={{ color:C.text, fontSize:18, fontWeight:700 }}>BRIDE — Biomedical Research Intelligence & Discovery Engine</span>
         </div>
         <p style={{ color:C.sub, fontSize:13, margin:0, lineHeight:1.6 }}>
-          The AI scientist inside Medinex. Six cooperating modules that transform paper recommendations into a complete research intelligence layer — entity extraction, dataset discovery, trend prediction, opportunity scoring, and a personalized research planner.
+          The AI scientist inside Bioquora. Six cooperating modules that transform paper recommendations into a complete research intelligence layer — entity extraction, dataset discovery, trend prediction, opportunity scoring, and a personalized research planner.
         </p>
       </div>
 
@@ -802,7 +802,7 @@ Return exactly:
               <div style={{ color:C.rose, fontSize:13, fontStyle:"italic" }}>"Find me papers."</div>
             </div>
             <div style={{ padding:12, background:C.teal+"0A", border:`1px solid ${C.teal}22`, borderRadius:8 }}>
-              <div style={{ color:C.muted, fontSize:10, fontFamily:"monospace", marginBottom:4 }}>MEDINEX BRIDE</div>
+              <div style={{ color:C.muted, fontSize:10, fontFamily:"monospace", marginBottom:4 }}>Bioquora BRIDE</div>
               <div style={{ color:C.teal, fontSize:13, fontStyle:"italic" }}>"Help me do research."</div>
             </div>
             <div style={{ marginTop:16, display:"flex", flexDirection:"column", gap:6 }}>
@@ -853,7 +853,7 @@ Return exactly:
         <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
           <Card>
             <SLabel>M1 · Biomedical Entity Intelligence — NER + Relation Extraction + KG Triples</SLabel>
-            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Every paper is decomposed into structured biomedical concepts. Instead of understanding words, Medinex understands concepts — linked to UMLS, MeSH, HGNC, and DrugBank.</p>
+            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Every paper is decomposed into structured biomedical concepts. Instead of understanding words, Bioquora understands concepts — linked to UMLS, MeSH, HGNC, and DrugBank.</p>
             <div style={{ display:"flex", flexDirection:"column", gap:8, marginBottom:12 }}>
               <textarea
                 value={entityText}
@@ -918,7 +918,7 @@ Return exactly:
         <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
           <Card>
             <SLabel>M2 · Dataset Intelligence — Index + Recommend + Quality Score</SLabel>
-            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Medinex continuously indexes TCGA, GEO, ArrayExpress, MIMIC-IV, PhysioNet, UK Biobank and more. Every dataset receives a composite quality score across 8 dimensions.</p>
+            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Bioquora continuously indexes TCGA, GEO, ArrayExpress, MIMIC-IV, PhysioNet, UK Biobank and more. Every dataset receives a composite quality score across 8 dimensions.</p>
             <div style={{ display:"flex", gap:10, alignItems:"center" }}>
               <input value={datasetQuery} onChange={e=>setDatasetQuery(e.target.value)} style={{ flex:1, background:C.surface, border:`1px solid ${C.border}`, borderRadius:6, padding:"9px 12px", color:C.text, fontSize:13, fontFamily:"system-ui" }} placeholder="Research context e.g. BRCA1 breast cancer genomic…" />
               <button onClick={runDatasetIntelligence} disabled={datasetsLoading} style={{ background:datasetsLoading?C.border:C.sky, color:datasetsLoading?C.muted:C.navy, border:"none", borderRadius:8, padding:"10px 20px", fontFamily:"monospace", fontSize:12, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:8, flexShrink:0 }}>
@@ -1043,7 +1043,7 @@ Return exactly:
         <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
           <Card>
             <SLabel>M4 · Scientific Trend Intelligence — Predicting What Will Become Important</SLabel>
-            <p style={{ color:C.sub, fontSize:13, margin:0, lineHeight:1.6 }}>Instead of showing what is popular, Medinex predicts what will become important. Every topic receives a multi-dimensional velocity score across publications, funding, patents, trials, and code repositories.</p>
+            <p style={{ color:C.sub, fontSize:13, margin:0, lineHeight:1.6 }}>Instead of showing what is popular, Bioquora predicts what will become important. Every topic receives a multi-dimensional velocity score across publications, funding, patents, trials, and code repositories.</p>
           </Card>
 
           <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:14 }}>
@@ -1129,7 +1129,7 @@ Return exactly:
         <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
           <Card>
             <SLabel>M6 · AI Research Planner — Personalised Research Roadmap</SLabel>
-            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Instead of recommending papers, Medinex recommends an entire research journey. Enter a research goal to generate a phased roadmap with papers, datasets, skills, journals, and funding sources.</p>
+            <p style={{ color:C.sub, fontSize:13, margin:"0 0 12px" }}>Instead of recommending papers, Bioquora recommends an entire research journey. Enter a research goal to generate a phased roadmap with papers, datasets, skills, journals, and funding sources.</p>
             <div style={{ display:"flex", gap:10 }}>
               <input value={roadmapGoal} onChange={e=>setRoadmapGoal(e.target.value)} style={{ flex:1, background:C.surface, border:`1px solid ${C.border}`, borderRadius:6, padding:"9px 12px", color:C.text, fontSize:13, fontFamily:"system-ui" }} placeholder="Research goal e.g. Spatial multiomics in pancreatic cancer…" />
               <button onClick={runPlanner} disabled={roadmapLoading} style={{ background:roadmapLoading?C.border:C.rose, color:roadmapLoading?C.muted:C.navy, border:"none", borderRadius:8, padding:"10px 22px", fontFamily:"monospace", fontSize:12, fontWeight:700, cursor:"pointer", display:"flex", alignItems:"center", gap:8, flexShrink:0 }}>
@@ -1220,7 +1220,7 @@ function Tag({ children, color = C.teal }) {
 // ═══════════════════════════════════════════════════════════════════════════
 // APP SHELL
 // ═══════════════════════════════════════════════════════════════════════════
-export default function MedinexStep5Step6() {
+export default function BioquoraStep5Step6() {
   const [activeStep, setActiveStep] = useState(5);
 
   return (
@@ -1241,7 +1241,7 @@ export default function MedinexStep5Step6() {
       <div style={{ borderBottom:`1px solid ${C.border}`, padding:"12px 28px", display:"flex", alignItems:"center", gap:16, position:"sticky", top:0, background:C.bg, zIndex:20 }}>
         <div style={{ display:"flex", alignItems:"center", gap:8 }}>
           <div style={{ width:8, height:8, borderRadius:"50%", background:C.teal, boxShadow:`0 0 8px ${C.teal}` }} />
-          <span style={{ fontFamily:"monospace", fontSize:14, color:C.teal, fontWeight:700, letterSpacing:2 }}>MEDINEX</span>
+          <span style={{ fontFamily:"monospace", fontSize:14, color:C.teal, fontWeight:700, letterSpacing:2 }}>Bioquora</span>
         </div>
         <div style={{ width:1, height:20, background:C.border }} />
         <span style={{ color:C.muted, fontSize:12, fontFamily:"monospace" }}>Phase 5 · Recommendation Systems</span>

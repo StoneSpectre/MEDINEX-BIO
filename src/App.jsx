@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import MedinexPipeline from './components/medinex-pipeline'
-import MedinexStep1 from './components/medinex-step1'
-import MedinexStep5Step6 from './components/medinex-step5-step6'
+import BioquoraPipeline from './components/bioquora-pipeline'
+import BioquoraStep1 from './components/bioquora-step1'
+import BioquoraStep5Step6 from './components/bioquora-step5-step6'
 
 function App() {
   const [activeTab, setActiveTab] = useState('pipeline')
@@ -29,7 +29,7 @@ function App() {
       <div style={{ display: 'flex', gap: '8px', padding: '16px', borderBottom: '1px solid #1E293B', background: '#0D1B2A', alignItems: 'center', justifyContent: 'space-between' }}>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <h1 style={{ margin: '0 24px 0 0', fontSize: '18px', color: '#00C2A8', display: 'flex', alignItems: 'center' }}>
-            Medinex Demo
+            Bioquora Demo
           </h1>
           {tabs.map(tab => (
             <button
@@ -66,9 +66,9 @@ function App() {
       </div>
       
       <div style={{ height: 'calc(100vh - 65px)', overflow: 'auto' }}>
-        {activeTab === 'pipeline' && <MedinexPipeline />}
-        {activeTab === 'step1' && <MedinexStep1 />}
-        {activeTab === 'step56' && <MedinexStep5Step6 />}
+        {activeTab === 'pipeline' && <BioquoraPipeline />}
+        {activeTab === 'step1' && <BioquoraStep1 />}
+        {activeTab === 'step56' && <BioquoraStep5Step6 />}
       </div>
     </div>
   )

@@ -478,7 +478,7 @@ function ProfileBuilder({ interactions, onProfile }) {
           max_tokens: 1000,
           messages: [{
             role: "user",
-            content: `You are Medinex, a biomedical research intelligence platform.
+            content: `You are Bioquora, a biomedical research intelligence platform.
 
 A researcher has logged these interactions:
 ${JSON.stringify(positiveInteractions.map(i => ({ paper: i.paper_title, field: i.paper_field, event: i.event_type, weight: i.weight })), null, 2)}
@@ -769,7 +769,7 @@ const TABS = [
   { id: "worker",    label: "Background Worker" },
 ];
 
-export default function MedinexStep1() {
+export default function BioquoraStep1() {
   const [tab, setTab] = useState("overview");
   const [interactions, setInteractions] = useState([]);
   const [profile, setProfile] = useState(null);
@@ -798,7 +798,7 @@ export default function MedinexStep1() {
       <div style={{ borderBottom: `1px solid ${T.border}`, padding: "14px 28px", display: "flex", alignItems: "center", gap: 16, position: "sticky", top: 0, background: T.bg, zIndex: 10 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: T.teal, boxShadow: `0 0 8px ${T.teal}` }} />
-          <span style={{ fontFamily: "monospace", fontSize: 14, color: T.teal, fontWeight: 700, letterSpacing: 2 }}>MEDINEX</span>
+          <span style={{ fontFamily: "monospace", fontSize: 14, color: T.teal, fontWeight: 700, letterSpacing: 2 }}>Bioquora</span>
         </div>
         <div style={{ width: 1, height: 20, background: T.border }} />
         <span style={{ color: T.muted, fontSize: 12, fontFamily: "monospace" }}>Phase 5 · Step 1 — Interaction Tracking & User Modelling</span>
@@ -841,7 +841,7 @@ export default function MedinexStep1() {
               <Card>
                 <SectionLabel>Objective</SectionLabel>
                 <p style={{ color: T.sub, fontSize: 13, lineHeight: 1.7, margin: 0 }}>
-                  Before Medinex can recommend papers, it must understand what a researcher is interested in — not just from search queries, but from the full behavioural pattern of reading, saving, citing, and ignoring papers. Every interaction becomes a weighted signal that builds a 768-dimensional user profile vector.
+                  Before Bioquora can recommend papers, it must understand what a researcher is interested in — not just from search queries, but from the full behavioural pattern of reading, saving, citing, and ignoring papers. Every interaction becomes a weighted signal that builds a 768-dimensional user profile vector.
                 </p>
                 <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 6 }}>
                   {[

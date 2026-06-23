@@ -1,5 +1,5 @@
 -- Migration: 0012_user_paper_interactions.sql
--- Run this against your Medinex Postgres database
+-- Run this against your Bioquora Postgres database
 
 CREATE TABLE IF NOT EXISTS user_paper_interactions (
     id          UUID        PRIMARY KEY DEFAULT gen_random_uuid(),

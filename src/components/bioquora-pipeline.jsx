@@ -145,7 +145,7 @@ Return exactly this structure:
   "corpus_sources": ["<source1>", "<source2>"]
 }`;
 
-const GRAPH_PROMPT = (query, linked_entities, relations, hops) => `You are a Neo4j knowledge graph traversal engine implementing Step 3 of the Medinex GraphRAG pipeline.
+const GRAPH_PROMPT = (query, linked_entities, relations, hops) => `You are a Neo4j knowledge graph traversal engine implementing Step 3 of the Bioquora GraphRAG pipeline.
 
 Generate realistic Cypher queries and graph traversal results. Return ONLY valid JSON:
 
@@ -589,7 +589,7 @@ const STEPS = [
   { id: 3, label: "Graph Traversal", sub: "Cypher · Paths · Embeddings · Predictions" },
 ];
 
-export default function MedinexPipeline() {
+export default function BioquoraPipeline() {
   const [query, setQuery] = useState("");
   const [activeStep, setActiveStep] = useState(null);
   const [loading, setLoading] = useState({});
@@ -671,7 +671,7 @@ export default function MedinexPipeline() {
       {/* Header */}
       <div style={{ borderBottom: `1px solid ${BORDER}`, padding: "16px 24px", display: "flex", alignItems: "center", gap: 12 }}>
         <div style={{ width: 8, height: 8, borderRadius: "50%", background: ACCENT, boxShadow: `0 0 8px ${ACCENT}` }} />
-        <span style={{ fontFamily: "monospace", fontSize: 13, color: ACCENT, fontWeight: 700, letterSpacing: 2 }}>MEDINEX</span>
+        <span style={{ fontFamily: "monospace", fontSize: 13, color: ACCENT, fontWeight: 700, letterSpacing: 2 }}>Bioquora</span>
         <span style={{ color: MUTED, fontSize: 12 }}>·</span>
         <span style={{ color: MUTED, fontSize: 12, fontFamily: "monospace" }}>GraphRAG Pipeline · Steps 1–3</span>
       </div>
