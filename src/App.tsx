@@ -33,6 +33,8 @@ import DiagnosticDashboard from "./pages/DiagnosticDashboard";
 import Steps67 from "./pages/Steps67";
 import Phase4 from "./pages/Phase4";
 import Phase5 from "./pages/Phase5";
+import GraphRAGDemo from "./pages/GraphRAGDemo";
+import BioquoraCopilotDAG from "./components/bioquora-copilot-dag";
 
 import Workspace from "./pages/Workspace";
 import ResearchCopilot from "./pages/ResearchCopilot";
@@ -85,6 +87,7 @@ const App = () => (
             <Route path="/recommendations" element={<RecommendationOnboarding />} />
             <Route path="/recommendations/phase2" element={<RecommendationPhase2 />} />
             <Route path="/graphrag-demo" element={<GraphRAGDemo />} />
+            <Route path="/copilot-dag" element={<BioquoraCopilotDAG />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

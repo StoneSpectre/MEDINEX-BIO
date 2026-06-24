@@ -1025,6 +1025,14 @@ export default function BioquoraDashboard() {
 
         {/* Steps grid */}
         
+        {activePhaseTab === 4 && (
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 style={{ fontSize: "24px", color: "#00d4c8", marginBottom: "16px" }}>ResearchOS AI Planner DAG Engine</h2>
+            <p style={{ color: "#94a3b8", marginBottom: "24px" }}>Test the live execution DAG of our Research Copilot engine running parallel semantic, graph, and dataset agents.</p>
+            <a href="/copilot-dag" style={{ display: "inline-block", background: "#00d4c8", color: "#050A12", padding: "12px 24px", borderRadius: "8px", textDecoration: "none", fontWeight: "bold" }}>Launch Workflow Simulator</a>
+          </div>
+        )}
+        
         {activePhaseTab === 5 && (
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
             <h2 style={{ fontSize: "24px", color: "#6366f1", marginBottom: "16px" }}>Phase 5: Recommendation Systems</h2>
