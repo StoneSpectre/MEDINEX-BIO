@@ -419,6 +419,15 @@ export default function BioquoraCopilotDAG() {
   return (
     <div style={{ background: C.bg, minHeight: "100vh", padding: "20px 40px", fontFamily: "Inter, system-ui, sans-serif" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", flexDirection: "column", gap: 32 }}>
+        
+        {/* Navigation Bar */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: `1px solid ${C.border}`, paddingBottom: "16px" }}>
+          <a href="/roadmap" style={{ display: "flex", alignItems: "center", gap: "8px", color: C.teal, textDecoration: "none", fontSize: "14px", fontWeight: "bold", fontFamily: "monospace" }}>
+            <span style={{ fontSize: "18px" }}>←</span> BACK TO ROADMAP
+          </a>
+          <div style={{ color: C.muted, fontSize: "12px", fontFamily: "monospace", letterSpacing: "2px" }}>RESEARCH CO-PILOT SIMULATOR</div>
+        </div>
+
         <ContextEngineSection />
         <AIPlannerSection />
         <WorkflowEngineSection />
