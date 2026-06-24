@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BioquoraPipeline from '../components/bioquora-pipeline';
 import BioquoraStep1 from '../components/bioquora-step1';
 import BioquoraStep5Step6 from '../components/bioquora-step5-step6';
+import BioquoraCopilotDAG from '../components/bioquora-copilot-dag';
 
 export default function GraphRAGDemo() {
   const [activeTab, setActiveTab] = useState('pipeline');
@@ -21,7 +22,8 @@ export default function GraphRAGDemo() {
   const tabs = [
     { id: 'pipeline', label: 'Pipeline (Steps 1-3)' },
     { id: 'step1', label: 'Step 1 Analysis' },
-    { id: 'step56', label: 'Steps 5 & 6' }
+    { id: 'step56', label: 'Steps 5 & 6' },
+    { id: 'copilot-dag', label: 'AI Planner DAG' }
   ];
 
   return (
@@ -69,6 +71,7 @@ export default function GraphRAGDemo() {
         {activeTab === 'pipeline' && <BioquoraPipeline />}
         {activeTab === 'step1' && <BioquoraStep1 />}
         {activeTab === 'step56' && <BioquoraStep5Step6 />}
+        {activeTab === 'copilot-dag' && <BioquoraCopilotDAG />}
       </div>
     </div>
   );
