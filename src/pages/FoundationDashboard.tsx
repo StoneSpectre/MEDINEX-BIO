@@ -43,7 +43,7 @@ export default function FoundationDashboard() {
       {/* Navigation */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "40px" }}>
         <button 
-          onClick={() => navigate('/roadmap')}
+          onClick={() => navigate('/')}
           style={{
             background: "transparent", border: `1px solid ${C.border}`, color: C.accent,
             padding: "8px 16px", borderRadius: "8px", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px",
@@ -52,7 +52,7 @@ export default function FoundationDashboard() {
           onMouseOver={(e) => e.currentTarget.style.background = "rgba(56, 189, 248, 0.1)"}
           onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
         >
-          ← BACK TO ROADMAP
+          ← BACK TO HOME
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <ShieldCheck size={20} color={C.success} />

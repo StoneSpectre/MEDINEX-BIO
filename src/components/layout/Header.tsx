@@ -10,7 +10,7 @@ import {
   DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen, Compass, LineChart, Stethoscope, Bot, Microscope, Database, PersonStanding, Workflow } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen, Compass, LineChart, Stethoscope, Bot, Microscope, Database, PersonStanding, Workflow, Cpu, Zap, CircuitBoard } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
@@ -60,7 +60,7 @@ const featureItems = [
     icon: Microscope, 
     color: "text-emerald-500",
     subItems: [
-      { path: "/phase4", label: "Agentic Pipeline", icon: Bot, color: "text-cyan-500" },
+      { path: "/phase4", label: "Agentic Pipeline", icon: Cpu, color: "text-cyan-500" },
       { path: "/copilot-dag", label: "Copilot DAG Trace", icon: Workflow, color: "text-purple-500" }
     ]
   },
@@ -86,7 +86,7 @@ const featureItems = [
     icon: Sparkles, 
     color: "text-amber-500",
     subItems: [
-      { path: "/recommendation-engine", label: "Neural Engine", icon: Sparkles, color: "text-amber-400" }
+      { path: "/recommendation-engine", label: "Neural Engine", icon: Brain, color: "text-amber-400" }
     ]
   }
 ];

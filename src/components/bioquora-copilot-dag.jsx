@@ -71,7 +71,7 @@ export default function BioquoraCopilotDAG() {
           onMouseOver={(e) => e.currentTarget.style.background = "rgba(139, 127, 232, 0.1)"}
           onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
         >
-          ← BACK TO ROADMAP
+          ← BACK TO HOME
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Settings size={20} color={C.accent} />

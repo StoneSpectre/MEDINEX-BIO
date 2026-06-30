@@ -39,7 +39,7 @@ export default function Steps67() {
           onMouseOver={(e) => e.currentTarget.style.background = "rgba(249, 115, 22, 0.1)"}
           onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
         >
-          <ArrowLeft size={16} /> BACK TO ROADMAP
+          <ArrowLeft size={16} /> BACK TO HOME
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Fingerprint size={20} color={C.accent} />

@@ -56,7 +56,7 @@ Albuterol → [TARGETS] → ADRB2 → [VARIANT rs1042713] → Reduced receptor d
       {/* Top Navigation */}
       <div style={{ padding: "20px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: `1px solid rgba(255,255,255,0.05)`, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(10px)" }}>
         <button 
-          onClick={() => navigate('/roadmap')}
+          onClick={() => navigate('/')}
           style={{
             background: "transparent", border: `1px solid ${C.border}`, color: C.accent,
             padding: "8px 16px", borderRadius: "8px", cursor: "pointer", display: "flex", alignItems: "center", gap: "8px",
@@ -65,7 +65,7 @@ Albuterol → [TARGETS] → ADRB2 → [VARIANT rs1042713] → Reduced receptor d
           onMouseOver={(e) => e.currentTarget.style.background = "rgba(0, 212, 200, 0.1)"}
           onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
         >
-          ← BACK TO ROADMAP
+          ← BACK TO HOME
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <BrainCircuit size={20} color={C.accent} />

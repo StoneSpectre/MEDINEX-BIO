@@ -49,7 +49,7 @@ export default function PredictiveML() {
           onMouseOver={(e) => e.currentTarget.style.background = "rgba(167, 139, 250, 0.1)"}
           onMouseOut={(e) => e.currentTarget.style.background = "transparent"}
         >
-          <ArrowLeft size={16} /> BACK TO ROADMAP
+          <ArrowLeft size={16} /> BACK TO HOME
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Brain size={20} color={C.accent} />

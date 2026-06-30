@@ -79,7 +79,7 @@ export default function Assistant() {
           to="/" 
           className="inline-flex items-center gap-2 text-slate-400 hover:text-white bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm mb-8 transition-colors"
         >
-          <ArrowLeft size={16} /> Back to Dashboard
+          <ArrowLeft size={16} /> Back to Home
         </Link>
 
         <div className="text-center mb-12">
