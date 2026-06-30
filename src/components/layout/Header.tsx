@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen, Compass, LineChart, Stethoscope, Bot, Microscope } from "lucide-react";
+import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen, Compass, LineChart, Stethoscope, Bot, Microscope, Database, PersonStanding, Workflow } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
@@ -35,7 +35,13 @@ const featureItems = [
   { path: "/copilot", label: "Research Copilot", icon: Microscope, color: "text-emerald-500" },
   { path: "/explorer", label: "Explorer", icon: Compass, color: "text-teal-500" },
   { path: "/diagnostic", label: "Diagnostics", icon: Stethoscope, color: "text-rose-500" },
-  { path: "/recommendations", label: "Recommendations Engine", icon: Sparkles, color: "text-amber-500" },
+  { path: "/recommendations", label: "Recommendations", icon: Sparkles, color: "text-amber-500" },
+  { path: "/foundation", label: "Foundation (Neo4j)", icon: Database, color: "text-sky-500" },
+  { path: "/predictive-ml", label: "Predictive ML", icon: Activity, color: "text-red-500" },
+  { path: "/phase4", label: "Phase 4 (Agents)", icon: Bot, color: "text-cyan-500" },
+  { path: "/phase5", label: "Phase 5 (Digital Twin)", icon: PersonStanding, color: "text-emerald-500" },
+  { path: "/recommendation-engine", label: "Neural Recommendations", icon: Sparkles, color: "text-amber-400" },
+  { path: "/copilot-dag", label: "Copilot DAG Trace", icon: Workflow, color: "text-purple-500" },
 ];
 
 const mainItems = [
