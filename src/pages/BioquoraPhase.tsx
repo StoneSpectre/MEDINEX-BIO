@@ -1250,6 +1250,31 @@ export default function BioquoraDashboard() {
           </div>
         )}
 
+        {activePhaseTab === 4 && (
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 style={{ fontSize: "24px", color: "#00d4c8", marginBottom: "16px" }}>Block 3: Clinical Intelligence (Graph RAG)</h2>
+            <button 
+              onClick={() => window.location.href = '/graphrag-demo'}
+              style={{
+                background: "linear-gradient(135deg, #00d4c8, #0ea5e9)", border: "none", color: "#000",
+                padding: "20px 40px", fontSize: "20px", fontWeight: "bold", borderRadius: "12px",
+                cursor: "pointer", boxShadow: "0 0 30px rgba(0, 212, 200, 0.4)", display: "inline-flex",
+                alignItems: "center", gap: "12px", transition: "all 0.3s"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 0 40px rgba(0, 212, 200, 0.6)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(0, 212, 200, 0.4)";
+              }}
+            >
+              🧠 LAUNCH CLINICAL INTELLIGENCE
+            </button>
+          </div>
+        )}
+
         {/* Phase Roadmap */}
 
         <div style={{
