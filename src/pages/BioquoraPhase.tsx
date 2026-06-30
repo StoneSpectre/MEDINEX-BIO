@@ -1275,6 +1275,31 @@ export default function BioquoraDashboard() {
           </div>
         )}
 
+        {activePhaseTab === 5 && (
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 style={{ fontSize: "24px", color: "#10b981", marginBottom: "16px" }}>Phase 5: Recommendation Engine</h2>
+            <button 
+              onClick={() => window.location.href = '/recommendation-engine'}
+              style={{
+                background: "linear-gradient(135deg, #10b981, #14b8a6)", border: "none", color: "#fff",
+                padding: "20px 40px", fontSize: "20px", fontWeight: "bold", borderRadius: "12px",
+                cursor: "pointer", boxShadow: "0 0 30px rgba(16, 185, 129, 0.4)", display: "inline-flex",
+                alignItems: "center", gap: "12px", transition: "all 0.3s"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 0 40px rgba(16, 185, 129, 0.6)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(16, 185, 129, 0.4)";
+              }}
+            >
+              🎯 LAUNCH RECOMMENDATION ENGINE
+            </button>
+          </div>
+        )}
+
         {activePhaseTab === 6 && (
           <div style={{ textAlign: "center", marginBottom: "48px" }}>
             <h2 style={{ fontSize: "24px", color: "#8B7FE8", marginBottom: "16px" }}>Block 4: Diagnostic Agents (AI Planner)</h2>
