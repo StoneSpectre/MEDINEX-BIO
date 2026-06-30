@@ -1275,6 +1275,31 @@ export default function BioquoraDashboard() {
           </div>
         )}
 
+        {activePhaseTab === 6 && (
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <h2 style={{ fontSize: "24px", color: "#8B7FE8", marginBottom: "16px" }}>Block 4: Diagnostic Agents (AI Planner)</h2>
+            <button 
+              onClick={() => window.location.href = '/copilot-dag'}
+              style={{
+                background: "linear-gradient(135deg, #8B7FE8, #4f46e5)", border: "none", color: "#fff",
+                padding: "20px 40px", fontSize: "20px", fontWeight: "bold", borderRadius: "12px",
+                cursor: "pointer", boxShadow: "0 0 30px rgba(139, 127, 232, 0.4)", display: "inline-flex",
+                alignItems: "center", gap: "12px", transition: "all 0.3s"
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 0 40px rgba(139, 127, 232, 0.6)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(139, 127, 232, 0.4)";
+              }}
+            >
+              🤖 LAUNCH MULTI-AGENT DAG
+            </button>
+          </div>
+        )}
+
         {/* Phase Roadmap */}
 
         <div style={{
