@@ -4,6 +4,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Heart, Droplet, Shield, Brain, Menu, X, Settings, Network, Activity, Layers, Sparkles, ChevronDown, BookOpen, Compass, LineChart, Stethoscope, Bot, Microscope, Database, PersonStanding, Workflow } from "lucide-react";
@@ -29,19 +33,62 @@ const topicItems = [
 ];
 
 const featureItems = [
-  { path: "/knowledge-graph", label: "Knowledge Graph", icon: Network, color: "text-blue-500" },
-  { path: "/analytics", label: "Analytics", icon: LineChart, color: "text-indigo-500" },
-  { path: "/assistant", label: "Assistant", icon: Bot, color: "text-fuchsia-400" },
-  { path: "/copilot", label: "Research Copilot", icon: Microscope, color: "text-emerald-500" },
-  { path: "/explorer", label: "Explorer", icon: Compass, color: "text-teal-500" },
-  { path: "/diagnostic", label: "Diagnostics", icon: Stethoscope, color: "text-rose-500" },
-  { path: "/recommendations", label: "Recommendations", icon: Sparkles, color: "text-amber-500" },
-  { path: "/foundation", label: "Foundation (Neo4j)", icon: Database, color: "text-sky-500" },
-  { path: "/predictive-ml", label: "Predictive ML", icon: Activity, color: "text-red-500" },
-  { path: "/phase4", label: "Phase 4 (Agents)", icon: Bot, color: "text-cyan-500" },
-  { path: "/phase5", label: "Phase 5 (Digital Twin)", icon: PersonStanding, color: "text-emerald-500" },
-  { path: "/recommendation-engine", label: "Neural Recommendations", icon: Sparkles, color: "text-amber-400" },
-  { path: "/copilot-dag", label: "Copilot DAG Trace", icon: Workflow, color: "text-purple-500" },
+  { 
+    path: "/knowledge-graph", 
+    label: "Knowledge Graph", 
+    icon: Network, 
+    color: "text-blue-500",
+    subItems: [
+      { path: "/foundation", label: "Foundation Models", icon: Database, color: "text-sky-500" }
+    ]
+  },
+  { 
+    path: "/analytics", 
+    label: "Analytics", 
+    icon: LineChart, 
+    color: "text-indigo-500" 
+  },
+  { 
+    path: "/assistant", 
+    label: "Assistant", 
+    icon: Bot, 
+    color: "text-fuchsia-400" 
+  },
+  { 
+    path: "/copilot", 
+    label: "Research Copilot", 
+    icon: Microscope, 
+    color: "text-emerald-500",
+    subItems: [
+      { path: "/phase4", label: "Agentic Pipeline", icon: Bot, color: "text-cyan-500" },
+      { path: "/copilot-dag", label: "Copilot DAG Trace", icon: Workflow, color: "text-purple-500" }
+    ]
+  },
+  { 
+    path: "/explorer", 
+    label: "Explorer", 
+    icon: Compass, 
+    color: "text-teal-500" 
+  },
+  { 
+    path: "/diagnostic", 
+    label: "Diagnostics", 
+    icon: Stethoscope, 
+    color: "text-rose-500",
+    subItems: [
+      { path: "/predictive-ml", label: "Predictive ML", icon: Activity, color: "text-red-500" },
+      { path: "/phase5", label: "Digital Twin", icon: PersonStanding, color: "text-emerald-500" }
+    ]
+  },
+  { 
+    path: "/recommendations", 
+    label: "Recommendations", 
+    icon: Sparkles, 
+    color: "text-amber-500",
+    subItems: [
+      { path: "/recommendation-engine", label: "Neural Engine", icon: Sparkles, color: "text-amber-400" }
+    ]
+  }
 ];
 
 const mainItems = [
@@ -96,6 +143,37 @@ export function Header() {
             <DropdownMenuContent align="start" className="w-56 bg-background/95 backdrop-blur-md border-border/50">
               {featureItems.map((item) => {
                 const Icon = item.icon;
+                if (item.subItems) {
+                  return (
+                    <DropdownMenuSub key={item.path}>
+                      <DropdownMenuSubTrigger className="flex items-center gap-3 w-full py-2 cursor-pointer">
+                        <Icon className={cn("h-4 w-4", item.color)} />
+                        <span>{item.label}</span>
+                      </DropdownMenuSubTrigger>
+                      <DropdownMenuPortal>
+                        <DropdownMenuSubContent className="w-56 bg-background/95 backdrop-blur-md border-border/50">
+                          <DropdownMenuItem asChild className="cursor-pointer">
+                            <Link to={item.path} className="flex items-center gap-3 w-full py-2">
+                              <Icon className={cn("h-4 w-4", item.color)} />
+                              <span>{item.label} Overview</span>
+                            </Link>
+                          </DropdownMenuItem>
+                          {item.subItems.map((subItem) => {
+                            const SubIcon = subItem.icon;
+                            return (
+                              <DropdownMenuItem key={subItem.path} asChild className="cursor-pointer">
+                                <Link to={subItem.path} className="flex items-center gap-3 w-full py-2">
+                                  <SubIcon className={cn("h-4 w-4", subItem.color)} />
+                                  <span>{subItem.label}</span>
+                                </Link>
+                              </DropdownMenuItem>
+                            );
+                          })}
+                        </DropdownMenuSubContent>
+                      </DropdownMenuPortal>
+                    </DropdownMenuSub>
+                  );
+                }
                 return (
                   <DropdownMenuItem key={item.path} asChild className="cursor-pointer">
                     <Link to={item.path} className="flex items-center gap-3 w-full py-2">
@@ -225,19 +303,44 @@ export function Header() {
                 const Icon = item.icon;
                 const isActive = location.pathname === item.path;
                 return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    <Button
-                      variant={isActive ? "secondary" : "ghost"}
-                      className="w-full justify-start gap-3 pl-6"
+                  <div key={item.path} className="flex flex-col w-full">
+                    <Link
+                      to={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
                     >
-                      <Icon className={cn("h-5 w-5", item.color)} />
-                      {item.label}
-                    </Button>
-                  </Link>
+                      <Button
+                        variant={isActive ? "secondary" : "ghost"}
+                        className="w-full justify-start gap-3 pl-6"
+                      >
+                        <Icon className={cn("h-5 w-5", item.color)} />
+                        {item.label}
+                      </Button>
+                    </Link>
+                    {item.subItems && (
+                      <div className="flex flex-col ml-12 border-l border-border/50 pl-2 mt-1 gap-1">
+                        {item.subItems.map((subItem) => {
+                          const SubIcon = subItem.icon;
+                          const isSubActive = location.pathname === subItem.path;
+                          return (
+                            <Link
+                              key={subItem.path}
+                              to={subItem.path}
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              <Button
+                                variant={isSubActive ? "secondary" : "ghost"}
+                                size="sm"
+                                className="w-full justify-start gap-3 h-8 text-xs font-normal"
+                              >
+                                <SubIcon className={cn("h-4 w-4", subItem.color)} />
+                                {subItem.label}
+                              </Button>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>

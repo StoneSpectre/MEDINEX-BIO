@@ -40,11 +40,15 @@ export function Footer() {
             <h4 className="text-sm font-medium">Tools</h4>
             <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
               <Link to="/knowledge-graph" className="hover:text-foreground transition-colors">Knowledge Graph</Link>
-              <Link to="/foundation" className="hover:text-foreground transition-colors">Foundation Models</Link>
-              <Link to="/predictive-ml" className="hover:text-foreground transition-colors">Predictive ML</Link>
-              <Link to="/recommendation-engine" className="hover:text-foreground transition-colors">Neural Recommendations</Link>
-              <Link to="/phase4" className="hover:text-foreground transition-colors">Agentic Pipeline</Link>
-              <Link to="/phase5" className="hover:text-foreground transition-colors">Digital Twin</Link>
+              <Link to="/foundation" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Foundation Models</Link>
+              <Link to="/diagnostic" className="hover:text-foreground transition-colors mt-1">Diagnostics</Link>
+              <Link to="/predictive-ml" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Predictive ML</Link>
+              <Link to="/phase5" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Digital Twin</Link>
+              <Link to="/copilot" className="hover:text-foreground transition-colors mt-1">Research Copilot</Link>
+              <Link to="/phase4" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Agentic Pipeline</Link>
+              <Link to="/copilot-dag" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ DAG Trace</Link>
+              <Link to="/recommendations" className="hover:text-foreground transition-colors mt-1">Recommendations</Link>
+              <Link to="/recommendation-engine" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Neural Engine</Link>
             </nav>
           </div>
 
