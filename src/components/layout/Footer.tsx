@@ -38,17 +38,36 @@ export function Footer() {
           {/* Tools */}
           <div className="space-y-4">
             <h4 className="text-sm font-medium">Tools</h4>
-            <nav className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <Link to="/knowledge-graph" className="hover:text-foreground transition-colors">Knowledge Graph</Link>
-              <Link to="/foundation" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Foundation Models</Link>
-              <Link to="/diagnostic" className="hover:text-foreground transition-colors mt-1">Diagnostics</Link>
-              <Link to="/predictive-ml" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Predictive ML</Link>
-              <Link to="/phase5" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Digital Twin</Link>
-              <Link to="/copilot" className="hover:text-foreground transition-colors mt-1">Research Copilot</Link>
-              <Link to="/phase4" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Agentic Pipeline</Link>
-              <Link to="/copilot-dag" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ DAG Trace</Link>
-              <Link to="/recommendations" className="hover:text-foreground transition-colors mt-1">Recommendations</Link>
-              <Link to="/recommendation-engine" className="hover:text-foreground transition-colors pl-4 border-l border-border/50">↳ Neural Engine</Link>
+            <nav className="flex flex-col gap-3 text-sm text-muted-foreground">
+              <div className="flex flex-col gap-1.5">
+                <Link to="/knowledge-graph" className="hover:text-foreground transition-colors">Knowledge Graph</Link>
+                <div className="flex flex-col ml-3 pl-3 border-l border-border/60 gap-1.5">
+                  <Link to="/foundation" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">Foundation Models</Link>
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <Link to="/diagnostic" className="hover:text-foreground transition-colors">Diagnostics</Link>
+                <div className="flex flex-col ml-3 pl-3 border-l border-border/60 gap-1.5">
+                  <Link to="/predictive-ml" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">Predictive ML</Link>
+                  <Link to="/phase5" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">Digital Twin</Link>
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <Link to="/copilot" className="hover:text-foreground transition-colors">Research Copilot</Link>
+                <div className="flex flex-col ml-3 pl-3 border-l border-border/60 gap-1.5">
+                  <Link to="/phase4" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">Agentic Pipeline</Link>
+                  <Link to="/copilot-dag" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">DAG Trace</Link>
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-1.5">
+                <Link to="/recommendations" className="hover:text-foreground transition-colors">Recommendations</Link>
+                <div className="flex flex-col ml-3 pl-3 border-l border-border/60 gap-1.5">
+                  <Link to="/recommendation-engine" className="hover:text-foreground transition-colors opacity-80 hover:opacity-100">Neural Engine</Link>
+                </div>
+              </div>
             </nav>
           </div>
 
