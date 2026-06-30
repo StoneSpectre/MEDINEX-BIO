@@ -35,6 +35,7 @@ import Phase4 from "./pages/Phase4";
 import Phase5 from "./pages/Phase5";
 import GraphRAGDemo from "./pages/GraphRAGDemo";
 import BioquoraCopilotDAG from "./components/bioquora-copilot-dag";
+import PredictiveML from "./pages/PredictiveML";
 
 import Workspace from "./pages/Workspace";
 import ResearchCopilot from "./pages/ResearchCopilot";
@@ -82,6 +83,7 @@ const App = () => (
             <Route path="/steps-6-7" element={<Steps67 />} />
             <Route path="/phase4" element={<Phase4 />} />
             <Route path="/phase5" element={<Phase5 />} />
+            <Route path="/predictive-ml" element={<PredictiveML />} />
             <Route path="/copilot" element={<ResearchCopilot />} />
             <Route path="/bioquora-explorer" element={<BioquoraExplorer />} />
             <Route path="/recommendations" element={<RecommendationOnboarding />} />
